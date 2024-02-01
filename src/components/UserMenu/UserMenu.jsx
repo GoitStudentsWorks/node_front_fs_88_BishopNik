@@ -9,7 +9,6 @@ export const UserMenu = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 
 	const closeModal = () => setModalIsOpen(false);
-
 	return (
 		<>
 			<nav>
