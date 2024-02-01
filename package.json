@@ -1,8 +1,8 @@
 {
-	"name": "odos_app",
+	"name": "todos_app",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://bishopnik.github.io/todos_app/",
+	"homepage": "https://bishopnik.github.io/Todos_app/",
 	"dependencies": {
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",

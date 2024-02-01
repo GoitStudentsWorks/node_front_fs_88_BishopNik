@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
-				<BrowserRouter basename='/todos_app'>
+				<BrowserRouter basename='/Todos_app'>
 					<ThemeProvider theme={theme}>
 						<App />
 						<Toaster
