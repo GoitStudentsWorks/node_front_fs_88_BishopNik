@@ -67,16 +67,6 @@ const RegisterForm = () => {
 							id='password'
 							autoComplete='current-password'
 						/>
-						<TextField
-							margin='normal'
-							required
-							fullWidth
-							name='сonfirm_password'
-							label='Сonfirm Password'
-							type='password'
-							id='сonfirm_password'
-							autoComplete='current-password'
-						/>
 
 						<Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
 							Register
