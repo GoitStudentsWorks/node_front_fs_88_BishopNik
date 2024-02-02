@@ -21,6 +21,7 @@ export const LogoBox = styled.div`
   gap: 14px;
   margin: 0;
 `;
+
 export const Text = styled.p`
   color: #161616;
   text-align: center;
@@ -31,8 +32,12 @@ export const Text = styled.p`
   line-height: 18px;
   letter-spacing: -0.28px;
 `;
+
 export const Button = styled.button`
   display: flex;
+  @media (max-width: 375px) {
+    width: 100%;
+  }
   width: 335px;
   padding: 14px 0px;
   justify-content: center;

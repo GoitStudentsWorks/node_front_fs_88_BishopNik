@@ -32,7 +32,7 @@ export const AuthNavigation = () => {
         </Button>
 
         <LinkLogIn to="/login" end>
-          Login
+          Log In
         </LinkLogIn>
       </AuthNavContainer>
     </>
