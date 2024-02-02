@@ -1,7 +1,7 @@
 /** @format */
 
 import { NavLink } from 'react-router-dom';
-import Menu from 'components/Menu';
+// import Menu from 'components/Menu';
 import ModalWindow from '../Modal';
 import { useState } from 'react';
 
