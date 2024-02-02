@@ -2,63 +2,61 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser, changeSetting } from './operations';
+import {toastSuccess } from 'components/Helpers';
 
 const initialState = {
-	user: { id: null, name: null, email: null, avatarURL: null },
+	user: {name: null, email: null, avatarURL: null },
 	token: null,
 	isLoggedIn: false,
 	isRefreshing: false,
 	error: null,
+	isLoading: false,
 };
 
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,
-	reducers: {
-		resetError: state => {
-			state.error = null;
-		},
-	},
-	extraReducers: builder => {
-		builder
-			.addCase(register.pending, state => {
-				state.error = null;
-				state.isRegistering = true;
-				state.isRegistered = false;
-			})
+	extraReducers: (builder) => {
+		builder.addCase(register.pending, state => {
+			state.isLoading = true
+		})
 			.addCase(register.fulfilled, (state, { payload }) => {
+				if (payload === undefined) {
+					state.isLoading = false
+                return
+            }
+				state.error = null;
 				state.user = payload.user;
-				state.isRegistering = false;
-				state.isRegistered = true;
-			})
-			.addCase(register.rejected, (state, { payload }) => {
-				state.isRegistering = false;
-				if (payload) state.error = 'Error create user... Please change name or email.';
+				state.isLoading = false
+				toastSuccess(`Registration successful`)
 			})
 			.addCase(logIn.pending, state => {
-				state.error = null;
-				state.isLogging = true;
+				state.isLoading = true
 			})
 			.addCase(logIn.fulfilled, (state, { payload }) => {
+				if (payload === undefined) {
+					state.isLoading = false
+                return
+            }
+				state.error = null
 				state.user = payload.user;
 				state.token = payload.token;
 				state.isLoggedIn = true;
-				state.isLogging = false;
+				state.isLoading = false
 			})
 			.addCase(logIn.rejected, (state, { payload }) => {
-				if (payload) state.error = 'Login error, please repeat.';
-				state.isLogging = false;
-			})
-			.addCase(logOut.pending, state => {
-				state.error = null;
+				state.error = payload;
+				alert(state.error)
 			})
 			.addCase(logOut.fulfilled, state => {
+				state.error = null
 				state.user = { name: null, email: null };
 				state.token = null;
 				state.isLoggedIn = false;
 			})
-			.addCase(logOut.rejected, state => {
-				state.error = 'Logout error...';
+			.addCase(logOut.rejected, (state, payload) => {
+				state.error = payload;
+				alert(state.error)
 			})
 			.addCase(refreshUser.pending, state => {
 				state.isRefreshing = true;
@@ -70,7 +68,7 @@ const authSlice = createSlice({
 			})
 			.addCase(refreshUser.rejected, (state, { payload }) => {
 				state.isRefreshing = false;
-				state.error = payload;
+				console.log(payload)
 			})
 			.addCase(changeSetting.pending, state => {
 				//
@@ -86,4 +84,3 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-export const { resetError } = authSlice.actions;

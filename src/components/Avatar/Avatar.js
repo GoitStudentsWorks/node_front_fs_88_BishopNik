@@ -1,7 +1,8 @@
+import imgages from "components/Avatar/avatar.png"
 const Avatar = () => {
   return (
     <div>
-      <img src="./Image 1.png" alt="User avatar" />
+      <img src={imgages} alt="User avatar" />
     </div>
   );
 };

@@ -2,8 +2,9 @@
 
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toastError } from 'components/Helpers';
 
-axios.defaults.baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
+axios.defaults.baseURL = "https://todos-api-i1vi.onrender.com/api";
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -17,22 +18,23 @@ const clearAuthHeader = () => {
 
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
 	try {
-		const res = await axios.post('/api/auth/register', credentials);
-
-		return res.data;
-	} catch ({ response }) {
-		return thunkAPI.rejectWithValue(response?.data?.message);
+		const res = await axios.post('auth/register', credentials);
+		console.log(res)
+		return res.data
+	} catch ({response}) {
+		return toastError(response?.data?.message)
 	}
 });
 
 export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
 	try {
-		const res = await axios.post('/api/auth/login', credentials);
+		const res = await axios.post('/auth/login', credentials);
 		// After successful login, add the token to the HTTP header
 		setAuthHeader(res.data.token);
+		console.log(res.data)
 		return res.data;
 	} catch ({ response }) {
-		return thunkAPI.rejectWithValue(response?.data?.message);
+		return toastError(response?.data?.message)
 	}
 });
 
