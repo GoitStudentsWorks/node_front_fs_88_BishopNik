@@ -19,14 +19,15 @@ export const UserMenu = () => {
 					id='avatar_menu'
 					onClick={() => setModalIsOpen(true)}
 					style={{
-						width: '300px',
-						height: '50px',
+						marginLeft: '30px',
+						width: '100px',
+						height: '25px',
 					}}
 				>
 					Click me
 				</button>
 				{modalIsOpen && <ModalWindow closeModal={closeModal} />}
-				<Menu />
+				{/* <Menu /> */}
 			</nav>
 		</>
 	);
