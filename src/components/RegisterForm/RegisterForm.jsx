@@ -1,91 +1,95 @@
 /** @format */
 
-import React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Formik } from 'formik';
+import { Notify } from 'notiflix';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/operations';
+import * as Yup from 'yup';
+import {
+  Button,
+  ButtonText,
+  Container,
+  ErrMessageStyled,
+  LabelBox,
+  Link,
+  NavBox,
+  StyledField,
+  StyledForm,
+} from './RegisterForm.Styled';
 
-const defaultTheme = createTheme();
+
+const ContactShema = Yup.object().shape({
+  name: Yup.string()
+    .trim()
+    .min(2, 'Too Short!')
+    .matches(
+      /^[a-zA-Zа-яА-Я]+([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*$/,
+      "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+    )
+    .required('This is a required field'),
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('This is a required field'),
+  password: Yup.string()
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/,
+      'Please create a stronger password. It must contain one uppercase and one lowercase letter'
+    )
+    .required('This is a required field'),
+});
 
 const RegisterForm = () => {
-	return (
-		<ThemeProvider theme={defaultTheme}>
-			<Container component='main' maxWidth='xs'>
-				<CssBaseline />
-				<Box
-					sx={{
-						marginTop: 8,
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-					}}
-				>
-					<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-						<PersonAddIcon />
-					</Avatar>
-					<Typography component='h1' variant='h5'>
-						Create account
-					</Typography>
-					<Box
-						component='form'
-						onSubmit={() => alert("Don't Click!")}
-						noValidate
-						sx={{ mt: 1 }}
-					>
-						<TextField
-							margin='normal'
-							required
-							fullWidth
-							id='text'
-							label='Name'
-							name='name'
-							autoComplete='name'
-							autoFocus
-						/>
-						<TextField
-							margin='normal'
-							required
-							fullWidth
-							id='email'
-							label='Email Address'
-							name='email'
-							autoComplete='email'
-						/>
-						<TextField
-							margin='normal'
-							required
-							fullWidth
-							name='password'
-							label='Password'
-							type='password'
-							id='password'
-							autoComplete='current-password'
-						/>
-						<TextField
-							margin='normal'
-							required
-							fullWidth
-							name='сonfirm_password'
-							label='Сonfirm Password'
-							type='password'
-							id='сonfirm_password'
-							autoComplete='current-password'
-						/>
+  const dispatch = useDispatch();
 
-						<Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
-							Register
-						</Button>
-					</Box>
-				</Box>
-			</Container>
-		</ThemeProvider>
-	);
+  const handleSubmit = (values, actions) => {
+    dispatch(register(values));
+    Notify.success(`${values.name} registered!`);
+    actions.resetForm({ name: '', email: '', password: '' });
+  };
+
+  return (
+    <Container>
+      <Formik
+        initialValues={{ name: '', email: '', password: '' }}
+        onSubmit={(values, actions) => {
+          handleSubmit(values, actions);
+        }}
+        validationSchema={ContactShema}
+      >
+        <StyledForm autoComplete="off">
+          <NavBox>
+            <Link to="/register" end>
+              Registation
+            </Link>
+            <Link to="/login" end>
+              Log In
+            </Link>
+          </NavBox>
+
+          <LabelBox>
+            <label>
+              <StyledField name="name" type="text" placeholder="Enter your name" />
+              <ErrMessageStyled name="name" component="span" />
+            </label>
+            <label>
+              <StyledField name="email" type="email" placeholder="Enter your email" />
+              <ErrMessageStyled name="email" component="span" />
+            </label>
+            <label>
+              <StyledField
+                name="password"
+                type="password"
+                placeholder="Create a password"
+              />
+              <ErrMessageStyled name="password" component="span" />
+            </label>
+          </LabelBox>
+
+          <Button type="submit"><ButtonText>Register Now</ButtonText></Button>
+        </StyledForm>
+      </Formik>
+    </Container>
+  );
 };
 
 export default RegisterForm;
