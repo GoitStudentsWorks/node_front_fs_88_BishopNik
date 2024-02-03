@@ -13,7 +13,8 @@ import {
 	Header,
 } from '../components/styled.component/MainTodosPage.styled';
 
-// import HeaderComponent from 'components/Header';
+
+  import HeaderComponent from '../components/Header/Header';
 
 function MainTodosPage() {
 	const error = useSelector(statusError);
@@ -25,18 +26,15 @@ function MainTodosPage() {
 	}, [dispatch, error]);
 
 	return (
-		<>
 			<Container>
 				<SideBar>Header</SideBar>
 				<Header>
-					Header
-					{/* <HeaderComponent /> */}
+					 { <HeaderComponent /> }
 				</Header>
 				<Main>
 					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
 				</Main>
 			</Container>
-		</>
 	);
 }
 
