@@ -26,6 +26,7 @@ function MainTodosPage() {
 
 	return (
 		<>
+
 			<Container>
 				<SideBar>Header</SideBar>
 				<Header>
@@ -36,6 +37,7 @@ function MainTodosPage() {
 					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
 				</Main>
 			</Container>
+
 		</>
 	);
 }

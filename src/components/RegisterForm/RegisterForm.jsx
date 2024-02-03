@@ -2,8 +2,8 @@
 
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/operations';
 
-import * as Yup from 'yup';
 import {
 	Button,
 	ButtonText,
@@ -15,34 +15,20 @@ import {
 	StyledField,
 	StyledForm,
 } from './RegisterForm.Styled';
-import { register } from 'redux/auth/operations';
+import { toastError, toastSuccess } from 'components/Helpers';
+import RegisterSchema from 'components/Helpers/RegisterSchema';
 
-const ContactShema = Yup.object().shape({
-	name: Yup.string()
-		.trim()
-		.min(2, 'Too Short!')
-		.matches(
-			/^[a-zA-Zа-яА-Я]+([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*$/,
-			"Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-		)
-		.required('This is a required field'),
-	email: Yup.string().email('Invalid email address').required('This is a required field'),
-	password: Yup.string()
-		.matches(
-			/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/,
-			'Please create a stronger password. It must contain one uppercase and one lowercase letter'
-		)
-		.required('This is a required field'),
-});
+
 
 const RegisterForm = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     dispatch(register(values));
+    toastSuccess("Successfuly registered!"); // Should be done after redux logic
+	toastError("Unsuccesfully registered!"); // Should be done after redux logic
     actions.resetForm({ name: '', email: '', password: '' });
   };
-
 
 	return (
 		<Container>
