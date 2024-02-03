@@ -18,17 +18,14 @@ import {
 import { toastError, toastSuccess } from 'components/Helpers';
 import RegisterSchema from 'components/Helpers/RegisterSchema';
 
-
-
 const RegisterForm = () => {
-
-  const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
-    dispatch(register(values));
-    toastSuccess("Successfuly registered!"); // Should be done after redux logic
-	toastError("Unsuccesfully registered!"); // Should be done after redux logic
-    actions.resetForm({ name: '', email: '', password: '' });
-  };
+	const dispatch = useDispatch();
+	const handleSubmit = (values, actions) => {
+		dispatch(register(values));
+		toastSuccess('Successfuly registered!'); // Should be done after redux logic
+		toastError('Unsuccesfully registered!'); // Should be done after redux logic
+		actions.resetForm({ name: '', email: '', password: '' });
+	};
 
 	return (
 		<Container>
@@ -37,7 +34,7 @@ const RegisterForm = () => {
 				onSubmit={(values, actions) => {
 					handleSubmit(values, actions);
 				}}
-				validationSchema={ContactShema}
+				validationSchema={RegisterSchema}
 			>
 				<StyledForm autoComplete='off'>
 					<NavBox>
