@@ -1,9 +1,8 @@
 /** @format */
 
 import { Formik } from 'formik';
-// import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operations';
+
 import * as Yup from 'yup';
 import {
 	Button,
@@ -16,6 +15,7 @@ import {
 	StyledField,
 	StyledForm,
 } from './RegisterForm.Styled';
+import { register } from 'redux/auth/operations';
 
 const ContactShema = Yup.object().shape({
 	name: Yup.string()
@@ -36,13 +36,13 @@ const ContactShema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
-	const dispatch = useDispatch();
 
-	const handleSubmit = (values, actions) => {
-		dispatch(register(values));
-		// Notify.success(`${values.name} registered!`);
-		actions.resetForm({ name: '', email: '', password: '' });
-	};
+  const dispatch = useDispatch();
+  const handleSubmit = (values, actions) => {
+    dispatch(register(values));
+    actions.resetForm({ name: '', email: '', password: '' });
+  };
+
 
 	return (
 		<Container>
