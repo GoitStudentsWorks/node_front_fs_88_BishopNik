@@ -10,10 +10,10 @@ import {
 	Container,
 	Main,
 	SideBar,
+	Header,
 } from '../components/styled.component/MainTodosPage.styled';
-import { AppBar } from 'components/AppBar';
 
-import Header from 'components/Header/Header'
+// import HeaderComponent from 'components/Header';
 
 function MainTodosPage() {
 	const error = useSelector(statusError);
@@ -29,7 +29,8 @@ function MainTodosPage() {
 			<Container>
 				<SideBar>Header</SideBar>
 				<Header>
-					<AppBar />
+					Header
+					{/* <HeaderComponent /> */}
 				</Header>
 				<Main>
 					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
