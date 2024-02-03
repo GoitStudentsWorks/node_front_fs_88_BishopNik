@@ -2,7 +2,6 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser, changeSetting } from './operations';
-import {toastSuccess } from 'components/Helpers';
 
 const initialState = {
 	user: {name: null, email: null, avatarURL: null },
@@ -28,7 +27,6 @@ const authSlice = createSlice({
 				state.error = null;
 				state.user = payload.user;
 				state.isLoading = false
-				toastSuccess(`Registration successful`)
 			})
 			.addCase(logIn.pending, state => {
 				state.isLoading = true
@@ -68,7 +66,7 @@ const authSlice = createSlice({
 			})
 			.addCase(refreshUser.rejected, (state, { payload }) => {
 				state.isRefreshing = false;
-				console.log(payload)
+				
 			})
 			.addCase(changeSetting.pending, state => {
 				//

@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toastError } from 'components/Helpers';
+import { toastError, toastSuccess } from 'components/Helpers';
 
 axios.defaults.baseURL = "https://todos-api-i1vi.onrender.com/api";
 
@@ -19,7 +19,7 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
 	try {
 		const res = await axios.post('auth/register', credentials);
-		console.log(res)
+		toastSuccess(`Registration successful`)
 		return res.data
 	} catch ({response}) {
 		return toastError(response?.data?.message)
@@ -31,7 +31,7 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
 		const res = await axios.post('/auth/login', credentials);
 		// After successful login, add the token to the HTTP header
 		setAuthHeader(res.data.token);
-		console.log(res.data)
+		
 		return res.data;
 	} catch ({ response }) {
 		return toastError(response?.data?.message)
