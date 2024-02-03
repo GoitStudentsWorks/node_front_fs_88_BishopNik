@@ -74,3 +74,17 @@ export const changeSetting = createAsyncThunk('users/change', async (credentials
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });
+
+
+export const changeTheme = createAsyncThunk(
+  'auth/theme',
+  async ({ theme }, thunkAPI) => {
+    try {
+      const { data } = await axios.patch('api/users/theme', { theme });
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
