@@ -8,11 +8,12 @@ import { toastError } from 'components/Helpers';
 import MainComponent from 'components/MainComponent/MainComponent';
 import {
 	Container,
-	Header,
 	Main,
 	SideBar,
 } from '../components/styled.component/MainTodosPage.styled';
 import { AppBar } from 'components/AppBar';
+
+import Header from 'components/Header/Header'
 
 function MainTodosPage() {
 	const error = useSelector(statusError);
@@ -26,7 +27,7 @@ function MainTodosPage() {
 	return (
 		<>
 			<Container>
-				<SideBar>SideBar</SideBar>
+				<SideBar>Header</SideBar>
 				<Header>
 					<AppBar />
 				</Header>
