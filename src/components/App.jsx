@@ -8,7 +8,7 @@ import { useAuth } from 'hooks';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import SharedLayout from './SharedLayout';
 import Loader from 'components/Loader';
-import { PrivateRoute } from 'components/PrivateRoute';
+// import { PrivateRoute } from 'components/PrivateRoute';
 
 const StartPage = lazy(() => import('pages/StartPage'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
@@ -24,14 +24,12 @@ function App() {
 		dispatch(refreshUser());
 	}, [dispatch]);
 
-
 	return isRefreshing ? (
 		<Loader />
 	) : (
 		<>
 			<Routes>
 				<Route path='/' element={<SharedLayout />}>
-
 					<Route path='/todos' element={<MainTodosPage />} />
 					{/* <Route path='todos' element={<PrivateRoute redirectTo='/login' component={<MainTodosPage />} />} />; */}
 
