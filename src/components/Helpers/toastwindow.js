@@ -8,7 +8,7 @@ export function toastError(mes) {
 	});
 }
 
-export function toastInfo(mes) {
+export function toastSuccess(mes) {
 	toast.success(mes, {
 		icon: '✅',
 	});
