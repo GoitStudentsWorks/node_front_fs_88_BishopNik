@@ -39,6 +39,7 @@ export const IconContainer = styled.div`
   align-items: center;
   background-color: rgba(190, 219, 176, 1);
   border-radius: 5px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     background-color: rgba(157, 200, 136, 1);
