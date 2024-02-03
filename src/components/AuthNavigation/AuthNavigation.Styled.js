@@ -13,6 +13,7 @@ export const AuthNavContainer = styled.div`
   align-items: center;
   padding: 0 20px 0 20px;
   height: 812px;
+  min-width: 320px;
 `;
 
 export const LogoBox = styled.div`
@@ -31,6 +32,7 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -0.28px;
+  
 `;
 
 export const Button = styled.button`

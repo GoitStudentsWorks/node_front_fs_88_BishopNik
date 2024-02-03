@@ -13,9 +13,9 @@ export const UserMenu = () => {
 		<>
 			<nav>
 				<NavLink to='/todos' end>
-					Boards
+					{/* Boards */}
 				</NavLink>
-				<button
+				{/* <button
 					id='avatar_menu'
 					onClick={() => setModalIsOpen(true)}
 					style={{
@@ -24,7 +24,7 @@ export const UserMenu = () => {
 					}}
 				>
 					Click me
-				</button>
+				</button> */}
 				{modalIsOpen && <ModalWindow closeModal={closeModal} />}
 				<Menu />
 			</nav>

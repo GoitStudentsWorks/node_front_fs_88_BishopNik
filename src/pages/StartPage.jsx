@@ -1,11 +1,12 @@
 /** @format */
 
+import { AuthNavigation } from 'components/AuthNavigation';
 import React from 'react';
 
 const StartPage = () => {
 	return (
 		<>
-			<h1>Hello Developer (Start Page)</h1>
+			<AuthNavigation/>
 		</>
 	);
 };

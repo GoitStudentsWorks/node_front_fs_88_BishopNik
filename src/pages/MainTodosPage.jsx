@@ -17,7 +17,7 @@ function MainTodosPage() {
 
 	return (
 		<>
-			<h1>Hello Developer (Main page Todos)</h1>
+			{/* <h1>Hello Developer (Main page Todos)</h1> */}
 		</>
 	);
 }
