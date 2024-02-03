@@ -86,5 +86,8 @@
             <path d="M4 8H28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M4 24H28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </symbol>
+        <symbol id="icon-chevron-down" viewBox="0 0 16 17">
+            <path d="M4 6.5L8 10.5L12 6.5" stroke="white" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
     </defs>
 </svg>
