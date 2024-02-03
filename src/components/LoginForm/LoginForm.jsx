@@ -1,6 +1,9 @@
-/** @format */
+import { Field, Form, Formik } from "formik";
+import { useDispatch } from 'react-redux';
+import { logIn } from "redux/auth/operations";
 
-import { toastInfo } from 'components/Helpers';
+
+import {  toastSuccess } from 'components/Helpers';
 import LoginSchema from 'components/Helpers/LoginSchema';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
@@ -12,7 +15,7 @@ const LoginForm = () => {
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values));
     actions.resetForm({ email: '', password: '' });
-    toastInfo('Successfuly registered!'); // Should be done after redux logic
+    toastSuccess('Successfuly registered!'); // Should be done after redux logic
   };
   return (
     <Container>

@@ -5,6 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { statusError } from 'redux/todos/selectors';
 import { resetError } from 'redux/todos/todosSlice';
 import { toastError } from 'components/Helpers';
+import MainComponent from 'components/MainComponent/MainComponent';
+import {
+	Container,
+	Main,
+	SideBar,
+	Header,
+} from '../components/styled.component/MainTodosPage.styled';
+
+// import HeaderComponent from 'components/Header';
 
 function MainTodosPage() {
 	const error = useSelector(statusError);
@@ -17,7 +26,18 @@ function MainTodosPage() {
 
 	return (
 		<>
-			{/* <h1>Hello Developer (Main page Todos)</h1> */}
+
+			<Container>
+				<SideBar>Header</SideBar>
+				<Header>
+					Header
+					{/* <HeaderComponent /> */}
+				</Header>
+				<Main>
+					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
+				</Main>
+			</Container>
+
 		</>
 	);
 }

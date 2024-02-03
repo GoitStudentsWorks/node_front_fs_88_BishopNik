@@ -11,10 +11,9 @@ import { GlobalStyle } from 'components/Helpers/GlobalStyle';
 import { store, persistor } from './redux/store';
 import 'modern-normalize';
 import { Toaster } from 'react-hot-toast';
+// import { theme } from 'constants/theme';
 
-const theme = {
-	spacing: x => `${x * 4}px`,
-};
+const theme = {};
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
