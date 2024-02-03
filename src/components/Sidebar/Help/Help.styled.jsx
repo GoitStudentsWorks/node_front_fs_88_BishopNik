@@ -34,13 +34,19 @@ export const HelpText = styled.p`
   font-weight: 500;
   letter-spacing: 0.2px;
   line-height: 1.4;
+  color: rgba(255, 255, 255, 1);
   margin: 0;
-  /* color: rgba(255, 255, 255, 1); */
 `;
 
 export const HelpSpanText = styled.span`
   color: rgba(190, 219, 176, 1);
   font-size: 12px;
+`;
+
+export const HelpBtnText = styled.p`
+  font-size: 12px;
+  color: rgba(255, 255, 255, 1);
+  margin: 0px;
 `;
 
 export const BtnHelp = styled.button`
@@ -54,9 +60,12 @@ export const BtnHelp = styled.button`
   width: 94px;
   height: 20px;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus {
-    color: rgba(157, 200, 136, 1);
+    ${HelpBtnText} {
+      color: rgba(157, 200, 136, 1);
+    }
   }
 `;
 
@@ -64,9 +73,4 @@ export const HelpIcon = styled(Icon)`
   width: 20px;
   height: 20px;
   stroke: white;
-`;
-
-export const HelpBtnText = styled.p`
-  font-size: 12px;
-  /* color: rgba(255, 255, 255, 1); */
 `;
