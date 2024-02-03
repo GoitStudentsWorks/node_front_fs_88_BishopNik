@@ -5,12 +5,10 @@ import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth } from 'hooks';
-// import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
+import { RestrictedRoute } from 'components/RestrictedRoute';
 import SharedLayout from './SharedLayout';
 import Loader from 'components/Loader';
-import { resetError } from 'redux/auth/authSlice';
-import { toastError } from 'components/Helpers';
+// import { PrivateRoute } from 'components/PrivateRoute';
 
 const StartPage = lazy(() => import('pages/StartPage'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
@@ -20,16 +18,11 @@ const UnknownPage = lazy(() => import('pages/UnknownPage'));
 
 function App() {
 	const dispatch = useDispatch();
-	const { isRefreshing, errorUser } = useAuth();
+	const { isRefreshing } = useAuth();
 
 	useEffect(() => {
 		dispatch(refreshUser());
 	}, [dispatch]);
-
-	useEffect(() => {
-		if (errorUser !== null && errorUser !== 'Unable to fetch user') toastError(`${errorUser}`);
-		dispatch(resetError());
-	}, [dispatch, errorUser]);
 
 	return isRefreshing ? (
 		<Loader />
@@ -39,6 +32,7 @@ function App() {
 				<Route path='/' element={<SharedLayout />}>
 					<Route path='/todos' element={<MainTodosPage />} />
 					{/* <Route path='todos' element={<PrivateRoute redirectTo='/login' component={<MainTodosPage />} />} />; */}
+
 					<Route index element={<StartPage />} />
 					<Route
 						path='/register'

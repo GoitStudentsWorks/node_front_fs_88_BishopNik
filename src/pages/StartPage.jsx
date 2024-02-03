@@ -1,13 +1,16 @@
 /** @format */
 
+import { AuthNavigation } from 'components/AuthNavigation';
+
+import React from 'react';
+
 import { ModalEditProfile } from 'components/Modal/ModalEditProfile';
 import { UserInfo } from 'components/UserInfo/UserInfo';
-import React from 'react';
 
 const StartPage = () => {
   return (
     <>
-      <h1>Hello Developer (Start Page)</h1>
+      <AuthNavigation />
       <UserInfo />
       <ModalEditProfile />
     </>

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktodos_app=self.webpackChunktodos_app||[]).push([[675],{9675:function(e,t,n){n.r(t);n(2791);var r=n(184);t.default=function(){return(0,r.jsx)(r.Fragment,{children:(0,r.jsx)("h1",{children:"Hello Developer (Start Page)"})})}}}]);
+//# sourceMappingURL=675.fd9aafe0.chunk.js.map
