@@ -4,7 +4,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toastError, toastSuccess } from 'components/Helpers';
 
-axios.defaults.baseURL = "https://todos-api-i1vi.onrender.com/api";
+axios.defaults.baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -41,7 +41,7 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 	try {
 		await axios.post('/api/auth/logout');
-		// After a successful logout, remove the token from the HTTP header
+		// After a successful logout, remove the token from the HTTP header 
 		clearAuthHeader();
 	} catch ({ response }) {
 		return thunkAPI.rejectWithValue(response?.data?.message);
