@@ -28,7 +28,7 @@ export const Text = styled.p`
   width: 76px;
   height: 42px;
   font-size: 14px;
-  /* color: rgba(255, 255, 255, 1); */
+  color: rgba(255, 255, 255, 1);
 `;
 
 export const IconContainer = styled.div`
