@@ -37,21 +37,17 @@ function App() {
 		<>
 			<Routes>
 				<Route path='/' element={<SharedLayout />}>
-					{/* <Route
-						path='todos'
-						element={<PrivateRoute redirectTo='/login' component={<MainTodosPage />} />}
-					/> */}
-					<Route path='todos' element={<MainTodosPage />} />
-
+					<Route path='/todos' element={<MainTodosPage />} />
+					{/* <Route path='todos' element={<PrivateRoute redirectTo='/login' component={<MainTodosPage />} />} />; */}
 					<Route index element={<StartPage />} />
 					<Route
-						path='register'
+						path='/register'
 						element={
 							<RestrictedRoute redirectTo='/todos' component={<RegisterPage />} />
 						}
 					/>
 					<Route
-						path='login'
+						path='/login'
 						element={<RestrictedRoute redirectTo='/todos' component={<LoginPage />} />}
 					/>
 					<Route path='*' element={<UnknownPage />} />

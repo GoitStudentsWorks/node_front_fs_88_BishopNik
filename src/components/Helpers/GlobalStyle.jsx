@@ -4,7 +4,26 @@ import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    @font-face {
+        font-family: 'Poppins';
+        font-weight: 400;
+        font-style: normal;
+        src: url('../../fonts/Poppins-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Poppins';
+        font-weight: 500;
+        font-style: normal;
+        src: url('../../fonts/Poppins-Medium.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-style: normal;
+        src: url('../../fonts/Poppins-SemiBold.ttf') format('truetype');
+    } 
 
     body {
         font-family: 'Poppins', sans-serif; 
