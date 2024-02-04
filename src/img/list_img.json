@@ -1,4 +1,9 @@
 {
 	"help": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fhelp%2FCactus.png?alt=media&token=8abaf580-55e9-4e19-bdef-45d06fbcb488",
-	"avatar": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Favatar%2Favatar.png?alt=media&token=5ae451b4-1052-41cb-aff2-534db63c26b9"
+	"avatar": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Favatar%2Favatar.png?alt=media&token=5ae451b4-1052-41cb-aff2-534db63c26b9",
+	"user": {
+		"dark": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Favatar%2Fuser_dark.png?alt=media&token=763085c8-fe02-41aa-9c50-9bbe3b0e12c5",
+		"light": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Favatar%2Fuser_light.png?alt=media&token=acfdcede-c938-40d9-9758-3be16c028d42",
+		"violet": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Favatar%2Fuser-violet.png?alt=media&token=b780ac8f-f033-49ab-a29f-44d6cd62ed7b"
+	}
 }
