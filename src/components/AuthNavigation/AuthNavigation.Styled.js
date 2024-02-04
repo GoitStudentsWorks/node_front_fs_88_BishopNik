@@ -14,6 +14,9 @@ export const AuthNavContainer = styled.div`
   padding: 0 20px 0 20px;
   height: 812px;
   min-width: 320px;
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 `;
 
 export const LogoBox = styled.div`

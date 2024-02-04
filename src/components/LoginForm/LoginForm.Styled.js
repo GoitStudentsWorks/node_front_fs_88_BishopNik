@@ -13,7 +13,8 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 20px 0 20px;
-  
+  height: 100%;
+  min-width: 320px;
 `;
 
 export const StyledForm = styled(Form)`

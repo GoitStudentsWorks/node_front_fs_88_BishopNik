@@ -3,7 +3,6 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
-
 import {
 	Button,
 	ButtonText,
@@ -17,7 +16,6 @@ import {
 } from './RegisterForm.Styled';
 import { toastError, toastSuccess } from 'components/Helpers';
 import RegisterSchema from 'components/Helpers/RegisterSchema';
-
 
 
 const RegisterForm = () => {
@@ -37,7 +35,7 @@ const RegisterForm = () => {
 				onSubmit={(values, actions) => {
 					handleSubmit(values, actions);
 				}}
-				validationSchema={ContactShema}
+				validationSchema={RegisterSchema}
 			>
 				<StyledForm autoComplete='off'>
 					<NavBox>
