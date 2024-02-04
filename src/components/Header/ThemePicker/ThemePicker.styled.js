@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 
 export const Text = styled.span`
 	font-family: Poppins;
-	color: ${props => props.theme.popupTextMain};
+	color: rgba(255, 255, 255, 0.8);
 	font-size: 14px;
 	font-weight: 500;
 	letter-spacing: -0.28px;
@@ -24,7 +24,7 @@ export const Text = styled.span`
 export const IconThemeMenu = styled(Icon)`
 	width: 16px;
 	height: 16px;
-	stroke: ${props => props.theme.popupIcon};
+	stroke: rgba(255, 255, 255, 0.8);
 	transition: all 250ms linear;
 	fill: transparent;
 
@@ -41,21 +41,21 @@ export const PopupBlock = styled.ul`
 	flex-direction: column;
 	justify-content: center;
 	border-radius: 8px;
-	border: 1px solid ${props => props.theme.popupBorder};
-	background: ${props => props.theme.popupBackground};
-	box-shadow: 0px 4px 16px 0px ${props => props.theme.popupBoxShadow};
+	border: 1px solid rgba(190, 219, 176, 1);
+	background: rgba(21, 21, 21, 1);
+	box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.10);
 	gap: 4px;
 	z-index: 99;
 `;
 
 export const PopupItem = styled.li`
 	font-family: Poppins;
-	color: ${props => props.theme.popupTextSecondary};
+	color: rgba(255, 255, 255, 0.5);
 	font-size: 14px;
 	letter-spacing: -0.28px;
-
+    list-style: none;
 	&.active {
-		color: ${props => props.theme.popupTextAccent};
+		color: rgba(190, 219, 176, 1);
 	}
 
 	cursor: pointer;
