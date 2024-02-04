@@ -1,10 +1,17 @@
 import React from 'react';
-import { LogoContainer, LogoText, LogoIcon } from './Logo.styled';
+import {
+  LogoContainer,
+  LogoText,
+  LogoIcon,
+  IconContainer,
+} from './Logo.styled';
 
 export const Logo = () => {
   return (
     <LogoContainer>
-      <LogoIcon name="iconapp" />
+      <IconContainer>
+        <LogoIcon name="iconapp" />
+      </IconContainer>
       <LogoText>Task Pro</LogoText>
     </LogoContainer>
   );

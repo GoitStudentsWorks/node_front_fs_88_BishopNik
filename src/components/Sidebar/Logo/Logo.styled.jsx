@@ -24,7 +24,17 @@ export const LogoText = styled.p`
   color: rgba(255, 255, 255, 1);
 `;
 
-export const LogoIcon = styled(Icon)`
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(31, 31, 31, 1);
   width: 32px;
   height: 32px;
+`;
+
+export const LogoIcon = styled(Icon)`
+  width: 12px;
+  height: 16px;
+  fill: rgba(255, 255, 255, 1);
 `;

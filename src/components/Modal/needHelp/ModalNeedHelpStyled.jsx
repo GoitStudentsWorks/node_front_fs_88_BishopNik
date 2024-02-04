@@ -73,7 +73,13 @@ export const Button = styled.button`
   align-items: center;
   border-radius: 8px;
   background: #bedbb0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background: rgba(157, 200, 136, 1);
+  }
 `;
 
 export const ButtonText = styled.span`
