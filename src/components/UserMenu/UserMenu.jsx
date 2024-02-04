@@ -7,7 +7,7 @@ export const UserMenu = () => {
 		<>
 			<nav>
 				<NavLink to='/todos' end>
-					Boards
+					{/* Boards */}
 				</NavLink>
 			</nav>
 		</>

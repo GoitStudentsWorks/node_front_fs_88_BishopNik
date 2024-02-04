@@ -12,6 +12,15 @@ import {
 	SideBar,
 	Header,
 } from '../components/styled.component/MainTodosPage.styled';
+import { UserInfo } from 'components/UserInfo/UserInfo';
+import { ModalEditProfile } from 'components/Modal/ModalEditProfile';
+
+import { Logo } from 'components/Sidebar/Logo/Logo';
+import { Title } from 'components/Sidebar/Title/Title';
+import { BtnNewBoard } from 'components/Sidebar/Btn_CreateNew/Btn_CreateNew';
+import { BoardsList } from 'components/Sidebar/BoardsList/BoardList';
+import { Help } from 'components/Sidebar/Help/Help';
+import { BtnLogout } from 'components/Sidebar/Logout/Logout';
 
 
 import HeaderComponent from '../components/Header/Header';
@@ -27,9 +36,18 @@ function MainTodosPage() {
 
 	return (
 			<Container>
-				<SideBar>Header</SideBar>
+				<SideBar>
+					<Logo />
+					<Title />
+					<BtnNewBoard />
+					<BoardsList />
+					<Help />
+					<BtnLogout />
+				</SideBar>
 				<Header>
+
 					 { <HeaderComponent /> }  
+
 				</Header>
 				<Main>
 					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
