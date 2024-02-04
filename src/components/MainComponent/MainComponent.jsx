@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ModalFilter from '../Filter/ModalFilter/ModalFilter';
+import { ModalFilter } from '../Filter';
 import {
 	ButtonFilter,
 	FiltersIcon,
