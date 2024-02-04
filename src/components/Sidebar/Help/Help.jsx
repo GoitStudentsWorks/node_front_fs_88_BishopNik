@@ -1,5 +1,5 @@
 import React from 'react';
-import Cactus from '../../../img/Cactus.png';
+import data from '../../../img/list_img.json';
 import {
   HelpContainer,
   HelpText,
@@ -14,7 +14,7 @@ export const Help = () => {
   return (
     <HelpContainer>
       <HelpImgDiv>
-        <img src={Cactus} alt="Cactus" width={54} />
+        <img src={data.help} alt="Cactus" width={54} />
       </HelpImgDiv>
       <HelpText>
         If you need help with <HelpSpanText>TaskPro</HelpSpanText>, check out
