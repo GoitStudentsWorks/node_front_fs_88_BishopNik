@@ -1,6 +1,13 @@
 import React from 'react';
-import { Text } from './BoardList.styled';
+import { BoardItem } from '../BoardItem/BoardItem';
+import { ListContainer } from './BoardList.styled';
 
 export const BoardsList = () => {
-  return <Text>тут будут доски</Text>;
+  return (
+    <>
+      <ListContainer>
+        <BoardItem />
+      </ListContainer>
+    </>
+  );
 };
