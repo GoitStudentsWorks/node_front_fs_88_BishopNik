@@ -1,5 +1,8 @@
-import ModalFilter from '../Filter/ModalFilter/ModalFilter'
-import { useState, React } from 'react';
+/** @format */
+
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import ModalFilter from '../Filter/ModalFilter/ModalFilter';
 import {
 	ButtonFilter,
 	FiltersIcon,
@@ -11,9 +14,12 @@ import {
 function MainComponent({ children }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-		const openModal = () => {
+	const openModal = () => {
 		setIsModalOpen(true);
 	};
+
+	const { id } = useParams(null);
+	console.log('🚀 ~ MainComponent ~ id:', id);
 	return (
 		<>
 			<ButtonFilter type='button' onClick={openModal}>

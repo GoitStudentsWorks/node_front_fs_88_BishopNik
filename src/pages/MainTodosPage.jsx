@@ -22,7 +22,6 @@ import { BoardsList } from 'components/Sidebar/BoardsList/BoardList';
 import { Help } from 'components/Sidebar/Help/Help';
 import { BtnLogout } from 'components/Sidebar/Logout/Logout';
 
-
 import HeaderComponent from '../components/Header/Header';
 
 function MainTodosPage() {
@@ -35,24 +34,25 @@ function MainTodosPage() {
 	}, [dispatch, error]);
 
 	return (
-			<Container>
-				<SideBar>
-					<Logo />
-					<Title />
-					<BtnNewBoard />
-					<BoardsList />
-					<Help />
-					<BtnLogout />
-				</SideBar>
-				<Header>
-
-					 { <HeaderComponent /> }  
-
-				</Header>
-				<Main>
-					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
-				</Main>
-			</Container>
+		<Container>
+			<SideBar>
+				<Logo />
+				<Title />
+				<BtnNewBoard />
+				<BoardsList />
+				<Help />
+				<BtnLogout />
+			</SideBar>
+			<Header>
+				<HeaderComponent />
+			</Header>
+			<Main>
+				<MainComponent>
+					<UserInfo />
+					<ModalEditProfile />
+				</MainComponent>
+			</Main>
+		</Container>
 	);
 }
 

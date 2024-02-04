@@ -48,7 +48,6 @@ export const Header = styled.header`
 	grid-area: h;
 	min-width: 320px;
 	height: 60px;
-	outline: 1px solid red;
 
 	@media screen and (min-width: 768px) {
 		height: 68px;
