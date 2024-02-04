@@ -1,38 +1,13 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { ModalFilter } from '../Filter';
-import {
-	ButtonFilter,
-	FiltersIcon,
-	TextButton,
-	TextEmptyBoard,
-	ButtonCreateBoard,
-} from './MainComponent.styled';
+import React from 'react';
+
+import { TextEmptyBoard, ButtonCreateBoard } from './MainComponent.styled';
 
 function MainComponent({ children }) {
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [idBoard, setIdBoard] = useState(null);
-
-	const openModal = () => {
-		setIsModalOpen(true);
-	};
-
-	const { board } = useParams(null);
-
-	useEffect(() => {
-		setIdBoard(board);
-	}, [board]);
-
 	return (
 		<>
-			<ButtonFilter type='button' onClick={openModal}>
-				<FiltersIcon name='filters' />
-				<TextButton>Filters</TextButton>
-			</ButtonFilter>
-			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			{idBoard ? (
+			{children ? (
 				<>
 					<h1 style={{ marginBottom: '30px', marginLeft: '25px', color: 'white' }}>
 						Project office
@@ -48,7 +23,7 @@ function MainComponent({ children }) {
 							alignItems: 'center',
 						}}
 					>
-						<h1 style={{ color: 'white' }}>{idBoard}</h1>
+						<h1 style={{ color: 'white' }}>{children}</h1>
 					</div>
 				</>
 			) : (
