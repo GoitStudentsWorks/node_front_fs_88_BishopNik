@@ -35,7 +35,9 @@ export const SideBar = styled.aside`
 	width: 260px;
 	height: 100vh;
 	min-height: 770px;
-	outline: 1px solid blue;
+	background-color: rgba(18, 18, 18, 1);
+	display: flex;
+	flex-direction: column;
 
 	@media screen and (max-width: 1439px) {
 		display: none;

@@ -1,7 +1,7 @@
+
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-
 import { toastSuccess } from 'components/Helpers';
 import LoginSchema from 'components/Helpers/LoginSchema';
 import {
@@ -63,6 +63,3 @@ const LoginForm = () => {
       </Formik>
     </Container>
   );
-};
-
-export default LoginForm;

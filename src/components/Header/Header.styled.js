@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-  background-color: ${props => props.theme.header.background};
+  background-color: ${props => props.theme.headerBackground};
   padding: 14px 20px;
   display: flex;
   justify-content: space-between;

@@ -2,7 +2,9 @@
 
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+
 import { register } from '../../redux/auth/operations';
+
 import {
 	Button,
 	ButtonText,
@@ -14,20 +16,14 @@ import {
 	StyledField,
 	StyledForm,
 } from './RegisterForm.Styled';
-import { toastError, toastSuccess } from 'components/Helpers';
 import RegisterSchema from 'components/Helpers/RegisterSchema';
 
-
 const RegisterForm = () => {
-
-  const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
-    dispatch(register(values));
-    toastSuccess("Successfuly registered!"); // Should be done after redux logic
-	toastError("Unsuccesfully registered!"); // Should be done after redux logic
-    actions.resetForm({ name: '', email: '', password: '' });
-  };
-
+	const dispatch = useDispatch();
+	const handleSubmit = (values, actions) => {
+		dispatch(register(values));
+		actions.resetForm({ name: '', email: '', password: '' });
+	};
 	return (
 		<Container>
 			<Formik

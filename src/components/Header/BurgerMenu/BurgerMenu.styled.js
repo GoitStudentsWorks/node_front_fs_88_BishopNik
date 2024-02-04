@@ -20,5 +20,5 @@ export const Button = styled.button`
 export const Icon = styled.svg`
   width: 32px;
   height: 32px;
-  stroke: ${props => props.theme.header.menuIcon};
+  stroke: ${props => props.theme.headerMenuIcon};
 `;

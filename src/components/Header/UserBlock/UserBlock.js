@@ -1,10 +1,5 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  selectIsLoading,
-  selectUser,
-  selectUserTheme,
-} from 'redux/auth/selectors';
 
 import userDark from '../../images/user-dark.jpg';
 import userLight from '../../images/user-light.jpg';
@@ -15,10 +10,10 @@ import { UserAvatar, UserName, Wrapper } from './UserBlock.styled';
 import Loader from '../../Loader';
 
 const UserBlock = () => {
-  const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector;
   const [open, setOpen] = useState(false);
-  const activeUserTheme = useSelector(selectUserTheme);
-  const { name, avatarURL } = useSelector(selectUser);
+  const activeUserTheme = useSelector;
+  const { name, avatarURL } = useSelector;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
