@@ -18,7 +18,8 @@ export const LogoContainer = styled.div`
 
 export const LogoText = styled.p`
   font-size: 16px;
-  letter-spacing: 0.4px;
+  letter-spacing: -0.4px;
+  margin: 0;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
 `;
