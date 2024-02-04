@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import Icon from 'components/Icon/Icon.jsx';
+
+export const IconLogoBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #161616;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+`;
+
+export const IconLogo = styled(Icon)`
+width: 16px;
+height: 16px;
+  stroke: rgba(255, 255, 255, 0.8);
+`;
 
 export const AuthNavContainer = styled.div`
   background: linear-gradient(
@@ -12,7 +29,7 @@ export const AuthNavContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 20px 0 20px;
-  height: 812px;
+  height: 100vh;
   min-width: 320px;
   @media (max-width: 375px) {
     width: 100%;
@@ -26,7 +43,7 @@ export const LogoBox = styled.div`
   margin: 0;
 `;
 
-export const Text = styled.p`
+export const Text = styled.span`
   color: #161616;
   text-align: center;
   font-family: Poppins;
@@ -34,8 +51,8 @@ export const Text = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
-  letter-spacing: -0.28px;
-  
+  max-width: 335px;
+  margin-bottom: 48px;
 `;
 
 export const Button = styled.button`

@@ -3,6 +3,8 @@
 import {
   AuthNavContainer,
   Button,
+  IconLogo,
+  IconLogoBox,
   Link,
   LinkLogIn,
   LogoBox,
@@ -17,7 +19,9 @@ export const AuthNavigation = () => {
       <AuthNavContainer>
         <Avatar />
         <LogoBox>
-          <div>Logo</div>
+          <IconLogoBox>
+          <IconLogo name="iconapp" />
+          </IconLogoBox>
           <LogoTitle>Task Pro</LogoTitle>
         </LogoBox>
         <Text>
