@@ -1,6 +1,5 @@
-/** @format */
-
-import React from 'react';
+import ModalFilter from '../Filter/ModalFilter/ModalFilter'
+import { useState, React } from 'react';
 import {
 	ButtonFilter,
 	FiltersIcon,
@@ -10,12 +9,18 @@ import {
 } from './MainComponent.styled';
 
 function MainComponent({ children }) {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+		const openModal = () => {
+		setIsModalOpen(true);
+	};
 	return (
 		<>
-			<ButtonFilter type='button'>
+			<ButtonFilter type='button' onClick={openModal}>
 				<FiltersIcon name='filters' />
 				<TextButton>Filters</TextButton>
 			</ButtonFilter>
+			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			{children ? (
 				children
 			) : (
