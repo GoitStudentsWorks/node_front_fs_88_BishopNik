@@ -9,6 +9,7 @@ export const LogoContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0px;
+  margin-top: 24px;
   border: none;
   background-color: transparent;
   width: 104px;

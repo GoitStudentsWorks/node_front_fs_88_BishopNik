@@ -10,20 +10,22 @@ export const LogoutIcon = styled(Icon)`
 `;
 
 export const Btn = styled.button`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	padding: 0px;
-	margin-left: 24px;
-	border: none;
-	background-color: transparent;
-	transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-	&:hover,
-	&:focus {
-		${LogoutIcon} {
-			stroke: rgba(157, 200, 136, 1);
-		}
-	}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  margin-left: 24px;
+  margin-bottom: 24px;
+  border: none;
+  background-color: transparent;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    ${LogoutIcon} {
+      stroke: rgba(157, 200, 136, 1);
+    }
+  }
+
 
 	@media screen and (min-width: 375px) {
 		width: 105px;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BtnAdd, Text, IconContainer, BtnIcon } from './Btn_CreateNew.styled';
 
-export const Btn = () => {
+export const BtnNewBoard = () => {
   return (
     <BtnAdd>
       <Text>Create a new board</Text>
