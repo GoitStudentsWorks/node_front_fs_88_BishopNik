@@ -33,30 +33,29 @@ function MainTodosPage() {
 		dispatch(resetError());
 	}, [dispatch, error]);
 
-  return (
-    <>
-      <Container>
-        <SideBar>
-          <Logo />
-          <Title />
-          <BtnNewBoard />
-          <BoardsList />
-          <Help />
-          <BtnLogout />
-        </SideBar>
-        <Header>
-          Header
-          {/* <HeaderComponent /> */}
-          <UserInfo />
-          <ModalEditProfile />
-        </Header>
-        <Main>
-          <MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
-        </Main>
-      </Container>
-    </>
-  );
-
+	return (
+		<>
+			<Container>
+				<SideBar>
+					<Logo />
+					<Title />
+					<BtnNewBoard />
+					<BoardsList />
+					<Help />
+					<BtnLogout />
+				</SideBar>
+				<Header>
+					Header
+					{/* <HeaderComponent /> */}
+					<UserInfo />
+					<ModalEditProfile />
+				</Header>
+				<Main>
+					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
+				</Main>
+			</Container>
+		</>
+	);
 }
 
 export default MainTodosPage;
