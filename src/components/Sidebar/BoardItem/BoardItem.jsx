@@ -26,3 +26,4 @@ export const BoardItem = () => {
     </BoardContainer>
   );
 };
+

@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-	background-color: ${props => props.theme.headerBackground};
+	background-color: rgba(22, 22, 22, 1);
 	padding: 14px 20px;
 	display: flex;
 	justify-content: space-between;

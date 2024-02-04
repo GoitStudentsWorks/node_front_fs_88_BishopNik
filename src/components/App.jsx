@@ -8,7 +8,7 @@ import { useAuth } from 'hooks';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import SharedLayout from './SharedLayout';
 import Loader from 'components/Loader';
-// import { PrivateRoute } from 'components/PrivateRoute';
+import { PrivateRoute } from 'components/PrivateRoute';
 
 const StartPage = lazy(() => import('pages/StartPage'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
@@ -27,27 +27,27 @@ function App() {
 	return isRefreshing ? (
 		<Loader />
 	) : (
-		<>
-			<Routes>
-				<Route path='/' element={<SharedLayout />}>
-					<Route path='/todos' element={<MainTodosPage />} />
-					{/* <Route path='todos' element={<PrivateRoute redirectTo='/login' component={<MainTodosPage />} />} />; */}
-
-					<Route index element={<StartPage />} />
-					<Route
-						path='/register'
-						element={
-							<RestrictedRoute redirectTo='/todos' component={<RegisterPage />} />
-						}
-					/>
-					<Route
-						path='/login'
-						element={<RestrictedRoute redirectTo='/todos' component={<LoginPage />} />}
-					/>
-					<Route path='*' element={<UnknownPage />} />
-				</Route>
-			</Routes>
-		</>
+		<Routes>
+			<Route path='/' element={<SharedLayout />}>
+				<Route
+					index
+					element={<RestrictedRoute component={StartPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='register'
+					element={<RestrictedRoute component={RegisterPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='login'
+					element={<RestrictedRoute component={LoginPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='/todos'
+					element={<PrivateRoute component={MainTodosPage} redirectTo='/' />}
+				/>
+				<Route path='*' element={<UnknownPage />} />
+			</Route>
+		</Routes>
 	);
 }
 
