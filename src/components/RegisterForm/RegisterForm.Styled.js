@@ -5,13 +5,18 @@ import { Form, Field, ErrorMessage } from 'formik';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-	background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #bedbb0 92.19%);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 0 20px 0 20px;
-	height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  height: 100%;
+  min-width: 320px;
 `;
 
 export const StyledForm = styled(Form)`

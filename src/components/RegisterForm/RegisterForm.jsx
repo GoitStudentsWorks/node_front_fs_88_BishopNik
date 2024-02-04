@@ -3,6 +3,8 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
+import { register } from '../../redux/auth/operations';
+
 import {
 	Button,
 	ButtonText,
@@ -15,7 +17,6 @@ import {
 	StyledForm,
 } from './RegisterForm.Styled';
 import RegisterSchema from 'components/Helpers/RegisterSchema';
-import { register } from 'redux/auth/operations';
 
 const RegisterForm = () => {
 	const dispatch = useDispatch();
