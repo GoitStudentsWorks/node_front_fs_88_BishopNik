@@ -1,10 +1,12 @@
+/** @format */
+
 import styled from 'styled-components';
-import Icon from '../../Icon/index';
+import Icon from '../../Icon';
 
 export const LogoutIcon = styled(Icon)`
-  width: 32px;
-  height: 32px;
-  stroke: rgba(190, 219, 176, 1);
+	width: 32px;
+	height: 32px;
+	stroke: rgba(190, 219, 176, 1);
 `;
 
 export const Btn = styled.button`
@@ -24,19 +26,20 @@ export const Btn = styled.button`
     }
   }
 
-  @media screen and (min-width: 375px) {
-    width: 105px;
-    height: 32px;
-  }
+
+	@media screen and (min-width: 375px) {
+		width: 105px;
+		height: 32px;
+	}
 `;
 
 export const LogoutBtnText = styled.p`
-  font-size: 14px;
-  font-style: medium;
-  font-weight: 500;
-  margin-left: 14px;
-  color: rgba(255, 255, 255, 1);
-  @media screen and (min-width: 1440px) {
-    font-size: 16px;
-  }
+	font-size: 14px;
+	font-style: medium;
+	font-weight: 500;
+	margin-left: 14px;
+	color: rgba(255, 255, 255, 1);
+	@media screen and (min-width: 1440px) {
+		font-size: 16px;
+	}
 `;

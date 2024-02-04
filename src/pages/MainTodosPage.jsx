@@ -7,10 +7,10 @@ import { resetError } from 'redux/todos/todosSlice';
 import { toastError } from 'components/Helpers';
 import MainComponent from 'components/MainComponent/MainComponent';
 import {
-  Container,
-  Main,
-  SideBar,
-  Header,
+	Container,
+	Main,
+	SideBar,
+	Header,
 } from '../components/styled.component/MainTodosPage.styled';
 import { UserInfo } from 'components/UserInfo/UserInfo';
 import { ModalEditProfile } from 'components/Modal/ModalEditProfile';
@@ -25,13 +25,13 @@ import { BtnLogout } from 'components/Sidebar/Logout/Logout';
 // import HeaderComponent from 'components/Header';
 
 function MainTodosPage() {
-  const error = useSelector(statusError);
-  const dispatch = useDispatch();
+	const error = useSelector(statusError);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (error !== null) toastError(`Error loading data: ${error}`);
-    dispatch(resetError());
-  }, [dispatch, error]);
+	useEffect(() => {
+		if (error !== null) toastError(`Error loading data: ${error}`);
+		dispatch(resetError());
+	}, [dispatch, error]);
 
   return (
     <>
@@ -56,6 +56,7 @@ function MainTodosPage() {
       </Container>
     </>
   );
+
 }
 
 export default MainTodosPage;
