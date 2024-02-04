@@ -1,9 +1,11 @@
 import React from 'react';
 
-import {} from './BoardItem.styled';
+// import {} from './BoardItem.styled';
 
 export const BoardItem = () => {
   return (
+
+    <h1>Hello</h1>
     // <HelpContainer>
     //   <HelpImgDiv>
     //     <img src={data.help} alt="Cactus" width={54} />
