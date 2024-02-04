@@ -44,7 +44,9 @@ function App() {
 				<Route
 					path='/todos'
 					element={<PrivateRoute component={MainTodosPage} redirectTo='/' />}
-				/>
+				>
+					<Route path='/todos/:board' element={<MainTodosPage />} />
+				</Route>
 				<Route path='*' element={<UnknownPage />} />
 			</Route>
 		</Routes>

@@ -13,6 +13,7 @@ import {
 
 function MainComponent({ children }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [idBoard, setIdBoard] = useState(null);
 
 	const openModal = () => {
 		setIsModalOpen(true);
@@ -21,7 +22,7 @@ function MainComponent({ children }) {
 	const { board } = useParams(null);
 
 	useEffect(() => {
-		console.log('🚀 ~ MainComponent ~ board:', board);
+		setIdBoard(board);
 	}, [board]);
 
 	return (
@@ -31,8 +32,25 @@ function MainComponent({ children }) {
 				<TextButton>Filters</TextButton>
 			</ButtonFilter>
 			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			{children ? (
-				children
+			{idBoard ? (
+				<>
+					<h1 style={{ marginBottom: '30px', marginLeft: '25px', color: 'white' }}>
+						Project office
+					</h1>
+					<div
+						style={{
+							width: '336px',
+							height: '56px',
+							border: '1px solid white',
+							margin: '40px',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						<h1 style={{ color: 'white' }}>{idBoard}</h1>
+					</div>
+				</>
 			) : (
 				<TextEmptyBoard>
 					Before starting your project, it is essential{' '}
