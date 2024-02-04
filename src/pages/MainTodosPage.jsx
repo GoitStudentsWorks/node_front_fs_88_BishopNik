@@ -22,7 +22,8 @@ import { BoardsList } from 'components/Sidebar/BoardsList/BoardList';
 import { Help } from 'components/Sidebar/Help/Help';
 import { BtnLogout } from 'components/Sidebar/Logout/Logout';
 
-// import HeaderComponent from 'components/Header';
+
+import HeaderComponent from '../components/Header/Header';
 
 function MainTodosPage() {
 	const error = useSelector(statusError);
@@ -34,7 +35,6 @@ function MainTodosPage() {
 	}, [dispatch, error]);
 
 	return (
-		<>
 			<Container>
 				<SideBar>
 					<Logo />
@@ -45,16 +45,14 @@ function MainTodosPage() {
 					<BtnLogout />
 				</SideBar>
 				<Header>
-					Header
-					{/* <HeaderComponent /> */}
-					<UserInfo />
-					<ModalEditProfile />
+
+					 { <HeaderComponent /> }  
+
 				</Header>
 				<Main>
 					<MainComponent>{/* <h2>Sey Hello</h2> */}</MainComponent>
 				</Main>
 			</Container>
-		</>
 	);
 }
 

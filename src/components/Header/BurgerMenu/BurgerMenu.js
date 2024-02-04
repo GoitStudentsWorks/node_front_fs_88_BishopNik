@@ -1,18 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { openMenuMode } from 'redux/menuMode/menuModeSlice';
-import { selectIsMenuOpen } from 'redux/menuMode/menuModeSelectors';
 import sprite from '../../Icon/icon-spraite.svg';
-
 import { Button, Icon } from './BurgerMenu.styled';
 
 const BurgenMenu = () => {
   const dispatch = useDispatch();
-  const menuMode = useSelector(selectIsMenuOpen);
+  const menuMode = useSelector;
 
   return (
     <Button
       type="button"
-      onClick={() => dispatch(openMenuMode())}
+      onClick={() => dispatch}
       isOpen={menuMode}
     >
       <Icon>
