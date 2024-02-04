@@ -6,11 +6,9 @@ import Loader from 'components/Loader';
 
 const SharedLayout = () => {
 	return (
-		<>
 			<Suspense fallback={<Loader />}>
 				<Outlet />
 			</Suspense>
-		</>
 	);
 };
 
