@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ModalFilter } from '../Filter';
 import {
@@ -18,8 +18,12 @@ function MainComponent({ children }) {
 		setIsModalOpen(true);
 	};
 
-	const { id } = useParams(null);
-	console.log('🚀 ~ MainComponent ~ id:', id);
+	const { board } = useParams(null);
+
+	useEffect(() => {
+		console.log('🚀 ~ MainComponent ~ board:', board);
+	}, [board]);
+
 	return (
 		<>
 			<ButtonFilter type='button' onClick={openModal}>

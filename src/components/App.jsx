@@ -27,15 +27,27 @@ function App() {
 	return isRefreshing ? (
 		<Loader />
 	) : (
-			<Routes>
-				<Route path='/' element={<SharedLayout />}>
-					<Route index element={<RestrictedRoute component={StartPage} redirectTo='/todos'/>} />
-					<Route path='register' element={<RestrictedRoute component={RegisterPage} redirectTo='/todos'/>} />
-					<Route path='login' element={<RestrictedRoute component={LoginPage} redirectTo='/todos'/>} />
-					<Route path='/todos' element={<PrivateRoute component={MainTodosPage} redirectTo='/'/>} />
-					<Route path='*' element={<UnknownPage/>} />
-				</Route>
-			</Routes>
+		<Routes>
+			<Route path='/' element={<SharedLayout />}>
+				<Route
+					index
+					element={<RestrictedRoute component={StartPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='register'
+					element={<RestrictedRoute component={RegisterPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='login'
+					element={<RestrictedRoute component={LoginPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='/todos'
+					element={<PrivateRoute component={MainTodosPage} redirectTo='/' />}
+				/>
+				<Route path='*' element={<UnknownPage />} />
+			</Route>
+		</Routes>
 	);
 }
 
