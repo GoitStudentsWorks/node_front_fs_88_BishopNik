@@ -8,8 +8,11 @@ export const HelpContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
+  margin-top: auto;
+  margin-bottom: 24px;
   border: none;
-  background-color: transparent;
+  background-color: rgba(31, 31, 31, 1);
+  border-radius: 10px;
 
   @media screen and (min-width: 375px) {
     width: 197px;

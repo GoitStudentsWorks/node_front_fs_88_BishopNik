@@ -4,6 +4,7 @@ import Icon from '../../Icon/index';
 export const BtnAdd = styled.button`
   margin-left: auto;
   margin-right: auto;
+  margin-top: 8px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
