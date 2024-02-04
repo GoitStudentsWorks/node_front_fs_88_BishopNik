@@ -22,7 +22,6 @@ const LoginForm = () => {
 	const handleSubmit = (values, actions) => {
 		dispatch(logIn(values));
 		actions.resetForm({ email: '', password: '' });
-		toastSuccess('Successfuly login'); // Should be done after redux logic
 	};
 	return (
 		<Container>
@@ -48,7 +47,7 @@ const LoginForm = () => {
 							<ErrMessageStyled name='email' component='span' />
 						</label>
 						<label>
-							<StyledForm name='password' type='password' placeholder='Password' />
+							<StyledField name='password' type='password' placeholder='Password' />
 							<ErrMessageStyled name='password' component='span' />
 						</label>
 					</LabelBox>

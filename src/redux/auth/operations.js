@@ -55,7 +55,7 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 
 	if (persistedToken === null) {
 		// If there is no token, exit without performing any request
-		return toastError(`Unable to fetch user`)
+		return thunkAPI.rejectWithValue(`Not valid token`)
 	}
 
 	try {
@@ -70,7 +70,7 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 
 export const changeSetting = createAsyncThunk('users/change', async (credentials, thunkAPI) => {
 	try {
-		console.log('Run');
+		console.log('changeSetting user/change');
 		return;
 	} catch ({ response }) {
 		return thunkAPI.rejectWithValue(response?.data?.message);
