@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const UserName = styled.span`
-  color: ${props => props.theme.header.userName};
+  color: rgba(255, 255, 255, 1);
   font-size: 14px;
   font-family: Poppins;
   font-weight: 500;
