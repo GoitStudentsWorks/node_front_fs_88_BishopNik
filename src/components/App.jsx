@@ -3,7 +3,7 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import { useAuth } from 'hooks';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import SharedLayout from './SharedLayout';
@@ -47,6 +47,7 @@ function App() {
 				>
 					<Route path='/todos/:board' element={<MainTodosPage />} />
 				</Route>
+				
 				<Route path='*' element={<UnknownPage />} />
 			</Route>
 		</Routes>

@@ -40,8 +40,8 @@ const ThemePicker = () => {
 	return (
 		<Wrapper ref={themeRef} onClick={handlePopup}>
 			<Text>Theme</Text>
-			<IconThemeMenu name='chevron-down' isOpen={isShownPopup} />
-
+			<IconThemeMenu name='chevron-down' />
+			{/* isOpen={isShownPopup} реакт не розуміє цього, видає помилку консоль */}
 			{isShownPopup && (
 				<PopupBlock>
 					{theme.map(({ name }) => (
