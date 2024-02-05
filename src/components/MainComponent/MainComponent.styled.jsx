@@ -51,8 +51,8 @@ export const TextEmptyBoard = styled.p`
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 12px;
 	font-weight: 400;
-	line-height: 16px;
-	letter-spacing: -0.2px;
+	line-height: 1.3;
+	letter-spacing: -0.02em;
 	text-align: center;
 
 	@media screen and (min-width: 768px) {
@@ -61,8 +61,8 @@ export const TextEmptyBoard = styled.p`
 		width: 486px;
 		font-size: 14px;
 		font-weight: 400;
-		line-height: 18px;
-		letter-spacing: -0.2px;
+		line-height: 1.3;
+		letter-spacing: -0.02em;
 		text-align: center;
 	}
 
@@ -72,7 +72,7 @@ export const TextEmptyBoard = styled.p`
 	}
 `;
 
-export const ButtonCreateBoard = styled.button`
+export const ButtonCreateBoard = styled.span`
 	border: none;
 	background-color: transparent;
 	color: #bedbb0;
