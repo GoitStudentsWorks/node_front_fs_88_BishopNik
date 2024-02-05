@@ -73,7 +73,6 @@ export const TextEmptyBoard = styled.p`
 `;
 
 export const ButtonCreateBoard = styled.span`
-	border: none;
 	background-color: transparent;
 	color: #bedbb0;
 	font-size: 12px;
