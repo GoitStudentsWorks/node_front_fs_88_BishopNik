@@ -1,38 +1,30 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { ModalFilter } from '../Filter';
-import {
-	ButtonFilter,
-	FiltersIcon,
-	TextButton,
-	TextEmptyBoard,
-	ButtonCreateBoard,
-} from './MainComponent.styled';
+import React from 'react';
+
+import { TextEmptyBoard, ButtonCreateBoard } from './MainComponent.styled';
 
 function MainComponent({ children }) {
-	const [isModalOpen, setIsModalOpen] = useState(false);
-
-	const openModal = () => {
-		setIsModalOpen(true);
-	};
-
-	const { board } = useParams(null);
-
-	useEffect(() => {
-		console.log('🚀 ~ MainComponent ~ board:', board);
-	}, [board]);
-
 	return (
 		<>
-			<ButtonFilter type='button' onClick={openModal}>
-				<FiltersIcon name='filters' />
-				<TextButton>Filters</TextButton>
-			</ButtonFilter>
-			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			{children ? (
-				children
+				<>
+					{/* -----Delete code----- */}
+					<div
+						style={{
+							width: '336px',
+							height: '56px',
+							border: '1px solid white',
+							margin: '40px',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						<h1 style={{ color: 'white' }}>{children}</h1>
+					</div>
+					{/* --------- */}
+				</>
 			) : (
 				<TextEmptyBoard>
 					Before starting your project, it is essential{' '}
