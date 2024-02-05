@@ -18,6 +18,7 @@ import {
   StyledField,
   StyledForm,
   IconHideShow,
+  StyledFieldContainer,
 } from './RegisterForm.Styled'; // Assuming IconHideShow is defined in RegisterForm.Styled
 
 const RegisterForm = () => {
@@ -68,26 +69,21 @@ const RegisterForm = () => {
                 />
                 <ErrMessageStyled name="email" component="span" />
               </label>
-              <label style={{ position: 'relative' }}>
-                <StyledField
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Create a password"
-                />
-                <IconHideShow
-                  name="hide-show"
-                  onClick={togglePasswordVisibility}
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    right: '18px',
-                    transform: 'translateY(-50%)',
-                    cursor: 'pointer',
-					stroke: '#FFFFFF4D',
-                  }}
-                >
-                  {showPassword ? 'Hide' : 'Show'}
-                </IconHideShow>
+              <label>
+                <StyledFieldContainer>
+                  <StyledField
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Create a password"
+                  />
+                  <IconHideShow
+                    name="hide-show"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </IconHideShow>
+                </StyledFieldContainer>
+
                 <ErrMessageStyled name="password" component="span" />
               </label>
             </LabelBox>
