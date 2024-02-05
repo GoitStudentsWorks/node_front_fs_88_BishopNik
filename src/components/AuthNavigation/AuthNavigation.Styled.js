@@ -32,37 +32,29 @@ export const IconLogo = styled(Icon)`
 `;
 
 export const AuthNavContainer = styled.div`
-	background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #bedbb0 92.19%);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 0 20px 0 20px;
-	height: 100vh;
-	min-width: 320px;
-	@media (max-width: 375px) {
-		width: 100%;
-	}
-	background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #bedbb0 92.19%);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 0 20px 0 20px;
-	height: 100vh;
-	margin-left: auto;
-	margin-right: auto;
-	min-width: 320px;
-	width: 100%;
-	@media (min-width: 375px) and (max-width: 767px) {
-		width: 375px;
-	}
-	@media (max-width: 1439px) {
-		max-width: 768px;
-	}
-	@media (min-width: 1440px) {
-		width: 1440px;
-	}
+
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 320px;
+  width: 100%;
+  @media (min-width: 375px) and (max-width: 767px) {
+    width: 375px;
+  }
+  @media (max-width: 1439px) {
+    max-width: 768px;
+  }
+
 `;
 
 export const LogoBox = styled.div`
