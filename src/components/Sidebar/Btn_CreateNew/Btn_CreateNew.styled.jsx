@@ -12,10 +12,6 @@ export const IconContainer = styled.div`
   background-color: rgba(190, 219, 176, 1);
   border-radius: 5px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  /* &:hover,
-  &:focus {
-    background-color: rgba(157, 200, 136, 1);
-  } */
 `;
 
 export const BtnAdd = styled.button`
@@ -54,23 +50,11 @@ export const Text = styled.p`
   width: 76px;
   height: 42px;
   font-size: 14px;
+  letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
 `;
-
-// export const IconContainer = styled.div`
-//   width: 40px;
-//   height: 36px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: rgba(190, 219, 176, 1);
-//   border-radius: 5px;
-//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-//   &:hover,
-//   &:focus {
-//     background-color: rgba(157, 200, 136, 1);
-//   }
-// `;
 
 export const BtnIcon = styled(Icon)`
   width: 20px;
