@@ -1,5 +1,9 @@
-import React from 'react';
+import { HeaderDashboardContainer, Title } from './HeaderDashboard.styled';
 
-export const HeaderDashboard = ({title}) => {
-  return <h1>This is title: {title}</h1>;
+export const HeaderDashboard = ({ title }) => {
+  return (
+    <HeaderDashboardContainer>
+      <Title>{title}</Title>
+    </HeaderDashboardContainer>
+  );
 };
