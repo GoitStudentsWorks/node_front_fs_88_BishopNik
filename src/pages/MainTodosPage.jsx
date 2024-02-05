@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MainComponent from 'components/MainComponent/MainComponent';
+import Board from 'components/MainComponent/Board';
 import { ModalFilter } from 'components/Filter';
 import {
 	ButtonFilter,
@@ -30,6 +31,7 @@ function MainTodosPage() {
 				<TextButton>Filters</TextButton>
 			</ButtonFilter>
 			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+			<Board titleBoard={idBoard} />
 			<MainComponent>{idBoard}</MainComponent>
 		</>
 	);
