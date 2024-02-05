@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, IconMenu } from './BurgerMenu.styled';
 
 const BurgenMenu = () => {
+  const dispatch = useDispatch();
   const menuMode = useSelector;
 
   return (
