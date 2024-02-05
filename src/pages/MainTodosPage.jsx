@@ -1,9 +1,7 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useState } from 'react';
 import MainComponent from 'components/MainComponent/MainComponent';
-import Board from 'components/MainComponent/Board';
 import { ModalFilter } from 'components/Filter';
 import {
 	ButtonFilter,
@@ -12,13 +10,7 @@ import {
 } from 'components/MainComponent/MainComponent.styled';
 
 function MainTodosPage() {
-	const { board } = useParams(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [idBoard, setIdBoard] = useState(null);
-
-	useEffect(() => {
-		setIdBoard(board);
-	}, [board]);
 
 	const openModal = () => {
 		setIsModalOpen(true);
@@ -31,8 +23,7 @@ function MainTodosPage() {
 				<TextButton>Filters</TextButton>
 			</ButtonFilter>
 			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<Board titleBoard={idBoard} />
-			<MainComponent>{idBoard}</MainComponent>
+			<MainComponent></MainComponent> 
 		</>
 	);
 }

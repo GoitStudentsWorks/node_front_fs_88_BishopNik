@@ -10,6 +10,7 @@ import SharedLayout from './SharedLayout';
 import Loader from 'components/Loader';
 import { PrivateRoute } from 'components/PrivateRoute';
 
+
 const StartPage = lazy(() => import('pages/StartPage'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -51,10 +52,11 @@ function App() {
         <Route
           path="/todos"
           element={<PrivateRoute component={MainTodosPage} redirectTo="/" />}
-        ></Route>
-        <Route path="todos/:boardName" element={<ScreenPage />} />
-
-        <Route path="*" element={<UnknownPage />} />
+          />
+          <Route
+            path="todos/:boardName"
+            element={<PrivateRoute component={ScreenPage} redirectTo='/'/>} />
+          <Route path="*" element={<UnknownPage />} />
       </Route>
     </Routes>
   );
