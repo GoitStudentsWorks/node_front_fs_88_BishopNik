@@ -3,7 +3,7 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import { useAuth } from 'hooks';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import SharedLayout from './SharedLayout';
@@ -15,6 +15,7 @@ const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UnknownPage = lazy(() => import('pages/UnknownPage'));
+const ScreenPage = lazy(() => import('pages/ScreensPage'))
 
 function App() {
 	const dispatch = useDispatch();
@@ -42,11 +43,12 @@ function App() {
 					element={<RestrictedRoute component={LoginPage} redirectTo='/todos' />}
 				/>
 				<Route
-					path='/todos'
+					path='todos'
 					element={<PrivateRoute component={MainTodosPage} redirectTo='/' />}
-				>
-					<Route path='/todos/:board' element={<MainTodosPage />} />
-				</Route>
+					/>
+					{/* Потрібно створити ScreedPage яка буде вставлена замість діва і буде рендерити вкладеність бордів */}
+					<Route path='todos/:boardName' element={<ScreenPage/>}/>
+				
 				<Route path='*' element={<UnknownPage />} />
 			</Route>
 		</Routes>

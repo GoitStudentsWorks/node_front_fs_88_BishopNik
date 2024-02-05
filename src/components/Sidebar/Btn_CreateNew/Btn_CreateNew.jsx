@@ -2,20 +2,17 @@
 
 import React from 'react';
 import { BtnAdd, Text, IconContainer, BtnIcon } from './Btn_CreateNew.styled';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addBoard } from 'redux/boards/operations';
 
 export const BtnNewBoard = () => {
-	const navigate = useNavigate();
-
-	const changeBoard = newBoardValue => {
-		navigate(`/todos/${newBoardValue}`);
-	};
-
+	const dispatch = useDispatch()
+	const newBoard = (newBoard) => {
+		dispatch(addBoard(newBoard))
+}
 	return (
 		<BtnAdd
-			onClick={() => {
-				changeBoard(Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000);
-			}}
+			onClick={() => newBoard({ name: `${Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000}`, icon:`href` })}
 		>
 			<Text>Create a new board</Text>
 			<IconContainer>

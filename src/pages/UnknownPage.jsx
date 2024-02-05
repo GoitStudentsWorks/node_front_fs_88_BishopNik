@@ -4,7 +4,7 @@ const UnknownPage = () => {
 	return (
 		<div>
 			<h1>Ups... Page not found.</h1>
-			<a href='todos'>{'Home page'}</a>
+			<a href='/Todos_app'>{'Home page'}</a>
 		</div>
 	);
 };

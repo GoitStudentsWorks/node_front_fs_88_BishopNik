@@ -1,19 +1,25 @@
 /** @format */
 
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { BoardItem } from '../BoardItem/BoardItem';
 import { ListContainer } from './BoardList.styled';
+import { useDispatch } from 'react-redux';
+import { fetchAllBoards } from 'redux/boards/operations';
+import { useAuth } from 'hooks';
 
 export const BoardsList = () => {
-	const { board } = useParams(null);
+	const dispatch = useDispatch()
+	useEffect(() => {
+		(fetchAllBoards())
+	}, [dispatch])
+	const { allBoards } = useAuth()
 	return (
 		<>
 			<ListContainer>
-				{/* -----Here map---- */}
-				<BoardItem idBoard={board} />
-				<BoardItem idBoard={'00000'} />
-				<BoardItem idBoard={'33255'} />
+				{allBoards.map(({ _id: id, name }) => (
+					<BoardItem key={id} boardId={id} nameBoard={name} />
+					
+				))}
 			</ListContainer>
 		</>
 	);
