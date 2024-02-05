@@ -3,6 +3,9 @@
 import { UserProfileForm } from 'components/UserProfileForm/UserProfileForm';
 import Modal from 'react-modal';
 
+import data from '../../img/list_img.json';
+import { FiltersIcon } from 'components/MainComponent/MainComponent.styled';
+
 Modal.setAppElement('#modal-root');
 
 const customStyles = {
@@ -28,9 +31,8 @@ export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
       contentLabel="onRequestClose"
     >
       <p>I am Modal Window</p>
-      <button type="button" onClick={stateСhangeModal}>
-        Close
-      </button>
+      <FiltersIcon name="close" onClick={stateСhangeModal} />
+
       <UserProfileForm />
     </Modal>
   );
