@@ -1,25 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { openMenuMode } from 'redux/menuMode/menuModeSlice';
-import { selectIsMenuOpen } from 'redux/menuMode/menuModeSelectors';
-import sprite from '../../Icon/icon-spraite.svg';
+/** @format */
 
-import { Button, Icon } from './BurgerMenu.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, IconMenu } from './BurgerMenu.styled';
 
 const BurgenMenu = () => {
-  const dispatch = useDispatch();
-  const menuMode = useSelector(selectIsMenuOpen);
+	const dispatch = useDispatch();
+	const menuMode = useSelector;
 
-  return (
-    <Button
-      type="button"
-      onClick={() => dispatch(openMenuMode())}
-      isOpen={menuMode}
-    >
-      <Icon>
-        <use href={sprite + '#icon-menu'} />
-      </Icon>
-    </Button>
-  );
+	return (
+		<Button type='button' onClick={() => dispatch} isOpen={menuMode}>
+			<IconMenu name='menu' />
+		</Button>
+	);
 };
 
 export default BurgenMenu;

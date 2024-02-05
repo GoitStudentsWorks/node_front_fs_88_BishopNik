@@ -2,22 +2,19 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserTheme } from 'redux/auth/selectors';
 import { theme } from 'constants/theme';
 
-import { Icon, PopupBlock, PopupItem, Text, Wrapper } from './ThemePicker.styled';
-import sprite from '../../Icon/icon-spraite.svg';
-import { changeTheme } from 'redux/auth/operations';
+import { IconThemeMenu, PopupBlock, PopupItem, Text, Wrapper } from './ThemePicker.styled';
 
 const ThemePicker = () => {
 	const dispatch = useDispatch();
 
-	const activeUserTheme = useSelector(selectUserTheme);
+	const activeUserTheme = useSelector;
 	const [isShownPopup, setIsShownPopup] = useState(false);
 	const themeRef = useRef();
 
 	const handleTheme = theme => {
-		dispatch(changeTheme({ theme }));
+		dispatch({ theme });
 
 		setIsShownPopup(false);
 	};
@@ -43,9 +40,7 @@ const ThemePicker = () => {
 	return (
 		<Wrapper ref={themeRef} onClick={handlePopup}>
 			<Text>Theme</Text>
-			<Icon isOpen={isShownPopup}>
-				<use href={sprite + '#icon-chevron-down'} />
-			</Icon>
+			<IconThemeMenu name='chevron-down' isOpen={isShownPopup} />
 
 			{isShownPopup && (
 				<PopupBlock>

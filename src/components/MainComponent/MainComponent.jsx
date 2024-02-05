@@ -1,23 +1,30 @@
 /** @format */
 
 import React from 'react';
-import {
-	ButtonFilter,
-	FiltersIcon,
-	TextButton,
-	TextEmptyBoard,
-	ButtonCreateBoard,
-} from './MainComponent.styled';
+
+import { TextEmptyBoard, ButtonCreateBoard } from './MainComponent.styled';
 
 function MainComponent({ children }) {
 	return (
 		<>
-			<ButtonFilter type='button'>
-				<FiltersIcon name='filters' />
-				<TextButton>Filters</TextButton>
-			</ButtonFilter>
 			{children ? (
-				children
+				<>
+					{/* -----Delete code----- */}
+					<div
+						style={{
+							width: '336px',
+							height: '56px',
+							border: '1px solid white',
+							margin: '40px',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						<h1 style={{ color: 'white' }}>{children}</h1>
+					</div>
+					{/* --------- */}
+				</>
 			) : (
 				<TextEmptyBoard>
 					Before starting your project, it is essential{' '}

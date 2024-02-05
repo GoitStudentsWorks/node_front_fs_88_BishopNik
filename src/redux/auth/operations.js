@@ -4,7 +4,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toastError, toastSuccess } from 'components/Helpers';
 
-axios.defaults.baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
+axios.defaults.baseURL = `https://todos-api-i1vi.onrender.com/api`;
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -31,7 +31,7 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
 		const res = await axios.post('/auth/login', credentials);
 		// After successful login, add the token to the HTTP header
 		setAuthHeader(res.data.token);
-		
+		toastSuccess(`Login successful`)
 		return res.data;
 	} catch ({ response }) {
 		return toastError(response?.data?.message)
@@ -40,11 +40,11 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 	try {
-		await axios.post('/api/auth/logout');
-		// After a successful logout, remove the token from the HTTP header 
+		await axios.post('/auth/logout');
+		toastSuccess(`Logout successful`)
 		clearAuthHeader();
 	} catch ({ response }) {
-		return thunkAPI.rejectWithValue(response?.data?.message);
+		return toastError(response?.data?.message)
 	}
 });
 
@@ -55,22 +55,22 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 
 	if (persistedToken === null) {
 		// If there is no token, exit without performing any request
-		return thunkAPI.rejectWithValue('Unable to fetch user');
+		return thunkAPI.rejectWithValue(`Not valid token`)
 	}
 
 	try {
 		// If there is a token, add it to the HTTP header and perform the request
 		setAuthHeader(persistedToken);
-		const res = await axios.get('/api/auth/current');
+		const res = await axios.get('/auth/current');
 		return res.data;
 	} catch ({ response }) {
-		return thunkAPI.rejectWithValue(response?.data?.message);
+		return toastError(response?.data?.message)
 	}
 });
 
 export const changeSetting = createAsyncThunk('users/change', async (credentials, thunkAPI) => {
 	try {
-		console.log('Run');
+		console.log('changeSetting user/change');
 		return;
 	} catch ({ response }) {
 		return thunkAPI.rejectWithValue(response?.data?.message);
@@ -82,9 +82,9 @@ export const changeTheme = createAsyncThunk(
   'auth/theme',
   async ({ theme }, thunkAPI) => {
     try {
-      const { data } = await axios.patch('api/users/theme', { theme });
-
-      return data;
+    //   const { data } = await axios.patch('api/users/theme', { theme });
+console.log(`Change theme`)
+    //   return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

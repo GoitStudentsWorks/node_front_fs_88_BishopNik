@@ -9,6 +9,7 @@ export const LogoContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0px;
+  margin-top: 24px;
   border: none;
   background-color: transparent;
   width: 104px;
@@ -17,12 +18,24 @@ export const LogoContainer = styled.div`
 
 export const LogoText = styled.p`
   font-size: 16px;
-  letter-spacing: 0.4px;
+  letter-spacing: -0.04em;
+  margin: 0;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
 `;
 
-export const LogoIcon = styled(Icon)`
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(31, 31, 31, 1);
+  border-radius: 5px;
   width: 32px;
   height: 32px;
+`;
+
+export const LogoIcon = styled(Icon)`
+  width: 12px;
+  height: 16px;
+  fill: rgba(255, 255, 255, 1);
 `;

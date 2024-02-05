@@ -8,8 +8,11 @@ export const HelpContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
+  margin-top: auto;
+  margin-bottom: 24px;
   border: none;
-  background-color: transparent;
+  background-color: rgba(31, 31, 31, 1);
+  border-radius: 10px;
 
   @media screen and (min-width: 375px) {
     width: 197px;
@@ -31,8 +34,7 @@ export const HelpImgDiv = styled.div`
 export const HelpText = styled.p`
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.2px;
+  letter-spacing: -0.02em;
   line-height: 1.4;
   color: rgba(255, 255, 255, 1);
   margin: 0;
@@ -40,7 +42,8 @@ export const HelpText = styled.p`
 
 export const HelpSpanText = styled.span`
   color: rgba(190, 219, 176, 1);
-  font-size: 12px;
+  font-size: 14px;
+  letter-spacing: -0.02em;
 `;
 
 export const HelpBtnText = styled.p`
@@ -60,6 +63,7 @@ export const BtnHelp = styled.button`
   width: 94px;
   height: 20px;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 
   &:hover,
   &:focus {

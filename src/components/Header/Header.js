@@ -1,22 +1,19 @@
-/** @format */
-
 import ThemePicker from 'components/Header/ThemePicker/ThemePicker';
 import { HeaderWrapper, UserWrapper } from './Header.styled';
-import UserBlock from './UserBlock/UserBlock';
 import BurgenMenu from './BurgerMenu/BurgerMenu';
+import data from '../../img/list_img.json';
 
-const HeaderComponent = () => {
-	return (
-		<HeaderWrapper>
-			<BurgenMenu />
+const Header = () => {
+  return (
+    <HeaderWrapper>
+      <BurgenMenu />
 
-			<UserWrapper>
-				<ThemePicker />
-
-				<UserBlock />
-			</UserWrapper>
-		</HeaderWrapper>
-	);
+      <UserWrapper>
+        <ThemePicker />
+       <img src={data.user.dark} alt="DarkUser" width={32} />
+      </UserWrapper>
+    </HeaderWrapper>
+  );
 };
 
-export default HeaderComponent;
+export default Header;
