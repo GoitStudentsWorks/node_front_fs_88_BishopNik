@@ -26,9 +26,14 @@ export const IconLogoBox = styled.div`
 `;
 
 export const IconLogo = styled(Icon)`
-	width: 16px;
-	height: 16px;
+	width: 20px;
+	height: 20px;
+  @media (min-width: 768px) {
+		width: 24px;
+		height: 24px;
+	}
 	stroke: rgba(255, 255, 255, 0.8);
+  fill: #FFFFFF;
 `;
 
 export const AuthNavContainer = styled.div`

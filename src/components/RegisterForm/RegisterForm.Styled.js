@@ -5,7 +5,6 @@ import { Form, Field, ErrorMessage } from 'formik';
 import { NavLink } from 'react-router-dom';
 import Icon from 'components/Icon/Icon.jsx';
 
-
 export const Container = styled.div`
   background: linear-gradient(
     180deg,
@@ -27,9 +26,6 @@ export const Container = styled.div`
   }
   @media (max-width: 1439px) {
     max-width: 768px;
-  }
-  @media (min-width: 1440px) {
-    width: 1440px;
   }
 `;
 
@@ -84,6 +80,10 @@ export const ErrMessageStyled = styled(ErrorMessage)`
   color: red;
 `;
 
+export const StyledFieldContainer = styled.div`
+  position: relative;
+`;
+
 export const StyledField = styled(Field)`
   color: #fff;
   border-radius: 8px;
@@ -99,6 +99,12 @@ export const StyledField = styled(Field)`
 export const IconHideShow = styled(Icon)`
   width: 18px;
   height: 18px;
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  stroke: #ffffff4d;
 `;
 
 export const Button = styled.button`
