@@ -15,7 +15,6 @@ const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UnknownPage = lazy(() => import('pages/UnknownPage'));
-const ScreenPage = lazy(() => import('pages/ScreensPage'))
 
 function App() {
 	const dispatch = useDispatch();
@@ -43,11 +42,11 @@ function App() {
 					element={<RestrictedRoute component={LoginPage} redirectTo='/todos' />}
 				/>
 				<Route
-					path='todos'
+					path='/todos'
 					element={<PrivateRoute component={MainTodosPage} redirectTo='/' />}
-					/>
-					{/* Потрібно створити ScreedPage яка буде вставлена замість діва і буде рендерити вкладеність бордів */}
-					<Route path='todos/:boardName' element={<ScreenPage/>}/>
+				>
+					<Route path='/todos/:board' element={<MainTodosPage />} />
+				</Route>
 				
 				<Route path='*' element={<UnknownPage />} />
 			</Route>
