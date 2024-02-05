@@ -4,6 +4,7 @@
 import { Button, IconMenu } from './BurgerMenu.styled';
 
 const BurgenMenu = () => {
+
 	// const dispatch = useDispatch();
 	// const menuMode = useSelector;
 const handleBurger = () => `dispatch(isOpen()) напишіть вірний код`
@@ -12,6 +13,7 @@ const handleBurger = () => `dispatch(isOpen()) напишіть вірний к�
 			<IconMenu name='menu' />
 		</Button>
 	);
+
 };
 
 export default BurgenMenu;
