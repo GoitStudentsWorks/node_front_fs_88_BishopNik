@@ -30,7 +30,8 @@ export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
       style={customStyles}
       contentLabel="onRequestClose"
     >
-      <p>I am Modal Window</p>
+      <p>Edit profile</p>
+
       <FiltersIcon name="close" onClick={stateСhangeModal} />
 
       <UserProfileForm />
