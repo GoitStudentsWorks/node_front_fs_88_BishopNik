@@ -9,9 +9,7 @@ function MainComponent({ children }) {
 		<>
 			{children ? (
 				<>
-					<h1 style={{ marginBottom: '30px', marginLeft: '25px', color: 'white' }}>
-						Project office
-					</h1>
+					{/* -----Delete code----- */}
 					<div
 						style={{
 							width: '336px',
@@ -25,6 +23,7 @@ function MainComponent({ children }) {
 					>
 						<h1 style={{ color: 'white' }}>{children}</h1>
 					</div>
+					{/* --------- */}
 				</>
 			) : (
 				<TextEmptyBoard>

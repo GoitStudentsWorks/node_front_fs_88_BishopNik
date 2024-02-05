@@ -7,14 +7,13 @@ import { statusError } from 'redux/todos/selectors';
 import { resetError } from 'redux/todos/todosSlice';
 import { toastError } from 'components/Helpers';
 import MainComponent from 'components/MainComponent/MainComponent';
-import { UserInfo } from 'components/UserInfo/UserInfo';
-import { ModalEditProfile } from 'components/Modal/ModalEditProfile';
 import { ModalFilter } from 'components/Filter';
 import {
 	ButtonFilter,
 	FiltersIcon,
 	TextButton,
 } from 'components/MainComponent/MainComponent.styled';
+import Board from 'components/MainComponent/Board';
 
 function MainTodosPage() {
 	const error = useSelector(statusError);
@@ -43,8 +42,7 @@ function MainTodosPage() {
 				<TextButton>Filters</TextButton>
 			</ButtonFilter>
 			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<UserInfo />
-			<ModalEditProfile />
+			<Board titleBoard={idBoard} />
 			<MainComponent>{idBoard}</MainComponent>
 		</>
 	);
