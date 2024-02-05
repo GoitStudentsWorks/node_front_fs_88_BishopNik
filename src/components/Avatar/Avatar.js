@@ -1,11 +1,12 @@
 /** @format */
 
 import data from '../../img/list_img.json';
+import { StiledAvatar } from './Avatar.Styled';
 
 const Avatar = () => {
 	return (
 		<div>
-			<img src={data.avatar} alt='User avatar' />
+			<StiledAvatar src={data.avatar} alt='User avatar' />
 		</div>
 	);
 };
