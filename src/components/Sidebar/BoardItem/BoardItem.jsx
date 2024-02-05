@@ -1,7 +1,6 @@
 /** @format */
 
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import {
 	BoardContainer,
 	BoardNameContainer,
@@ -12,23 +11,31 @@ import {
 	DelIcon,
 	BoardLine,
 } from './BoardItem.styled';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchDelBoard, getBoardById } from 'redux/boards/operations';
 
-export const BoardItem = ({ idBoard }) => {
-	const { board } = useParams(null);
-
+export const BoardItem = ({ nameBoard, boardId }) => {
+	const dispatch = useDispatch()
+	const getById = (boardId) => {
+	dispatch(getBoardById(boardId))
+	}
+	const delBoard = (boardId) => {
+		dispatch(fetchDelBoard(boardId))
+	}
 	return (
-		<BoardContainer active={board === idBoard}>
-			<BoardNameContainer>
-				<BoardIcon active={board === idBoard} name='type-6' />
-				<BoardText active={board === idBoard}>board id: {idBoard}</BoardText>
-			</BoardNameContainer>
-			{board === idBoard && (
-				<IconsContainer>
-					<EditIcon name='edit' />
-					<DelIcon name='delete' />
+		<BoardContainer >
+			<Link to={`/todos/${boardId}`} onClick={evt =>getById(boardId)}>
+				<BoardNameContainer>
+				<BoardIcon  name='type-6' />
+				<BoardText >board name: {nameBoard}</BoardText>
+			</BoardNameContainer></Link>
+			<IconsContainer>
+				<EditIcon name='edit' type="button" onClick={evt => console.log(`${nameBoard} edit`)}/>
+					<DelIcon name='delete' type="button" onClick={() => delBoard(boardId)}/>
 				</IconsContainer>
-			)}
-			<BoardLine active={board === idBoard} />
+		
+			<BoardLine  />
 		</BoardContainer>
 	);
 };

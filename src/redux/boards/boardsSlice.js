@@ -1,10 +1,11 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllBoards, fetchPostBoard, fetchPutBoard, fetchDelBoard } from './operations';
+import { fetchAllBoards, addBoard, fetchPutBoard, fetchDelBoard } from './operations';
 
 const initialState = {
-	items: [],
+	items: [{ _id: `11`, name: `Main board` },{ _id: `22`, name: `App board` },{ _id: `33`, name: `Index board` },{ _id: `44`, name: ` board` },
+	],
 	isLoading: false,
 	error: null,
 };
@@ -32,16 +33,16 @@ const boardsSlice = createSlice({
 				state.isLoading = false;
 				state.error = error.message;
 			})
-			.addCase(fetchPostBoard.pending, state => {
+			.addCase(addBoard.pending, state => {
 				state.isLoading = true;
 				state.error = null;
 			})
-			.addCase(fetchPostBoard.fulfilled, (state, { payload }) => {
+			.addCase(addBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.items = state.items.filter(item => item._id !== payload.id);
+				state.items.push(payload)
 			})
-			.addCase(fetchPostBoard.rejected, (state, { error }) => {
+			.addCase(addBoard.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message;
 			})
@@ -66,7 +67,7 @@ const boardsSlice = createSlice({
 				state.isLoading = false;
 				state.error = null;
 				state.items = state.items.map(item => {
-					if (item._id === payload._id) return payload;
+					if (item.__id === payload.__id) return payload;
 					return item;
 				});
 			})

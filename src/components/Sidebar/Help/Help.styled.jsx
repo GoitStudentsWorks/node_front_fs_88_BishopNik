@@ -34,8 +34,7 @@ export const HelpImgDiv = styled.div`
 export const HelpText = styled.p`
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.02em;
   line-height: 1.4;
   color: rgba(255, 255, 255, 1);
   margin: 0;
@@ -44,7 +43,7 @@ export const HelpText = styled.p`
 export const HelpSpanText = styled.span`
   color: rgba(190, 219, 176, 1);
   font-size: 14px;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.02em;
 `;
 
 export const HelpBtnText = styled.p`

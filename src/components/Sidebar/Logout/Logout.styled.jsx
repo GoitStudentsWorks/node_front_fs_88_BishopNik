@@ -36,7 +36,6 @@ export const Btn = styled.button`
 export const LogoutBtnText = styled.p`
   font-size: 14px;
   font-style: medium;
-  font-weight: 500;
   margin-left: 14px;
   color: rgba(255, 255, 255, 1);
   @media screen and (min-width: 1440px) {

@@ -27,9 +27,6 @@ export const Container = styled.div`
   @media (max-width: 1439px) {
     max-width: 768px;
   }
-  @media (min-width: 1440px) {
-    width: 1440px;
-  }
 `;
 
 export const StyledForm = styled(Form)`
@@ -58,7 +55,7 @@ export const NavBox = styled.div`
 `;
 
 export const Link = styled(NavLink)`
-color: ${({ end }) => (end ? '#FFFFFF' : '#FFFFFF4D')};
+  color: ${({ end }) => (end ? '#FFFFFF' : '#FFFFFF4D')};
   text-align: center;
   font-family: Poppins;
   font-size: 14px;
@@ -83,6 +80,10 @@ export const ErrMessageStyled = styled(ErrorMessage)`
   color: red;
 `;
 
+export const StyledFieldContainer = styled.div`
+  position: relative;
+`;
+
 export const StyledField = styled(Field)`
   color: #fff;
   border-radius: 8px;
@@ -98,6 +99,12 @@ export const StyledField = styled(Field)`
 export const IconHideShow = styled(Icon)`
   width: 18px;
   height: 18px;
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  stroke: #ffffff4d;
 `;
 
 export const Button = styled.button`
