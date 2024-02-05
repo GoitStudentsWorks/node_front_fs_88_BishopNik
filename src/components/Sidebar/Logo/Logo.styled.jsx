@@ -18,7 +18,7 @@ export const LogoContainer = styled.div`
 
 export const LogoText = styled.p`
   font-size: 16px;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.04em;
   margin: 0;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
@@ -29,6 +29,7 @@ export const IconContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(31, 31, 31, 1);
+  border-radius: 5px;
   width: 32px;
   height: 32px;
 `;
