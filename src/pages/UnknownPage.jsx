@@ -7,7 +7,7 @@ const UnknownPage = () => {
 	return (
 		<div>
 			<h1>Ups... Page not found.</h1>
-			<button onClick={() => navigate(-1))}>{'Back'}</button>
+			<button onClick={() => navigate(-1)}>{'Back'}</button>
 		</div>
 	);
 };
