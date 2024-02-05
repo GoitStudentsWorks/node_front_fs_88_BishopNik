@@ -1,17 +1,16 @@
 
+import { useSelector } from 'react-redux';
+import {UserName, Wrapper } from './UserBlock.styled';
+import data from '../../../img/list_img.json';
+const UserBlock = () => {
+const { name } = useSelector;
 
-// import { Wrapper, UserName} from './UserBlock.styled'
+  return (
+      <Wrapper>
+      <UserName>{name[0].toUpperCase() + name.slice(1)}</UserName>
+        <img src={data.user.dark} alt="DarkUser" width={32} />
+      </Wrapper>
+  );
+};
 
-// const UserBlock = () => {
-//   return (
-//     <>
-//       <Wrapper>
-//         <UserName>
-//           Ivan
-//         </UserName>
-//       </Wrapper>
-//     </>
-//   );
-// }
-
-// export default UserBlock;
+export default UserBlock;

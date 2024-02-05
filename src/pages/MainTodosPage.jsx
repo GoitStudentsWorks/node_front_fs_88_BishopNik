@@ -14,6 +14,7 @@ import {
 	TextButton,
 } from 'components/MainComponent/MainComponent.styled';
 import Board from 'components/MainComponent/Board';
+// import { ThemeProvider } from 'styled-components';
 
 function MainTodosPage() {
 	const error = useSelector(statusError);
@@ -36,7 +37,8 @@ function MainTodosPage() {
 	};
 
 	return (
-		<>
+		// <ThemeProvider>
+			<>
 			<ButtonFilter type='button' onClick={openModal}>
 				<FiltersIcon name='filters' />
 				<TextButton>Filters</TextButton>
@@ -45,6 +47,7 @@ function MainTodosPage() {
 			<Board titleBoard={idBoard} />
 			<MainComponent>{idBoard}</MainComponent>
 		</>
+		/* </ThemeProvider> */
 	);
 }
 
