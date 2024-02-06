@@ -10,7 +10,7 @@ import {
   Button,
   ButtonText,
   Title,
-} from './ModalNeedHelpStyled';
+} from './ModalNeedHelp.styled';
 
 Modal.setAppElement('#modal-root');
 
