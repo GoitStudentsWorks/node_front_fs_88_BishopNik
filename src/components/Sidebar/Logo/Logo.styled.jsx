@@ -21,7 +21,7 @@ export const LogoText = styled.p`
   letter-spacing: -0.04em;
   margin: 0;
   font-weight: bold;
-  color: rgba(255, 255, 255, 1);
+  color: ${props => props.theme.header.userName};
 `;
 
 export const IconContainer = styled.div`

@@ -22,7 +22,6 @@ export const Button = styled.button`
 export const IconMenu = styled(Icon)`
 	width: 32px;
 	height: 32px;
-	/* stroke: ${props => props.theme.headerMenuIcon}; */
-	stroke: ${props => props.theme.headerMenuIcon};
+	stroke: ${props => props.theme.header.menuIcon};
 	fill: transparent;
 `;
