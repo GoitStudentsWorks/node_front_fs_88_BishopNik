@@ -1,6 +1,7 @@
 /** @format */
 
 import { Form, ErrorMessage, Field } from 'formik';
+import Icon from '../../Icon/index';
 
 import styled from 'styled-components';
 
@@ -23,6 +24,17 @@ export const StyledForm = styled(Form)`
   border-radius: 8px;
   background: #151515;
   padding: 24px;
+`;
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CloseIcon = styled(Icon)`
+  width: 18px;
+  height: 18px;
+  stroke: rgba(255, 255, 255, 1);
+  cursor: pointer;
 `;
 
 // export const NavBox = styled.div`

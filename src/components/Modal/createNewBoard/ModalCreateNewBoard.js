@@ -72,7 +72,7 @@ export const ModalCreateNewBoard = ({ isOpen, setIsOpen }) => {
         <StyledForm autoComplete="off">
           <HeaderContainer>
             <Title>New board</Title>
-            <CloseIcon name="close" />
+            <CloseIcon name="close" onClick={() => setIsOpen(false)} />
           </HeaderContainer>
 
           <LabelBox>
