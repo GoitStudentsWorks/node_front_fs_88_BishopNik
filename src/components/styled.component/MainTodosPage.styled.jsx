@@ -63,7 +63,7 @@ export const Header = styled.header`
 export const Main = styled.main`
 	position: relative;
 	grid-area: m;
-	background-color: ${props => props.theme.containerBackground};
+	background-color: ${props => props.theme.header.containerBackground};
 	min-width: 320px;
 	height: calc(100vh - 60px);
 
