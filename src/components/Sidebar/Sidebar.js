@@ -1,3 +1,5 @@
+/** @format */
+
 import { Logo } from './Logo/Logo';
 import { Title } from './Title/Title';
 import { BtnNewBoard } from './Btn_CreateNew/Btn_CreateNew';
@@ -6,14 +8,14 @@ import { Help } from './Help/Help';
 import { BtnLogout } from './Logout/Logout';
 
 export const SidebarComponent = () => {
-  return (
-    <>
-      <Logo />
-      <Title />
-      <BtnNewBoard />
-      <BoardsList />
-      <Help />
-      <BtnLogout />
-    </>
-  );
+	return (
+		<>
+			<Logo />
+			<Title />
+			<BtnNewBoard />
+			<BoardsList />
+			<Help />
+			<BtnLogout />
+		</>
+	);
 };
