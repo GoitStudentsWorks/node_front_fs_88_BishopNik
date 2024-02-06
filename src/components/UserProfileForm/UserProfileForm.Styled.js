@@ -2,7 +2,6 @@
 
 import Icon from 'components/Icon/Icon.jsx';
 import { Form, ErrorMessage, Field } from 'formik';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 // export const Container = styled.div`
@@ -33,76 +32,76 @@ import styled from 'styled-components';
 // `;
 
 export const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  margin-top: 14px;
-  /* padding: 24px; */
+	display: flex;
+	flex-direction: column;
+	margin-top: 14px;
+	/* padding: 24px; */
 
-  @media (max-width: 375px) {
-    width: 100%;
-  }
-  @media (min-width: 376px) and (max-width: 767px) {
-    /* width: 335px; */
-    /* padding: 24px; */
-  }
-  @media (min-width: 768px) {
-    /* width: 424px; */
-    /* padding: 40px; */
-  }
-  border-radius: 8px;
-  background: #151515;
+	@media (max-width: 375px) {
+		width: 100%;
+	}
+	@media (min-width: 376px) and (max-width: 767px) {
+		/* width: 335px; */
+		/* padding: 24px; */
+	}
+	@media (min-width: 768px) {
+		/* width: 424px; */
+		/* padding: 40px; */
+	}
+	border-radius: 8px;
+	background: #151515;
 `;
 
 export const LabelBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  /* margin-top: 14px; */
-  @media (min-width: 768px) {
-    /* gap: 14px; */
-  }
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	/* margin-top: 14px; */
+	@media (min-width: 768px) {
+		/* gap: 14px; */
+	}
 `;
 
 export const StyledField = styled(Field)`
-  color: #fff;
-  border-radius: 8px;
-  border: 1px solid #bedbb0;
-  padding: 14px 18px 14px 18px;
-  opacity: 0.4;
-  background: #1f1f1f;
-  width: 100%;
+	color: #fff;
+	border-radius: 8px;
+	border: 1px solid #bedbb0;
+	padding: 14px 18px 14px 18px;
+	opacity: 0.4;
+	background: #1f1f1f;
+	width: 100%;
 
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 `;
 
 export const IconHideShow = styled(Icon)`
-  width: 18px;
-  height: 18px;
+	width: 18px;
+	height: 18px;
 `;
 
 export const Button = styled.button`
-  display: flex;
-  width: 100%;
-  margin-top: 24px;
-  padding: 14px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: #bedbb0;
+	display: flex;
+	width: 100%;
+	margin-top: 24px;
+	padding: 14px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background: #bedbb0;
 
-  color: #161616;
+	color: #161616;
 
-  text-align: center;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.28px;
+	text-align: center;
+	font-family: Poppins;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.28px;
 `;
 
 export const ErrorMessageStyle = styled(ErrorMessage)`
-  color: red;
+	color: red;
 `;
 
 /*
