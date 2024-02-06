@@ -12,9 +12,8 @@ import { PrivateRoute } from 'components/PrivateRoute';
 
 
 const StartPage = lazy(() => import('pages/StartPage'));
+const AuthPage = lazy(() => import('pages/AuthPage'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
-const LoginPage = lazy(() => import('pages/LoginPage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UnknownPage = lazy(() => import('pages/UnknownPage'));
 const ScreenPage = lazy(() => import('components/ScreenPage/ScreenPage'));
 
@@ -26,40 +25,31 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route
-          index
-          element={
-            <RestrictedRoute component={StartPage} redirectTo="/todos" />
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute component={RegisterPage} redirectTo="/todos" />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute component={LoginPage} redirectTo="/todos" />
-          }
-        />
-        <Route
-          path="/todos"
-          element={<PrivateRoute component={MainTodosPage} redirectTo="/" />}
-          />
-          <Route
-            path="todos/:boardName"
-            element={<PrivateRoute component={ScreenPage} redirectTo='/'/>} />
-          <Route path="*" element={<UnknownPage />} />
-      </Route>
-    </Routes>
-  );
+
+	return isRefreshing ? (
+		<Loader />
+	) : (
+		<Routes>
+			<Route path='/' element={<SharedLayout />}>
+				<Route
+					index
+					element={<RestrictedRoute component={StartPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='auth/:page'
+					element={<RestrictedRoute component={AuthPage} redirectTo='/todos' />}
+				/>
+				<Route
+					path='/todos'
+					element={<PrivateRoute component={MainTodosPage} redirectTo='/' />}
+				>
+					<Route path='/todos/:board' element={<MainTodosPage />} />
+				</Route>
+
+				<Route path='*' element={<UnknownPage />} />
+			</Route>
+		</Routes>
+	);
 }
 
 export default App;
