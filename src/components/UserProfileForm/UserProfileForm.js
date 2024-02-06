@@ -1,9 +1,16 @@
 // import { StyledForm } from 'components/LoginForm/LoginForm.Styled';
 // import { Formik,Field,Form } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { StyledForm } from './UserProfileForm.Styled';
+import {
+  Button,
+  ErrorMessageStyle,
+  IconHideShow,
+  LabelBox,
+  StyledField,
+  StyledForm,
+} from './UserProfileForm.Styled';
 
 const emailRegex = RegExp(
   /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
@@ -30,6 +37,11 @@ const formShema = Yup.object().shape({
 });
 
 export const UserProfileForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     // <Container>
     <Formik
@@ -44,45 +56,51 @@ export const UserProfileForm = () => {
         alert(JSON.stringify(values, null, 2));
       }}
     >
-      {/* <StyledForm>
-        <label htmlFor="name">Name</label>
-        <StyledInput id="name" name="name" />
-        <ErrorMessage name="name" />
-
-        <label htmlFor="number">Number</label>
-        <StyledInput id="number" name="number" placeholder="111-11-11" />
-        <ErrorMessage name="number" />
-
-        <ButAdd type="submit">Add contact</ButAdd>
-      </StyledForm> */}
-
       <StyledForm>
-        <label htmlFor="login"></label>
-        <Field id="login" name="login" placeholder="Ivetta" />
-        <ErrorMessage name="login" />
+        <LabelBox>
+          <label htmlFor="login">
+            <StyledField id="login" name="login" placeholder="Ivetta" />
+          </label>
 
-        <label htmlFor="email"></label>
-        <Field
-          id="email"
-          name="email"
-          placeholder="ivetta34@gmail.com"
-          type="email"
-        />
-        <ErrorMessage name="email" />
+          <ErrorMessageStyle name="login" component="span" />
 
-        <label htmlFor="password"></label>
+          <label htmlFor="email">
+            <StyledField
+              id="email"
+              name="email"
+              placeholder="ivetta34@gmail.com"
+              type="email"
+            />
+          </label>
 
-        <Field
-          //   type="password"
-          type="text"
-          id="password"
-          name="password"
-          placeholder="ivetta1999.23"
-        />
+          <ErrorMessageStyle name="email" component="span" />
 
-        <ErrorMessage name="password" />
+          <label style={{ position: 'relative' }}>
+            <StyledField
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="ivetta1999.23"
+            />
+            <IconHideShow
+              name="hide-show"
+              onClick={togglePasswordVisibility}
+              style={{
+                position: 'absolute',
+                top: '24px',
+                right: '18px',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                stroke: '#FFFFFF4D',
+              }}
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </IconHideShow>
 
-        <button type="submit">Send</button>
+            <ErrorMessageStyle name="password" component="span" />
+          </label>
+        </LabelBox>
+
+        <Button type="submit">Send</Button>
       </StyledForm>
     </Formik>
     // </Container>

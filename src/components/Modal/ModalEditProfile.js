@@ -14,6 +14,14 @@ const closeIconStyles = {
   top: '14px',
 };
 
+const modalTextStyles = {
+  color: '#FFFFFF',
+  fontFamily: 'Poppins',
+  fontSize: '18px',
+  fontWeight: '500',
+  lineHeight: '27px',
+  letterSpacing: '-0.02em',
+};
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(78, 74, 72, 0.6)',
@@ -48,7 +56,7 @@ export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
         onClick={stateСhangeModal}
         style={closeIconStyles}
       />
-      <p>Edit profile</p>
+      <p style={modalTextStyles}>Edit profile</p>
       <UserIcon />
 
       <UserProfileForm />
