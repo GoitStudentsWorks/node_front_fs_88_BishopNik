@@ -4,13 +4,15 @@ import Modal from 'react-modal';
 import { Formik } from 'formik';
 import {
   StyledForm,
+  HeaderContainer,
+  CloseIcon,
   StyledTextArea,
   LabelBox,
   StyledField,
   Button,
   ButtonText,
   Title,
-} from './ModalNeedHelpStyled';
+} from './ModalNeedHelp.styled';
 
 Modal.setAppElement('#modal-root');
 
@@ -50,7 +52,10 @@ export const ModalNeedHelp = ({ isOpen, setIsOpen }) => {
         // validationSchema={LoginSchema}
       >
         <StyledForm autoComplete="off">
-          <Title>Need help</Title>
+        <HeaderContainer>
+            <Title>Need help</Title>
+            <CloseIcon name="close" onClick={() => setIsOpen(false)} />
+          </HeaderContainer>
           <LabelBox>
             <label>
               <StyledField
