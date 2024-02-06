@@ -7,10 +7,13 @@ import {selectUser} from 'redux/auth/selectors'
 const UserBlock = () => {
   const { name } = useSelector(selectUser);
   console.log(name)
+
+  
+
   return (
     <> <Wrapper>
       <UserName>{name[0].toUpperCase() + name.slice(1)}</UserName>
-        <img src={data.user.dark} alt="DarkUser" width={32} />
+          <img src={data.user.dark} alt="DarkUser" width={32} />
     </Wrapper>
     </>
      

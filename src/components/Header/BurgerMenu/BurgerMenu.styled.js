@@ -23,6 +23,6 @@ export const IconMenu = styled(Icon)`
 	width: 32px;
 	height: 32px;
 	/* stroke: ${props => props.theme.headerMenuIcon}; */
-	stroke: rgba(255, 255, 255, 0.8);
+	stroke: ${props => props.theme.headerMenuIcon};
 	fill: transparent;
 `;
