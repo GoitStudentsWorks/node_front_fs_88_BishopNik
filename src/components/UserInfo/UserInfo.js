@@ -1,5 +1,7 @@
 import { ModalEditProfile } from 'components/Modal/ModalEditProfile';
 import { useState } from 'react';
+import data from '../../img/list_img.json';
+import { UserInfoWrapper } from './UserInfo.styled';
 
 export const UserInfo = () => {
   const [isModalState, setIsModalState] = useState(false);
@@ -14,8 +16,15 @@ export const UserInfo = () => {
 
   return (
     <div>
-      <span>login</span>
-      <button onClick={stateСhangeModal}>Click to open modal</button>
+      <UserInfoWrapper>
+        <span>login</span>
+        <img
+          src={data.user.dark}
+          alt="LightUser"
+          width={32}
+          onClick={stateСhangeModal}
+        />
+      </UserInfoWrapper>
       <ModalEditProfile
         stateСhangeModal={stateСhangeModal}
         isModalState={isModalState}
@@ -24,3 +33,5 @@ export const UserInfo = () => {
     </div>
   );
 };
+
+//  <img src={data.user.dark} alt="DarkUser" width={32} />;
