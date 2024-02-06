@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { BtnAdd, Text, IconContainer, BtnIcon } from './Btn_CreateNew.styled';
 // import { useDispatch } from 'react-redux';
 // import { addBoard } from 'redux/boards/operations';
-import { ModalCreateNewBoard } from '../../Modal/createNewBoard/ModalCreateNewBoard';
+import { ModalCreateNewBoard } from 'components/Modal';
 
 export const BtnNewBoard = () => {
 	// const dispatch = useDispatch();

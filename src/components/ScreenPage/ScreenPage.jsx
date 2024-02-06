@@ -1,16 +1,17 @@
+/** @format */
 
 import { useParams } from 'react-router-dom';
 import { HeaderDashboard } from './HeaderDashboard/HeaderDashboard';
 import MainDashboard from './MainDashboard/MainDashboard';
 
 const ScreenPage = () => {
-  const { boardName } = useParams();
+	const { board } = useParams();
 
-  return (
-    <>
-      <HeaderDashboard title={boardName} />
-      <MainDashboard/>
-    </>
-  );
+	return (
+		<>
+			<HeaderDashboard title={board} />
+			<MainDashboard />
+		</>
+	);
 };
 export default ScreenPage;

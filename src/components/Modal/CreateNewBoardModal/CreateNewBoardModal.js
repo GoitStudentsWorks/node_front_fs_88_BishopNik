@@ -1,6 +1,5 @@
 /** @format */
 
-import Modal from 'react-modal';
 import { Formik, Field } from 'formik';
 import {
 	StyledForm,
@@ -20,31 +19,11 @@ import {
 	LabelRadio,
 	IconWrapper,
 	AddIcon,
-} from './ModalCreateNewBoard.styled';
+	customStyles,
+} from './CreateNewBoardModal.styled';
 
 import background from '../../../img/background.json';
-
-console.log(background);
-
-Modal.setAppElement('#modal-root');
-
-const customStyles = {
-	overlay: {
-		backgroundColor: 'rgba(78, 74, 72, 0.6)',
-	},
-	content: {
-		top: '50%',
-		left: '50%',
-		right: 'auto',
-		bottom: 'auto',
-		marginRight: '-50%',
-		transform: 'translate(-50%, -50%)',
-		padding: 0,
-		borderRadius: 5,
-		border: '1px solid #151515',
-		backgroundColor: '#151515',
-	},
-};
+import ModalWindow from '../Modal';
 
 export const ModalCreateNewBoard = ({ isOpen, setIsOpen }) => {
 	const handleSubmit = () => {};
@@ -53,12 +32,7 @@ export const ModalCreateNewBoard = ({ isOpen, setIsOpen }) => {
 	const backgrounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 	return (
-		<Modal
-			isOpen={isOpen}
-			onRequestClose={() => setIsOpen(false)}
-			style={customStyles}
-			contentLabel='onRequestClose'
-		>
+		<ModalWindow isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles}>
 			<Formik
 				initialValues={{ title: '', icon: '', background: '' }}
 				onSubmit={(values, actions) => {
@@ -124,6 +98,6 @@ export const ModalCreateNewBoard = ({ isOpen, setIsOpen }) => {
 					</Button>
 				</StyledForm>
 			</Formik>
-		</Modal>
+		</ModalWindow>
 	);
 };
