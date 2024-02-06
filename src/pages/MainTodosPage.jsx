@@ -28,9 +28,9 @@ function MainTodosPage() {
 			</ButtonFilter>
 			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<MainComponent>
-				{'board' && (
+				{board && (
 					<>
-						<HeaderDashboard title={'board'} />
+						<HeaderDashboard title={board} />
 						<MainDashboard />
 					</>
 				)}
