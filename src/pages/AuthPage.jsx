@@ -1,22 +1,19 @@
+/** @format */
+
 import LoginForm from 'components/LoginForm';
 import RegisterForm from 'components/RegisterForm';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-
+import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function AuthPage() {
-    const { page } = useParams(null);
-    const [idPage, setPage] = useState(null);
+	const navigate = useNavigate();
+	const { page } = useParams(null);
 
-    useEffect(() => {
-        setPage(page);
-    }, [page]);
+	useEffect(() => {
+		if (page !== 'login' && page !== 'register') navigate('/');
+	}, [navigate, page]);
 
-return(
-    <div>
-        {page === idPage ? <LoginForm/> : <RegisterForm/>}
-    </div>
-)
+	return <>{page === 'register' ? <RegisterForm /> : <LoginForm />}</>;
 }
 
 export default AuthPage;

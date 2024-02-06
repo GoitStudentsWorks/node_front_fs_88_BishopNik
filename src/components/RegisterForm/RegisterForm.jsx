@@ -8,94 +8,94 @@ import RegisterSchema from 'components/Helpers/RegisterSchema';
 import React, { useState } from 'react';
 
 import {
-  Button,
-  ButtonText,
-  Container,
-  ErrMessageStyled,
-  LabelBox,
-  Link,
-  NavBox,
-  StyledField,
-  StyledForm,
-  IconHideShow,
-  StyledFieldContainer,
+	Button,
+	ButtonText,
+	Container,
+	ErrMessageStyled,
+	LabelBox,
+	Link,
+	NavBox,
+	StyledField,
+	StyledForm,
+	IconHideShow,
+	StyledFieldContainer,
 } from './RegisterForm.Styled'; // Assuming IconHideShow is defined in RegisterForm.Styled
 
 const RegisterForm = () => {
-  const dispatch = useDispatch();
-  const [showPassword, setShowPassword] = useState(false);
+	const dispatch = useDispatch();
+	const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
 
-  const handleSubmit = (values, actions) => {
-    dispatch(register(values));
-    actions.resetForm({ name: '', email: '', password: '' });
-  };
+	const handleSubmit = (values, actions) => {
+		dispatch(register(values));
+		actions.resetForm({ name: '', email: '', password: '' });
+	};
 
-  return (
-    <Container>
-      <Formik
-        initialValues={{ name: '', email: '', password: '' }}
-        onSubmit={(values, actions) => {
-          handleSubmit(values, actions);
-        }}
-        validationSchema={RegisterSchema}
-      >
-        {({ isSubmitting }) => (
-          <StyledForm autoComplete="off">
-            <NavBox>
-              <Link to="/register" end>
-                Registration
-              </Link>
-              <Link to="/login">Log In</Link>
-            </NavBox>
+	return (
+		<Container>
+			<Formik
+				initialValues={{ name: '', email: '', password: '' }}
+				onSubmit={(values, actions) => {
+					handleSubmit(values, actions);
+				}}
+				validationSchema={RegisterSchema}
+			>
+				{({ isSubmitting }) => (
+					<StyledForm autoComplete='off'>
+						<NavBox>
+							<Link to='/auth/register' end>
+								Registration
+							</Link>
+							<Link to='/auth/login'>Log In</Link>
+						</NavBox>
 
-            <LabelBox>
-              <label>
-                <StyledField
-                  name="name"
-                  type="text"
-                  placeholder="Enter your name"
-                />
-                <ErrMessageStyled name="name" component="span" />
-              </label>
-              <label>
-                <StyledField
-                  name="email"
-                  type="email"
-                  placeholder="Enter your email"
-                />
-                <ErrMessageStyled name="email" component="span" />
-              </label>
-              <label>
-                <StyledFieldContainer>
-                  <StyledField
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Create a password"
-                  />
-                  <IconHideShow
-                    name="hide-show"
-                    onClick={togglePasswordVisibility}
-                  >
-                    {showPassword ? 'Hide' : 'Show'}
-                  </IconHideShow>
-                </StyledFieldContainer>
+						<LabelBox>
+							<label>
+								<StyledField
+									name='name'
+									type='text'
+									placeholder='Enter your name'
+								/>
+								<ErrMessageStyled name='name' component='span' />
+							</label>
+							<label>
+								<StyledField
+									name='email'
+									type='email'
+									placeholder='Enter your email'
+								/>
+								<ErrMessageStyled name='email' component='span' />
+							</label>
+							<label>
+								<StyledFieldContainer>
+									<StyledField
+										name='password'
+										type={showPassword ? 'text' : 'password'}
+										placeholder='Create a password'
+									/>
+									<IconHideShow
+										name='hide-show'
+										onClick={togglePasswordVisibility}
+									>
+										{showPassword ? 'Hide' : 'Show'}
+									</IconHideShow>
+								</StyledFieldContainer>
 
-                <ErrMessageStyled name="password" component="span" />
-              </label>
-            </LabelBox>
+								<ErrMessageStyled name='password' component='span' />
+							</label>
+						</LabelBox>
 
-            <Button type="submit" disabled={isSubmitting}>
-              <ButtonText>Register Now</ButtonText>
-            </Button>
-          </StyledForm>
-        )}
-      </Formik>
-    </Container>
-  );
+						<Button type='submit' disabled={isSubmitting}>
+							<ButtonText>Register Now</ButtonText>
+						</Button>
+					</StyledForm>
+				)}
+			</Formik>
+		</Container>
+	);
 };
 
 export default RegisterForm;
