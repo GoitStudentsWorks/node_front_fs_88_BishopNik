@@ -11,7 +11,6 @@ const Header = () => {
 
       <UserWrapper>
         <ThemePicker />
-        <img src={data.user.dark} alt="DarkUser" width={32} />
         <UserInfo />
       </UserWrapper>
     </HeaderWrapper>

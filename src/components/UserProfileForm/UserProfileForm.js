@@ -3,6 +3,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { StyledForm } from './UserProfileForm.Styled';
 
 const emailRegex = RegExp(
   /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
@@ -30,6 +31,7 @@ const formShema = Yup.object().shape({
 
 export const UserProfileForm = () => {
   return (
+    // <Container>
     <Formik
       initialValues={{
         login: '',
@@ -53,7 +55,8 @@ export const UserProfileForm = () => {
 
         <ButAdd type="submit">Add contact</ButAdd>
       </StyledForm> */}
-      <Form>
+
+      <StyledForm>
         <label htmlFor="login"></label>
         <Field id="login" name="login" placeholder="Ivetta" />
         <ErrorMessage name="login" />
@@ -80,7 +83,8 @@ export const UserProfileForm = () => {
         <ErrorMessage name="password" />
 
         <button type="submit">Send</button>
-      </Form>
+      </StyledForm>
     </Formik>
+    // </Container>
   );
 };

@@ -19,7 +19,7 @@ export const UserInfo = () => {
       <UserInfoWrapper>
         <span>login</span>
         <img
-          src={data.user.light}
+          src={data.user.dark}
           alt="LightUser"
           width={32}
           onClick={stateСhangeModal}
@@ -33,3 +33,5 @@ export const UserInfo = () => {
     </div>
   );
 };
+
+//  <img src={data.user.dark} alt="DarkUser" width={32} />;
