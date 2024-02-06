@@ -1,4 +1,3 @@
-// AddButton.styled.js
 import styled from 'styled-components';
 
 export const Button = styled.button`
@@ -19,5 +18,3 @@ export const Icon = styled.svg`
 export const Text = styled.span`
   font-size: 14px;
 `;
-
-// Додайте інші стилі за потреби
