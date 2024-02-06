@@ -15,7 +15,6 @@ const StartPage = lazy(() => import('pages/StartPage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
 const UnknownPage = lazy(() => import('pages/UnknownPage'));
-const ScreenPage = lazy(() => import('components/ScreenPage/ScreenPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +44,7 @@ function App() {
 				>
 					<Route path='/todos/:board' element={<MainTodosPage />} />
 				</Route>
-
+        
 				<Route path='*' element={<UnknownPage />} />
 			</Route>
 		</Routes>
