@@ -1,20 +1,33 @@
 /** @format */
 
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
 import { BoardItem } from '../BoardItem/BoardItem';
 import { ListContainer } from './BoardList.styled';
+import { useDispatch } from 'react-redux';
+import { fetchAllBoards } from 'redux/boards/operations';
+import { useAuth } from 'hooks';
 
 export const BoardsList = () => {
-	const { board } = useParams(null);
-	return (
-		<>
-			<ListContainer>
-				{/* -----Here map---- */}
-				<BoardItem idBoard={board} />
-				<BoardItem idBoard={'00000'} />
-				<BoardItem idBoard={'33255'} />
-			</ListContainer>
-		</>
-	);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    fetchAllBoards();
+  }, [dispatch]);
+  const { allBoards } = useAuth();
+
+  const listRef = useRef(null);
+
+  const handleScroll = event => {
+    const delta = event.deltaY;
+    listRef.current.scrollTop += delta;
+  };
+
+  return (
+    <>
+      <ListContainer onWheel={handleScroll} ref={listRef}>
+        {allBoards.map(({ _id: id, name }) => (
+          <BoardItem key={id} boardId={id} nameBoard={name} />
+        ))}
+      </ListContainer>
+    </>
+  );
 };

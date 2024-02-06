@@ -54,7 +54,8 @@ const authSlice = createSlice({
 			})
 			.addCase(refreshUser.rejected, (state, { payload }) => {
 				state.isRefreshing = false;
-				
+				state.isLoggedIn = false;
+				localStorage.clear()
 			})
 			.addCase(changeSetting.pending, state => {
 				//
