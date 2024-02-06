@@ -8,7 +8,7 @@ export const HelpContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
-  margin-top: 40px;
+  margin-top: auto;
   margin-bottom: 24px;
   border: none;
   background-color: rgba(31, 31, 31, 1);

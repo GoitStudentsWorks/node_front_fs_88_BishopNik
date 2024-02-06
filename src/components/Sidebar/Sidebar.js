@@ -7,13 +7,13 @@ import { BtnLogout } from './Logout/Logout';
 
 export const SidebarComponent = () => {
   return (
-    <div>
+    <>
       <Logo />
       <Title />
       <BtnNewBoard />
       <BoardsList />
       <Help />
       <BtnLogout />
-    </div>
+    </>
   );
 };
