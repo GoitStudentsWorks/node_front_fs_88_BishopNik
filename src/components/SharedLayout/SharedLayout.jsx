@@ -1,6 +1,6 @@
 /** @format */
 
-import { Suspense, useContext, useEffect, useState } from 'react';
+import { Suspense, useContext, useEffect, useState, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import Loader from 'components/Loader';
 import { Container, Main, SideBar, Header } from 'components/styled.component/MainTodosPage.styled';
@@ -12,8 +12,9 @@ import { useAuth } from 'hooks';
 
 const SharedLayout = () => {
 	const { isLoggedIn } = useAuth();
-	const { isOpen } = useContext(MainContext);
+	const { isOpen, setIsOpen } = useContext(MainContext);
 	const [status, setStatus] = useState(false);
+	const sidebarRef = useRef(null);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -26,10 +27,25 @@ const SharedLayout = () => {
 		};
 	}, [isOpen]);
 
+	useEffect(() => {
+		if (window.innerWidth > 1439) return;
+		const handlerOnCloseWindow = e => {
+			if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+				setIsOpen(false);
+			}
+		};
+
+		window.addEventListener('click', handlerOnCloseWindow);
+
+		return () => {
+			window.removeEventListener('click', handlerOnCloseWindow);
+		};
+	}, [setIsOpen]);
+
 	return isLoggedIn ? (
 		<Container>
 			{status && (
-				<SideBar>
+				<SideBar ref={sidebarRef}>
 					<SidebarComponent />
 				</SideBar>
 			)}
