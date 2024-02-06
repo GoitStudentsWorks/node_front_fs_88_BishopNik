@@ -64,7 +64,8 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 		const res = await axios.get('/auth/current');
 		return res.data;
 	} catch ({ response }) {
-		return toastError(response?.data?.message)
+		toastError(`Please log in`)
+		return thunkAPI.rejectWithValue(response?.data?.message)
 	}
 });
 

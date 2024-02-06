@@ -1,6 +1,7 @@
 /** @format */
 
 import { Form, ErrorMessage, Field } from 'formik';
+import Icon from '../../Icon/index';
 
 import styled from 'styled-components';
 
@@ -11,6 +12,66 @@ export const Title = styled.p`
   padding-bottom: 24px;
   font-size: 18px;
   font-weight: 500;
+`;
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CloseIcon = styled(Icon)`
+  width: 18px;
+  height: 18px;
+  stroke: rgba(255, 255, 255, 1);
+  cursor: pointer;
+`;
+
+export const TitleIcons = styled.span`
+  font-size: 14px;
+  font-weight: 500px;
+  color: #fff;
+  padding-bottom: 14px;
+`;
+
+export const TitleBackground = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  padding-bottom: 14px;
+`;
+
+export const IconsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding-bottom: 24px;
+  .invisible {
+    visibility: hidden;
+    position: absolute;
+  }
+`;
+
+export const BackgroundContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding-bottom: 40px;
+  .invisible {
+    visibility: hidden;
+    position: absolute;
+  }
+  flex-wrap: wrap;
+`;
+
+export const TypesOfIcon = styled(Icon)`
+  width: 18px;
+  height: 18px;
+  stroke: rgba(255, 255, 255, 0.5);
+`;
+
+export const TypesOfBackground = styled.img`
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
 `;
 
 export const StyledForm = styled(Form)`
@@ -38,6 +99,10 @@ export const LabelBox = styled.div`
   margin-bottom: 24px;
 `;
 
+export const LabelRadio = styled.label`
+  margin: 0;
+`;
+
 export const ErrMessageStyled = styled(ErrorMessage)`
   color: red;
 `;
@@ -50,18 +115,6 @@ export const StyledField = styled(Field)`
   opacity: 0.4;
   background: #1f1f1f;
   width: 100%;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-`;
-export const StyledTextArea = styled(Field)`
-  color: #fff;
-  border-radius: 8px;
-  border: 1px solid #bedbb0;
-  padding: 14px 0px 14px 18px;
-  opacity: 0.4;
-  background: #1f1f1f;
-  width: 100%;
-  height: 120px;
-
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 `;
 
@@ -80,6 +133,24 @@ export const Button = styled.button`
   &:focus {
     background: rgba(157, 200, 136, 1);
   }
+`;
+export const AddIcon = styled(Icon)`
+  width: 14px;
+  height: 14px;
+  stroke: rgba(255, 255, 255, 1);
+  cursor: pointer;
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 28px;
+  height: 28px;
+  background-color: black;
+  margin-right: 8px;
 `;
 
 export const ButtonText = styled.span`

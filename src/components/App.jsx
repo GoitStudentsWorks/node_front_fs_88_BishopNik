@@ -11,9 +11,8 @@ import Loader from 'components/Loader';
 import { PrivateRoute } from 'components/PrivateRoute';
 
 const StartPage = lazy(() => import('pages/StartPage'));
+const AuthPage = lazy(() => import('pages/AuthPage'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
-const LoginPage = lazy(() => import('pages/LoginPage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const UnknownPage = lazy(() => import('pages/UnknownPage'));
 
 function App() {
@@ -34,12 +33,8 @@ function App() {
 					element={<RestrictedRoute component={StartPage} redirectTo='/todos' />}
 				/>
 				<Route
-					path='register'
-					element={<RestrictedRoute component={RegisterPage} redirectTo='/todos' />}
-				/>
-				<Route
-					path='login'
-					element={<RestrictedRoute component={LoginPage} redirectTo='/todos' />}
+					path='auth/:page'
+					element={<RestrictedRoute component={AuthPage} redirectTo='/todos' />}
 				/>
 				<Route
 					path='/todos'
@@ -47,6 +42,7 @@ function App() {
 				>
 					<Route path='/todos/:board' element={<MainTodosPage />} />
 				</Route>
+
 				<Route path='*' element={<UnknownPage />} />
 			</Route>
 		</Routes>

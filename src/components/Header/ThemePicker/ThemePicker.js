@@ -1,31 +1,17 @@
 /** @format */
 
-import { useState, useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { theme } from 'constants/theme';
-
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { ThemeContext } from 'components/Helpers';
 import { IconThemeMenu, PopupBlock, PopupItem, Text, Wrapper } from './ThemePicker.styled';
+import { theme } from '../../../constants/theme';
 
 const ThemePicker = () => {
-	const dispatch = useDispatch();
+	const { setTheme } = useContext(ThemeContext);
 
 	const activeUserTheme = useSelector;
 	const [isShownPopup, setIsShownPopup] = useState(false);
 	const themeRef = useRef();
-
-	const handleTheme = theme => {
-		dispatch({ theme });
-
-		setIsShownPopup(false);
-	};
-
-	const handleOutsideClick = event => {
-		const path = event.composedPath();
-
-		if (!path.includes(themeRef.current)) {
-			setIsShownPopup(false);
-		}
-	};
 
 	useEffect(() => {
 		document.body.addEventListener('click', handleOutsideClick);
@@ -35,22 +21,34 @@ const ThemePicker = () => {
 		};
 	}, []);
 
+	const handleOutsideClick = event => {
+		const path = event.composedPath();
+
+		if (!path.includes(themeRef.current)) {
+			setIsShownPopup(false);
+		}
+	};
+
+	const changeTheme = property => {
+		setTheme(property);
+	};
+
 	const handlePopup = () => setIsShownPopup(!isShownPopup);
 
 	return (
 		<Wrapper ref={themeRef} onClick={handlePopup}>
 			<Text>Theme</Text>
-			<IconThemeMenu name='chevron-down' isOpen={isShownPopup} />
-
+			<IconThemeMenu name='chevron-down' />
+			{/* isOpen={isShownPopup} реакт не розуміє цього, видає помилку консоль */}
 			{isShownPopup && (
 				<PopupBlock>
-					{theme.map(({ name }) => (
+					{theme.map(({ name, property }) => (
 						<PopupItem
-							onClick={() => handleTheme(name)}
+							onClick={() => changeTheme(property)}
 							key={name}
 							className={activeUserTheme === name ? 'active' : ''}
 						>
-							{name[0].toUpperCase() + name.slice(1)}
+							{name}
 						</PopupItem>
 					))}
 				</PopupBlock>

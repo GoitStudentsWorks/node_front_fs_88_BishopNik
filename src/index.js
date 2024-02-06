@@ -6,21 +6,18 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'components/App';
-import { ThemeProvider } from 'styled-components';
+import { СhangeThemeProvider } from 'components/Helpers';
 import { GlobalStyle } from 'components/Helpers/GlobalStyle';
 import { store, persistor } from './redux/store';
 import 'modern-normalize';
 import { Toaster } from 'react-hot-toast';
-// import { theme } from 'constants/theme';
-
-const theme = {};
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
 				<BrowserRouter basename='/Todos_app'>
-					<ThemeProvider theme={theme}>
+					<СhangeThemeProvider>
 						<App />
 						<Toaster
 							position='top-right'
@@ -35,7 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 							}}
 						/>
 						<GlobalStyle />
-					</ThemeProvider>
+					</СhangeThemeProvider>
 				</BrowserRouter>
 			</PersistGate>
 		</Provider>
