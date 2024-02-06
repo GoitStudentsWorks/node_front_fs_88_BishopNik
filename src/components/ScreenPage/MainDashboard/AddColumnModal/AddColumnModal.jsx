@@ -48,7 +48,8 @@ const columnSchema = Yup.object().shape({
 export const AddColumnModal = ({ isOpen, onClose }) => {
 	const [errorMessage, setErrorMessage] = useState(null);
 
-	const handleSubmit = ({ title }, { setSubmitting }) => {
+	const handleSubmit = (e, { title }, { setSubmitting }) => {
+		e.preventDefault();
 		setSubmitting(true);
 
 		if (!title.trim()) {

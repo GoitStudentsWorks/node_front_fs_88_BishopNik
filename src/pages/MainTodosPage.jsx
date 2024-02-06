@@ -1,6 +1,6 @@
 /** @format */
 
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MainComponent from 'components/MainComponent/MainComponent';
 import { HeaderDashboard } from 'components/ScreenPage/HeaderDashboard/HeaderDashboard';
@@ -14,7 +14,7 @@ import {
 
 function MainTodosPage() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-  const { board } = useParams();
+	const { board } = useParams();
 
 	const openModal = () => {
 		setIsModalOpen(true);
@@ -28,9 +28,13 @@ function MainTodosPage() {
 			</ButtonFilter>
 			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 			<MainComponent>
-         <HeaderDashboard title={board} />
-        <MainDashboard/>
-      </MainComponent> 
+				{'board' && (
+					<>
+						<HeaderDashboard title={'board'} />
+						<MainDashboard />
+					</>
+				)}
+			</MainComponent>
 		</>
 	);
 }
