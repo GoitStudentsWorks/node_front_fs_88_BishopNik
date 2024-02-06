@@ -1,7 +1,10 @@
 /** @format */
 
 import React, {useState } from 'react';
+import { useParams } from 'react-router-dom';
 import MainComponent from 'components/MainComponent/MainComponent';
+import { HeaderDashboard } from 'components/ScreenPage/HeaderDashboard/HeaderDashboard';
+import MainDashboard from 'components/ScreenPage/MainDashboard/MainDashboard';
 import { ModalFilter } from 'components/Filter';
 import {
 	ButtonFilter,
@@ -11,6 +14,7 @@ import {
 
 function MainTodosPage() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+  const { board } = useParams();
 
 	const openModal = () => {
 		setIsModalOpen(true);
@@ -23,7 +27,10 @@ function MainTodosPage() {
 				<TextButton>Filters</TextButton>
 			</ButtonFilter>
 			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<MainComponent></MainComponent> 
+			<MainComponent>
+         <HeaderDashboard title={board} />
+        <MainDashboard/>
+      </MainComponent> 
 		</>
 	);
 }
