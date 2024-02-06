@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
-import { AddColumnButton } from './MainDashboard.styled';
-import BasicModal from 'components/ScreenPage/MainDashboard/BasicModal';
-import AddColumnModal from 'components/ScreenPage/MainDashboard/AddColumnModal';
+import {
+  BoardContainer,
+  BtnAddColumn,
+  SvagAddColumn,
+  StyledIconAdd,
+} from './MainDashboard.styled';
+import icon from 'components/Icon/icon-spraite.svg';
+
+import { AddColumnModal } from 'components/ScreenPage/MainDashboard/AddColumnModal/AddColumnModal';
 
 const MainDashboard = () => {
-  const [openAddColumnModal, setOpenAddColumnModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenAddColumnModal = () => {
-    setOpenAddColumnModal(true);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
   };
 
-  const handleCloseAddColumnModal = () => {
-    setOpenAddColumnModal(false);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <>
-      <AddColumnButton onClick={handleOpenAddColumnModal}>
-        + Add another column
-      </AddColumnButton>
-
-      <BasicModal
-        open={openAddColumnModal}
-        closeModal={handleCloseAddColumnModal}
-        children={<AddColumnModal closeModal={handleCloseAddColumnModal} />}
-      />
-    </>
+    <BoardContainer>
+      <BtnAddColumn type="button" onClick={handleOpenModal}>
+        {' '}
+        <StyledIconAdd>
+          <SvagAddColumn width="14" height="14">
+            <use xlinkHref={`${icon}#icon-plus`} />
+          </SvagAddColumn>
+        </StyledIconAdd>
+        <span>Add another column</span>
+      </BtnAddColumn>
+      <AddColumnModal isOpen={isModalOpen} onClose={handleCloseModal} />{' '}
+    </BoardContainer>
   );
 };
 
