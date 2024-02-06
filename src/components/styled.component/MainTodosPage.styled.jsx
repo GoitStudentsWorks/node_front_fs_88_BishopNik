@@ -32,15 +32,21 @@ export const Container = styled.div`
 
 export const SideBar = styled.aside`
 	grid-area: s;
-	width: 260px;
+	width: 225px;
 	height: 100vh;
 	min-height: 770px;
 	background-color: rgba(18, 18, 18, 1);
 	display: flex;
 	flex-direction: column;
 
+	@media screen and (min-width: 768px) {
+		width: 260px;
+	}
+
 	@media screen and (max-width: 1439px) {
 		display: none;
+		position: absolute;
+		z-index: 9999;
 	}
 `;
 
@@ -57,7 +63,7 @@ export const Header = styled.header`
 export const Main = styled.main`
 	position: relative;
 	grid-area: m;
-	background-color: #1f1f1f;
+	background-color: ${props => props.theme.containerBackground};
 	min-width: 320px;
 	height: calc(100vh - 60px);
 
@@ -66,11 +72,6 @@ export const Main = styled.main`
 	}
 
 	@media screen and (min-width: 768px) {
-		min-height: 702px;
 		max-height: calc(100vh - 68px);
-	}
-
-	@media screen and (min-width: 1440px) {
-		min-height: 702px;
 	}
 `;
