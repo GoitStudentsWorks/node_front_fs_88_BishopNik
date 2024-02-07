@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import data from '../../../img/list_img.json';
 import { NeedHelpModal } from 'components/Modal';
 import { useDispatch } from 'react-redux';
@@ -16,7 +16,7 @@ import {
 } from './Help.styled';
 
 export const Help = () => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
 	return (
 		<HelpContainer>
