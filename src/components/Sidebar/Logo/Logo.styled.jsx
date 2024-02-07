@@ -28,7 +28,7 @@ export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.sidebar.projectActive};
+  background-color: ${props => props.theme.sidebar.iconContainer};
   border-radius: 5px;
   width: 32px;
   height: 32px;
@@ -37,5 +37,5 @@ export const IconContainer = styled.div`
 export const LogoIcon = styled(Icon)`
   width: 12px;
   height: 16px;
-  fill: ${props => props.theme.sidebar.textMain};
+  fill: ${props => props.theme.sidebar.iconLogo};
 `;
