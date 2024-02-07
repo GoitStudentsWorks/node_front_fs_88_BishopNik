@@ -9,7 +9,7 @@ import { Filter } from 'components/Filter';
 export const FilterModal = ({ isModalOpen, setIsOpen }) => {
 	return (
 		<ModalWindow isOpen={isModalOpen} onRequestClose={setIsOpen} style={customStyles}>
-			<Filter setIsModalOpen={setIsOpen} />
+			<Filter setIsOpen={setIsOpen} />
 		</ModalWindow>
 	);
 };

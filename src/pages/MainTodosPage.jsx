@@ -1,23 +1,17 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import MainComponent from 'components/MainComponent/MainComponent';
-import { FilterModal, FilterBtn } from 'components/Filter';
+import { FilterBtn } from 'components/Filter';
 import ScreenPage from 'components/ScreenPage/ScreenPage';
 
 function MainTodosPage() {
-	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { board } = useParams();
-
-	const openModal = () => {
-		setIsModalOpen(true);
-	};
 
 	return (
 		<>
-			<FilterBtn onClick={openModal} />
-			<FilterModal isModalOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+			<FilterBtn />
 			<MainComponent>{board && <ScreenPage />}</MainComponent>
 		</>
 	);
