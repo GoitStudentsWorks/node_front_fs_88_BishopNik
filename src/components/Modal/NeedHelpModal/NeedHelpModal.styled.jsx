@@ -6,6 +6,7 @@ import Icon from '../../Icon/index';
 
 import styled from 'styled-components';
 
+
 export const Title = styled.p`
   color: #fff;
   background: #151515;
