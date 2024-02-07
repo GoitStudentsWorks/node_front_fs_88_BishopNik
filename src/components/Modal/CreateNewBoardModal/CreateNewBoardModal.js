@@ -19,13 +19,13 @@ import {
 	LabelRadio,
 	IconWrapper,
 	AddIcon,
-	customStyles,
 } from './CreateNewBoardModal.styled';
+import { customStyles } from '../Modal.styled';
 
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
 
-export const ModalCreateNewBoard = ({ isOpen, setIsOpen }) => {
+export const CreateNewBoardModal = ({ isOpen, setIsOpen }) => {
 	const handleSubmit = () => {};
 
 	const icons = [1, 2, 3, 4, 5, 6, 7, 8];

@@ -4,7 +4,8 @@ import { UserProfileForm } from 'components/UserProfileForm';
 import { FiltersIcon } from 'components/MainComponent/MainComponent.styled';
 import { UserIcon } from 'components/UserProfileForm/UserIcon';
 import ModalWindow from '../Modal';
-import { customStyles, modalTextStyles, closeIconStyles } from './EditProfileModal.styled';
+import { modalTextStyles, closeIconStyles } from './EditProfileModal.styled';
+import { customStyles } from '../Modal.styled';
 
 export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
 	return (

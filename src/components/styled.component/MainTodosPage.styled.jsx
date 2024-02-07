@@ -46,7 +46,7 @@ export const SideBar = styled.aside`
 	@media screen and (max-width: 1439px) {
 		/* display: none; */
 		position: absolute;
-		z-index: 9999;
+		z-index: 99;
 	}
 `;
 

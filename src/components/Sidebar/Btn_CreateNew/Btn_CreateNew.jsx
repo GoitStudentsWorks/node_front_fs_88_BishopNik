@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { BtnAdd, Text, IconContainer, BtnIcon } from './Btn_CreateNew.styled';
 // import { useDispatch } from 'react-redux';
 // import { addBoard } from 'redux/boards/operations';
-import { ModalCreateNewBoard } from 'components/Modal';
+import { CreateNewBoardModal } from 'components/Modal';
 
 export const BtnNewBoard = () => {
 	// const dispatch = useDispatch();
@@ -18,13 +18,17 @@ export const BtnNewBoard = () => {
 
 	return (
 		<>
-			<BtnAdd onClick={() => setIsOpen(true)}>
+			<BtnAdd
+				onClick={() => {
+					setIsOpen(true);
+				}}
+			>
 				<Text>Create a new board</Text>
 				<IconContainer>
 					<BtnIcon name='add-board' />
 				</IconContainer>
 			</BtnAdd>
-			<ModalCreateNewBoard isOpen={isOpen} setIsOpen={setIsOpen} />
+			<CreateNewBoardModal isOpen={isOpen} setIsOpen={setIsOpen} />
 		</>
 	);
 };

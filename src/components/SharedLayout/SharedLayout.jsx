@@ -12,26 +12,26 @@ import { useAuth } from 'hooks';
 
 const SharedLayout = () => {
 	const { isLoggedIn } = useAuth();
-	const { isOpen, setIsOpen } = useContext(MainContext);
+	const { isOpenSidebar, setIsOpenSidebar } = useContext(MainContext);
 	const [status, setStatus] = useState(false);
 	const sidebarRef = useRef(null);
 
 	useEffect(() => {
 		const handleResize = () => {
-			setStatus(isOpen || window.innerWidth > 1439);
+			setStatus(isOpenSidebar || window.innerWidth > 1439);
 		};
 		window.addEventListener('resize', handleResize);
 		handleResize();
 		return () => {
 			window.removeEventListener('resize', handleResize);
 		};
-	}, [isOpen]);
+	}, [isOpenSidebar]);
 
 	useEffect(() => {
 		if (window.innerWidth > 1439) return;
 		const handlerOnCloseWindow = e => {
 			if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-				setIsOpen(false);
+				setIsOpenSidebar(false);
 			}
 		};
 
@@ -40,7 +40,7 @@ const SharedLayout = () => {
 		return () => {
 			window.removeEventListener('click', handlerOnCloseWindow);
 		};
-	}, [setIsOpen]);
+	}, [setIsOpenSidebar]);
 
 	return isLoggedIn ? (
 		<Container>

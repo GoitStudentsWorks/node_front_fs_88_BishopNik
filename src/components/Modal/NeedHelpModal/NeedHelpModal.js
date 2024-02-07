@@ -11,9 +11,9 @@ import {
 	Button,
 	ButtonText,
 	Title,
-	customStyles,
 } from './NeedHelpModal.styled';
 import ModalWindow from '../Modal';
+import { customStyles } from '../Modal.styled';
 
 export const NeedHelpModal = ({ isOpen, setIsOpen }) => {
 	const handleSubmit = () => {};

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import ModalWindow from '../Modal';
-import { customStyles } from './AddColumnModal.styled';
+import { customStyles } from '../Modal.styled';
 
 import {
 	ModalTitle,

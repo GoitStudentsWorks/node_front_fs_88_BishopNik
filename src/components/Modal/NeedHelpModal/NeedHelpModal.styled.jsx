@@ -105,21 +105,3 @@ export const ButtonText = styled.span`
 	line-height: normal;
 	letter-spacing: -0.28px;
 `;
-
-export const customStyles = {
-	overlay: {
-		backgroundColor: 'rgba(78, 74, 72, 0.6)',
-	},
-	content: {
-		position: 'relative',
-		top: '50%',
-		left: '50%',
-		right: 'auto',
-		bottom: 'auto',
-		transform: 'translate(-50%, -50%)',
-		padding: 0,
-		borderRadius: 5,
-		border: '1px solid #151515',
-		backgroundColor: '#151515',
-	},
-};
