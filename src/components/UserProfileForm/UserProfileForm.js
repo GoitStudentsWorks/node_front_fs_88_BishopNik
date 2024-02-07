@@ -55,21 +55,18 @@ export const UserProfileForm = () => {
       <StyledForm>
         <LabelBox>
           <label htmlFor="login">
-            <StyledField id="login" name="login" placeholder="Ivetta" />
+            <StyledField name="login" placeholder="Ivetta" />
+            <ErrorMessageStyle name="login" component="span" />
           </label>
-
-          <ErrorMessageStyle name="login" component="span" />
 
           <label htmlFor="email">
             <StyledField
-              id="email"
               name="email"
               placeholder="ivetta34@gmail.com"
               type="email"
             />
+            <ErrorMessageStyle name="email" component="span" />
           </label>
-
-          <ErrorMessageStyle name="email" component="span" />
 
           <label style={{ position: 'relative' }}>
             <StyledField
@@ -77,6 +74,7 @@ export const UserProfileForm = () => {
               name="password"
               placeholder="ivetta1999.23"
             />
+
             <IconHideShow
               name="hide-show"
               onClick={togglePasswordVisibility}
