@@ -27,18 +27,21 @@ import { addBoard } from 'redux/boards/operations';
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { modalsSlice } from 'redux/modals/modalSlice';
-import { createEditBoardModalState } from 'redux/modals/selectors';
+import { boardsSlice } from 'redux/boards/boardsSlice';
+import { modalData, boardsState } from 'redux/boards/selectors';
 
 const icons = [1, 2, 3, 4, 5, 6, 7, 8];
 const backgrounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 export const CreateNewBoardModal = () => {
   const dispatch = useDispatch();
-  const { isOpen } = useSelector(createEditBoardModalState);
+  const { isOpen, boardId } = useSelector(modalData);
+  const boards = useSelector(boardsState);
+
+  const boardForEditing = boardId && boards.find(item => item.id === boardId);
 
   const closeModal = () => {
-    dispatch(modalsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
+    dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
   };
 
   return (
@@ -48,7 +51,12 @@ export const CreateNewBoardModal = () => {
       style={customStyles}
     >
       <Formik
-        initialValues={{ title: '', icon: '', background: '' }}
+        initialValues={{
+          title: boardForEditing?.name || '',
+          icon: boardForEditing?.icon || '',
+          background: boardForEditing?.background || '',
+          id: boardId,
+        }}
         onSubmit={(values, actions) => {
           console.log(values);
 
@@ -56,8 +64,11 @@ export const CreateNewBoardModal = () => {
             name: values.title,
             icon: values.icon,
           };
-
-          dispatch(addBoard(data));
+          if (boardId) {
+            dispatch(addBoard(data));
+          } else {
+            dispatch(addBoard(data));
+          }
         }}
         validationSchema={createBoardSchema}
       >

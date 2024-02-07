@@ -3,8 +3,7 @@
 import React from 'react';
 import { TextEmptyBoard, ButtonCreateBoard } from './MainComponent.styled';
 import { useDispatch } from 'react-redux';
-import { modalsSlice } from 'redux/modals/modalSlice';
-
+import { boardsSlice } from 'redux/boards/boardsSlice';
 
 function MainComponent({ children }) {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ function MainComponent({ children }) {
           <ButtonCreateBoard
             onClick={() => {
               dispatch(
-                modalsSlice.actions.openCreateEditBoardModal({ isOpen: true })
+                boardsSlice.actions.openCreateEditBoardModal({ isOpen: true })
               );
             }}
           >

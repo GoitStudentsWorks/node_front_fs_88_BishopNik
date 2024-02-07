@@ -3,7 +3,7 @@
 import React from 'react';
 import { BtnAdd, Text, IconContainer, BtnIcon } from './Btn_CreateNew.styled';
 import { useDispatch } from 'react-redux';
-import { modalsSlice } from 'redux/modals/modalSlice';
+import  {boardsSlice} from 'redux/boards/boardsSlice';
 
 export const BtnNewBoard = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const BtnNewBoard = () => {
         <Text>Create a new board</Text>
         <IconContainer
           onClick={() => {
-            dispatch(modalsSlice.actions.openCreateEditBoardModal({isOpen: true}));
+            dispatch(boardsSlice.actions.openCreateEditBoardModal({isOpen: true}));
           }}
         >
           <BtnIcon name="add-board" />
