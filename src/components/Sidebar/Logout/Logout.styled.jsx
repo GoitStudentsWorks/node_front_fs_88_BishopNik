@@ -23,7 +23,7 @@ export const Btn = styled.button`
   &:hover,
   &:focus {
     ${LogoutIcon} {
-      stroke: ${props => props.theme.sidebar.addButtonHover};
+      stroke: ${props => props.theme.sidebar.hoverLogout};
     }
   }
 
