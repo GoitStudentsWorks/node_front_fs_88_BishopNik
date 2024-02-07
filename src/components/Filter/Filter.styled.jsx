@@ -31,6 +31,7 @@ export const CloseButton = styled.button`
   width: 18px;
   height: 18px;
   background: rgb(21, 21, 21);
+  border: none;
 `;
 
 export const IconClose = styled(Icon)`
