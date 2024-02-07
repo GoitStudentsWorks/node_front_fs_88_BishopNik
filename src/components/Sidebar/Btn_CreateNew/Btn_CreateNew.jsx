@@ -1,34 +1,24 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { BtnAdd, Text, IconContainer, BtnIcon } from './Btn_CreateNew.styled';
-// import { useDispatch } from 'react-redux';
-// import { addBoard } from 'redux/boards/operations';
-import { CreateNewBoardModal } from 'components/Modal';
+import { MainContext } from 'components/Helpers';
 
 export const BtnNewBoard = () => {
-	// const dispatch = useDispatch();
-	const [isOpen, setIsOpen] = useState(false);
-
-	// const newBoard = (newBoard) => {
-	// 	dispatch(addBoard(newBoard))
-	// }
-
-	// bilo 	onClick={() => newBoard({ name: `${Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000}`, icon:`href` })}
+	const { setOpenIsAddBoard } = useContext(MainContext);
 
 	return (
 		<>
-			<BtnAdd
-				onClick={() => {
-					setIsOpen(true);
-				}}
-			>
+			<BtnAdd>
 				<Text>Create a new board</Text>
-				<IconContainer>
+				<IconContainer
+					onClick={() => {
+						setOpenIsAddBoard(true);
+					}}
+				>
 					<BtnIcon name='add-board' />
 				</IconContainer>
 			</BtnAdd>
-			<CreateNewBoardModal isOpen={isOpen} setIsOpen={setIsOpen} />
 		</>
 	);
 };

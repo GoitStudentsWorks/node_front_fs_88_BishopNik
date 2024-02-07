@@ -6,7 +6,7 @@ import Icon from '../../Icon';
 export const LogoutIcon = styled(Icon)`
   width: 32px;
   height: 32px;
-  stroke:  ${props => props.theme.sidebar.iconLogout};
+  stroke: ${props => props.theme.sidebar.iconLogout};
 `;
 
 export const Btn = styled.button`
@@ -23,7 +23,7 @@ export const Btn = styled.button`
   &:hover,
   &:focus {
     ${LogoutIcon} {
-      stroke: rgba(157, 200, 136, 1);
+      stroke: ${props => props.theme.sidebar.addButtonHover};
     }
   }
 
