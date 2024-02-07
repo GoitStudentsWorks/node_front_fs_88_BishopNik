@@ -1,6 +1,7 @@
 /** @format */
 
 import { Formik, Field } from 'formik';
+import { createBoardSchema } from '../../Helpers/ModalSchemas';
 import {
 	StyledForm,
 	HeaderContainer,
@@ -19,47 +20,61 @@ import {
 	LabelRadio,
 	IconWrapper,
 	AddIcon,
+	ErrMessageStyled,
 } from './CreateNewBoardModal.styled';
 import { customStyles } from '../Modal.styled';
-
+import { addBoard } from 'redux/boards/operations';
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { boardsSlice } from 'redux/boards/boardsSlice';
+import { modalData, boardsState } from 'redux/boards/selectors';
 
-export const CreateNewBoardModal = ({ isOpen, setIsOpen }) => {
-	const handleSubmit = () => {};
+export const CreateNewBoardModal = () => {
+	const dispatch = useDispatch();
+	const { isOpen, boardId } = useSelector(modalData);
+	const boards = useSelector(boardsState);
 
-	const icons = [1, 2, 3, 4, 5, 6, 7, 8];
-	const backgrounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+	const boardForEditing = boardId && boards.find(item => item.id === boardId);
+
+	const closeModal = () => {
+		dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
+	};
 
 	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles}>
+		<ModalWindow isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
 			<Formik
-				initialValues={{ title: '', icon: '', background: '' }}
-				onSubmit={(values, actions) => {
-					console.log(values);
-
-					handleSubmit(values, actions);
+				initialValues={{
+					name: boardForEditing?.name || '',
+					icon: boardForEditing?.icon || '',
+					background: boardForEditing?.background || '',
+					id: boardId,
 				}}
-				// validationSchema={LoginSchema}
+				onSubmit={(board, actions) => {
+					if (boardId) {
+						dispatch(addBoard(board));
+					} else {
+						dispatch(addBoard(board));
+					}
+				}}
+				validationSchema={createBoardSchema}
 			>
 				<StyledForm autoComplete='off'>
 					<HeaderContainer>
 						<Title>New board</Title>
-						<CloseIcon name='close' onClick={() => setIsOpen(false)} />
+						<CloseIcon name='close' onClick={closeModal} />
 					</HeaderContainer>
 
 					<LabelBox>
 						<label>
-							<StyledField name='title' type='text' placeholder='Title' />
-							{/* <ErrMessageStyled name="email" component="span" /> */}
+							<StyledField name='name' type='text' placeholder='Title' />
+							<ErrMessageStyled name='name' component='span' />
 						</label>
-
-						{/* <ErrMessageStyled name="password" component="span" /> */}
 					</LabelBox>
 					<TitleIcons>Icons</TitleIcons>
 
 					<IconsContainer>
-						{icons.map(iconIndex => (
+						{Array.from({ length: 8 }, (_, iconIndex) => (
 							<LabelRadio key={`icons-${iconIndex}`}>
 								<Field
 									className='invisible'
@@ -74,12 +89,12 @@ export const CreateNewBoardModal = ({ isOpen, setIsOpen }) => {
 
 					<TitleBackground>Background</TitleBackground>
 					<BackgroundContainer>
-						{backgrounds.map(imageIndex => (
-							<LabelRadio key={`backround-${imageIndex}`}>
+						{Array.from({ length: 15 }, (_, imageIndex) => (
+							<LabelRadio key={`background-${imageIndex}`}>
 								<Field
 									className='invisible'
 									type='radio'
-									name='backround'
+									name='background'
 									value={imageIndex}
 								/>
 								<TypesOfBackground
@@ -93,7 +108,6 @@ export const CreateNewBoardModal = ({ isOpen, setIsOpen }) => {
 						<IconWrapper>
 							<AddIcon name='add-board' />
 						</IconWrapper>
-
 						<ButtonText>Create</ButtonText>
 					</Button>
 				</StyledForm>

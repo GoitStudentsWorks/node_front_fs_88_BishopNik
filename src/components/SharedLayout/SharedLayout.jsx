@@ -19,8 +19,10 @@ import { useAuth } from 'hooks';
 
 const SharedLayout = () => {
   const { isLoggedIn } = useAuth();
+
   const { isOpenSidebar, setIsOpenSidebar, isOpenAddBoard, setOpenIsAddBoard } =
     useContext(MainContext);
+
   const [status, setStatus] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -61,11 +63,13 @@ const SharedLayout = () => {
         <HeaderComponent />
       </Header>
       <Main>
+
         <Card />
         <CreateNewBoardModal
           isOpen={isOpenAddBoard}
           setIsOpen={setOpenIsAddBoard}
         />
+
 
         <Suspense fallback={<Loader />}>
           <Outlet />

@@ -1,8 +1,10 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import data from '../../../img/list_img.json';
 import { NeedHelpModal } from 'components/Modal';
+import { useDispatch } from 'react-redux';
+import { modalsSlice } from 'redux/modals/modalSlice';
 import {
 	HelpContainer,
 	HelpText,
@@ -14,7 +16,7 @@ import {
 } from './Help.styled';
 
 export const Help = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const dispatch = useDispatch();
 
 	return (
 		<HelpContainer>
@@ -25,11 +27,11 @@ export const Help = () => {
 				If you need help with <HelpSpanText>TaskPro</HelpSpanText>, check out our support
 				resources or reach out to our customer support team.
 			</HelpText>
-			<BtnHelp onClick={() => setIsOpen(true)}>
+			<BtnHelp onClick={() => dispatch(modalsSlice.actions.openNeedHeplModal(true))}>
 				<HelpIcon name='help' />
 				<HelpBtnText>Need help?</HelpBtnText>
 			</BtnHelp>
-			<NeedHelpModal isOpen={isOpen} setIsOpen={setIsOpen} />
+			<NeedHelpModal />
 		</HelpContainer>
 	);
 };
