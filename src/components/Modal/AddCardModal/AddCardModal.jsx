@@ -5,55 +5,70 @@ import { useForm } from 'react-hook-form';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
 import {
-	CloseButton,
-	ModalContainer,
-	Label,
-	Input,
-	TextArea,
-	RadioButton,
-	AddButton,
+  CloseButton,
+  ModalContainer,
+  Input,
+  TextArea,
+  RadioButton,
+  AddButton,
+  FormTitle,
+  SubTitles,
+  RadioButtonContainer,
+  IconClose,
 } from './AddCardModal.styled';
 import MyDatePicker from '../../DatePicker/MyDatePicker';
 
+
 export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-	const handleFormSubmit = data => {
-		onSubmit(data);
-	};
+  const handleFormSubmit = data => {
+    onSubmit(data);
+  };
 
-	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
-			<ModalContainer>
-				<CloseButton onClick={onRequestClose}>
-					<svg className='CloseButton'>
-						<use href='#icon-close' />
-					</svg>
-				</CloseButton>
-				<h2>Add Card</h2>
-				<form onSubmit={handleSubmit(handleFormSubmit)}>
-					<Label>Title:</Label>
-					<Input {...register('title', { required: true })} />
-					{errors.title && <span>This field is required</span>}
+  return (
+    <ModalWindow
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      style={customStyles}
+    >
+      <ModalContainer>
+        <CloseButton onClick={onRequestClose}>
+        <IconClose name='close'/>
+        </CloseButton>
+        <FormTitle>Add Card</FormTitle>
+        <form onSubmit={handleSubmit(handleFormSubmit)}>
+          <Input
+            {...register('title', { required: true })}
+            placeholder="Title"
+          />
+          {errors.title && <span>This field is required</span>}
 
-					<Label>Description:</Label>
-					<TextArea {...register('description')} />
+          <TextArea {...register('description')} placeholder="Describtion" />
 
-					<Label>Label color:</Label>
-					<RadioButton type='radio' {...register('color')} value='color1' />
-					<RadioButton type='radio' {...register('color')} value='color2' />
-					<RadioButton type='radio' {...register('color')} value='color3' />
-					<RadioButton type='radio' {...register('color')} value='color4' />
+          <div>
+            <SubTitles>Label color:</SubTitles>
+            <RadioButtonContainer>
+            <RadioButton type="radio" {...register('color')} value="color1" />
+            <RadioButton type="radio" {...register('color')} value="color2" />
+            <RadioButton type="radio" {...register('color')} value="color3" />
+            <RadioButton type="radio" {...register('color')} value="color4" />
+            </RadioButtonContainer>
+            
+          </div>
 
-					<Label>Deadline:</Label>
-					<MyDatePicker {...register('deadline')} />
-					<AddButton type='submit'>Add</AddButton>
-				</form>
-			</ModalContainer>
-		</ModalWindow>
-	);
+          <div>
+            <SubTitles>Deadline:</SubTitles>
+            <MyDatePicker {...register('deadline')} />
+          </div>
+          
+          <AddButton type="submit">Add</AddButton>
+        </form>
+      </ModalContainer>
+    </ModalWindow>
+  );
 };

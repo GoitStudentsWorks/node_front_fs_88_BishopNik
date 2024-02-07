@@ -34,12 +34,14 @@ export const addBoard = createAsyncThunk(
   async (newBoard, thunkAPI) => {
     try {
       const response = await axios.post('/boards', newBoard);
+
       toastSuccess('Board has been created');
       return response.data;
     } catch ({response}) {
       toastError(response?.data?.message);
 
       return thunkAPI.rejectWithValue(response?.data.message);
+
     }
   }
 );

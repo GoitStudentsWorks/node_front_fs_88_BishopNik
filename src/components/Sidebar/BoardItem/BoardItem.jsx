@@ -24,27 +24,28 @@ export const BoardItem = ({ nameBoard, boardId }) => {
     dispatch(fetchDelBoard(boardId));
   };
   return (
-    <BoardContainer>
-      <Link to={`/todos/${boardId}`} onClick={evt => getById(boardId)}>
+    <Link to={`/todos/${boardId}`} onClick={evt => getById(boardId)}>
+      <BoardContainer>
         <BoardNameContainer>
           <BoardIcon name="type-6" />
           <BoardText>board name: {nameBoard}</BoardText>
         </BoardNameContainer>
-      </Link>
-      <IconsContainer>
-        <EditIcon
-          name="edit"
-          type="button"
-          onClick={evt => console.log(`${nameBoard} edit`)}
-        />
-        <DelIcon
-          name="delete"
-          type="button"
-          onClick={() => delBoard(boardId)}
-        />
-      </IconsContainer>
 
-      <BoardLine />
-    </BoardContainer>
+        <IconsContainer>
+          <EditIcon
+            name="edit"
+            type="button"
+            onClick={evt => console.log(`${nameBoard} edit`)}
+          />
+          <DelIcon
+            name="delete"
+            type="button"
+            onClick={() => delBoard(boardId)}
+          />
+        </IconsContainer>
+
+        <BoardLine />
+      </BoardContainer>
+    </Link>
   );
 };
