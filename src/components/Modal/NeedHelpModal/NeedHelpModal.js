@@ -1,6 +1,10 @@
 /** @format */
 
 import { Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { modalsSlice } from 'redux/modals/modalSlice';
+import { needModalState} from 'redux/modals/selectors'
+import { sendHelpReq} from 'redux/modals/operations'
 import {
 	StyledForm,
 	HeaderContainer,
@@ -15,22 +19,27 @@ import {
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
 
-export const NeedHelpModal = ({ isOpen, setIsOpen }) => {
-	const handleSubmit = () => {};
+export const NeedHelpModal = () => {
+
+	const dispatch = useDispatch();
+
+	const {isOpen} = useSelector(needModalState);
+
+	
 
 	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles}>
+		<ModalWindow isOpen={isOpen} onRequestClose={() => dispatch(modalsSlice.actions.openNeedHeplModal(false))} style={customStyles}>
 			<Formik
 				initialValues={{ email: '', comment: '' }}
 				onSubmit={(values, actions) => {
-					handleSubmit(values, actions);
+					dispatch( sendHelpReq(values) )
 				}}
 				// validationSchema={LoginSchema}
 			>
 				<StyledForm autoComplete='off'>
 					<HeaderContainer>
 						<Title>Need help</Title>
-						<CloseIcon name='close' onClick={() => setIsOpen(false)} />
+						<CloseIcon name='close' onClick={() => dispatch(modalsSlice.actions.openNeedHeplModal(false))} />
 					</HeaderContainer>
 					<LabelBox>
 						<label>
