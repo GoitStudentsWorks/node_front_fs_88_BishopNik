@@ -9,9 +9,11 @@ import { useAuth } from 'hooks';
 
 export const BoardsList = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     fetchAllBoards();
   }, [dispatch]);
+
   const { allBoards } = useAuth();
 
   const listRef = useRef(null);

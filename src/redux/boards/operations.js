@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toastError, toastSuccess } from 'components/Helpers';
 
 export const fetchAllBoards = createAsyncThunk(
   'boards/fetchAll',
@@ -33,9 +34,14 @@ export const addBoard = createAsyncThunk(
   async (newBoard, thunkAPI) => {
     try {
       const response = await axios.post('/boards', newBoard);
+
+      toastSuccess('Board has been created');
       return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch ({response}) {
+      toastError(response?.data?.message);
+
+      return thunkAPI.rejectWithValue(response?.data.message);
+
     }
   }
 );

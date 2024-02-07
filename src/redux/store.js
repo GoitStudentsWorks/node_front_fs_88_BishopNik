@@ -16,6 +16,7 @@ import filterSlice from './filter/filterSlice';
 import { todosReducer } from './todos/todosSlice';
 import { authReducer } from './auth/authSlice';
 import { boardsReducer } from './boards/boardsSlice';
+import { modalsReducer } from './modals/modalSlice';
 
 const persistConfig = {
 	key: 'token',
@@ -31,6 +32,7 @@ export const store = configureStore({
 		boards: boardsReducer,
 		todos: todosReducer,
 		auth: tokenPersistedReducer,
+		modals: modalsReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
