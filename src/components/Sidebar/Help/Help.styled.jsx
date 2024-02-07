@@ -48,7 +48,7 @@ export const HelpSpanText = styled.span`
 
 export const HelpBtnText = styled.p`
   font-size: 12px;
-  color: ${props => props.theme.help.buttonColor};
+  color: ${props => props.theme.help.textMain};
   margin: 0px;
 `;
 
@@ -68,7 +68,7 @@ export const BtnHelp = styled.button`
   &:hover,
   &:focus {
     ${HelpBtnText} {
-      color: rgba(157, 200, 136, 1);
+      color: ${props => props.theme.sidebar.textAccent};
     }
   }
 `;
@@ -76,5 +76,5 @@ export const BtnHelp = styled.button`
 export const HelpIcon = styled(Icon)`
   width: 20px;
   height: 20px;
-  stroke: white;
+  stroke: ${props => props.theme.help.textMain};
 `;
