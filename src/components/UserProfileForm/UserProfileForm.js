@@ -1,10 +1,8 @@
-// import { StyledForm } from 'components/LoginForm/LoginForm.Styled';
-// import { Formik,Field,Form } from 'formik';
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import {
-  Button,
+  ButtonStyle,
   ErrorMessageStyle,
   IconHideShow,
   LabelBox,
@@ -43,7 +41,6 @@ export const UserProfileForm = () => {
     setShowPassword(!showPassword);
   };
   return (
-    // <Container>
     <Formik
       initialValues={{
         login: '',
@@ -52,7 +49,6 @@ export const UserProfileForm = () => {
       }}
       validationSchema={formShema}
       onSubmit={async values => {
-        // await new Promise(r => setTimeout(r, 500));
         alert(JSON.stringify(values, null, 2));
       }}
     >
@@ -100,9 +96,8 @@ export const UserProfileForm = () => {
           </label>
         </LabelBox>
 
-        <Button type="submit">Send</Button>
+        <ButtonStyle type="submit">Send</ButtonStyle>
       </StyledForm>
     </Formik>
-    // </Container>
   );
 };

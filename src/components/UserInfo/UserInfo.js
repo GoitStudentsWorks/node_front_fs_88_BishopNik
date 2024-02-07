@@ -1,4 +1,4 @@
-import { ModalEditProfile } from 'components/Modal/ModalEditProfile';
+import { ModalEditProfile } from 'components/Modal/EditForm/ModalEditProfile';
 import { useState } from 'react';
 import data from '../../img/list_img.json';
 import { UserInfoWrapper } from './UserInfo.styled';
@@ -28,10 +28,7 @@ export const UserInfo = () => {
       <ModalEditProfile
         stateСhangeModal={stateСhangeModal}
         isModalState={isModalState}
-        // src={largeImag
       />
     </div>
   );
 };
-
-//  <img src={data.user.dark} alt="DarkUser" width={32} />;
