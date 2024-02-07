@@ -3,18 +3,25 @@
 import styled from 'styled-components';
 import Icon from '../../Icon/index';
 
-export const IconContainer = styled.div`
+export const IconContainer = styled.button`
   width: 40px;
   height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   background-color: ${props => props.theme.sidebar.addButtonBackground};
   border-radius: 5px;
+  cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.sidebar.addButtonHover};
+  }
 `;
 
-export const BtnAdd = styled.button`
+export const BtnAdd = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: 8px;
@@ -27,14 +34,6 @@ export const BtnAdd = styled.button`
   border-top: solid 1px ${props => props.theme.sidebar.border};
   border-bottom: solid 1px ${props => props.theme.sidebar.border};
   background-color: transparent;
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    ${IconContainer} {
-      background-color: ${props => props.theme.sidebar.addButtonHover};
-    }
-  }
 
   @media screen and (min-width: 375px) {
     width: 197px;
