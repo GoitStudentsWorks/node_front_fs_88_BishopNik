@@ -73,6 +73,9 @@ export const theme = [
         projectBorder: 'rgba(190, 219, 176, 1)',
         iconLogout: 'rgba(190, 219, 176, 1)',
         iconClose: 'rgba(255, 255, 255, 1)',
+        iconLogo: 'rgba(255, 255, 255, 1)',
+        iconContainer: 'rgba(31, 31, 31, 1)',
+        hoverLogout: 'rgba(157, 200, 136, 1)',
       },
       profile: {
         background: 'rgba(21, 21, 21, 1)',
@@ -178,6 +181,9 @@ export const theme = [
         projectBorder: 'rgba(190, 219, 176, 1)',
         iconLogout: 'rgba(190, 219, 176, 1)',
         iconClose: 'rgba(22, 22, 22, 1)',
+        iconLogo: 'rgba(255, 255, 255, 1)',
+        iconContainer: 'rgba(31, 31, 31, 1)',
+        hoverLogout: 'rgba(157, 200, 136, 1)',
       },
       profile: {
         background: 'rgba(252, 252, 252, 1)',
@@ -283,6 +289,9 @@ export const theme = [
         projectBorder: 'rgba(255, 255, 255, 1)',
         iconLogout: 'rgba(255, 255, 255, 1)',
         iconClose: 'rgba(255, 255, 255, 1)',
+        iconLogo: '(82, 85, 188, 1)',
+        iconContainer: 'rgba(236, 237, 253, 1)',
+        hoverLogout: 'rgba(184, 188, 253, 1)',
       },
       profile: {
         background: 'rgba(252, 252, 252, 1)',
