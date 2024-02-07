@@ -29,16 +29,16 @@ export const ButtonFilter = styled.button`
 export const FiltersIcon = styled(Icon)`
 	width: 16px;
 	height: 16px;
-	stroke: rgba(255, 255, 255, 0.8);
+	stroke: ${props => props.theme.popup.textMain};
 `;
 
 export const TextButton = styled.span`
-	color: rgba(255, 255, 255, 0.8);
+	color: ${props => props.theme.popup.textMain};
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
-	letter-spacing: -0.28px;
+	letter-spacing: -0.28px; 
 `;
 
 export const TextEmptyBoard = styled.p`
@@ -48,7 +48,7 @@ export const TextEmptyBoard = styled.p`
 	margin-right: auto;
 	margin-top: 292px;
 	padding: 0 20px;
-	color: rgba(255, 255, 255, 0.5);
+	color: ${props => props.theme.popup.textSecondary};
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 1.3;
@@ -74,7 +74,7 @@ export const TextEmptyBoard = styled.p`
 
 export const ButtonCreateBoard = styled.span`
 	background-color: transparent;
-	color: #bedbb0;
+	color: ${props => props.theme.popup.textAccent};;
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 16px;

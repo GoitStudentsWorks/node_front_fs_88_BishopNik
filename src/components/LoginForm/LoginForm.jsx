@@ -41,8 +41,8 @@ const LoginForm = () => {
       >
         <StyledForm autoComplete="off">
           <NavBox>
-            <Link to="/register">Registation</Link>
-            <Link to="/login" end>
+            <Link to="/auth/register">Registation</Link>
+            <Link to="/auth/login" end>
               Log In
             </Link>
           </NavBox>
@@ -61,7 +61,6 @@ const LoginForm = () => {
                 <IconHideShow
                   name="hide-show"
                   onClick={togglePasswordVisibility}
-                 
                 >
                   {showPassword ? 'Hide' : 'Show'}
                 </IconHideShow>

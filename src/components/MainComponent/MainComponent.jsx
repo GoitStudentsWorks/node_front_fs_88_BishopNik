@@ -8,23 +8,7 @@ function MainComponent({ children }) {
 	return (
 		<>
 			{children ? (
-				<>
-					{/* -----Delete code----- */}
-					<div
-						style={{
-							width: '336px',
-							height: '56px',
-							border: '1px solid white',
-							margin: '40px',
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-						}}
-					>
-						<h1 style={{ color: 'white' }}>{children}</h1>
-					</div>
-					{/* --------- */}
-				</>
+				<>{children}</>
 			) : (
 				<TextEmptyBoard>
 					Before starting your project, it is essential{' '}

@@ -6,7 +6,7 @@ import Icon from '../../Icon';
 export const LogoutIcon = styled(Icon)`
   width: 32px;
   height: 32px;
-  stroke: rgba(190, 219, 176, 1);
+  stroke:  ${props => props.theme.sidebar.iconLogout};
 `;
 
 export const Btn = styled.button`
@@ -37,7 +37,7 @@ export const LogoutBtnText = styled.p`
   font-size: 14px;
   font-style: medium;
   margin-left: 14px;
-  color: rgba(255, 255, 255, 1);
+  color: ${props => props.theme.sidebar.iconClose};
   @media screen and (min-width: 1440px) {
     font-size: 16px;
   }

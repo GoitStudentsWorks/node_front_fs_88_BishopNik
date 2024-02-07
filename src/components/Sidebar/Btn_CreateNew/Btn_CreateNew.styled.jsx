@@ -9,7 +9,7 @@ export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(190, 219, 176, 1);
+  background-color: ${props => props.theme.modal.backgeoundAvatar};
   border-radius: 5px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
@@ -51,7 +51,7 @@ export const Text = styled.p`
   height: 42px;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 1);
+  color: ${props => props.theme.help.textMain};
   display: flex;
   align-items: center;
 `;

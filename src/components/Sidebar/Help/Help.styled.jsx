@@ -8,10 +8,10 @@ export const HelpContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
-  margin-top: 40px;
+  margin-top: auto;
   margin-bottom: 24px;
   border: none;
-  background-color: rgba(31, 31, 31, 1);
+  background-color: ${props => props.theme.help.background};
   border-radius: 10px;
 
   @media screen and (min-width: 375px) {
@@ -36,19 +36,19 @@ export const HelpText = styled.p`
   font-style: normal;
   letter-spacing: -0.02em;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 1);
+  color: ${props => props.theme.help.textMain};
   margin: 0;
 `;
 
 export const HelpSpanText = styled.span`
-  color: rgba(190, 219, 176, 1);
+  color: ${props => props.theme.help.textAccent};
   font-size: 14px;
   letter-spacing: -0.02em;
 `;
 
 export const HelpBtnText = styled.p`
   font-size: 12px;
-  color: rgba(255, 255, 255, 1);
+  color: ${props => props.theme.help.buttonColor};
   margin: 0px;
 `;
 
