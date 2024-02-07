@@ -3,7 +3,7 @@
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalsSlice } from 'redux/modals/modalSlice';
-import { needModalState } from 'redux/modals/selectors';
+import { needHelpModalState } from 'redux/modals/selectors';
 import { sendHelpReq } from 'redux/modals/operations';
 import { needHelpSchema } from '../../Helpers/ModalSchemas';
 import {
@@ -23,7 +23,7 @@ import { customStyles } from '../Modal.styled';
 
 export const NeedHelpModal = () => {
   const dispatch = useDispatch();
-  const { isOpen } = useSelector(needModalState);
+  const { isOpen } = useSelector(needHelpModalState);
 
   return (
     <ModalWindow

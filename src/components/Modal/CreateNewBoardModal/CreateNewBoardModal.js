@@ -1,103 +1,119 @@
 /** @format */
 
 import { Formik, Field } from 'formik';
+import { createBoardSchema } from '../../Helpers/ModalSchemas';
 import {
-	StyledForm,
-	HeaderContainer,
-	CloseIcon,
-	LabelBox,
-	StyledField,
-	Button,
-	ButtonText,
-	Title,
-	TitleIcons,
-	IconsContainer,
-	TypesOfIcon,
-	TitleBackground,
-	BackgroundContainer,
-	TypesOfBackground,
-	LabelRadio,
-	IconWrapper,
-	AddIcon,
+  StyledForm,
+  HeaderContainer,
+  CloseIcon,
+  LabelBox,
+  StyledField,
+  Button,
+  ButtonText,
+  Title,
+  TitleIcons,
+  IconsContainer,
+  TypesOfIcon,
+  TitleBackground,
+  BackgroundContainer,
+  TypesOfBackground,
+  LabelRadio,
+  IconWrapper,
+  AddIcon,
+  ErrMessageStyled,
 } from './CreateNewBoardModal.styled';
 import { customStyles } from '../Modal.styled';
-
+import { addBoard } from 'redux/boards/operations';
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { modalsSlice } from 'redux/modals/modalSlice';
+import { createEditBoardModalState } from 'redux/modals/selectors';
 
-export const CreateNewBoardModal = ({ isOpen, setIsOpen }) => {
-	const handleSubmit = () => {};
+const icons = [1, 2, 3, 4, 5, 6, 7, 8];
+const backgrounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-	const icons = [1, 2, 3, 4, 5, 6, 7, 8];
-	const backgrounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+export const CreateNewBoardModal = () => {
+  const dispatch = useDispatch();
+  const { isOpen } = useSelector(createEditBoardModalState);
 
-	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles}>
-			<Formik
-				initialValues={{ title: '', icon: '', background: '' }}
-				onSubmit={(values, actions) => {
-					console.log(values);
+  const closeModal = () => {
+    dispatch(modalsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
+  };
 
-					handleSubmit(values, actions);
-				}}
-				// validationSchema={LoginSchema}
-			>
-				<StyledForm autoComplete='off'>
-					<HeaderContainer>
-						<Title>New board</Title>
-						<CloseIcon name='close' onClick={() => setIsOpen(false)} />
-					</HeaderContainer>
+  return (
+    <ModalWindow
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      style={customStyles}
+    >
+      <Formik
+        initialValues={{ title: '', icon: '', background: '' }}
+        onSubmit={(values, actions) => {
+          console.log(values);
 
-					<LabelBox>
-						<label>
-							<StyledField name='title' type='text' placeholder='Title' />
-							{/* <ErrMessageStyled name="email" component="span" /> */}
-						</label>
+          const data = {
+            name: values.title,
+            icon: values.icon,
+          };
 
-						{/* <ErrMessageStyled name="password" component="span" /> */}
-					</LabelBox>
-					<TitleIcons>Icons</TitleIcons>
+          dispatch(addBoard(data));
+        }}
+        validationSchema={createBoardSchema}
+      >
+        <StyledForm autoComplete="off">
+          <HeaderContainer>
+            <Title>New board</Title>
+            <CloseIcon name="close" onClick={closeModal} />
+          </HeaderContainer>
 
-					<IconsContainer>
-						{icons.map(iconIndex => (
-							<LabelRadio key={`icons-${iconIndex}`}>
-								<Field
-									className='invisible'
-									type='radio'
-									name='icon'
-									value={iconIndex}
-								/>
-								<TypesOfIcon name={`type-${iconIndex}`} />
-							</LabelRadio>
-						))}
-					</IconsContainer>
+          <LabelBox>
+            <label>
+              <StyledField name="title" type="text" placeholder="Title" />
+              <ErrMessageStyled name="title" component="span" />
+            </label>
+          </LabelBox>
+          <TitleIcons>Icons</TitleIcons>
 
-					<TitleBackground>Background</TitleBackground>
-					<BackgroundContainer>
-						{backgrounds.map(imageIndex => (
-							<LabelRadio key={`backround-${imageIndex}`}>
-								<Field
-									className='invisible'
-									type='radio'
-									name='backround'
-									value={imageIndex}
-								/>
-								<TypesOfBackground
-									src={background.mobile[`image${imageIndex}`]}
-								></TypesOfBackground>
-							</LabelRadio>
-						))}
-					</BackgroundContainer>
+          <IconsContainer>
+            {icons.map(iconIndex => (
+              <LabelRadio key={`icons-${iconIndex}`}>
+                <Field
+                  className="invisible"
+                  type="radio"
+                  name="icon"
+                  value={iconIndex}
+                />
+                <TypesOfIcon name={`type-${iconIndex}`} />
+              </LabelRadio>
+            ))}
+          </IconsContainer>
 
-					<Button type='submit'>
-						<IconWrapper>
-							<AddIcon name='add-board' />
-						</IconWrapper>
+          <TitleBackground>Background</TitleBackground>
+          <BackgroundContainer>
+            {backgrounds.map(imageIndex => (
+              <LabelRadio key={`backround-${imageIndex}`}>
+                <Field
+                  className="invisible"
+                  type="radio"
+                  name="background"
+                  value={imageIndex}
+                />
+                <TypesOfBackground
+                  src={background.mobile[`image${imageIndex}`]}
+                ></TypesOfBackground>
+              </LabelRadio>
+            ))}
+          </BackgroundContainer>
 
-						<ButtonText>Create</ButtonText>
-					</Button>
-				</StyledForm>
-			</Formik>
-		</ModalWindow>
-	);
+          <Button type="submit">
+            <IconWrapper>
+              <AddIcon name="add-board" />
+            </IconWrapper>
+            <ButtonText>Create</ButtonText>
+          </Button>
+        </StyledForm>
+      </Formik>
+    </ModalWindow>
+  );
 };

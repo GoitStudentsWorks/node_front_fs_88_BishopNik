@@ -71,12 +71,14 @@ export const StyledTextArea = styled(Field)`
   color: #fff;
   border-radius: 8px;
   border: 1px solid #bedbb0;
-  padding: 14px 0px 14px 18px;
+  padding: 14px 5px 5px 18px;
   opacity: 0.4;
   background: #1f1f1f;
   width: 100%;
   height: 120px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  position: relative;
+
   &::placeholder {
     font: inherit;
     font-size: 18px;
@@ -84,6 +86,10 @@ export const StyledTextArea = styled(Field)`
   &::-webkit-input-placeholder {
     font: inherit;
     font-size: 18px;
+	position: absolute;
+	top: 14px;
+	left: 18px;
+	z-index: -1;
   }
 `;
 

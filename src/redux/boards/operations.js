@@ -25,6 +25,9 @@ export const getBoardById = createAsyncThunk('boards/:boardName', async (boardId
 export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thunkAPI) => {
 	try {
 		const response = await axios.post('/boards', newBoard);
+
+		console.log(response)
+
 		return response.data;
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message);
