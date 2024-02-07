@@ -10,6 +10,7 @@ import {
   Header,
 } from 'components/styled.component/MainTodosPage.styled';
 import { SidebarComponent } from '../Sidebar/Sidebar';
+import { Card } from 'components/Card/Card';
 import { MainContext } from 'components/Helpers';
 import { CreateNewBoardModal } from 'components/Modal';
 
@@ -18,7 +19,10 @@ import { useAuth } from 'hooks';
 
 const SharedLayout = () => {
   const { isLoggedIn } = useAuth();
-  const { isOpenSidebar, setIsOpenSidebar } = useContext(MainContext);
+
+  const { isOpenSidebar, setIsOpenSidebar, isOpenAddBoard, setOpenIsAddBoard } =
+    useContext(MainContext);
+
   const [status, setStatus] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -59,7 +63,14 @@ const SharedLayout = () => {
         <HeaderComponent />
       </Header>
       <Main>
-        <CreateNewBoardModal />
+
+        <Card />
+        <CreateNewBoardModal
+          isOpen={isOpenAddBoard}
+          setIsOpen={setOpenIsAddBoard}
+        />
+
+
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
