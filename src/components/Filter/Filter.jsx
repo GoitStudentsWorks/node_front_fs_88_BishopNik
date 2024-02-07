@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { RadioButton, RadioButtonGroup } from './Filter.styled.jsx';
 
-export const Filter = () => {
+export const Filter = ({ setIsModalOpen }) => {
 	const [selectedOption, setSelectedOption] = useState('Without priority');
 
 	const handleOptionChange = e => {
@@ -13,7 +13,7 @@ export const Filter = () => {
 	return (
 		<>
 			<h1>Filters</h1>
-			<button type='button' onClick={() => console.log('close')}>
+			<button type='button' onClick={() => setIsModalOpen(false)}>
 				X
 			</button>
 			<h2>Label color</h2>

@@ -5,4 +5,3 @@ export * from './CreateNewBoardModal/CreateNewBoardModal.js';
 export * from './EditProfileModal/EditProfileModal.js';
 export * from './AddColumnModal/AddColumnModal';
 export * from './NeedHelpModal/NeedHelpModal';
-export * from './FilterModal/FilterModal';

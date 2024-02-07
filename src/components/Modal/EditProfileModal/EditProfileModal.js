@@ -1,7 +1,7 @@
 /** @format */
 
 import { UserProfileForm } from 'components/UserProfileForm';
-import { FiltersIcon } from 'components/MainComponent/MainComponent.styled';
+import { FiltersIcon } from 'components/Filter/FiltersBtn.styled';
 import { UserIcon } from 'components/UserProfileForm/UserIcon';
 import ModalWindow from '../Modal';
 import { modalTextStyles, closeIconStyles } from './EditProfileModal.styled';

@@ -6,16 +6,10 @@ import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
 import { Filter } from 'components/Filter';
 
-const FilterModal = ({ isModalOpen, setIsModalOpen }) => {
+export const FilterModal = ({ isModalOpen, setIsOpen }) => {
 	return (
-		<ModalWindow
-			isOpen={isModalOpen}
-			onRequestClose={() => setIsModalOpen(false)}
-			style={customStyles}
-		>
-			<Filter />
+		<ModalWindow isOpen={isModalOpen} onRequestClose={setIsOpen} style={customStyles}>
+			<Filter setIsModalOpen={setIsOpen} />
 		</ModalWindow>
 	);
 };
-
-export default FilterModal;

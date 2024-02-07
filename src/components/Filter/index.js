@@ -1,4 +1,5 @@
 /** @format */
 
-export * from './Filter.jsx';
-export { default as ModalFilter } from '../Modal/FilterModal/FilterModal.jsx';
+export * from './Filter';
+export * from './FilterBtn';
+export * from '../Modal/FilterModal/FilterModal';

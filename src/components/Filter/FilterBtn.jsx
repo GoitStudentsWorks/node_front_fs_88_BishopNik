@@ -1,16 +1,12 @@
 /** @format */
 
-import Icon from '../Icon';
-import { FilterBtnStyle, FilterIcon } from './FiltersBtn.styled.jsx';
+import { ButtonFilter, FiltersIcon, TextButton } from './FiltersBtn.styled.jsx';
 
-const FilterBtn = () => {
+export const FilterBtn = ({ onClick }) => {
 	return (
-		<FilterBtnStyle>
-			<FilterIcon>
-				<Icon name='filters' />
-			</FilterIcon>
-		</FilterBtnStyle>
+		<ButtonFilter type='button' onClick={onClick}>
+			<FiltersIcon name='filters' />
+			<TextButton>Filters</TextButton>
+		</ButtonFilter>
 	);
 };
-
-export default FilterBtn;
