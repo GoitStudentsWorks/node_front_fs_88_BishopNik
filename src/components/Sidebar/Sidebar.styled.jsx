@@ -1,1 +1,0 @@
- background-color: ${props => props.theme.sidebar.projectActive };
