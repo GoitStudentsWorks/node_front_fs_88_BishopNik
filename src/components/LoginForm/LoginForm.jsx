@@ -3,7 +3,7 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import LoginSchema from 'components/Helpers/LoginSchema';
+import { LoginSchema } from 'components/Helpers/ModalSchemas.js';
 import {
   Button,
   ButtonText,

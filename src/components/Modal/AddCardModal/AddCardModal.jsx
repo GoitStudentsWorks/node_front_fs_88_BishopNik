@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
 import {
@@ -18,13 +17,8 @@ import {
   StyledInput,
 } from './AddCardModal.styled';
 import MyDatePicker from '../../DatePicker/MyDatePicker';
+import { addCardValidationSchema } from 'components/Helpers/ModalSchemas';
 
-const validationSchema = Yup.object().shape({
-  title: Yup.string().required('Title is required'),
-  description: Yup.string(),
-  color: Yup.string().required('Color is required'),
-  deadline: Yup.date(),
-});
 
 export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
   const handleFormSubmit = values => {
@@ -49,7 +43,7 @@ export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
             color: '',
             deadline: '',
           }}
-          validationSchema={validationSchema}
+          validationSchema={addCardValidationSchema}
           onSubmit={handleFormSubmit}
         >
           {({ isSubmitting }) => (
