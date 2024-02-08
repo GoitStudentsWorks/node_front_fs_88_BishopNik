@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon/Icon.jsx';
+import {Field} from 'formik';
 
 export const ModalContainer = styled.div`
   position: relative;
@@ -54,8 +55,9 @@ export const SubTitles = styled.h3`
   margin: 0;
 `;
 
-export const Input = styled.input`
+export const StyledInput = styled(Field)`
   width: 100%;
+  color: rgb(255, 255, 255);
   padding: 14px 18px;
   margin: 24px 0 14px 0;
   border: 1px solid ${({ theme }) => theme.modal.border};
@@ -63,6 +65,10 @@ export const Input = styled.input`
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   background: ${({ theme }) => theme.modal.backgroundSecondary};
   opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+
   color: ${({ theme }) => theme.modal.textMain};
   transition: border-color 0.3s;
 
@@ -72,11 +78,13 @@ export const Input = styled.input`
 
   ::placeholder {
     color: ${({ theme }) => theme.modal.textSecondary};    
+
   }
 `;
 
 export const TextArea = styled.textarea`
   width: 100%;
+  color: rgb(255, 255, 255);
   height: 154px;
   padding: 14px 18px;
   margin-bottom: 24px;
@@ -85,6 +93,10 @@ export const TextArea = styled.textarea`
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   background: ${({ theme }) => theme.modal.backgroundSecondary};
   opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+
   color: ${({ theme }) => theme.modal.textMain};
   transition: border-color 0.3s;
 
@@ -94,6 +106,7 @@ export const TextArea = styled.textarea`
   
   ::placeholder {
     color: ${({ theme }) => theme.modal.textSecondary};
+
   }
 `;
 
