@@ -1,34 +1,37 @@
-/** @format */
-
-import { ModalEditProfile } from 'components/Modal';
+import { ModalEditProfile } from 'components/Modal/EditForm/ModalEditProfile';
 import { useState } from 'react';
 import data from '../../img/list_img.json';
 import { UserInfoWrapper } from './UserInfo.styled';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 export const UserInfo = () => {
-	const [isModalState, setIsModalState] = useState(false);
+  const { name, avatarURL } = useSelector(selectUser);
+  const [isModalState, setIsModalState] = useState(false);
 
-	const stateСhangeModal = () => {
-		if (isModalState === true) {
-			setIsModalState(false);
-		} else {
-			setIsModalState(true);
-		}
-	};
+  const stateСhangeModal = () => {
+    if (isModalState === true) {
+      setIsModalState(false);
+    } else {
+      setIsModalState(true);
+    }
+  };
 
-	return (
-		<div>
-			<UserInfoWrapper>
-				<span>login</span>
-				<img src={data.user.dark} alt='LightUser' width={32} onClick={stateСhangeModal} />
-			</UserInfoWrapper>
-			<ModalEditProfile
-				stateСhangeModal={stateСhangeModal}
-				isModalState={isModalState}
-				// src={largeImag
-			/>
-		</div>
-	);
+  let src = data.user.dark;
+  if (avatarURL) {
+    src = avatarURL;
+  }
+
+  return (
+    <div>
+      <UserInfoWrapper>
+        <span>{name}</span>
+        <img src={src} alt="LightUser" width={32} onClick={stateСhangeModal} />
+      </UserInfoWrapper>
+      <ModalEditProfile
+        stateСhangeModal={stateСhangeModal}
+        isModalState={isModalState}
+      />
+    </div>
+  );
 };
-
-//  <img src={data.user.dark} alt="DarkUser" width={32} />;
