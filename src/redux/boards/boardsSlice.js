@@ -19,11 +19,12 @@ export const boardsSlice = createSlice({
 	reducers: {
 		resetError: state => {
 			state.error = null;
+			state.createEditBoardModal = { isOpen: false, boardId: null };
 		},
-		openCreateEditBoardModal: (state, action) => {
-			state.createEditBoardModal.isOpen = action.payload.isOpen;
-			state.createEditBoardModal.boardId = action.payload.boardId;
-		},
+		// openCreateEditBoardModal: (state, action) => {
+		// 	state.createEditBoardModal.isOpen = action.payload.isOpen;
+		// 	state.createEditBoardModal.boardId = action.payload.boardId;
+		// },
 	},
 	extraReducers: builder => {
 		builder
@@ -42,6 +43,7 @@ export const boardsSlice = createSlice({
 			.addCase(addBoard.pending, state => {
 				state.isLoading = true;
 				state.error = null;
+				state.createEditBoardModal = { isOpen: true, boardId: null };
 			})
 			.addCase(addBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
@@ -73,8 +75,8 @@ export const boardsSlice = createSlice({
 			.addCase(fetchDelBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				 const index = state.items.findIndex(item => item.id === payload.id);
-      			state.items.splice(index, 1);
+				const index = state.items.findIndex(item => item.id === payload.id);
+				state.items.splice(index, 1);
 			})
 			.addCase(fetchDelBoard.rejected, (state, { error }) => {
 				state.isLoading = false;

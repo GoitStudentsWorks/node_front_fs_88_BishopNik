@@ -35,21 +35,22 @@ export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thu
 
 export const fetchPutBoard = createAsyncThunk(
 	'boards/fetchPut',
-	async ({ _id, name, gender, email, phone }, thunkAPI) => {
+	async ({ _id, name, icon, background }, thunkAPI) => {
 		try {
 			const response = await axios.put(`/boards/${_id}`, {});
-			console.log(response)
+			console.log(response);
 			// return response.data;
 		} catch ({ response }) {
-		toastError(response?.data?.message);
-		return thunkAPI.rejectWithValue(response?.data?.message);
+			toastError(response?.data?.message);
+			return thunkAPI.rejectWithValue(response?.data?.message);
+		}
 	}
-	});
+);
 
 export const fetchDelBoard = createAsyncThunk('boards/fetchDel', async (id, thunkAPI) => {
 	try {
 		const response = await axios.delete(`/boards/${id}`);
-		toastSuccess(`Successful removal`)
+		toastSuccess(`Successful removal`);
 		return response.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);

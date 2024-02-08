@@ -1,6 +1,7 @@
 /** @format */
 
-import { Formik, Field} from 'formik';
+import React, { useContext } from 'react';
+import { Formik, Field } from 'formik';
 import {
 	StyledForm,
 	HeaderContainer,
@@ -25,32 +26,36 @@ import { customStyles } from '../Modal.styled';
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { boardsSlice } from 'redux/boards/boardsSlice';
-import { modalData} from 'redux/boards/selectors';
+// import { boardsSlice } from 'redux/boards/boardsSlice';
+import { modalData } from 'redux/boards/selectors';
 import { addBoard } from 'redux/boards/operations';
+import { MainContext } from 'components/Helpers';
 
 export const CreateNewBoardModal = () => {
 	const dispatch = useDispatch();
-	const { isOpen} = useSelector(modalData);
+	const { isOpen, boardId } = useSelector(modalData);
 	// const boards = useSelector(boardsState);
+	const { isOpenAddBoard, setIsOpenAddBoard } = useContext(MainContext);
 
 	// const boardForEditing = boardId && boards.find(item => item.id === boardId);
 
 	const closeModal = () => {
-		dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
+		setIsOpenAddBoard(false);
+		// dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
 	};
 
 	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
-			
+		<ModalWindow isOpen={isOpenAddBoard} onRequestClose={closeModal} style={customStyles}>
 			<Formik
 				initialValues={{
 					name: '',
-					icon:  '1',
-					background:  '1',
+					icon: '0',
+					background: '0',
 				}}
 				onSubmit={(board, actions) => {
-					dispatch(addBoard(board))
+					dispatch(addBoard(board));
+					console.log(isOpen, boardId);
+					if (!isOpen) closeModal();
 				}}
 				// validationSchema={createBoardSchema}
 			>
@@ -99,7 +104,7 @@ export const CreateNewBoardModal = () => {
 						))}
 					</BackgroundContainer>
 
-					<Button type="submit">
+					<Button type='submit'>
 						<IconWrapper>
 							<AddIcon name='add-board' />
 						</IconWrapper>

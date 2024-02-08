@@ -101,6 +101,7 @@ export const LabelBox = styled.div`
 
 export const LabelRadio = styled.label`
 	margin: 0;
+	cursor: pointer;
 `;
 
 export const ErrMessageStyled = styled(ErrorMessage)`
