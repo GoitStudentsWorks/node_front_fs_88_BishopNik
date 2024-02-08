@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+
 import {
   ButtonStyle,
   ErrorMessageStyle,
@@ -35,6 +39,8 @@ const formShema = Yup.object().shape({
 });
 
 export const UserProfileForm = () => {
+  const { name, email, avatarURL } = useSelector(selectUser);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -43,8 +49,8 @@ export const UserProfileForm = () => {
   return (
     <Formik
       initialValues={{
-        login: '',
-        email: '',
+        login: name,
+        email: email,
         password: '',
       }}
       validationSchema={formShema}
@@ -55,16 +61,12 @@ export const UserProfileForm = () => {
       <StyledForm>
         <LabelBox>
           <label htmlFor="login">
-            <StyledField name="login" placeholder="Ivetta" />
+            <StyledField name="login" placeholder="login" />
             <ErrorMessageStyle name="login" component="span" />
           </label>
 
           <label htmlFor="email">
-            <StyledField
-              name="email"
-              placeholder="ivetta34@gmail.com"
-              type="email"
-            />
+            <StyledField name="email" placeholder="email" type="email" />
             <ErrorMessageStyle name="email" component="span" />
           </label>
 
@@ -72,7 +74,7 @@ export const UserProfileForm = () => {
             <StyledField
               type={showPassword ? 'text' : 'password'}
               name="password"
-              placeholder="ivetta1999.23"
+              placeholder="Enter password"
             />
 
             <IconHideShow
