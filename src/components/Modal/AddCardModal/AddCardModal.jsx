@@ -1,59 +1,115 @@
 /** @format */
 
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
 import {
-	CloseButton,
-	ModalContainer,
-	Label,
-	Input,
-	TextArea,
-	RadioButton,
-	AddButton,
+  CloseButton,
+  ModalContainer,
+  TextArea,
+  RadioButton,
+  AddButton,
+  FormTitle,
+  SubTitles,
+  RadioButtonContainer,
+  IconClose,
+  StyledInput,
 } from './AddCardModal.styled';
 import MyDatePicker from '../../DatePicker/MyDatePicker';
+import { addCardValidationSchema } from 'components/Helpers/ModalSchemas';
+
 
 export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+  const handleFormSubmit = values => {
+    onSubmit(values);
+  };
 
-	const handleFormSubmit = data => {
-		onSubmit(data);
-	};
+  return (
+    <ModalWindow
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      style={customStyles}
+    >
+      <ModalContainer>
+        <CloseButton onClick={onRequestClose}>
+          <IconClose name="close" />
+        </CloseButton>
+        <FormTitle>Add Card</FormTitle>
+        <Formik
+          initialValues={{
+            title: '',
+            description: '',
+            color: '',
+            deadline: '',
+          }}
+          validationSchema={addCardValidationSchema}
+          onSubmit={handleFormSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <StyledInput type="text" name="title" placeholder="Title" />
+              <ErrorMessage name="title" component="div" />
 
-	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
-			<ModalContainer>
-				<CloseButton onClick={onRequestClose}>
-					<svg className='CloseButton'>
-						<use href='#icon-close' />
-					</svg>
-				</CloseButton>
-				<h2>Add Card</h2>
-				<form onSubmit={handleSubmit(handleFormSubmit)}>
-					<Label>Title:</Label>
-					<Input {...register('title', { required: true })} />
-					{errors.title && <span>This field is required</span>}
+              <Field
+                type="text"
+                name="description"
+                placeholder="Description"
+                as={TextArea}
+              />
 
-					<Label>Description:</Label>
-					<TextArea {...register('description')} />
+              <div>
+                <SubTitles>Label color:</SubTitles>
+                <RadioButtonContainer>
+                  <label>
+                    <Field
+                      type="radio"
+                      name="color"
+                      value="color1"
+                      as={RadioButton}
+                    />
+                  </label>
+                  <label>
+                    <Field
+                      type="radio"
+                      name="color"
+                      value="color2"
+                      as={RadioButton}
+                    />
+                  </label>
+                  <label>
+                    <Field
+                      type="radio"
+                      name="color"
+                      value="color3"
+                      as={RadioButton}
+                    />
+                  </label>
+                  <label>
+                    <Field
+                      type="radio"
+                      name="color"
+                      value="color4"
+                      as={RadioButton}
+                    />
+                  </label>
+                </RadioButtonContainer>
+                <ErrorMessage name="color" component="div" />
+              </div>
 
-					<Label>Label color:</Label>
-					<RadioButton type='radio' {...register('color')} value='color1' />
-					<RadioButton type='radio' {...register('color')} value='color2' />
-					<RadioButton type='radio' {...register('color')} value='color3' />
-					<RadioButton type='radio' {...register('color')} value='color4' />
+              <div>
+                <SubTitles>Deadline:</SubTitles>
+                <Field name="deadline" as={MyDatePicker} />
+                <ErrorMessage name="deadline" component="div" />
+              </div>
 
-					<Label>Deadline:</Label>
-					<MyDatePicker {...register('deadline')} />
-					<AddButton type='submit'>Add</AddButton>
-				</form>
-			</ModalContainer>
-		</ModalWindow>
-	);
+              <AddButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Adding...' : 'Add'}
+              </AddButton>
+            </Form>
+          )}
+        </Formik>
+      </ModalContainer>
+    </ModalWindow>
+  );
 };

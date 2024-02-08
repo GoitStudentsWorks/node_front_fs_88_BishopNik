@@ -1,10 +1,13 @@
 /** @format */
 
 import React from 'react';
-
 import { TextEmptyBoard, ButtonCreateBoard } from './MainComponent.styled';
+import { useDispatch } from 'react-redux';
+import { boardsSlice } from 'redux/boards/boardsSlice';
 
-function MainComponent({ children }) {
+export function MainComponent({ children }) {
+	const dispatch = useDispatch();
+
 	return (
 		<>
 			{children ? (
@@ -12,7 +15,13 @@ function MainComponent({ children }) {
 			) : (
 				<TextEmptyBoard>
 					Before starting your project, it is essential{' '}
-					<ButtonCreateBoard onClick={() => alert('Create board')}>
+					<ButtonCreateBoard
+						onClick={() => {
+							dispatch(
+								boardsSlice.actions.openCreateEditBoardModal({ isOpen: true })
+							);
+						}}
+					>
 						to create a board
 					</ButtonCreateBoard>{' '}
 					to visualize and track all the necessary tasks and milestones. This board serves
@@ -23,5 +32,3 @@ function MainComponent({ children }) {
 		</>
 	);
 }
-
-export default MainComponent;

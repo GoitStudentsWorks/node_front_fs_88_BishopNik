@@ -1,5 +1,6 @@
 {
 	"mobile": {
+		"image0": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto15.webp?alt=media&token=4bc036e7-e581-4c6b-b7de-eb5685c569b8",
 		"image1": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto01.webp?alt=media&token=a1938475-4837-43af-be5f-58cc088da15c",
 		"image2": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto02.webp?alt=media&token=224bd1d7-7d3f-4ff7-b548-4fddfac4a159",
 		"image3": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto03.webp?alt=media&token=a9854c8d-3d84-403f-bf5e-4d6a04dc6c21",
@@ -13,10 +14,10 @@
 		"image11": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto11.webp?alt=media&token=a8dddb9f-1414-4f69-aba3-3b73945880fe",
 		"image12": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto12.webp?alt=media&token=898a28e3-f53b-408d-907c-825bf1ccd5b1",
 		"image13": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto13.webp?alt=media&token=13539baa-d163-433f-bac8-6b7bf09be957",
-		"image14": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto14.webp?alt=media&token=ae68788e-deb4-47a2-a8ee-1b70d224c0a6",
-		"image15": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto15.webp?alt=media&token=4bc036e7-e581-4c6b-b7de-eb5685c569b8"
+		"image14": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fmobile%2Fphoto14.webp?alt=media&token=ae68788e-deb4-47a2-a8ee-1b70d224c0a6"
 	},
 	"table": {
+		"image0": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto15.webp?alt=media&token=b14d520d-bdf5-4a08-8816-38e4e8abebb3",
 		"image1": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto01.webp?alt=media&token=daae481c-168a-4c3f-8102-3385b7b9b152",
 		"image2": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto02.webp?alt=media&token=bb0763d6-e90e-478e-8aaf-6efe567d025d",
 		"image3": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto03.webp?alt=media&token=e8ba8f71-cbcf-4202-974f-53e6fabc961e",
@@ -30,10 +31,10 @@
 		"image11": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto11.webp?alt=media&token=9a9d88a5-f9ef-4953-ac53-005dc48b2a95",
 		"image12": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto12.webp?alt=media&token=aa9af541-ec6e-4e2b-b325-e4465e07c9b6",
 		"image13": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto13.webp?alt=media&token=15b459c9-5748-4e97-b741-abffce29d0ac",
-		"image14": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto14.webp?alt=media&token=b8fb8e2b-ad57-4695-953e-2c4b12dda44a",
-		"image15": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto15.webp?alt=media&token=b14d520d-bdf5-4a08-8816-38e4e8abebb3"
+		"image14": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Ftablet%2Fphoto14.webp?alt=media&token=b8fb8e2b-ad57-4695-953e-2c4b12dda44a"
 	},
 	"desktop": {
+		"image0": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto15.webp?alt=media&token=dd4ce50e-b0ec-4e76-8f33-7f011ac4d35c",
 		"image1": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto01.webp?alt=media&token=b391d8e3-9676-44e4-b6ee-e75a8651fa98",
 		"image2": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto02.webp?alt=media&token=38dea999-61ef-4a21-80d4-6b3700724f5b",
 		"image3": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto03.webp?alt=media&token=b735d2be-cbf3-4a17-880e-1c6b19a3241b",
@@ -47,7 +48,6 @@
 		"image11": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto11.webp?alt=media&token=fbdc707d-a998-489c-ba3c-d01b9efccf20",
 		"image12": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto12.webp?alt=media&token=d1cd553d-191e-437b-84aa-c8afe846ad52",
 		"image13": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto13.webp?alt=media&token=5bbb9ad9-0466-4de6-99c4-fd9a9ce135ef",
-		"image14": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto14.webp?alt=media&token=82feb3a8-a382-4474-939c-dbced7965b35",
-		"image15": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto15.webp?alt=media&token=dd4ce50e-b0ec-4e76-8f33-7f011ac4d35c"
+		"image14": "https://firebasestorage.googleapis.com/v0/b/todosapp-2e4c5.appspot.com/o/images%2Fdesktop%2Fphoto14.webp?alt=media&token=82feb3a8-a382-4474-939c-dbced7965b35"
 	}
 }

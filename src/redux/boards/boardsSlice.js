@@ -4,18 +4,25 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchAllBoards, addBoard, fetchPutBoard, fetchDelBoard } from './operations';
 
 const initialState = {
-	items: [{ _id: `11`, name: `Main board` },{ _id: `22`, name: `App board` },{ _id: `33`, name: `Index board` },{ _id: `44`, name: ` board` },
-	],
+	items: [],
 	isLoading: false,
+	createEditBoardModal: {
+		isOpen: false,
+		boardId: null,
+	},
 	error: null,
 };
 
-const boardsSlice = createSlice({
+export const boardsSlice = createSlice({
 	name: 'boards',
 	initialState,
 	reducers: {
 		resetError: state => {
 			state.error = null;
+		},
+		openCreateEditBoardModal: (state, action) => {
+			state.createEditBoardModal.isOpen = action.payload.isOpen;
+			state.createEditBoardModal.boardId = action.payload.boardId;
 		},
 	},
 	extraReducers: builder => {
@@ -40,7 +47,8 @@ const boardsSlice = createSlice({
 			.addCase(addBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.items.push(payload)
+				state.items.push(payload);
+				state.createEditBoardModal.isOpen = false;
 			})
 			.addCase(addBoard.rejected, (state, { error }) => {
 				state.isLoading = false;

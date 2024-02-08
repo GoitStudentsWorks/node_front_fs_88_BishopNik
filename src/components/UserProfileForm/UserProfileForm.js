@@ -1,12 +1,14 @@
 /** @format */
 
-// import { StyledForm } from 'components/LoginForm/LoginForm.Styled';
-// import { Formik,Field,Form } from 'formik';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+
 import {
-	Button,
+	ButtonStyle,
 	ErrorMessageStyle,
 	IconHideShow,
 	LabelBox,
@@ -37,50 +39,44 @@ const formShema = Yup.object().shape({
 });
 
 export const UserProfileForm = () => {
+	const { name, email } = useSelector(selectUser);
+
 	const [showPassword, setShowPassword] = useState(false);
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
 	};
 	return (
-		// <Container>
 		<Formik
 			initialValues={{
-				login: '',
-				email: '',
+				login: name,
+				email: email,
 				password: '',
 			}}
 			validationSchema={formShema}
 			onSubmit={async values => {
-				// await new Promise(r => setTimeout(r, 500));
 				alert(JSON.stringify(values, null, 2));
 			}}
 		>
 			<StyledForm>
 				<LabelBox>
 					<label htmlFor='login'>
-						<StyledField id='login' name='login' placeholder='Ivetta' />
+						<StyledField name='login' placeholder='login' />
+						<ErrorMessageStyle name='login' component='span' />
 					</label>
-
-					<ErrorMessageStyle name='login' component='span' />
 
 					<label htmlFor='email'>
-						<StyledField
-							id='email'
-							name='email'
-							placeholder='ivetta34@gmail.com'
-							type='email'
-						/>
+						<StyledField name='email' placeholder='email' type='email' />
+						<ErrorMessageStyle name='email' component='span' />
 					</label>
-
-					<ErrorMessageStyle name='email' component='span' />
 
 					<label style={{ position: 'relative' }}>
 						<StyledField
 							type={showPassword ? 'text' : 'password'}
 							name='password'
-							placeholder='ivetta1999.23'
+							placeholder='Enter password'
 						/>
+
 						<IconHideShow
 							name='hide-show'
 							onClick={togglePasswordVisibility}
@@ -100,9 +96,8 @@ export const UserProfileForm = () => {
 					</label>
 				</LabelBox>
 
-				<Button type='submit'>Send</Button>
+				<ButtonStyle type='submit'>Send</ButtonStyle>
 			</StyledForm>
 		</Formik>
-		// </Container>
 	);
 };

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const DatePickerContainer = styled.div`
   display: flex;
@@ -9,11 +10,17 @@ const DatePickerContainer = styled.div`
 `;
 
 const CustomDatePicker = styled(DatePicker)`  
-  width: 200px;
-  margin-top: 10px;
+  width: 200px;  
   border: none;
   color: #BEDBB0;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.modal.backgroundMain};
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #9DC888;
+    ;
+  }
 `;
 
 export { DatePickerContainer, CustomDatePicker };

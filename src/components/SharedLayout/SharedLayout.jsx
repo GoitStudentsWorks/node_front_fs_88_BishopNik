@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import Loader from 'components/Loader';
 import { Container, Main, SideBar, Header } from 'components/styled.component/MainTodosPage.styled';
 import { SidebarComponent } from '../Sidebar/Sidebar';
+import { Card } from 'components/Card/Card';
 import { MainContext } from 'components/Helpers';
 import { CreateNewBoardModal } from 'components/Modal';
 
@@ -13,8 +14,10 @@ import { useAuth } from 'hooks';
 
 const SharedLayout = () => {
 	const { isLoggedIn } = useAuth();
+
 	const { isOpenSidebar, setIsOpenSidebar, isOpenAddBoard, setOpenIsAddBoard } =
 		useContext(MainContext);
+
 	const [status, setStatus] = useState(false);
 	const sidebarRef = useRef(null);
 
@@ -55,6 +58,9 @@ const SharedLayout = () => {
 				<HeaderComponent />
 			</Header>
 			<Main>
+				<div style={{ position: 'absolute', top: '200px', right: '50px' }}>
+					<Card />
+				</div>
 				<CreateNewBoardModal isOpen={isOpenAddBoard} setIsOpen={setOpenIsAddBoard} />
 
 				<Suspense fallback={<Loader />}>
