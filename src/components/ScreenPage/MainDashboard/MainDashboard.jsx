@@ -15,6 +15,7 @@ const MainDashboard = () => {
 
 	return (
 		<BoardContainer>
+			
 			<BtnAddColumn type='button' onClick={handleOpenModal}>
 				<StyledIconAdd>
 					<SvagAddColumn width='14' height='14'>

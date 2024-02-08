@@ -33,7 +33,6 @@ export const boardsSlice = createSlice({
 			})
 			.addCase(fetchAllBoards.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
-				state.error = null;
 				state.items = payload;
 			})
 			.addCase(fetchAllBoards.rejected, (state, { error }) => {
@@ -74,10 +73,8 @@ export const boardsSlice = createSlice({
 			.addCase(fetchDelBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.items = state.items.map(item => {
-					if (item.__id === payload.__id) return payload;
-					return item;
-				});
+				 const index = state.items.findIndex(item => item.id === payload.id);
+      			state.items.splice(index, 1);
 			})
 			.addCase(fetchDelBoard.rejected, (state, { error }) => {
 				state.isLoading = false;

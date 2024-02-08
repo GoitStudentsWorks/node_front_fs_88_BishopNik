@@ -11,25 +11,27 @@ import {
 	DelIcon,
 	BoardLine,
 } from './BoardItem.styled';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchDelBoard, getBoardById } from 'redux/boards/operations';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
-	const { board } = useParams();
 
-	const dispatch = useDispatch();
-
-	const getById = boardId => {
-		dispatch(getBoardById(boardId));
-	};
-
-	const delBoard = boardId => {
-		dispatch(fetchDelBoard(boardId));
-	};
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const { board } = useParams();
+  
+  const getById = boardId => {
+    dispatch(getBoardById(boardId));
+  };
+  
+  const delBoard = boardId => {
+    dispatch(fetchDelBoard(boardId));
+     return navigate('/')
+  };
 
 	return (
-		<Link to={`/todos/${boardId}`} onClick={evt => getById(boardId)}>
+		<Link to={`/todos/${boardId}`} onClick={() => getById(boardId)}>
 			<BoardContainer active={boardId === board?.toString()}>
 				<BoardNameContainer>
 					<BoardIcon name='type-6' active={boardId === board?.toString()} />
@@ -49,4 +51,5 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 			</BoardContainer>
 		</Link>
 	);
+
 };

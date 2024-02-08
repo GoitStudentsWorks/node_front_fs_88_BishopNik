@@ -8,11 +8,13 @@ import { fetchAllBoards } from 'redux/boards/operations';
 import { useAuth } from 'hooks';
 
 export const BoardsList = () => {
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(fetchAllBoards());
 	}, [dispatch]);
+
 
 	const { allBoards } = useAuth();
 
