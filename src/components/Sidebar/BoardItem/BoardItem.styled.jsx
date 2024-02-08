@@ -8,8 +8,8 @@ export const BoardContainer = styled.div`
 	align-items: center;
 	border: none;
 	padding-left: 14px;
-	background-color: ${props =>
-		props.active ? props.theme.sidebar.projectActive : 'transparent'};
+	background-color: ${({ active, theme }) =>
+		active ? theme.sidebar.projectActive : 'transparent'};
 
 	@media screen and (min-width: 375px) {
 		width: 225px;
@@ -38,18 +38,18 @@ export const BoardNameContainer = styled.div`
 export const BoardIcon = styled(Icon)`
 	width: 18px;
 	height: 18px;
-	stroke: ${props => (props.active ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)')};
+	stroke: ${({ active }) => (active ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)')};
 `;
 
 export const BoardText = styled.p`
 	font-size: 14px;
 	letter-spacing: -0.02em;
-	color: ${props => (props.active ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)')};
+	color: ${({ active }) => (active ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)')};
 	margin: 0px;
 `;
 
 export const IconsContainer = styled.div`
-	opacity: ${props => (props.active ? '1' : '0')};
+	opacity: ${({ active }) => (active ? '1' : '0')};
 	width: 40px;
 	height: 16px;
 	margin-left: auto;
@@ -60,24 +60,24 @@ export const IconsContainer = styled.div`
 export const EditIcon = styled(Icon)`
 	width: 16px;
 	height: 16px;
-	stroke: ${props => props.theme.sidebar.projectIcon};
+	stroke: ${({ theme }) => theme.sidebar.projectIcon};
 	cursor: pointer;
 
 	&:hover,
 	&:focus {
-		stroke: ${props => props.theme.sidebar.textAccent};
+		stroke: ${({ theme }) => theme.sidebar.textAccent};
 	}
 `;
 
 export const DelIcon = styled(Icon)`
 	width: 16px;
 	height: 16px;
-	stroke: ${props => props.theme.sidebar.projectIcon};
+	stroke: ${({ theme }) => theme.sidebar.projectIcon};
 	cursor: pointer;
 
 	&:hover,
 	&:focus {
-		stroke: ${props => props.theme.sidebar.textAccent};
+		stroke: ${({ theme }) => theme.sidebar.textAccent};
 	}
 `;
 
@@ -86,7 +86,7 @@ export const BoardLine = styled.p`
 	height: 61px;
 	margin: 0;
 	margin-left: 14px;
-	background-color: ${props => (props.active ? 'rgba(190, 219, 176, 1)' : 'transparent')};
+	background-color: ${({ active }) => (active ? 'rgba(190, 219, 176, 1)' : 'transparent')};
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 

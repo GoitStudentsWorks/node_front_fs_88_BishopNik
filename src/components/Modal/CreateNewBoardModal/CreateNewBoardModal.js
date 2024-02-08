@@ -1,7 +1,7 @@
 /** @format */
 
+import React, { useContext } from 'react';
 import { Formik, Field } from 'formik';
-import { createBoardSchema } from '../../Helpers/ModalSchemas';
 import {
 	StyledForm,
 	HeaderContainer,
@@ -23,41 +23,41 @@ import {
 	ErrMessageStyled,
 } from './CreateNewBoardModal.styled';
 import { customStyles } from '../Modal.styled';
-import { addBoard } from 'redux/boards/operations';
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { boardsSlice } from 'redux/boards/boardsSlice';
-import { modalData, boardsState } from 'redux/boards/selectors';
+// import { boardsSlice } from 'redux/boards/boardsSlice';
+import { modalData } from 'redux/boards/selectors';
+import { addBoard } from 'redux/boards/operations';
+import { MainContext } from 'components/Helpers';
 
 export const CreateNewBoardModal = () => {
 	const dispatch = useDispatch();
 	const { isOpen, boardId } = useSelector(modalData);
-	const boards = useSelector(boardsState);
+	// const boards = useSelector(boardsState);
+	const { isOpenAddBoard, setIsOpenAddBoard } = useContext(MainContext);
 
-	const boardForEditing = boardId && boards.find(item => item.id === boardId);
+	// const boardForEditing = boardId && boards.find(item => item.id === boardId);
 
 	const closeModal = () => {
-		dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
+		setIsOpenAddBoard(false);
+		// dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
 	};
 
 	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
+		<ModalWindow isOpen={isOpenAddBoard} onRequestClose={closeModal} style={customStyles}>
 			<Formik
 				initialValues={{
-					name: boardForEditing?.name || '',
-					icon: boardForEditing?.icon || '',
-					background: boardForEditing?.background || '',
-					id: boardId,
+					name: '',
+					icon: '0',
+					background: '0',
 				}}
 				onSubmit={(board, actions) => {
-					if (boardId) {
-						dispatch(addBoard(board));
-					} else {
-						dispatch(addBoard(board));
-					}
+					dispatch(addBoard(board));
+					console.log(isOpen, boardId);
+					if (!isOpen) closeModal();
 				}}
-				validationSchema={createBoardSchema}
+				// validationSchema={createBoardSchema}
 			>
 				<StyledForm autoComplete='off'>
 					<HeaderContainer>
