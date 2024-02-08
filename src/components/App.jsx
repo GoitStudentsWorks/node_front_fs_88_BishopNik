@@ -9,6 +9,7 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import SharedLayout from './SharedLayout';
 import Loader from 'components/Loader';
 import { PrivateRoute } from 'components/PrivateRoute';
+import { fetchAllBoards } from 'redux/boards/operations';
 
 const StartPage = lazy(() => import('pages/StartPage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
@@ -21,6 +22,10 @@ function App() {
 
 	useEffect(() => {
 		dispatch(refreshUser());
+	}, [dispatch]);
+
+	useEffect(() => {
+		dispatch(fetchAllBoards());
 	}, [dispatch]);
 
 	return isRefreshing ? (

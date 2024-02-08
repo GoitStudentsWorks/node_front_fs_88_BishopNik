@@ -1,13 +1,13 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllBoards, addBoard, fetchPutBoard, fetchDelBoard } from './operations';
+import { fetchAllBoards, addBoard, editBoard, fetchDelBoard } from './operations';
 
 const initialState = {
 	items: [],
 	isLoading: false,
 	createEditBoardModal: {
-		isOpen: false,
+		isOpen: true,
 		boardId: null,
 	},
 	error: null,
@@ -19,7 +19,7 @@ export const boardsSlice = createSlice({
 	reducers: {
 		resetError: state => {
 			state.error = null;
-			state.createEditBoardModal = { isOpen: false, boardId: null };
+			state.createEditBoardModal = { isOpen: true, boardId: null };
 		},
 		// openCreateEditBoardModal: (state, action) => {
 		// 	state.createEditBoardModal.isOpen = action.payload.isOpen;
@@ -43,28 +43,33 @@ export const boardsSlice = createSlice({
 			.addCase(addBoard.pending, state => {
 				state.isLoading = true;
 				state.error = null;
-				state.createEditBoardModal = { isOpen: true, boardId: null };
 			})
 			.addCase(addBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
 				state.items.push(payload);
 				state.createEditBoardModal.isOpen = false;
+				state.createEditBoardModal.boardId = payload._id;
 			})
 			.addCase(addBoard.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message;
 			})
-			.addCase(fetchPutBoard.pending, state => {
+			.addCase(editBoard.pending, state => {
 				state.isLoading = true;
 				state.error = null;
 			})
-			.addCase(fetchPutBoard.fulfilled, (state, { payload }) => {
+			.addCase(editBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.items = [...state.items, payload];
+				state.items = state.items.map(item => {
+					if (item._id === payload._id) return payload;
+					return item;
+				});
+				state.createEditBoardModal.isOpen = false;
+				state.createEditBoardModal.boardId = payload._id;
 			})
-			.addCase(fetchPutBoard.rejected, (state, { error }) => {
+			.addCase(editBoard.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message;
 			})

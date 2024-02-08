@@ -1,19 +1,11 @@
 /** @format */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { BoardItem } from '../BoardItem/BoardItem';
 import { ListContainer } from './BoardList.styled';
-import { useDispatch } from 'react-redux';
-import { fetchAllBoards } from 'redux/boards/operations';
 import { useAuth } from 'hooks';
 
 export const BoardsList = () => {
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(fetchAllBoards());
-	}, [dispatch]);
-
 	const { allBoards } = useAuth();
 
 	const listRef = useRef(null);
