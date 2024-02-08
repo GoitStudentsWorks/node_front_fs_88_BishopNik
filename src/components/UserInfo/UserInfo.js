@@ -1,13 +1,14 @@
-import { ModalEditProfile } from 'components/Modal/EditForm/ModalEditProfile';
+// import { ModalEditProfile } from '../../components/Modal/EditForm/ModalEditProfile';
 import { useState } from 'react';
 import data from '../../img/list_img.json';
-import { UserInfoWrapper } from './UserInfo.styled';
+import { UserInfoWrapper, UserName, UserAvatar } from './UserInfo.styled';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { selectUser, /*selectUserTheme */ } from 'redux/auth/selectors';
 
 export const UserInfo = () => {
   const { name, avatarURL } = useSelector(selectUser);
   const [isModalState, setIsModalState] = useState(false);
+// const activeUserTheme = useSelector(selectUserTheme);
 
   const stateСhangeModal = () => {
     if (isModalState === true) {
@@ -17,22 +18,33 @@ export const UserInfo = () => {
     }
   };
 
-  let src = data.user.dark;
-  if (avatarURL) {
-    src = avatarURL;
-  }
+  //  const setDefaultAvatar = () => {
+  //   if (activeUserTheme === 'dark') {
+  //     return data.user.dark;
+  //   } else if (activeUserTheme === 'light') {
+  //     return data.user.light;
+  //   } else if (activeUserTheme === 'violet') {
+  //     return data.user.violet;
+  //   }
+  // };
 
   return (
     <div>
       <UserInfoWrapper>
-        <span>{name}</span>
-        <img src={src} alt="LightUser" width={32} onClick={stateСhangeModal} />
+        <UserName>{name}</UserName>
+        <UserAvatar
+          src={data.user.dark /*setDefaultAvatar */ || avatarURL} 
+          alt="user name"
+          onClick={stateСhangeModal}
+				/>
       </UserInfoWrapper>
-      <ModalEditProfile
+      {/* <ModalEditProfile
         stateСhangeModal={stateСhangeModal}
         isModalState={isModalState}
-      />
+      /> */}
     </div>
   );
 };
+
+export default UserInfo;
 
