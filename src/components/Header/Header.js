@@ -3,7 +3,8 @@
 import ThemePicker from 'components/Header/ThemePicker/ThemePicker';
 import { HeaderWrapper, UserWrapper } from './Header.styled';
 import BurgenMenu from './BurgerMenu/BurgerMenu';
-import UserBlock from './UserBlock/UserBlock';
+
+
 
 const Header = () => {
 	return (
@@ -11,7 +12,6 @@ const Header = () => {
 			<BurgenMenu />
 			<UserWrapper>
         <ThemePicker />
-				<UserBlock />
 			</UserWrapper>
 		</HeaderWrapper>
 	);
