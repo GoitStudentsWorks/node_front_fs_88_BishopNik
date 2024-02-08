@@ -11,6 +11,21 @@ export const StyledForm = styled(Form)`
   width: 100%;
   border-radius: 8px;
   background: #151515;
+
+  padding: 24px;
+
+  @media (min-width: 375px) {
+    max-width: none;
+    width: 335px;
+  }
+
+  @media (min-width: 376px) and (max-width: 767px) {
+    width: 400px;
+  }
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 `;
 
 export const LabelBox = styled.div`

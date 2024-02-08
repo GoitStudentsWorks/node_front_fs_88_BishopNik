@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -13,6 +13,8 @@ import {
   StyledField,
   StyledForm,
 } from './UserProfileForm.Styled';
+
+import { refreshUser } from 'redux/auth/operations';
 
 const emailRegex = RegExp(
   /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
@@ -39,13 +41,21 @@ const formShema = Yup.object().shape({
 });
 
 export const UserProfileForm = () => {
-  const { name, email, avatarURL } = useSelector(selectUser);
+  const { name, email } = useSelector(selectUser);
 
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, actions) => {
+    dispatch(refreshUser(values));
+    actions.resetForm({ password: '' });
+  };
+
   return (
     <Formik
       initialValues={{
@@ -54,8 +64,11 @@ export const UserProfileForm = () => {
         password: '',
       }}
       validationSchema={formShema}
-      onSubmit={async values => {
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={async (values, actions) => {
+        console.log(values);
+        handleSubmit(values, actions);
+
+        // alert(JSON.stringify(values, null, 2));
       }}
     >
       <StyledForm>
