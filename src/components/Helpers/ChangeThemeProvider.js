@@ -1,7 +1,8 @@
 /** @format */
 
 import React, { createContext, useState } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, StyleSheetManager } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
 import { theme as themeDefault } from '../../constants/theme';
 
 const ThemeContext = createContext();
@@ -11,7 +12,9 @@ const СhangeThemeProvider = ({ children }) => {
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
-			<ThemeProvider theme={theme}>{children}</ThemeProvider>
+			<StyleSheetManager shouldForwardProp={prop => isPropValid(prop)}>
+				<ThemeProvider theme={theme}>{children}</ThemeProvider>
+			</StyleSheetManager>
 		</ThemeContext.Provider>
 	);
 };

@@ -8,28 +8,28 @@ import { fetchAllBoards } from 'redux/boards/operations';
 import { useAuth } from 'hooks';
 
 export const BoardsList = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchAllBoards();
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(fetchAllBoards());
+	}, [dispatch]);
 
-  const { allBoards } = useAuth();
+	const { allBoards } = useAuth();
 
-  const listRef = useRef(null);
+	const listRef = useRef(null);
 
-  const handleScroll = event => {
-    const delta = event.deltaY;
-    listRef.current.scrollTop += delta;
-  };
+	const handleScroll = event => {
+		const delta = event.deltaY;
+		listRef.current.scrollTop += delta;
+	};
 
-  return (
-    <>
-      <ListContainer onWheel={handleScroll} ref={listRef}>
-        {allBoards.map(({ _id: id, name }) => (
-          <BoardItem key={id} boardId={id} nameBoard={name} />
-        ))}
-      </ListContainer>
-    </>
-  );
+	return (
+		<>
+			<ListContainer onWheel={handleScroll} ref={listRef}>
+				{allBoards.map(({ _id: id, name }) => (
+					<BoardItem key={id} boardId={id} nameBoard={name} />
+				))}
+			</ListContainer>
+		</>
+	);
 };
