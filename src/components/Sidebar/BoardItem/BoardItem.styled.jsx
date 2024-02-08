@@ -24,12 +24,13 @@ export const BoardContainer = styled.div`
 `;
 
 export const BoardNameContainer = styled.div`
-  width: 114px;
+  width: 145px;
   display: flex;
   align-items: center;
   gap: 4px;
 
   @media screen and (min-width: 768px) {
+    width: 164px;
     gap: 8px;
   }
 `;

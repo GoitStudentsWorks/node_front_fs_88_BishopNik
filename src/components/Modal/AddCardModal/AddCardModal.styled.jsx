@@ -4,7 +4,8 @@ import {Field} from 'formik';
 
 export const ModalContainer = styled.div`
   position: relative;
-  background: #151515;
+  background: ${({ theme }) => theme.modal.backgroundMain};
+  color: ${({ theme }) => theme.modal.textMain};
   padding: 24px;
   border-radius: 8px;
   min-width: 320px;
@@ -23,22 +24,21 @@ export const CloseButton = styled.button`
   right: 14px;
   width: 18px;
   height: 18px;
-  background: rgb(21, 21, 21);
+  background: ${({ theme }) => theme.modal.backgroundSecondary};
   border: none;
 `;
 
 export const IconClose = styled(Icon)`
   position: absolute;
-
   transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
   cursor: pointer;
-  stroke: #ffffff;
+  stroke: ${({ theme }) => theme.modal.iconClose};
 `;
 
-export const FormTitle = styled.h2`
-  color: rgb(255, 255, 255);
+export const FormTitle = styled.h2`  
+  color: ${({ theme }) => theme.modal.textMain};
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
@@ -46,8 +46,8 @@ export const FormTitle = styled.h2`
   margin: 0px;
 `;
 
-export const SubTitles = styled.h3`
-  color: rgba(255, 255, 255, 0.5);
+export const SubTitles = styled.h3`  
+  color: ${({ theme }) => theme.modal.textSecondary};
   font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
@@ -60,14 +60,25 @@ export const StyledInput = styled(Field)`
   color: rgb(255, 255, 255);
   padding: 14px 18px;
   margin: 24px 0 14px 0;
-  border: 1px solid rgb(190, 219, 176);
+  border: 1px solid ${({ theme }) => theme.modal.border};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  background: rgb(31, 31, 31);
+  background: ${({ theme }) => theme.modal.backgroundSecondary};
   opacity: 0.4;
 
   &:hover {
     opacity: 1;
+
+  color: ${({ theme }) => theme.modal.textMain};
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.modal.textAccent};
+  }
+
+  ::placeholder {
+    color: ${({ theme }) => theme.modal.textSecondary};    
+
   }
 `;
 
@@ -77,14 +88,25 @@ export const TextArea = styled.textarea`
   height: 154px;
   padding: 14px 18px;
   margin-bottom: 24px;
-  border: 1px solid rgb(190, 219, 176);
+  border: 1px solid ${({ theme }) => theme.modal.border};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  background: rgb(31, 31, 31);
+  background: ${({ theme }) => theme.modal.backgroundSecondary};
   opacity: 0.4;
 
   &:hover {
     opacity: 1;
+
+  color: ${({ theme }) => theme.modal.textMain};
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.modal.textAccent};
+  }
+  
+  ::placeholder {
+    color: ${({ theme }) => theme.modal.textSecondary};
+
   }
 `;
 
@@ -96,11 +118,10 @@ export const RadioButtonContainer = styled.div`
 export const RadioButton = styled.input`
   margin-bottom: 14px;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: 2px solid #000;
-  outline: none;
+  border: 2px solid #000;  
   cursor: pointer;
   background-color: ${props => {
     switch (props.value) {
@@ -118,21 +139,21 @@ export const RadioButton = styled.input`
   }};
 
   &:focus {
-    border: 2px solid #151515;
+    border: 3px solid #151515;
   }
 
-  &:checked {
-    border: 2px solid transparent;
+  &:checked {    
+    border: 3px solid #fff;
   }
 `;
 
 export const AddButton = styled.button`
   background-color: #bedbb0;
-  color: #151515;
+  color: ${({ theme }) => theme.addcolum.buttonBackground};
   padding: 10px 0 11px 0;
   border: none;
   width: 100%;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -149,13 +170,21 @@ export const AddButton = styled.button`
     display: block;
     width: 28px;
     height: 28px;
-    background-color: #151515;
+    background-color: ${({ theme }) => theme.addcolum.buttonPlusColor};
     border-radius: 8px;
     color: #bedbb0;
     font-size: 20px;
     text-align: center;
     line-height: 28px;
-    margin-right: 10px;
-    
+    margin-right: 10px;    
+  }
+
+  &:hover {
+    background-color:#9DC888;
+  }
+
+  &:focus {
+    background-color:#9DC888;    
+    outline: none;    
   }
 `;

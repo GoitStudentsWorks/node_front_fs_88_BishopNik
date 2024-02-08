@@ -2,12 +2,12 @@
 
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toastError, toastSuccess } from 'components/Helpers';
 
 export const fetchAllBoards = createAsyncThunk('boards/fetchAll', async (_, thunkAPI) => {
 	try {
 		const response = await axios.get('/boards');
-		console.log(response)
-		// return response.data;
+		return response.data;
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message);
 	}
@@ -15,8 +15,7 @@ export const fetchAllBoards = createAsyncThunk('boards/fetchAll', async (_, thun
 export const getBoardById = createAsyncThunk('boards/:boardName', async (boardId, thunkAPI) => {
 	try {
 		const response = await axios.get(`/boards/${boardId}`);
-		console.log(response)
-		// return response.data;
+		return response.data;
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message);
 	}
@@ -25,9 +24,13 @@ export const getBoardById = createAsyncThunk('boards/:boardName', async (boardId
 export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thunkAPI) => {
 	try {
 		const response = await axios.post('/boards', newBoard);
+
+		toastSuccess('Board has been created');
 		return response.data;
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message);
+	} catch ({ response }) {
+		toastError(response?.data?.message);
+
+		return thunkAPI.rejectWithValue(response?.data.message);
 	}
 });
 
