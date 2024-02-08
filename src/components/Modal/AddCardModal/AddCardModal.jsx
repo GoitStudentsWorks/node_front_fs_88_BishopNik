@@ -17,7 +17,8 @@ import {
   StyledInput,
 } from './AddCardModal.styled';
 import MyDatePicker from '../../DatePicker/MyDatePicker';
-import addCardValidationSchema from 'components/Helpers/AddCardModalSchema';
+import { addCardValidationSchema } from 'components/Helpers/ModalSchemas';
+
 
 export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
   const handleFormSubmit = values => {
