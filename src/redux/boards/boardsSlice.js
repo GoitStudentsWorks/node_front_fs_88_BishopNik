@@ -4,12 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchAllBoards, addBoard, fetchPutBoard, fetchDelBoard } from './operations';
 
 const initialState = {
-	items: [
-		{ _id: `11`, name: `Main board` },
-		{ _id: `22`, name: `App board` },
-		{ _id: `33`, name: `Index board` },
-		{ _id: `44`, name: ` board` },
-	],
+	items: [],
 	isLoading: false,
 	createEditBoardModal: {
 		isOpen: false,
