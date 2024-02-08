@@ -2,14 +2,19 @@
 
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import MainComponent from 'components/MainComponent/MainComponent';
+import { MainComponent } from 'components/MainComponent';
 import { FilterBtn } from 'components/Filter';
-import ScreenPage from 'components/ScreenPage/ScreenPage';
+import MainDashboard from 'components/ScreenPage/MainDashboard/MainDashboard';
+import { HeaderDashboard } from 'components/ScreenPage/HeaderDashboard/HeaderDashboard';
 import { AddCardModal } from 'components/Modal';
+import { SayNameBoard } from 'components/Helpers';
 
 function MainTodosPage() {
 	const [isOpen, setIsOpen] = useState(false);
 	const { board } = useParams();
+
+	const nameBoard = SayNameBoard(board);
+
 	return (
 		<>
 			<button
@@ -21,7 +26,9 @@ function MainTodosPage() {
 			<AddCardModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} />
 
 			<FilterBtn />
-			<MainComponent>{board && <ScreenPage />}</MainComponent>
+
+			{nameBoard && <HeaderDashboard title={nameBoard} />}
+			<MainComponent>{board && <MainDashboard />}</MainComponent>
 		</>
 	);
 }
