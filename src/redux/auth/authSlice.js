@@ -24,16 +24,14 @@ const authSlice = createSlice({
                 return
             }
 				state.user = payload.user;
+				state.token = payload.token;
+				state.isLoggedIn = true;
 				state.isLoading = false
 			})
 			.addCase(logIn.pending, state => {
 				state.isLoading = true
 			})
 			.addCase(logIn.fulfilled, (state, { payload }) => {
-				if (payload === undefined) {
-					state.isLoading = false
-                return
-            }
 				state.user = payload.user;
 				state.token = payload.token;
 				state.isLoggedIn = true;
@@ -55,7 +53,7 @@ const authSlice = createSlice({
 			.addCase(refreshUser.rejected, (state, { payload }) => {
 				state.isRefreshing = false;
 				state.isLoggedIn = false;
-				localStorage.clear()
+				// localStorage.clear()
 			})
 			.addCase(changeSetting.pending, state => {
 				//

@@ -10,7 +10,6 @@ import { AddCardModal } from 'components/Modal';
 function MainTodosPage() {
 	const [isOpen, setIsOpen] = useState(false);
 	const { board } = useParams();
-
 	return (
 		<>
 			<button

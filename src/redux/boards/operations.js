@@ -24,7 +24,6 @@ export const getBoardById = createAsyncThunk('boards/:boardName', async (boardId
 export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thunkAPI) => {
 	try {
 		const response = await axios.post('/boards', newBoard);
-
 		toastSuccess('Board has been created');
 		return response.data;
 	} catch ({ response }) {
@@ -38,19 +37,22 @@ export const fetchPutBoard = createAsyncThunk(
 	'boards/fetchPut',
 	async ({ _id, name, gender, email, phone }, thunkAPI) => {
 		try {
-			const response = await axios.put(`/api/boards/${_id}`, {});
-			return response.data;
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error.message);
-		}
+			const response = await axios.put(`/boards/${_id}`, {});
+			console.log(response)
+			// return response.data;
+		} catch ({ response }) {
+		toastError(response?.data?.message);
+		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
-);
+	});
 
 export const fetchDelBoard = createAsyncThunk('boards/fetchDel', async (id, thunkAPI) => {
 	try {
 		const response = await axios.delete(`/boards/${id}`);
+		toastSuccess(`Successful removal`)
 		return response.data;
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message);
+	} catch ({ response }) {
+		toastError(response?.data?.message);
+		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });
