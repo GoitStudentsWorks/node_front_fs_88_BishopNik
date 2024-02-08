@@ -1,13 +1,15 @@
 import { FiltersIcon } from 'components/MainComponent/MainComponent.styled';
 
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+
 import data from '../../img/list_img.json';
+
 import {
   BlockLogoStyles,
   LogoStyles,
   logoStyles,
 } from './UserProfileForm.Styled';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
 
 export const UserIcon = () => {
   let src = data.user.dark;

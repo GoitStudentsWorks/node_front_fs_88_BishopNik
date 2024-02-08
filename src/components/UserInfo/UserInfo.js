@@ -2,8 +2,11 @@ import { ModalEditProfile } from 'components/Modal/EditForm/ModalEditProfile';
 import { useState } from 'react';
 import data from '../../img/list_img.json';
 import { UserInfoWrapper } from './UserInfo.styled';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 export const UserInfo = () => {
+  const { name, avatarURL } = useSelector(selectUser);
   const [isModalState, setIsModalState] = useState(false);
 
   const stateСhangeModal = () => {
@@ -14,16 +17,16 @@ export const UserInfo = () => {
     }
   };
 
+  let src = data.user.dark;
+  if (avatarURL) {
+    src = avatarURL;
+  }
+
   return (
     <div>
       <UserInfoWrapper>
-        <span>login</span>
-        <img
-          src={data.user.dark}
-          alt="LightUser"
-          width={32}
-          onClick={stateСhangeModal}
-        />
+        <span>{name}</span>
+        <img src={src} alt="LightUser" width={32} onClick={stateСhangeModal} />
       </UserInfoWrapper>
       <ModalEditProfile
         stateСhangeModal={stateСhangeModal}
