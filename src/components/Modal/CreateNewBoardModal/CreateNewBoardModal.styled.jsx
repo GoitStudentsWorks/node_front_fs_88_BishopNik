@@ -6,8 +6,8 @@ import Icon from '../../Icon/index';
 import styled from 'styled-components';
 
 export const Title = styled.p`
-	color: #fff;
-	background: #151515;
+	color: ${props => props.theme.help.modalTextMain};
+	background:${props => props.theme.modal.backgroundMain};
 	margin: 0;
 	padding-bottom: 24px;
 	font-size: 18px;
@@ -21,21 +21,21 @@ export const HeaderContainer = styled.div`
 export const CloseIcon = styled(Icon)`
 	width: 18px;
 	height: 18px;
-	stroke: rgba(255, 255, 255, 1);
+	stroke:${props => props.theme.modal.iconClose};
 	cursor: pointer;
 `;
 
 export const TitleIcons = styled.span`
 	font-size: 14px;
 	font-weight: 500px;
-	color: #fff;
+	color: ${props => props.theme.help.modalTextMain};
 	padding-bottom: 14px;
 `;
 
 export const TitleBackground = styled.span`
 	font-size: 14px;
 	font-weight: 500;
-	color: #fff;
+	color:${props => props.theme.help.modalTextMain};
 	padding-bottom: 14px;
 `;
 
@@ -65,7 +65,7 @@ export const BackgroundContainer = styled.div`
 export const TypesOfIcon = styled(Icon)`
 	width: 18px;
 	height: 18px;
-	stroke: rgba(255, 255, 255, 0.5);
+	stroke: ${props => props.theme.modal.icon};
 `;
 
 export const TypesOfBackground = styled.img`
@@ -82,8 +82,9 @@ export const StyledForm = styled(Form)`
 	}
 	width: 400px;
 	border-radius: 8px;
-	background: #151515;
+	background: ${props => props.theme.modal.backgroundMain};
 	padding: 24px;
+	
 `;
 
 // export const NavBox = styled.div`
@@ -108,14 +109,26 @@ export const ErrMessageStyled = styled(ErrorMessage)`
 `;
 
 export const StyledField = styled(Field)`
-	color: #fff;
+	color: ${props => props.theme.profile.textMain};
 	border-radius: 8px;
-	border: 1px solid #bedbb0;
+	border: 1px solid ${props => props.theme.profile.inputBorder};
 	padding: 14px 0px 14px 18px;
 	opacity: 0.4;
-	background: #1f1f1f;
+	background: ${props => props.theme.modal.backgroundSecondary};
 	width: 100%;
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
+	&:hover {
+    opacity: 1;
+
+  color: ${props => props.theme.modal.textMain};
+
+  &:focus {
+    border-color:${props => props.theme.modal.textAccent};
+  }
+
+  ::placeholder {
+    color: ${props => props.theme.modal.textSecondary}; 
 `;
 
 export const Button = styled.button`
@@ -125,19 +138,20 @@ export const Button = styled.button`
 	justify-content: center;
 	align-items: center;
 	border-radius: 8px;
-	background: #bedbb0;
+	border: none;
+	background: ${props => props.theme.help.buttonBackground};
 	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	cursor: pointer;
 
 	&:hover,
 	&:focus {
-		background: rgba(157, 200, 136, 1);
+		background: ${props => props.theme.sidebar.hoverLogout};
 	}
 `;
 export const AddIcon = styled(Icon)`
 	width: 14px;
 	height: 14px;
-	stroke: rgba(255, 255, 255, 1);
+	stroke:  ${props => props.theme.modal.plusColor};
 	cursor: pointer;
 `;
 
@@ -145,16 +159,16 @@ export const IconWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid black;
+	border: 1px;
 	border-radius: 5px;
 	width: 28px;
 	height: 28px;
-	background-color: black;
+	background-color: ${props => props.theme.sidebar.addButtonColor};
 	margin-right: 8px;
 `;
 
 export const ButtonText = styled.span`
-	color: #161616;
+	color: ${props => props.theme.addcolum.buttonBackground};
 	text-align: center;
 	font-family: Poppins;
 	font-size: 14px;
