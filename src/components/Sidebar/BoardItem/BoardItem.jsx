@@ -11,45 +11,48 @@ import {
 	DelIcon,
 	BoardLine,
 } from './BoardItem.styled';
-import { Link, useNavigate, useParams} from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchDelBoard, getBoardById } from 'redux/boards/operations';
+import { StyleSheetManager } from 'styled-components';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { board } = useParams();
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const { board } = useParams();
-  
-  const getById = boardId => {
-    dispatch(getBoardById(boardId));
-  };
-  
-  const delBoard = boardId => {
-    dispatch(fetchDelBoard(boardId));
-     return navigate('/')
-  };
+	const getById = boardId => {
+		dispatch(getBoardById(boardId));
+	};
+
+	const delBoard = boardId => {
+		dispatch(fetchDelBoard(boardId));
+		navigate('/');
+	};
+
+	const status = Number(board) === boardId;
 
 	return (
 		<Link to={`/todos/${boardId}`} onClick={() => getById(boardId)}>
-			<BoardContainer active={boardId === board?.toString()}>
-				<BoardNameContainer>
-					<BoardIcon name='type-6' active={boardId === board?.toString()} />
-					<BoardText active={boardId === board?.toString()}>{nameBoard}</BoardText>
-				</BoardNameContainer>
+			<StyleSheetManager shouldForwardProp={prop => prop !== 'active'}>
+				<BoardContainer active={status}>
+					<BoardNameContainer>
+						<BoardIcon name='type-6' active={status} />
+						<BoardText active={status}>{nameBoard}</BoardText>
+					</BoardNameContainer>
 
-				<IconsContainer active={boardId === board?.toString()}>
-					<EditIcon
-						name='edit'
-						type='button'
-						onClick={evt => console.log(`${nameBoard} edit`)}
-					/>
-					<DelIcon name='delete' type='button' onClick={() => delBoard(boardId)} />
-				</IconsContainer>
+					<IconsContainer active={status}>
+						<EditIcon
+							name='edit'
+							type='button'
+							onClick={evt => console.log(`${nameBoard} edit`)}
+						/>
+						<DelIcon name='delete' type='button' onClick={() => delBoard(boardId)} />
+					</IconsContainer>
 
-				<BoardLine active={boardId === board?.toString()} />
-			</BoardContainer>
+					<BoardLine active={status} />
+				</BoardContainer>
+			</StyleSheetManager>
 		</Link>
 	);
-
 };
