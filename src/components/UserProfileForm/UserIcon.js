@@ -1,4 +1,6 @@
-import { FiltersIcon } from 'components/MainComponent/MainComponent.styled';
+/** @format */
+
+import { FiltersIcon } from 'components/Filter/FiltersBtn.styled';
 
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';

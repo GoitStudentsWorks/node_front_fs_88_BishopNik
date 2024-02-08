@@ -9,7 +9,7 @@ export const BoardContainer = styled.div`
   border: none;
   padding-left: 14px;
   background-color: ${props =>
-    props.active ? 'rgba(31, 31, 31, 1)' : 'transparent'};
+    props.active ? 'props.theme.sidebar.projectActive' : 'transparent'};
 
   @media screen and (min-width: 375px) {
     width: 225px;
@@ -24,12 +24,13 @@ export const BoardContainer = styled.div`
 `;
 
 export const BoardNameContainer = styled.div`
-  width: 114px;
+  width: 145px;
   display: flex;
   align-items: center;
   gap: 4px;
 
   @media screen and (min-width: 768px) {
+    width: 164px;
     gap: 8px;
   }
 `;
@@ -60,24 +61,24 @@ export const IconsContainer = styled.div`
 export const EditIcon = styled(Icon)`
   width: 16px;
   height: 16px;
-  stroke: rgba(255, 255, 255, 0.5);
+  stroke: ${props => props.theme.sidebar.projectIcon};
   cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: rgba(190, 219, 176, 1);
+    stroke: ${props => props.theme.sidebar.textAccent};
   }
 `;
 
 export const DelIcon = styled(Icon)`
   width: 16px;
   height: 16px;
-  stroke: rgba(255, 255, 255, 0.5);
+  stroke: ${props => props.theme.sidebar.projectIcon};
   cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: rgba(190, 219, 176, 1);
+    stroke: ${props => props.theme.sidebar.textAccent};
   }
 `;
 

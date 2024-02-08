@@ -10,7 +10,7 @@ const DatePickerContainer = styled.div`
 
 const CustomDatePicker = styled(DatePicker)`  
   width: 200px;
-  margin-top: 10px;
+  margin-top: 4px;
   border: none;
   color: #BEDBB0;
   background-color: transparent;

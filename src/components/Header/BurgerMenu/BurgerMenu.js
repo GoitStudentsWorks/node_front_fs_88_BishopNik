@@ -1,19 +1,19 @@
 /** @format */
 
-// import { useDispatch, useSelector } from 'react-redux';
+import { useContext } from 'react';
+import { MainContext } from 'components/Helpers';
 import { Button, IconMenu } from './BurgerMenu.styled';
 
 const BurgenMenu = () => {
+	const { setIsOpenSidebar } = useContext(MainContext);
 
-	// const dispatch = useDispatch();
-	// const menuMode = useSelector;
-const handleBurger = () => `dispatch(isOpen()) напишіть вірний код`
+	const handleBurger = () => setIsOpenSidebar(true);
+
 	return (
 		<Button type='button' onClick={handleBurger}>
 			<IconMenu name='menu' />
 		</Button>
 	);
-
 };
 
 export default BurgenMenu;

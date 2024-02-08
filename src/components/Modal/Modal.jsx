@@ -1,28 +1,30 @@
 /** @format */
 
+import React, { useContext, useEffect } from 'react';
 import Modal from 'react-modal';
+import { ModalMain } from './Modal.styled';
+import { MainContext } from 'components/Helpers';
 
 Modal.setAppElement('#modal-root');
 
-const ModalWindow = ({ closeModal }) => {
+const ModalWindow = ({ children, isOpen, onRequestClose, style }) => {
+	const { setIsOpenSidebar } = useContext(MainContext);
+
+	useEffect(() => {
+		if (isOpen) {
+			setIsOpenSidebar(false);
+		}
+	}, [isOpen, setIsOpenSidebar]);
+
 	return (
-		<div
-			style={{
-				width: '500px',
-				height: '150px',
-				position: 'absolute',
-				top: '10px',
-				right: '15px',
-				border: '1px solid black',
-				borderRadius: '8px',
-				padding: '15px 50px',
-			}}
+		<ModalMain
+			isOpen={isOpen}
+			onRequestClose={onRequestClose}
+			style={style}
+			contentLabel='onRequestClose'
 		>
-			<h1>Modal window</h1>
-			<button type='button' onClick={closeModal}>
-				Close
-			</button>
-		</div>
+			{children}
+		</ModalMain>
 	);
 };
 

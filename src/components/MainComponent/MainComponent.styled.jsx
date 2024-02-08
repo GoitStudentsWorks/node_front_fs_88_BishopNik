@@ -1,45 +1,6 @@
 /** @format */
 
 import styled from 'styled-components';
-import Icon from 'components/Icon';
-
-export const ButtonFilter = styled.button`
-	position: absolute;
-	top: 14px;
-	right: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 8px;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-
-	@media screen and (min-width: 768px) {
-		top: 20px;
-		right: 32px;
-	}
-
-	@media screen and (min-width: 1440px) {
-		top: 14px;
-		right: 24px;
-	}
-`;
-
-export const FiltersIcon = styled(Icon)`
-	width: 16px;
-	height: 16px;
-	stroke: rgba(255, 255, 255, 0.8);
-`;
-
-export const TextButton = styled.span`
-	color: rgba(255, 255, 255, 0.8);
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
-	letter-spacing: -0.28px;
-`;
 
 export const TextEmptyBoard = styled.p`
 	max-width: 100%;
@@ -48,7 +9,7 @@ export const TextEmptyBoard = styled.p`
 	margin-right: auto;
 	margin-top: 292px;
 	padding: 0 20px;
-	color: rgba(255, 255, 255, 0.5);
+	color: ${props => props.theme.popup.textSecondary};
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 1.3;
@@ -74,7 +35,7 @@ export const TextEmptyBoard = styled.p`
 
 export const ButtonCreateBoard = styled.span`
 	background-color: transparent;
-	color: #bedbb0;
+	color: ${props => props.theme.popup.textAccent};
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 16px;

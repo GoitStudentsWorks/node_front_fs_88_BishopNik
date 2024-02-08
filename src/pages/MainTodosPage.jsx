@@ -1,38 +1,28 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MainComponent from 'components/MainComponent/MainComponent';
-import Board from 'components/MainComponent/Board';
-import { ModalFilter } from 'components/Filter';
-import {
-	ButtonFilter,
-	FiltersIcon,
-	TextButton,
-} from 'components/MainComponent/MainComponent.styled';
+import { FilterBtn } from 'components/Filter';
+import ScreenPage from 'components/ScreenPage/ScreenPage';
+import { AddCardModal } from 'components/Modal';
 
 function MainTodosPage() {
-	const { board } = useParams(null);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [idBoard, setIdBoard] = useState(null);
-
-	useEffect(() => {
-		setIdBoard(board);
-	}, [board]);
-
-	const openModal = () => {
-		setIsModalOpen(true);
-	};
+	const [isOpen, setIsOpen] = useState(false);
+	const { board } = useParams();
 
 	return (
 		<>
-			<ButtonFilter type='button' onClick={openModal}>
-				<FiltersIcon name='filters' />
-				<TextButton>Filters</TextButton>
-			</ButtonFilter>
-			<ModalFilter isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-			<Board titleBoard={idBoard} />
-			<MainComponent>{idBoard}</MainComponent>
+			<button
+				onClick={() => setIsOpen(true)}
+				style={{ position: 'absolute', right: '50px', top: '150px' }}
+			>
+				Add card
+			</button>
+			<AddCardModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} />
+
+			<FilterBtn />
+			<MainComponent>{board && <ScreenPage />}</MainComponent>
 		</>
 	);
 }

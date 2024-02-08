@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import DatePickerContainer from './MyDatePicker.styled';
-import CustomDatePicker from './MyDatePicker.styled';
+import { CustomDatePicker, DatePickerContainer } from './MyDatePicker.styled';
 
 const MyDatePicker = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());

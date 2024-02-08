@@ -1,30 +1,25 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { BtnAdd, Text, IconContainer, BtnIcon } from './Btn_CreateNew.styled';
-// import { useDispatch } from 'react-redux';
-// import { addBoard } from 'redux/boards/operations';
-import { ModalCreateNewBoard } from '../../Modal/createNewBoard/ModalCreateNewBoard';
+import { useDispatch } from 'react-redux';
+import  {boardsSlice} from 'redux/boards/boardsSlice';
 
 export const BtnNewBoard = () => {
-	// const dispatch = useDispatch();
-	const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
-	// const newBoard = (newBoard) => {
-	// 	dispatch(addBoard(newBoard))
-	// }
-
-	// bilo 	onClick={() => newBoard({ name: `${Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000}`, icon:`href` })}
-
-	return (
-		<>
-			<BtnAdd onClick={() => setIsOpen(true)}>
-				<Text>Create a new board</Text>
-				<IconContainer>
-					<BtnIcon name='add-board' />
-				</IconContainer>
-			</BtnAdd>
-			<ModalCreateNewBoard isOpen={isOpen} setIsOpen={setIsOpen} />
-		</>
-	);
+  return (
+    <>
+      <BtnAdd>
+        <Text>Create a new board</Text>
+        <IconContainer
+          onClick={() => {
+            dispatch(boardsSlice.actions.openCreateEditBoardModal({isOpen: true}));
+          }}
+        >
+          <BtnIcon name="add-board" />
+        </IconContainer>
+      </BtnAdd>
+    </>
+  );
 };
