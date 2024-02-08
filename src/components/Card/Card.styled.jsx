@@ -30,16 +30,8 @@ export const Title = styled.h4`
   font-size: 14px;
   font-weight: bold;
   letter-spacing: -0.02em;
-  color:${props => props.theme.sidebar.textMain};
+  color: ${props => props.theme.sidebar.textMain};
   margin: 0;
-  ma
-`;
-
-export const DescriptionContainer = styled.div`
-  margin-top: 8px;
-  width: 290px;
-  height: 38px;
-  overflow: hidden;
 `;
 
 export const DescriptionText = styled.p`
@@ -49,6 +41,15 @@ export const DescriptionText = styled.p`
   letter-spacing: -0.02em;
   line-height: 1.45;
   color: ${props => props.theme.sidebar.textSecondary};
+  margin-top: 8px;
+  width: 290px;
+  height: 38px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Info = styled.div`

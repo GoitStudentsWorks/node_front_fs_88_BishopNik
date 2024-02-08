@@ -6,7 +6,6 @@ import {
   CardContent,
   TextContent,
   Title,
-  DescriptionContainer,
   DescriptionText,
   Info,
   Priority,
@@ -29,13 +28,11 @@ export const Card = () => {
         <CardContent>
           <TextContent>
             <Title>The Watch Spot Design</Title>
-            <DescriptionContainer>
-              <DescriptionText>
-                Conduct in-depth research and analysis on the project's topic,
-                gather relevant data, and identify key insights to inform
-                decision-making and project planning.
-              </DescriptionText>
-            </DescriptionContainer>
+            <DescriptionText>
+              Conduct in-depth research and analysis on the project's topic,
+              gather relevant data, and identify key insights to inform
+              decision-making and project planning.
+            </DescriptionText>
           </TextContent>
           <Info>
             <Priority>
