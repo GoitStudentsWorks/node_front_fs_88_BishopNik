@@ -31,7 +31,7 @@ export const List = styled.div`
   padding: 0;
   gap: 8px;
   padding-right: 8px;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 250px);
   overflow-y: auto;
 `;
 export const IconsContainer = styled.div`
