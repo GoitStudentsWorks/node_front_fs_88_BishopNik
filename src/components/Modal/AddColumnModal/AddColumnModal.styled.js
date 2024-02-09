@@ -9,7 +9,7 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
 `;
 export const ModalTitle = styled.p`
-  color: #ffffff;
+  color: ${props => props.theme.help.modalTextMain};
   font-size: 18px;
   margin-bottom: 24px;
 `;
@@ -21,7 +21,7 @@ export const StyledForm = styled(Form)`
   }
   width: 350px;
   border-radius: 8px;
-  background: #151515;
+  background: ${props => props.theme.modal.backgroundMain};
   padding: 24px;
 `;
 
@@ -34,30 +34,31 @@ export const CloseIcon = styled(Icon)`
 `;
 
 export const StyledFormField = styled(Field)`
+  color: ${props => props.theme.profile.textMain};
   padding: 14px 18px;
   background: inherit;
   outline: none;
   border-radius: 8px;
-  border: 1px solid rgb(190, 219, 176, 0.5);
-  color: #ffffff;
+  border: 1px solid  ${props => props.theme.profile.inputBorder};
+  color: ;
   margin-bottom: 24px;
 `;
 export const StyledErrorMessage = styled(ErrorMessage)`
   color: red;
 `;
 export const AddIcon = styled.svg`
-  stroke: #ffffff;
+  stroke:  ${props => props.theme.modal.plusColor};
 `;
 
 export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px;
   border-radius: 5px;
   width: 28px;
   height: 28px;
-  background-color: black;
+	background-color: ${props => props.theme.sidebar.addButtonColor};
   margin-right: 8px;
 `;
 export const BtnAdd = styled.button`
