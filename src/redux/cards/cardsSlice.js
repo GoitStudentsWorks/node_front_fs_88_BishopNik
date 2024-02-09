@@ -5,7 +5,7 @@ import { addCard, delCard, fetchCardsByColumnId, updateCard } from './operations
 
 const initialState = {
 	items: [],
-	createCardModal: false,
+	createCardModal: null,
 	isLoading: false,
 	error: null,
 };
@@ -16,7 +16,7 @@ const cardsSlice = createSlice({
 	reducers: {
 		resetError: state => {
 			state.error = null;
-			state.createCardModal = false;
+			state.createCardModal = null;
 		},
 	},
 	extraReducers: builder => {
@@ -35,8 +35,6 @@ const cardsSlice = createSlice({
 				state.createCardModal = true;
 			})
 			.addCase(addCard.fulfilled, (state, { payload }) => {
-				console.log(payload);
-
 				state.error = null;
 				state.createCardModal = false;
 				state.items = [...state.items, payload];

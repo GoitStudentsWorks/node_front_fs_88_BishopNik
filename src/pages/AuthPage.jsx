@@ -1,7 +1,7 @@
 /** @format */
 
-import LoginForm from 'components/LoginForm';
-import RegisterForm from 'components/RegisterForm';
+import LoginForm from 'components/Auth/LoginForm';
+import RegisterForm from 'components/Auth/RegisterForm';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 

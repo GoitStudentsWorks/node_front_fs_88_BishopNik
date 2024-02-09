@@ -17,7 +17,7 @@ import {
 	StyledInput,
 } from './AddCardModal.styled';
 import MyDatePicker from '../../DatePicker/MyDatePicker';
-import { addCardValidationSchema } from 'components/Helpers/ModalSchemas';
+import { addCardValidationSchema } from 'components/Helpers';
 import { useDispatch } from 'react-redux';
 import { resetError } from 'redux/cards/cardsSlice';
 import { addCard } from 'redux/cards/operations';
@@ -32,12 +32,10 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId }) => {
 
 		const { title, description, color, ...rest } = values;
 		dispatch(addCard({ ...rest, name: title, columnId }));
-
-		(() => onRequestClose())();
 	};
 
 	useEffect(() => {
-		if (!statusCreateCard) {
+		if (statusCreateCard === false && isOpen) {
 			dispatch(resetError());
 			onRequestClose();
 		}

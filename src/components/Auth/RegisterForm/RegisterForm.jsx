@@ -3,7 +3,7 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
-import { register } from '../../redux/auth/operations';
+import { register } from '../../../redux/auth/operations';
 import { RegisterSchema } from 'components/Helpers/ModalSchemas.js';
 import React, { useState } from 'react';
 

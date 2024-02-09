@@ -15,14 +15,14 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { delBoard, getBoardById } from 'redux/boards/operations';
 import { StyleSheetManager } from 'styled-components';
-// import { useAuth } from 'hooks';
+// import { useBoards } from 'hooks';
 import { MainContext } from 'components/Helpers';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { board } = useParams();
-	// const { allBoards } = useAuth();
+	// const { allBoards } = useBoards();
 	const { setIsOpenAddBoard, setBoardEdit } = useContext(MainContext);
 
 	const getById = boardId => {
