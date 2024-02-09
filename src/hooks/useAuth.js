@@ -7,9 +7,7 @@ import {
 	selectIsRefreshing,
 	statusUserError,
 	selectIsLoading,
-
 } from 'redux/auth/selectors';
-import { boardsState } from 'redux/boards/selectors';
 
 export const useAuth = () => {
 	const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -17,7 +15,6 @@ export const useAuth = () => {
 	const user = useSelector(selectUser);
 	const errorUser = useSelector(statusUserError);
 	const isLoading = useSelector(selectIsLoading);
-	const allBoards = useSelector(boardsState)
 
 	return {
 		isLoggedIn,
@@ -25,6 +22,5 @@ export const useAuth = () => {
 		user,
 		errorUser,
 		isLoading,
-		allBoards,
 	};
 };

@@ -1,7 +1,7 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllBoards, addBoard, editBoard, fetchDelBoard } from './operations';
+import { fetchAllBoards, addBoard, editBoard, delBoard } from './operations';
 
 const initialState = {
 	items: [],
@@ -73,17 +73,16 @@ export const boardsSlice = createSlice({
 				state.isLoading = false;
 				state.error = error.message;
 			})
-			.addCase(fetchDelBoard.pending, state => {
+			.addCase(delBoard.pending, state => {
 				state.isLoading = true;
 				state.error = null;
 			})
-			.addCase(fetchDelBoard.fulfilled, (state, { payload }) => {
+			.addCase(delBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				const index = state.items.findIndex(item => item.id === payload.id);
-				state.items.splice(index, 1);
+				state.items = state.items.filter(item => item._id !== payload);
 			})
-			.addCase(fetchDelBoard.rejected, (state, { error }) => {
+			.addCase(delBoard.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message;
 			});

@@ -3,10 +3,10 @@
 import React, { useRef } from 'react';
 import { BoardItem } from '../BoardItem/BoardItem';
 import { ListContainer } from './BoardList.styled';
-import { useAuth } from 'hooks';
+import { useBoards } from 'hooks';
 
 export const BoardsList = () => {
-	const { allBoards } = useAuth();
+	const { allBoards } = useBoards();
 
 	const listRef = useRef(null);
 
@@ -18,7 +18,7 @@ export const BoardsList = () => {
 	return (
 		<>
 			<ListContainer onWheel={handleScroll} ref={listRef}>
-				{allBoards.map(({ _id: id, name }) => (
+				{allBoards?.map(({ _id: id, name }) => (
 					<BoardItem key={id} boardId={id} nameBoard={name} />
 				))}
 			</ListContainer>

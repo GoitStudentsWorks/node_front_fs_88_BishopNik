@@ -13,7 +13,7 @@ import {
 } from './BoardItem.styled';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchDelBoard, getBoardById } from 'redux/boards/operations';
+import { delBoard, getBoardById } from 'redux/boards/operations';
 import { StyleSheetManager } from 'styled-components';
 // import { useAuth } from 'hooks';
 import { MainContext } from 'components/Helpers';
@@ -29,13 +29,13 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 		dispatch(getBoardById(boardId));
 	};
 
-	const editBoard = boardId => {
+	const handlerEditBoard = boardId => {
 		setIsOpenAddBoard(true);
 		setBoardEdit(boardId);
 	};
 
-	const delBoard = boardId => {
-		dispatch(fetchDelBoard(boardId));
+	const handlerDelBoard = boardId => {
+		dispatch(delBoard(boardId));
 		navigate(`/todos`);
 	};
 
@@ -51,8 +51,16 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 					</BoardNameContainer>
 
 					<IconsContainer active={status}>
-						<EditIcon name='edit' type='button' onClick={() => editBoard(boardId)} />
-						<DelIcon name='delete' type='button' onClick={() => delBoard(boardId)} />
+						<EditIcon
+							name='edit'
+							type='button'
+							onClick={() => handlerEditBoard(boardId)}
+						/>
+						<DelIcon
+							name='delete'
+							type='button'
+							onClick={() => handlerDelBoard(boardId)}
+						/>
 					</IconsContainer>
 
 					<BoardLine active={status} />
