@@ -11,6 +11,7 @@ import {
   Title,
   TitleBox,
   TitleRadioButtons,
+  RadioButtonStyled,
 } from './Filter.styled.jsx';
 
 export const Filter = ({ setIsOpen }) => {
@@ -27,11 +28,11 @@ export const Filter = ({ setIsOpen }) => {
       </TitleBox>
 
       <CloseButton type="button" onClick={() => setIsOpen(false)}>
-        <IconClose name='close'/>
+        <IconClose name="close" />
       </CloseButton>
-	  <div>
-		<LinkShowAll href="URL">Show all</LinkShowAll>
-	  </div>
+      <div>
+        <LinkShowAll href="URL">Show all</LinkShowAll>
+      </div>
       <TitleRadioButtons>Label color</TitleRadioButtons>
       <RadioButtonGroup>
         <RadioButton>
@@ -41,6 +42,7 @@ export const Filter = ({ setIsOpen }) => {
             checked={selectedOption === 'Without priority'}
             onChange={handleOptionChange}
           />
+          <RadioButtonStyled color="rgba(255, 255, 255, 0.3)" />
           Without priority
         </RadioButton>
         <RadioButton>
@@ -50,6 +52,7 @@ export const Filter = ({ setIsOpen }) => {
             checked={selectedOption === 'Low'}
             onChange={handleOptionChange}
           />
+          <RadioButtonStyled color="rgba(143, 161, 208, 1)" />
           Low
         </RadioButton>
         <RadioButton>
@@ -59,6 +62,7 @@ export const Filter = ({ setIsOpen }) => {
             checked={selectedOption === 'Medium'}
             onChange={handleOptionChange}
           />
+          <RadioButtonStyled color="rgba(224, 156, 181, 1)" />
           Medium
         </RadioButton>
         <RadioButton>
@@ -68,6 +72,7 @@ export const Filter = ({ setIsOpen }) => {
             checked={selectedOption === 'High'}
             onChange={handleOptionChange}
           />
+          <RadioButtonStyled color="rgba(190, 219, 176, 1)" />
           High
         </RadioButton>
       </RadioButtonGroup>

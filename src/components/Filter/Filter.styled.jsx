@@ -11,7 +11,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const TitleBox = styled.div`
-  border-bottom: 1px solid  ${props => props.theme.modal.line};
+  border-bottom: 1px solid ${props => props.theme.modal.line};
   padding-bottom: 14px;
 `;
 
@@ -67,13 +67,18 @@ export const LinkShowAll = styled.a`
 `;
 
 export const RadioButtonGroup = styled.div`
-  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
 `;
 
+// Стилизированная радиокнопка
 export const RadioButton = styled.label`
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
   display: flex;
   gap: 8px;
-  color:  ${props => props.theme.popup.textSecondary};
+  color: ${props => props.theme.popup.textSecondary};
   font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
@@ -81,17 +86,35 @@ export const RadioButton = styled.label`
   margin-right: 10px;
   margin-bottom: 8px;
 
-  &:hover,
-  focus
-   {
-    color:  ${props => props.theme.help.modalTextMain};
-  }
-
-  &:last-child {
-    margin-bottom: 0px;
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
   }
 
   input[type='radio']:checked + & {
     color: ${props => props.theme.help.modalTextMain};
+  }
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.help.modalTextMain};
+  }
+`;
+
+// Стилизированный кружок, заменяющий радиокнопку
+export const RadioButtonStyled = styled.span`
+  display: inline-block;
+  width: 14px; /* Диаметр кружка */
+  height: 14px; /* Диаметр кружка */
+  border-radius: 50%;
+  ${({ color }) => `background-color: ${color};`}
+
+  /* Цвет кружка при наведении */
+  ${RadioButton}:hover & {
+  }
+
+  /* Цвет кружка при выборе */
+  ${RadioButton} input[type="radio"]:checked + & {
+    border-color: #999; /* Цвет обводки */
   }
 `;
