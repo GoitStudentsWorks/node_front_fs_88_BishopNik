@@ -66,6 +66,11 @@ export const TypesOfIcon = styled(Icon)`
 	width: 18px;
 	height: 18px;
 	stroke: ${props => props.theme.modal.icon};
+
+&:hover,
+&:focus
+   {
+    stroke:  ${props => props.theme.header.userName};;
 `;
 
 export const TypesOfBackground = styled.img`
@@ -115,21 +120,24 @@ export const StyledField = styled(Field)`
 	border: 1px solid ${props => props.theme.profile.inputBorder};
 	padding: 14px 0px 14px 18px;
 	opacity: 0.4;
+	outline: none;
 	background: ${props => props.theme.modal.backgroundSecondary};
 	width: 100%;
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
-	&:hover {
-    opacity: 1;
+	opacity: 0.4;
+    transition: all 250ms ease;
+     color: ${props => props.theme.help.textMain};
 
-  color: ${props => props.theme.modal.textMain};
-
-  &:focus {
-    border-color:${props => props.theme.modal.textAccent};
+  &::placeholder {
+    color: ${props => props.theme.help.textMain};
+    font-size: 14px;
+    font-family: 'Poppins';
+    letter-spacing: -0.28px;
   }
 
-  ::placeholder {
-    color: ${props => props.theme.modal.textSecondary}; 
+  &:focus {
+    opacity: 1;
 `;
 
 export const Button = styled.button`

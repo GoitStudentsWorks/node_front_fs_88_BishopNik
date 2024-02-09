@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const HeaderDashboardContainer = styled.div`
   width: 100vw;
@@ -9,5 +9,5 @@ export const HeaderDashboardContainer = styled.div`
 `;
 
 export const Title = styled.h3`
-  color: #ffffff;
+  color: ${props => props.theme.help.modalTextMain};
 `;
