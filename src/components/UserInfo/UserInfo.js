@@ -38,10 +38,10 @@ export const UserInfo = () => {
           onClick={stateСhangeModal}
         />
       </UserInfoWrapper>
-      {/* <ModalEditProfile
+      <ModalEditProfile
         stateСhangeModal={stateСhangeModal}
         isModalState={isModalState}
-      /> */}
+      />
     </div>
   );
 };
