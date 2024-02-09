@@ -3,13 +3,13 @@ import { useState } from 'react';
 import data from '../../img/list_img.json';
 import { UserInfoWrapper, UserName, UserAvatar } from './UserInfo.styled';
 import { useSelector } from 'react-redux';
-import { selectUser} from 'redux/auth/selectors';
+import { selectUser, selectUserTheme} from 'redux/auth/selectors';
 
 
 export const UserInfo = () => {
   const { name, avatarURL } = useSelector(selectUser);
   const [isModalState, setIsModalState] = useState(false);
-  const activeUserTheme = useSelector;
+  const activeUserTheme = useSelector(selectUserTheme);
 
 
   const stateСhangeModal = () => {
@@ -35,7 +35,7 @@ export const UserInfo = () => {
       <UserInfoWrapper>
         <UserName>{name}</UserName>
         <UserAvatar
-          src={ avatarURL || setDefaultAvatar}
+          src={ avatarURL || setDefaultAvatar  /* setDefaultAvatar || avatarURL*/ }
 
           alt="user name"
           onClick={stateСhangeModal}
