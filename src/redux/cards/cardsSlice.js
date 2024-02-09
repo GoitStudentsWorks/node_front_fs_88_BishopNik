@@ -24,8 +24,11 @@ const cardsSlice = createSlice({
                 state.error = payload;
             })
             .addCase(addCard.fulfilled, (state, { payload }) => {
+
+                console.log(payload)
+
                 state.error = null;
-                state.items.push(payload);
+                state.items = [...state.items, payload]
             })
             .addCase(addCard.rejected, (state, { payload }) => {
                 state.error = payload;

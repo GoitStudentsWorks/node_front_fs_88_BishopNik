@@ -20,14 +20,16 @@ import {
   DelIcon,
 } from './Card.styled';
 
-export const Card = () => {
+export const Card = ({ item }) => {
+  const { name, priority, deadline } = item;
+
   return (
     <>
       <CardContainer>
         <PriorityLine />
         <CardContent>
           <TextContent>
-            <Title>The Watch Spot Design</Title>
+            <Title>{name}</Title>
             <DescriptionText>
               Conduct in-depth research and analysis on the project's topic,
               gather relevant data, and identify key insights to inform
@@ -37,11 +39,11 @@ export const Card = () => {
           <Info>
             <Priority>
               <InfoTitle>Priority</InfoTitle>
-              <PriorityLevel>Medium</PriorityLevel>
+              <PriorityLevel>{priority}</PriorityLevel>
             </Priority>
             <Dedline>
               <InfoTitle>Deadline</InfoTitle>
-              <Date>date</Date>
+              <Date>{deadline}</Date>
             </Dedline>
             <BellIcon name="bell" />
             <IconContainer>

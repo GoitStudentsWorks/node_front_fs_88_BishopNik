@@ -37,7 +37,7 @@ const MainDashboard = () => {
         board={board}
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
-      />{' '}
+      />
     </BoardContainer>
   );
 };

@@ -18,11 +18,18 @@ import {
 } from './AddCardModal.styled';
 import MyDatePicker from '../../DatePicker/MyDatePicker';
 import { addCardValidationSchema } from 'components/Helpers/ModalSchemas';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'redux/cards/operations';
 
+export const AddCardModal = ({ isOpen, onRequestClose, columnId }) => {
+  const dispatch = useDispatch();
 
-export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
   const handleFormSubmit = values => {
-    onSubmit(values);
+
+    // API ne dae vidprvutu description i color
+
+    const { title, description, color, ...rest } = values;
+    dispatch(addCard({ ...rest, name: title, columnId }));
   };
 
   return (
@@ -46,7 +53,7 @@ export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
           validationSchema={addCardValidationSchema}
           onSubmit={handleFormSubmit}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, setFieldValue }) => (
             <Form>
               <StyledInput type="text" name="title" placeholder="Title" />
               <ErrorMessage name="title" component="div" />
@@ -99,11 +106,16 @@ export const AddCardModal = ({ isOpen, onRequestClose, onSubmit }) => {
 
               <div>
                 <SubTitles>Deadline:</SubTitles>
-                <Field name="deadline" as={MyDatePicker} />
+                {/* <Field name="deadline" as={MyDatePicker} /> */}
+
+                <MyDatePicker
+                  onChange={value => setFieldValue('deadline', value)}
+                />
+
                 <ErrorMessage name="deadline" component="div" />
               </div>
 
-              <AddButton type="submit" disabled={isSubmitting}>
+              <AddButton type="submit">
                 {isSubmitting ? 'Adding...' : 'Add'}
               </AddButton>
             </Form>
