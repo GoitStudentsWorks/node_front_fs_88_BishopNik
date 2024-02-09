@@ -48,6 +48,7 @@ export const DelColumn = styled.svg`
 export const Btn = styled.button`
   width: 334px;
   margin-top: auto;
+  outline: none;
   display: flex;
   justify-content: center;
   align-items: center;

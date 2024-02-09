@@ -10,6 +10,7 @@ export const BtnAddColumn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
   padding: 15px 58px;
   font-size: 14px;
   font-weight: 500;

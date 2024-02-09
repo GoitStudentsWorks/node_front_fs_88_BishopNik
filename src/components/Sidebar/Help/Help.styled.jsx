@@ -56,6 +56,7 @@ export const HelpBtnText = styled.p`
 
 export const BtnHelp = styled.button`
   display: flex;
+  outline: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

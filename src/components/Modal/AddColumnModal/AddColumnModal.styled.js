@@ -20,6 +20,7 @@ export const StyledForm = styled(Form)`
     width: 100%;
   }
   width: 350px;
+  outline: none;
   border-radius: 8px;
   background: ${props => props.theme.modal.backgroundMain};
   padding: 24px;
@@ -65,6 +66,7 @@ export const BtnAdd = styled.button`
 	display: flex;
 	width: 100%;
 	padding: 14px;
+  outline: none;
 	border:none;
 	justify-content: center;
 	align-items: center;
