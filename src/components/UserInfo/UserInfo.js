@@ -1,4 +1,4 @@
-import { ModalEditProfile } from 'components/Modal/EditForm/ModalEditProfile';
+import { ModalEditProfile } from 'components/Modal/EditProfil/ModalEditProfile';
 import { useState } from 'react';
 import data from '../../img/list_img.json';
 import { UserInfoWrapper } from './UserInfo.styled';

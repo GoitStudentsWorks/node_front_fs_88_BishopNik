@@ -1,13 +1,3 @@
-import styled from 'styled-components';
-import Modal from 'react-modal';
-// .modal-overlay {
-//   position: fixed,
-//   top: 0,
-//   width: 100%,
-//   height: 100%,
-//   background-color: rgba(78, 74, 72, 0.6),
-// }
-
 export const ModalContentStyles = {
   position: 'relative',
   top: '50%',
@@ -21,18 +11,6 @@ export const ModalContentStyles = {
   borderRadius: '8px',
   border: 'none',
   padding: '24px',
-
-  //  @media (min-width: 375px) {
-  //     max-width: none,
-  //     width: 335px,
-  //   }
-  //   @media (min-width: 376px) and (max-width: 767px) {
-  //     width: 400px,
-  //   }
-
-  //   @media (min-width: 768px) {
-  //     width: 400px,
-  //   }
 };
 
 export const modalTextStyles = {

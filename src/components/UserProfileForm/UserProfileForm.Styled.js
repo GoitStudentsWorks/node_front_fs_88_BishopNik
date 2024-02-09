@@ -8,7 +8,7 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   margin-top: 14px;
-  width: 100%;
+  min-width: 335px;
   border-radius: 8px;
   background: #151515;
 
@@ -87,7 +87,6 @@ export const LogoStyles = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #bedbb0;
-  /* stroke: black; */
 
   &:hover,
   :focus {

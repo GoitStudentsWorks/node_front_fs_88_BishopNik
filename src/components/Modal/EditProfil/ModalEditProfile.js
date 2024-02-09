@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import { FiltersIcon } from 'components/Filter/FiltersBtn.styled';
 import { UserIcon } from 'components/UserProfileForm/UserIcon';
 
-import './ModalEditProfile.css';
+// import './ModalEditProfile.css';
 import { customStyles } from '../Modal.styled';
 import ModalWindow from '../Modal';
 import { closeIconStyles, modalTextStyles } from './ModalEditProfileStyled';
