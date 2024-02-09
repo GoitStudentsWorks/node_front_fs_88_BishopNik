@@ -2,21 +2,24 @@
 import styled from 'styled-components';
 
 export const BoardContainer = styled.div`
-  padding: 0px 24px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
 `;
 export const BtnAddColumn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 58px;
+  padding: 15px 58px;
   font-size: 14px;
   font-weight: 500;
   border-radius: 8px;
-  width: 334px;
+  min-width: 334px;
   color: #ffffff;
   background-color: #121212;
   border: none;
   cursor: pointer;
+  height: 58px;
 `;
 export const StyledIconAdd = styled.span`
   display: flex;
@@ -31,4 +34,8 @@ export const StyledIconAdd = styled.span`
 
 export const SvagAddColumn = styled.svg`
   stroke: #121212;
+`;
+export const MainWrapper = styled.ul`
+  display: flex;
+  gap: 18px;
 `;
