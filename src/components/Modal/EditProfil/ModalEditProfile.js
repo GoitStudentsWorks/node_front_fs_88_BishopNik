@@ -5,7 +5,6 @@ import Modal from 'react-modal';
 import { FiltersIcon } from 'components/Filter/FiltersBtn.styled';
 import { UserIcon } from 'components/UserProfileForm/UserIcon';
 
-// import './ModalEditProfile.css';
 import { customStyles } from '../Modal.styled';
 import ModalWindow from '../Modal';
 import { closeIconStyles, modalTextStyles } from './ModalEditProfileStyled';
@@ -15,8 +14,6 @@ export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
     <ModalWindow
       isOpen={isModalState}
       onRequestClose={stateСhangeModal}
-      // overlayClassName={'modal-overlay'}
-      // className={'modal-content'}
       style={customStyles}
       contentLabel="onRequestClose"
     >
