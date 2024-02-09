@@ -24,7 +24,6 @@ export const getBoardById = createAsyncThunk('boards/:boardName', async (boardId
 export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thunkAPI) => {
 	try {
 		const response = await axios.post('/boards', newBoard);
-
 		toastSuccess('Board has been created');
 		return response.data;
 	} catch ({ response }) {
@@ -34,14 +33,15 @@ export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thu
 	}
 });
 
-export const fetchPutBoard = createAsyncThunk(
-	'boards/fetchPut',
-	async ({ _id, name, gender, email, phone }, thunkAPI) => {
+export const editBoard = createAsyncThunk(
+	'boards/editBoard',
+	async ({ _id, name, icon, background }, thunkAPI) => {
 		try {
-			const response = await axios.put(`/api/boards/${_id}`, {});
+			const response = await axios.patch(`/boards/${_id}`, { name, icon, background });
 			return response.data;
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error.message);
+		} catch ({ response }) {
+			toastError(response?.data?.message);
+			return thunkAPI.rejectWithValue(response?.data?.message);
 		}
 	}
 );
@@ -49,8 +49,10 @@ export const fetchPutBoard = createAsyncThunk(
 export const fetchDelBoard = createAsyncThunk('boards/fetchDel', async (id, thunkAPI) => {
 	try {
 		const response = await axios.delete(`/boards/${id}`);
+		toastSuccess(`Successful removal`);
 		return response.data;
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message);
+	} catch ({ response }) {
+		toastError(response?.data?.message);
+		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });

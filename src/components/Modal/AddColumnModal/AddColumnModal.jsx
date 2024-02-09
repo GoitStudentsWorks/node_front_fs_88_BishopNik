@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import ModalWindow from '../Modal';
@@ -17,35 +17,27 @@ import {
 	IconWrapper,
 	AddIcon,
 } from './AddColumnModal.styled';
-import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { addColum } from 'redux/columns/operations';
 
 const columnSchema = Yup.object().shape({
-	title: Yup.string().required('Title is required'),
+	name: Yup.string().required('name is required'),
 });
 
-export const AddColumnModal = ({ isOpen, setIsOpen }) => {
-	const [errorMessage, setErrorMessage] = useState(null);
-
-	const handleSubmit = ({ title }, { setSubmitting }) => {
-		setSubmitting(true);
-
-		if (!title.trim()) {
-			setErrorMessage('Title is required');
-			setSubmitting(false);
-			return;
-		}
-		toast.success('Column created');
-		setIsOpen(false); // Corrected onClose to setIsOpen
-	};
+export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
+	const dispatch = useDispatch();
 
 	return (
 		<ModalWindow isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles}>
 			<Formik
 				initialValues={{
-					title: '',
+					name: '',
+					boarderId: `${board}`,
 				}}
 				validationSchema={columnSchema}
-				onSubmit={handleSubmit}
+				onSubmit={(newColumn, actions) => {
+					dispatch(addColum(newColumn));
+				}}
 			>
 				{({ isSubmitting }) => (
 					<StyledForm autoComplete='off'>
@@ -54,15 +46,14 @@ export const AddColumnModal = ({ isOpen, setIsOpen }) => {
 							<CloseIcon name='close' onClick={() => setIsOpen(false)} />
 						</HeaderContainer>
 
-						<StyledFormField type='text' name='title' placeholder='Title' />
-						<StyledErrorMessage name='title' component='div' />
+						<StyledFormField type='text' name='name' placeholder='Title' />
+						<StyledErrorMessage name='name' component='div' />
 						<BtnAdd type='submit' disabled={isSubmitting}>
 							<IconWrapper>
 								<AddIcon name='add-board' />
 							</IconWrapper>
 							Add
 						</BtnAdd>
-						{errorMessage && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
 					</StyledForm>
 				)}
 			</Formik>

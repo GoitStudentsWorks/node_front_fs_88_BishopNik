@@ -1,18 +1,13 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllBoards, addBoard, fetchPutBoard, fetchDelBoard } from './operations';
+import { fetchAllBoards, addBoard, editBoard, fetchDelBoard } from './operations';
 
 const initialState = {
-	items: [
-		{ _id: `11`, name: `Main board` },
-		{ _id: `22`, name: `App board` },
-		{ _id: `33`, name: `Index board` },
-		{ _id: `44`, name: ` board` },
-	],
+	items: [],
 	isLoading: false,
 	createEditBoardModal: {
-		isOpen: false,
+		isOpen: true,
 		boardId: null,
 	},
 	error: null,
@@ -24,11 +19,12 @@ export const boardsSlice = createSlice({
 	reducers: {
 		resetError: state => {
 			state.error = null;
+			state.createEditBoardModal = { isOpen: true, boardId: null };
 		},
-		openCreateEditBoardModal: (state, action) => {
-			state.createEditBoardModal.isOpen = action.payload.isOpen;
-			state.createEditBoardModal.boardId = action.payload.boardId;
-		},
+		// openCreateEditBoardModal: (state, action) => {
+		// 	state.createEditBoardModal.isOpen = action.payload.isOpen;
+		// 	state.createEditBoardModal.boardId = action.payload.boardId;
+		// },
 	},
 	extraReducers: builder => {
 		builder
@@ -38,7 +34,6 @@ export const boardsSlice = createSlice({
 			})
 			.addCase(fetchAllBoards.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
-				state.error = null;
 				state.items = payload;
 			})
 			.addCase(fetchAllBoards.rejected, (state, { error }) => {
@@ -54,21 +49,27 @@ export const boardsSlice = createSlice({
 				state.error = null;
 				state.items.push(payload);
 				state.createEditBoardModal.isOpen = false;
+				state.createEditBoardModal.boardId = payload._id;
 			})
 			.addCase(addBoard.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message;
 			})
-			.addCase(fetchPutBoard.pending, state => {
+			.addCase(editBoard.pending, state => {
 				state.isLoading = true;
 				state.error = null;
 			})
-			.addCase(fetchPutBoard.fulfilled, (state, { payload }) => {
+			.addCase(editBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.items = [...state.items, payload];
+				state.items = state.items.map(item => {
+					if (item._id === payload._id) return payload;
+					return item;
+				});
+				state.createEditBoardModal.isOpen = false;
+				state.createEditBoardModal.boardId = payload._id;
 			})
-			.addCase(fetchPutBoard.rejected, (state, { error }) => {
+			.addCase(editBoard.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message;
 			})
@@ -79,10 +80,8 @@ export const boardsSlice = createSlice({
 			.addCase(fetchDelBoard.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.items = state.items.map(item => {
-					if (item.__id === payload.__id) return payload;
-					return item;
-				});
+				const index = state.items.findIndex(item => item.id === payload.id);
+				state.items.splice(index, 1);
 			})
 			.addCase(fetchDelBoard.rejected, (state, { error }) => {
 				state.isLoading = false;
