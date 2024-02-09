@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
 	BoardContainer,
 	BoardNameContainer,
@@ -15,15 +15,20 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { delBoard, getBoardById } from 'redux/boards/operations';
 import { StyleSheetManager } from 'styled-components';
-// import { useBoards } from 'hooks';
+import { useBoards } from 'hooks';
 import { MainContext } from 'components/Helpers';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { board } = useParams();
-	// const { allBoards } = useBoards();
+	const { allBoards } = useBoards();
 	const { setIsOpenAddBoard, setBoardEdit } = useContext(MainContext);
+
+	useEffect(() => {
+		navigate(`/todos/${allBoards[0]._id}`);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [allBoards]);
 
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));
@@ -36,7 +41,6 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 
 	const handlerDelBoard = boardId => {
 		dispatch(delBoard(boardId));
-		navigate(`/todos`);
 	};
 
 	const status = board === boardId;
