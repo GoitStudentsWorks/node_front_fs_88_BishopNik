@@ -14,9 +14,10 @@ export const BtnAddColumn = styled.button`
   font-size: 14px;
   font-weight: 500;
   border-radius: 8px;
-  min-width: 334px;
-  color: #ffffff;
-  background-color: #121212;
+  width: 334px;
+  color: ${props => props.theme.help.modalTextMain};;
+  background-color: ${props => props.theme.profile.background};
+
   border: none;
   cursor: pointer;
   height: 58px;
@@ -28,12 +29,12 @@ export const StyledIconAdd = styled.span`
   width: 28px;
   height: 28px;
   margin-right: 8px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.addcolum.plusBackground};
   border-radius: 8px;
 `;
 
 export const SvagAddColumn = styled.svg`
-  stroke: #121212;
+  stroke: ${props => props.theme.addcolum.plusColor};
 `;
 export const MainWrapper = styled.ul`
   display: flex;

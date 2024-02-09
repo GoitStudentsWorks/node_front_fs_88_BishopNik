@@ -8,7 +8,7 @@ export const ModalContainer = styled.div`
   color: ${props => props.theme.help.modalTextMain};
   padding: 24px;
   border-radius: 8px;
-  min-width: 320px;
+    min-width: 320px;
   @media (max-width: 767px) {
     width: 335px;
   }
@@ -63,6 +63,7 @@ export const StyledInput = styled(Field)`
   margin: 24px 0 14px 0;
   border: 1px solid ${props => props.theme.profile.inputBorder};
   border-radius: 8px;
+  outline: none;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   background: ${props => props.theme.modal.backgroundSecondary};
   opacity: 0.4;
@@ -88,6 +89,7 @@ export const TextArea = styled.textarea`
   height: 154px;
   padding: 14px 18px;
   margin-bottom: 24px;
+  outline: none;
   border: 1px solid  ${props => props.theme.profile.inputBorder};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);

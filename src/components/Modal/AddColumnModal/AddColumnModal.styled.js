@@ -1,6 +1,6 @@
 /** @format */
 
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Form, ErrorMessage, Field } from 'formik';
 import Icon from '../../Icon/index';
 
@@ -26,10 +26,11 @@ export const StyledForm = styled(Form)`
 `;
 
 export const CloseIcon = styled(Icon)`
-  width: 18px;
-  height: 18px;
-  stroke: rgba(255, 255, 255, 1);
-  cursor: pointer;
+	width: 18px;
+	height: 18px;
+	stroke: ${props => props.theme.modal.iconClose};
+	cursor: pointer;
+
 `;
 
 export const StyledFormField = styled(Field)`
@@ -60,18 +61,19 @@ export const IconWrapper = styled.div`
   margin-right: 8px;
 `;
 export const BtnAdd = styled.button`
-  display: flex;
-  width: 100%;
-  padding: 14px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: #bedbb0;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+	display: flex;
+	width: 100%;
+	padding: 14px;
+	border:none;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background: ${props => props.theme.help.buttonBackground};;
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	cursor: pointer;
 
-  &:hover,
-  &:focus {
-    background: rgba(157, 200, 136, 1);
-  }
+	&:hover,
+	&:focus {
+		background: ${props => props.theme.sidebar.hoverLogout};
+	}
 `;

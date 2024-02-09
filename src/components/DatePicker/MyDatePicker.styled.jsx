@@ -12,13 +12,13 @@ const DatePickerContainer = styled.div`
 const CustomDatePicker = styled(DatePicker)`  
   width: 200px;  
   border: none;
-  color: #BEDBB0;
-  background-color: ${({ theme }) => theme.modal.backgroundMain};
+  color: ${props => props.theme.modal.textAccent};
+  background-color: ${props => props.theme.profile.background};
   outline: none;
   cursor: pointer;
 
   &:hover {
-    color: #9DC888;
+    color: ${props => props.theme.sidebar.hoverLogout};
     ;
   }
 `;
