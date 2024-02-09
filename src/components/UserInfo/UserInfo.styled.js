@@ -13,6 +13,7 @@ export const UserName = styled.span`
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
+  cursor: default;
 `;
 
 export const UserAvatar = styled.img`

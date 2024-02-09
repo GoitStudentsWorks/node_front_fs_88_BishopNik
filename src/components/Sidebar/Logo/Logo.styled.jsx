@@ -21,6 +21,7 @@ export const LogoText = styled.p`
   letter-spacing: -0.04em;
   margin: 0;
   font-weight: bold;
+  cursor: default;
   color: ${props => props.theme.sidebar.textMain};
 `;
 

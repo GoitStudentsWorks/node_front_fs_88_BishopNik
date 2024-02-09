@@ -3,9 +3,7 @@
 import { Form, ErrorMessage, Field } from 'formik';
 import Icon from '../../Icon/index';
 
-
 import styled from 'styled-components';
-
 
 export const Title = styled.p`
   color: ${props => props.theme.help.modalTextMain};
@@ -13,6 +11,7 @@ export const Title = styled.p`
   padding-bottom: 24px;
   font-size: 18px;
   font-weight: 500;
+  cursor: default;
 `;
 
 export const StyledForm = styled(Form)`
@@ -119,30 +118,30 @@ export const StyledTextArea = styled(Field)`
 `;
 
 export const Button = styled.button`
-display: flex;
-	width: 100%;
-	padding: 14px;
-	justify-content: center;
-	align-items: center;
-	border-radius: 8px;
+  display: flex;
+  width: 100%;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
   border: none;
-	background:${props => props.theme.help.buttonBackground}; 
-	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-	cursor: pointer;
+  background: ${props => props.theme.help.buttonBackground};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 
-	&:hover,
-	&:focus {
-		background: ${props => props.theme.sidebar.hoverLogout};
-	}
+  &:hover,
+  &:focus {
+    background: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 
 export const ButtonText = styled.span`
-    color: ${props => props.theme.help.modalButtonColor};
-	text-align: center;
-	font-family: Poppins;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
-	letter-spacing: -0.28px;
+  color: ${props => props.theme.help.modalButtonColor};
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
 `;

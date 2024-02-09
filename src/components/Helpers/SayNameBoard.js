@@ -1,12 +1,11 @@
 /** @format */
 
-import { useSelector } from 'react-redux';
-import { boardsState } from '../../redux/boards/selectors';
+import { useBoards } from 'hooks';
 
 export function SayNameBoard(boardId) {
-	const allBoard = useSelector(boardsState);
+	const { allBoards } = useBoards();
 
-	const board = allBoard.find(({ _id }) => _id === boardId);
+	const board = allBoards?.find(({ _id }) => _id === boardId);
 
 	if (!board) return '';
 

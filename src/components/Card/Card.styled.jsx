@@ -50,6 +50,7 @@ export const DescriptionText = styled.p`
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: default;
 `;
 
 export const Info = styled.div`
@@ -73,6 +74,7 @@ export const InfoTitle = styled.p`
   margin: 0;
   font-weight: normal;
   letter-spacing: -0.02em;
+  cursor: default;
   color: ${props => props.theme.sidebar.textSecondary};
 `;
 
@@ -84,6 +86,7 @@ export const PriorityLevel = styled.p`
   letter-spacing: -0.02em;
   color: ${props => props.theme.sidebar.textMain};
   padding-left: 16px;
+  cursor: default;
 
   &::before {
     content: '';
@@ -112,6 +115,7 @@ export const Date = styled.p`
   margin: 0;
   font-weight: normal;
   letter-spacing: -0.02em;
+  cursor: default;
   color: ${props => props.theme.sidebar.textMain};
 `;
 
