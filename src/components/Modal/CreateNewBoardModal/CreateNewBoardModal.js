@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import { Formik, Field } from 'formik';
 import {
 	StyledForm,
@@ -26,42 +26,66 @@ import { customStyles } from '../Modal.styled';
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
 import { useDispatch, useSelector } from 'react-redux';
+import { resetError } from 'redux/boards/boardsSlice';
 // import { boardsSlice } from 'redux/boards/boardsSlice';
 import { modalData } from 'redux/boards/selectors';
-import { addBoard } from 'redux/boards/operations';
+import { addBoard, editBoard } from 'redux/boards/operations';
 import { MainContext } from 'components/Helpers';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'hooks';
 
 export const CreateNewBoardModal = () => {
 	const dispatch = useDispatch();
 	const { isOpen, boardId } = useSelector(modalData);
 	// const boards = useSelector(boardsState);
-	const { isOpenAddBoard, setIsOpenAddBoard } = useContext(MainContext);
+	const { isOpenAddBoard, setIsOpenAddBoard, boardEdit, setBoardEdit } = useContext(MainContext);
+	const navigate = useNavigate();
+	const { allBoards } = useAuth();
 
 	// const boardForEditing = boardId && boards.find(item => item.id === boardId);
 
 	const closeModal = () => {
-		setIsOpenAddBoard(false);
+		resetStatus();
 		// dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
 	};
+
+	const resetStatus = useCallback(() => {
+		setIsOpenAddBoard(false);
+		setBoardEdit(null);
+	}, [setIsOpenAddBoard, setBoardEdit]);
+
+	useEffect(() => {
+		if (!isOpen) {
+			resetStatus();
+			dispatch(resetError());
+		}
+		if (boardId) navigate(`/todos/${boardId}`);
+	}, [boardId, dispatch, isOpen, navigate, resetStatus, setIsOpenAddBoard]);
+
+	const initialValues = boardEdit
+		? allBoards?.find(b => b._id === boardEdit)
+		: {
+				name: '',
+				icon: '0',
+				background: '0',
+		  };
 
 	return (
 		<ModalWindow isOpen={isOpenAddBoard} onRequestClose={closeModal} style={customStyles}>
 			<Formik
-				initialValues={{
-					name: '',
-					icon: '0',
-					background: '0',
-				}}
+				initialValues={initialValues}
 				onSubmit={(board, actions) => {
-					dispatch(addBoard(board));
-					console.log(isOpen, boardId);
-					if (!isOpen) closeModal();
+					if (boardEdit) {
+						dispatch(editBoard(board));
+					} else {
+						dispatch(addBoard(board));
+					}
 				}}
 				// validationSchema={createBoardSchema}
 			>
 				<StyledForm autoComplete='off'>
 					<HeaderContainer>
-						<Title>New board</Title>
+						<Title>{boardEdit ? 'Edit board' : 'Create board'}</Title>
 						<CloseIcon name='close' onClick={closeModal} />
 					</HeaderContainer>
 
@@ -108,7 +132,7 @@ export const CreateNewBoardModal = () => {
 						<IconWrapper>
 							<AddIcon name='add-board' />
 						</IconWrapper>
-						<ButtonText>Create</ButtonText>
+						<ButtonText>{boardEdit ? 'Edit' : 'Create'}</ButtonText>
 					</Button>
 				</StyledForm>
 			</Formik>
