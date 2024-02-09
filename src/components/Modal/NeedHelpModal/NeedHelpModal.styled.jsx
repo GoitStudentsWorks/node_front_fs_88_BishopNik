@@ -60,7 +60,7 @@ export const ErrMessageStyled = styled(ErrorMessage)`
 export const StyledField = styled(Field)`
   color: ${props => props.theme.profile.textMain};
   border-radius: 8px;
-  border: none;
+  outline: none;
   border: 1px solid ${props => props.theme.profile.inputBorder};
   padding: 14px 0px 14px 18px;
   opacity: 0.4;
@@ -85,7 +85,8 @@ export const StyledTextArea = styled(Field)`
   opacity: 0.4;
   border-radius: 8px;
   border: none;
-   height: 120px;
+  outline: none;
+  height: 120px;
   position: relative;
   width: 100%;
   resize: none;

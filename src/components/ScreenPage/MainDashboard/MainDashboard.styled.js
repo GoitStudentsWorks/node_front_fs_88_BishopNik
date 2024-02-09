@@ -13,8 +13,8 @@ export const BtnAddColumn = styled.button`
   font-weight: 500;
   border-radius: 8px;
   width: 334px;
-  color: #ffffff;
-  background-color: #121212;
+  color: ${props => props.theme.help.modalTextMain};;
+  background-color: ${props => props.theme.profile.background};
   border: none;
   cursor: pointer;
 `;
@@ -25,10 +25,10 @@ export const StyledIconAdd = styled.span`
   width: 28px;
   height: 28px;
   margin-right: 8px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.addcolum.plusBackground};
   border-radius: 8px;
 `;
 
 export const SvagAddColumn = styled.svg`
-  stroke: #121212;
+  stroke: ${props => props.theme.addcolum.plusColor};
 `;
