@@ -1,4 +1,4 @@
-.modal-overlay {
+/* .modal-overlay = `
   position: fixed;
   top: 0;
   width: 100%;
@@ -15,7 +15,7 @@
   margin-right: -50%;
   max-width: 335px;
   transform: translate(-50%, -50%);
-  background-color: rgba(21, 21, 21, 1);
+  background-color: rgba(21, 21, 21, 1); 
   border-radius: 8px;
   border: none;
   padding: 24px;
@@ -31,4 +31,4 @@
   @media (min-width: 768px) {
     width: 400px;
   }
-}
+} */

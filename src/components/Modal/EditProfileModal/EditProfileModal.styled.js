@@ -1,7 +1,7 @@
 /** @format */
 
 export const modalTextStyles = {
-	color: '#FFFFFF',
+	color: '#FFFFFF',  /*${props => props.theme.help.modalTextMain}*/
 	fontFamily: 'Poppins',
 	fontSize: '18px',
 	fontWeight: '500',

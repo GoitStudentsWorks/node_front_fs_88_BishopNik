@@ -32,9 +32,9 @@ export const theme = [
         textAccent: 'rgba(190, 219, 176, 1)',
         icon: 'rgba(255, 255, 255, 1)',
         modalTextMain: 'rgba(255, 255, 255, 1)',
-        modalBorder: 'rgba(190, 219, 176, 1)',
-        modalButtonBackground: 'rgba(190, 219, 176, 1)',
-        modalButtonColor: 'rgba(22, 22, 22, 1)',
+        border: 'rgba(190, 219, 176, 1)',
+        buttonBackground: 'rgba(190, 219, 176, 1)',
+        buttonColor: 'rgba(22, 22, 22, 1)',
       },
 	
       modal: {
@@ -104,10 +104,10 @@ export const theme = [
       },
 
       addcolum: {
-        buttonBackground: 'rgba(18, 18, 18, 1)',
-        buttonColor: 'rgba(255, 255, 255, 1)',
-        buttonPlusBackground: 'rgba(255, 255, 255, 1)',
-        buttonPlusColor: 'rgba(18, 18, 18, 1)',
+        background: 'rgba(18, 18, 18, 1)',
+        color: 'rgba(255, 255, 255, 1)',
+        plusBackground: 'rgba(255, 255, 255, 1)',
+        plusColor: 'rgba(18, 18, 18, 1)',
       },
     },
   },

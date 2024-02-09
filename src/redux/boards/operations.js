@@ -33,13 +33,12 @@ export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thu
 	}
 });
 
-export const fetchPutBoard = createAsyncThunk(
-	'boards/fetchPut',
+export const editBoard = createAsyncThunk(
+	'boards/editBoard',
 	async ({ _id, name, icon, background }, thunkAPI) => {
 		try {
-			const response = await axios.put(`/boards/${_id}`, {});
-			console.log(response);
-			// return response.data;
+			const response = await axios.patch(`/boards/${_id}`, { name, icon, background });
+			return response.data;
 		} catch ({ response }) {
 			toastError(response?.data?.message);
 			return thunkAPI.rejectWithValue(response?.data?.message);
