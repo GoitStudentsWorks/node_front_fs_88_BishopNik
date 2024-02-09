@@ -8,8 +8,7 @@ import styled from 'styled-components';
 
 
 export const Title = styled.p`
-  color: #fff;
-  background: #151515;
+  color: ${props => props.theme.help.modalTextMain};
   margin: 0;
   padding-bottom: 24px;
   font-size: 18px;
@@ -25,7 +24,8 @@ export const StyledForm = styled(Form)`
   width: 400px;
   height: 355px;
   border-radius: 8px;
-  background: #151515;
+  border: none;
+  background: ${props => props.theme.profile.background};
   padding: 24px;
 `;
 export const HeaderContainer = styled.div`
@@ -36,7 +36,7 @@ export const HeaderContainer = styled.div`
 export const CloseIcon = styled(Icon)`
   width: 18px;
   height: 18px;
-  stroke: rgba(255, 255, 255, 1);
+  stroke: ${props => props.theme.modal.iconClose};
   cursor: pointer;
 `;
 
@@ -58,56 +58,81 @@ export const ErrMessageStyled = styled(ErrorMessage)`
 `;
 
 export const StyledField = styled(Field)`
-  color: #fff;
+  color: ${props => props.theme.profile.textMain};
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: none;
+  border: 1px solid ${props => props.theme.profile.inputBorder};
   padding: 14px 0px 14px 18px;
   opacity: 0.4;
-  background: #1f1f1f;
+  background: ${props => props.theme.profile.background};
   width: 100%;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  &:hover {
+    opacity: 1;
+
+  color: ${props => props.theme.modal.textMain};
+
+  &:focus {
+    border-color:${props => props.theme.modal.textAccent};
+  }
+
+  ::placeholder {
+    color: ${props => props.theme.modal.textSecondary}; 
+  }
 `;
 export const StyledTextArea = styled(Field)`
-  color: #fff;
-  border-radius: 8px;
-  border: 1px solid #bedbb0;
   padding: 14px 5px 5px 18px;
   opacity: 0.4;
-  background: #1f1f1f;
-  width: 100%;
-  height: 120px;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  border-radius: 8px;
+  border: none;
+   height: 120px;
   position: relative;
+  width: 100%;
+  resize: none;
+  border: 1px solid ${props => props.theme.profile.inputBorder};
+  color: ${props => props.theme.profile.textMain};
+  background: ${props => props.theme.profile.background};
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+ 
 
-  &::placeholder {
-    font: inherit;
-    font-size: 18px;
+  font-size: 14px;
+  font-family: 'Poppins';
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  &:hover {
+    opacity: 1;
+    border-color: ${props => props.theme.modal.textAccent};
+
+  color: ${props => props.theme.modal.textMain};
+  transition: border-color 0.3s;
+
+  &:focus
+   {
+    border-color: ${props => props.theme.modal.textAccent};
   }
-  &::-webkit-input-placeholder {
-    font: inherit;
-    font-size: 18px;
-	position: absolute;
-	top: 14px;
-	left: 18px;
-	z-index: -1;
-  }
+
+  ::placeholder {
+    color: ${props => props.theme.modal.textSecondary}; 
+    border-color: ${props => props.theme.modal.textAccent};
 `;
 
 export const Button = styled.button`
-  display: flex;
-  width: 100%;
-  padding: 14px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: #bedbb0;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+display: flex;
+	width: 100%;
+	padding: 14px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+  border: none;
+	background:${props => props.theme.help.buttonBackground}; 
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	cursor: pointer;
 
-  &:hover,
-  &:focus {
-    background: rgba(157, 200, 136, 1);
-  }
+	&:hover,
+	&:focus {
+		background: ${props => props.theme.sidebar.hoverLogout};
+	}
 `;
 
 export const ButtonText = styled.span`

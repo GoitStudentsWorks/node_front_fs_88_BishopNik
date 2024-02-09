@@ -6,8 +6,8 @@ import Icon from '../../Icon/index';
 import styled from 'styled-components';
 
 export const Title = styled.p`
-  color: #fff;
-  background: #151515;
+  color: ${props => props.theme.help.modalTextMain};;
+  background: ${props => props.theme.profile.background};;
   margin: 0;
   padding-bottom: 24px;
   font-size: 18px;
@@ -21,7 +21,7 @@ export const HeaderContainer = styled.div`
 export const CloseIcon = styled(Icon)`
   width: 18px;
   height: 18px;
-  stroke: rgba(255, 255, 255, 1);
+  stroke: ${props => props.theme.modal.iconClose};
   cursor: pointer;
 `;
 

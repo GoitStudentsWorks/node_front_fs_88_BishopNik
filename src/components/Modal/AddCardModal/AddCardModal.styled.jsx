@@ -4,8 +4,8 @@ import {Field} from 'formik';
 
 export const ModalContainer = styled.div`
   position: relative;
-  background: ${({ theme }) => theme.modal.backgroundMain};
-  color: ${({ theme }) => theme.modal.textMain};
+  background: ${props => props.theme.modal.backgroundMain};
+  color: ${props => props.theme.help.modalTextMain};
   padding: 24px;
   border-radius: 8px;
   min-width: 320px;
@@ -24,8 +24,9 @@ export const CloseButton = styled.button`
   right: 14px;
   width: 18px;
   height: 18px;
-  background: ${({ theme }) => theme.modal.backgroundSecondary};
+  background: ${props => props.theme.modal.backgroundSecondary};
   border: none;
+  cursor: pointer;
 `;
 
 export const IconClose = styled(Icon)`
@@ -34,11 +35,11 @@ export const IconClose = styled(Icon)`
   width: 16px;
   height: 16px;
   cursor: pointer;
-  stroke: ${({ theme }) => theme.modal.iconClose};
+  stroke: ${props => props.theme.modal.iconClose};
 `;
 
 export const FormTitle = styled.h2`  
-  color: ${({ theme }) => theme.modal.textMain};
+  color: ${props => props.theme.modal.textMain};
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
@@ -47,7 +48,7 @@ export const FormTitle = styled.h2`
 `;
 
 export const SubTitles = styled.h3`  
-  color: ${({ theme }) => theme.modal.textSecondary};
+  color: ${props => props.theme.modal.textSecondary};
   font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
@@ -57,55 +58,54 @@ export const SubTitles = styled.h3`
 
 export const StyledInput = styled(Field)`
   width: 100%;
-  color: rgb(255, 255, 255);
+  color: ${props => props.theme.profile.textMain};
   padding: 14px 18px;
   margin: 24px 0 14px 0;
-  border: 1px solid ${({ theme }) => theme.modal.border};
+  border: 1px solid ${props => props.theme.profile.inputBorder};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  background: ${({ theme }) => theme.modal.backgroundSecondary};
+  background: ${props => props.theme.modal.backgroundSecondary};
   opacity: 0.4;
 
-  &:hover {
+   &:hover {
     opacity: 1;
 
-  color: ${({ theme }) => theme.modal.textMain};
-  transition: border-color 0.3s;
+  color: ${props => props.theme.modal.textMain};
 
   &:focus {
-    border-color: ${({ theme }) => theme.modal.textAccent};
+    border-color:${props => props.theme.modal.textAccent};
   }
 
   ::placeholder {
-    color: ${({ theme }) => theme.modal.textSecondary};    
-
+    color: ${props => props.theme.modal.textSecondary}; 
+  }
   }
 `;
 
 export const TextArea = styled.textarea`
   width: 100%;
-  color: rgb(255, 255, 255);
+  color: ${props => props.theme.profile.textMain};
   height: 154px;
   padding: 14px 18px;
   margin-bottom: 24px;
-  border: 1px solid ${({ theme }) => theme.modal.border};
+  border: 1px solid  ${props => props.theme.profile.inputBorder};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  background: ${({ theme }) => theme.modal.backgroundSecondary};
+  background: ${props => props.theme.modal.backgroundSecondary};
   opacity: 0.4;
 
-  &:hover {
+   &:hover {
     opacity: 1;
 
-  color: ${({ theme }) => theme.modal.textMain};
-  transition: border-color 0.3s;
+  color: ${props => props.theme.modal.textMain};
 
   &:focus {
-    border-color: ${({ theme }) => theme.modal.textAccent};
+    border-color:${props => props.theme.modal.textAccent};
   }
-  
+
   ::placeholder {
-    color: ${({ theme }) => theme.modal.textSecondary};
+    color: ${props => props.theme.modal.textSecondary}; 
+  }
 
   }
 `;
@@ -121,7 +121,7 @@ export const RadioButton = styled.input`
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 2px solid #000;  
+  border: 2px solid ${props => props.theme.profile.inputBorder};;  
   cursor: pointer;
   background-color: ${props => {
     switch (props.value) {
@@ -148,8 +148,8 @@ export const RadioButton = styled.input`
 `;
 
 export const AddButton = styled.button`
-  background-color: #bedbb0;
-  color: ${({ theme }) => theme.addcolum.buttonBackground};
+  background-color: ${props => props.theme.help.buttonBackground};
+  color: ${props => props.theme.addcolum.buttonBackground};
   padding: 10px 0 11px 0;
   border: none;
   width: 100%;
@@ -170,9 +170,9 @@ export const AddButton = styled.button`
     display: block;
     width: 28px;
     height: 28px;
-    background-color: ${({ theme }) => theme.addcolum.buttonPlusColor};
+    background-color: ${props => props.theme.sidebar.addButtonColor};
     border-radius: 8px;
-    color: #bedbb0;
+    color: ${props => props.theme.modal.plusColor};
     font-size: 20px;
     text-align: center;
     line-height: 28px;
@@ -180,11 +180,11 @@ export const AddButton = styled.button`
   }
 
   &:hover {
-    background-color:#9DC888;
+    background-color: ${props => props.theme.sidebar.hoverLogout};
   }
 
   &:focus {
-    background-color:#9DC888;    
+    background-color: ${props => props.theme.sidebar.hoverLogout};    
     outline: none;    
   }
 `;
