@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderDashboardContainer = styled.div`
   width: 100vw;
-  padding: 14px 20px;
+  padding: 0px 24px;
   font-wight: 500;
   font-size: 18px;
   display: flex;

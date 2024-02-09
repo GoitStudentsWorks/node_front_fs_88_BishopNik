@@ -4,6 +4,9 @@ import styled from 'styled-components';
 export const BoardContainer = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
+  display: flex;
+  gap: 20px;
+  padding: 0px 24px;
 }
 `;
 export const BtnAddColumn = styled.button`
@@ -15,7 +18,7 @@ export const BtnAddColumn = styled.button`
   font-weight: 500;
   border-radius: 8px;
   width: 334px;
-  color: ${props => props.theme.help.modalTextMain};;
+  color: ${props => props.theme.help.modalTextMain};
   background-color: ${props => props.theme.profile.background};
 
   border: none;
@@ -35,8 +38,4 @@ export const StyledIconAdd = styled.span`
 
 export const SvagAddColumn = styled.svg`
   stroke: ${props => props.theme.addcolum.plusColor};
-`;
-export const MainWrapper = styled.ul`
-  display: flex;
-  gap: 18px;
 `;
