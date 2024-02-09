@@ -7,11 +7,7 @@ import { selectUser } from 'redux/auth/selectors';
 
 import data from '../../img/list_img.json';
 
-import {
-  BlockLogoStyles,
-  LogoStyles,
-  logoStyles,
-} from './UserProfileForm.Styled';
+import { BlockLogoStyles, LogoStyles } from './UserProfileForm.Styled';
 
 export const UserIcon = () => {
   let src = data.user.dark;
@@ -21,9 +17,9 @@ export const UserIcon = () => {
   }
   return (
     <BlockLogoStyles>
-      <img src={src} alt="DarkUser" width={68} />
+      <img src={src} alt="UserIcon" width={68} />
       <LogoStyles>
-        <FiltersIcon name="add-board" style={logoStyles}></FiltersIcon>
+        <FiltersIcon name="add-board"></FiltersIcon>
       </LogoStyles>
     </BlockLogoStyles>
   );

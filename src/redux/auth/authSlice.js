@@ -9,7 +9,9 @@ const initialState = {
 	isLoggedIn: false,
 	isRefreshing: false,
 	isLoading: false,
+	theme: "dark",
 };
+
 
 const authSlice = createSlice({
 	name: 'auth',

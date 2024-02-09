@@ -6,6 +6,7 @@ import {
   BtnAddColumn,
   SvagAddColumn,
   StyledIconAdd,
+  MainWrapper,
 } from './MainDashboard.styled';
 import icon from 'components/Icon/icon-spraite.svg';
 import { AddColumnModal } from 'components/Modal';
@@ -21,15 +22,17 @@ const MainDashboard = () => {
 
   return (
     <BoardContainer>
-      <Columns board={board} />
-      <BtnAddColumn type="button" onClick={handleOpenModal}>
-        <StyledIconAdd>
-          <SvagAddColumn width="14" height="14">
-            <use xlinkHref={`${icon}#icon-plus`} />
-          </SvagAddColumn>
-        </StyledIconAdd>
-        <span>Add another column</span>
-      </BtnAddColumn>
+      <MainWrapper>
+        <Columns board={board} />
+        <BtnAddColumn type="button" onClick={handleOpenModal}>
+          <StyledIconAdd>
+            <SvagAddColumn width="14" height="14">
+              <use xlinkHref={`${icon}#icon-plus`} />
+            </SvagAddColumn>
+          </StyledIconAdd>
+          <span>Add another column</span>
+        </BtnAddColumn>
+      </MainWrapper>
       <AddColumnModal
         board={board}
         isOpen={isModalOpen}

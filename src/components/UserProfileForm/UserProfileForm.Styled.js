@@ -8,9 +8,24 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   margin-top: 14px;
-  width: 100%;
+  min-width: 335px;
   border-radius: 8px;
-  background: #151515;
+  background: ${props => props.theme.modal.backgroundMain};
+
+  padding: 24px;
+
+  @media (min-width: 375px) {
+    max-width: none;
+    width: 335px;
+  }
+
+  @media (min-width: 376px) and (max-width: 767px) {
+    width: 400px;
+  }
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 `;
 
 export const LabelBox = styled.div`
@@ -20,14 +35,14 @@ export const LabelBox = styled.div`
 `;
 
 export const StyledField = styled(Field)`
-  color: #fff;
+  color: ${props => props.theme.modal.textMain};
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid ${props => props.theme.modal.border};
   padding: 14px 18px 14px 18px;
   opacity: 0.4;
-  background: #1f1f1f;
+  background: ${props => props.theme.modal.backgroundSecondary};
   width: 100%;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  box-shadow: 0px 4px 16px 0px ${props => props.theme.modal.plusBackground};
 `;
 
 export const IconHideShow = styled(Icon)`
@@ -43,8 +58,8 @@ export const ButtonStyle = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background: #bedbb0;
-  color: #161616;
+  background: ${props => props.theme.modal.buttonBackground};
+  color: ${props => props.theme.modal.buttonText};
   text-align: center;
   font-family: Poppins;
   font-size: 14px;
@@ -53,15 +68,19 @@ export const ButtonStyle = styled.button`
   line-height: normal;
   letter-spacing: -0.28px;
 
+  /* ===================================================== */
   &:hover,
   :focus {
-    background-color: #9dc888;
+    background-color: ${props => props.theme.sidebar.hoverLogout};
   }
 `;
+// =============================================================
 
+/* ===================================================== */
 export const ErrorMessageStyle = styled(ErrorMessage)`
   color: red;
 `;
+/* ===================================================== */
 
 export const LogoStyles = styled.div`
   position: absolute;
@@ -71,14 +90,15 @@ export const LogoStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #bedbb0;
-  /* stroke: black; */
+  background-color: ${props => props.theme.modal.backgeoundAvatar};
 
+  /* ===================================================== */
   &:hover,
   :focus {
-    background-color: #9dc888;
+    background-color: ${props => props.theme.sidebar.hoverLogout};
   }
 `;
+/* ===================================================== */
 
 export const BlockLogoStyles = styled.div`
   display: flex;
@@ -86,7 +106,3 @@ export const BlockLogoStyles = styled.div`
   position: relative;
   margin-top: 24px;
 `;
-
-export const logoStyles = {
-  stroke: 'black',
-};

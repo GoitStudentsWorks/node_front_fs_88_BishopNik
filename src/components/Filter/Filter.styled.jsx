@@ -7,15 +7,16 @@ export const ModalContainer = styled.div`
   padding: 24px;
   position: relative;
   width: 300px;
+  background: ${props => props.theme.modal.backgroundMain};
 `;
 
 export const TitleBox = styled.div`
-  border-bottom: 1px solid #ffffff4d;
+  border-bottom: 1px solid  ${props => props.theme.modal.line};
   padding-bottom: 14px;
 `;
 
 export const Title = styled.h2`
-  color: rgb(255, 255, 255);
+  color: ${props => props.theme.help.modalTextMain};
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
@@ -30,7 +31,7 @@ export const CloseButton = styled.button`
   right: 14px;
   width: 18px;
   height: 18px;
-  background: rgb(21, 21, 21);
+  background: ${props => props.theme.modal.backgroundSecondary};
   border: none;
 `;
 
@@ -41,11 +42,11 @@ export const IconClose = styled(Icon)`
   width: 16px;
   height: 16px;
   cursor: pointer;
-  stroke: #ffffff;
+  stroke: ${props => props.theme.modal.iconClose};
 `;
 
 export const TitleRadioButtons = styled.h3`
-  color: rgb(255, 255, 255);
+  color: ${props => props.theme.help.modalTextMain};
   font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
@@ -57,7 +58,7 @@ export const LinkShowAll = styled.a`
   position: absolute;
   top: 79px;
   right: 24px;
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.popup.textSecondary};
   font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
@@ -72,7 +73,7 @@ export const RadioButtonGroup = styled.div`
 export const RadioButton = styled.label`
   display: flex;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.5);
+  color:  ${props => props.theme.popup.textSecondary};
   font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
@@ -80,11 +81,17 @@ export const RadioButton = styled.label`
   margin-right: 10px;
   margin-bottom: 8px;
 
+  &:hover,
+  focus
+   {
+    color:  ${props => props.theme.help.modalTextMain};
+  }
+
   &:last-child {
     margin-bottom: 0px;
   }
 
   input[type='radio']:checked + & {
-    color: rgb(255, 255, 255);
+    color: ${props => props.theme.help.modalTextMain};
   }
 `;
