@@ -36,6 +36,7 @@ export const HelpText = styled.p`
   font-style: normal;
   letter-spacing: -0.02em;
   line-height: 1.4;
+  cursor: default;
   color: ${props => props.theme.help.textMain};
   margin: 0;
 `;
@@ -44,6 +45,7 @@ export const HelpSpanText = styled.span`
   color: ${props => props.theme.help.textAccent};
   font-size: 14px;
   letter-spacing: -0.02em;
+  cursor: default;
 `;
 
 export const HelpBtnText = styled.p`

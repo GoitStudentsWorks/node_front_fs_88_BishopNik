@@ -13,7 +13,7 @@ export const IconContainer = styled.button`
   background-color: ${props => props.theme.sidebar.addButtonBackground};
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
@@ -50,6 +50,7 @@ export const Text = styled.p`
   height: 42px;
   font-size: 14px;
   letter-spacing: -0.02em;
+  cursor: default;
   color: ${props => props.theme.sidebar.textMain};
   display: flex;
   align-items: center;
