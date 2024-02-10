@@ -1,6 +1,6 @@
 import { ModalEditProfile } from 'components/Modal/EditProfil/ModalEditProfile';
 import { useState } from 'react';
-import data from '../../img/list_img.json';
+import data from 'img/list_img.json';
 import { UserInfoWrapper, UserName, UserAvatar } from './UserInfo.styled';
 import { useSelector } from 'react-redux';
 import { selectUser, selectUserTheme } from 'redux/auth/selectors';
@@ -17,9 +17,6 @@ export const UserInfo = () => {
       setIsModalState(true);
     }
   };
-
-  // console.log(activeUserTheme);
-
   const setDefaultAvatar = () => {
     if (activeUserTheme === 'dark') {
       return data.user.dark;

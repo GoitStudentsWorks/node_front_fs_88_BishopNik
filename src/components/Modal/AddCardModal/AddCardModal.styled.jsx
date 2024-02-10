@@ -4,6 +4,7 @@ import { Field } from 'formik';
 
 export const ModalContainer = styled.div`
   position: relative;
+  outline: none;
   background: ${props => props.theme.modal.backgroundMain};
   color: ${props => props.theme.help.modalTextMain};
   padding: 24px;
