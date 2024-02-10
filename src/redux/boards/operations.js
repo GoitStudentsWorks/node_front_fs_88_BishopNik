@@ -46,11 +46,11 @@ export const editBoard = createAsyncThunk(
 	}
 );
 
-export const fetchDelBoard = createAsyncThunk('boards/fetchDel', async (id, thunkAPI) => {
+export const delBoard = createAsyncThunk('boards/fetchDel', async (id, thunkAPI) => {
 	try {
-		const response = await axios.delete(`/boards/${id}`);
+		await axios.delete(`/boards/${id}`);
 		toastSuccess(`Successful removal`);
-		return response.data;
+		return id;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
 		return thunkAPI.rejectWithValue(response?.data?.message);

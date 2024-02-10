@@ -25,22 +25,21 @@ import {
 import { customStyles } from '../Modal.styled';
 import background from '../../../img/background.json';
 import ModalWindow from '../Modal';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { resetError } from 'redux/boards/boardsSlice';
 // import { boardsSlice } from 'redux/boards/boardsSlice';
-import { modalData } from 'redux/boards/selectors';
+
 import { addBoard, editBoard } from 'redux/boards/operations';
 import { MainContext } from 'components/Helpers';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from 'hooks';
+import { useBoards } from 'hooks';
 
 export const CreateNewBoardModal = () => {
 	const dispatch = useDispatch();
-	const { isOpen, boardId } = useSelector(modalData);
 	// const boards = useSelector(boardsState);
 	const { isOpenAddBoard, setIsOpenAddBoard, boardEdit, setBoardEdit } = useContext(MainContext);
 	const navigate = useNavigate();
-	const { allBoards } = useAuth();
+	const { isOpen, boardId, allBoards } = useBoards();
 
 	// const boardForEditing = boardId && boards.find(item => item.id === boardId);
 

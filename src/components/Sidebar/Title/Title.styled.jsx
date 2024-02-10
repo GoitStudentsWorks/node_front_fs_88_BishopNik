@@ -9,6 +9,7 @@ export const TitleText = styled.p`
   margin-top: 70px;
   margin-left: 24px;
   padding: 0px;
+  cursor: default;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;

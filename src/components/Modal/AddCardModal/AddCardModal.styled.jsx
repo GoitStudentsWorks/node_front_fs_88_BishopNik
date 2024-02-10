@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon/Icon.jsx';
-import {Field} from 'formik';
+import { Field } from 'formik';
 
 export const ModalContainer = styled.div`
   position: relative;
@@ -8,7 +8,7 @@ export const ModalContainer = styled.div`
   color: ${props => props.theme.help.modalTextMain};
   padding: 24px;
   border-radius: 8px;
-    min-width: 320px;
+  min-width: 320px;
   @media (max-width: 767px) {
     width: 335px;
   }
@@ -38,22 +38,24 @@ export const IconClose = styled(Icon)`
   stroke: ${props => props.theme.modal.iconClose};
 `;
 
-export const FormTitle = styled.h2`  
+export const FormTitle = styled.h2`
   color: ${props => props.theme.modal.textMain};
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   margin: 0px;
+  cursor: default;
 `;
 
-export const SubTitles = styled.h3`  
+export const SubTitles = styled.h3`
   color: ${props => props.theme.modal.textSecondary};
   font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
   margin: 0;
+  cursor: default;
 `;
 
 export const StyledInput = styled(Field)`
@@ -68,18 +70,18 @@ export const StyledInput = styled(Field)`
   background: ${props => props.theme.modal.backgroundSecondary};
   opacity: 0.4;
 
-   &:hover {
+  &:hover {
     opacity: 1;
 
-  color: ${props => props.theme.modal.textMain};
+    color: ${props => props.theme.modal.textMain};
 
-  &:focus {
-    border-color:${props => props.theme.modal.textAccent};
-  }
+    &:focus {
+      border-color: ${props => props.theme.modal.textAccent};
+    }
 
-  ::placeholder {
-    color: ${props => props.theme.modal.textSecondary}; 
-  }
+    ::placeholder {
+      color: ${props => props.theme.modal.textSecondary};
+    }
   }
 `;
 
@@ -90,25 +92,24 @@ export const TextArea = styled.textarea`
   padding: 14px 18px;
   margin-bottom: 24px;
   outline: none;
-  border: 1px solid  ${props => props.theme.profile.inputBorder};
+  border: 1px solid ${props => props.theme.profile.inputBorder};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   background: ${props => props.theme.modal.backgroundSecondary};
   opacity: 0.4;
 
-   &:hover {
+  &:hover {
     opacity: 1;
 
-  color: ${props => props.theme.modal.textMain};
+    color: ${props => props.theme.modal.textMain};
 
-  &:focus {
-    border-color:${props => props.theme.modal.textAccent};
-  }
+    &:focus {
+      border-color: ${props => props.theme.modal.textAccent};
+    }
 
-  ::placeholder {
-    color: ${props => props.theme.modal.textSecondary}; 
-  }
-
+    ::placeholder {
+      color: ${props => props.theme.modal.textSecondary};
+    }
   }
 `;
 
@@ -123,7 +124,7 @@ export const RadioButton = styled.input`
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 2px solid ${props => props.theme.profile.inputBorder};;  
+  border: 2px solid ${props => props.theme.profile.inputBorder};
   cursor: pointer;
   background-color: ${props => {
     switch (props.value) {
@@ -144,7 +145,7 @@ export const RadioButton = styled.input`
     border: 3px solid #151515;
   }
 
-  &:checked {    
+  &:checked {
     border: 3px solid #fff;
   }
 `;
@@ -178,7 +179,7 @@ export const AddButton = styled.button`
     font-size: 20px;
     text-align: center;
     line-height: 28px;
-    margin-right: 10px;    
+    margin-right: 10px;
   }
 
   &:hover {
@@ -186,7 +187,7 @@ export const AddButton = styled.button`
   }
 
   &:focus {
-    background-color: ${props => props.theme.sidebar.hoverLogout};    
-    outline: none;    
+    background-color: ${props => props.theme.sidebar.hoverLogout};
+    outline: none;
   }
 `;

@@ -7,12 +7,14 @@ import styled from 'styled-components';
 
 export const Title = styled.p`
 	color: ${props => props.theme.help.modalTextMain};
-	background:${props => props.theme.modal.backgroundMain};
+	background: ${props => props.theme.modal.backgroundMain};
 	margin: 0;
 	padding-bottom: 24px;
 	font-size: 18px;
 	font-weight: 500;
+	cursor: default;
 `;
+
 export const HeaderContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -21,7 +23,7 @@ export const HeaderContainer = styled.div`
 export const CloseIcon = styled(Icon)`
 	width: 18px;
 	height: 18px;
-	stroke:${props => props.theme.modal.iconClose};
+	stroke: ${props => props.theme.modal.iconClose};
 	cursor: pointer;
 `;
 
@@ -30,13 +32,15 @@ export const TitleIcons = styled.span`
 	font-weight: 500px;
 	color: ${props => props.theme.help.modalTextMain};
 	padding-bottom: 14px;
+	cursor: default;
 `;
 
 export const TitleBackground = styled.span`
 	font-size: 14px;
 	font-weight: 500;
-	color:${props => props.theme.help.modalTextMain};
+	color: ${props => props.theme.help.modalTextMain};
 	padding-bottom: 14px;
+	cursor: default;
 `;
 
 export const IconsContainer = styled.div`
@@ -67,10 +71,10 @@ export const TypesOfIcon = styled(Icon)`
 	height: 18px;
 	stroke: ${props => props.theme.modal.icon};
 
-&:hover,
-&:focus
-   {
-    stroke:  ${props => props.theme.header.userName};;
+	&:hover,
+	&:focus {
+		stroke: ${props => props.theme.header.userName};
+	}
 `;
 
 export const TypesOfBackground = styled.img`
@@ -89,7 +93,6 @@ export const StyledForm = styled(Form)`
 	border-radius: 8px;
 	background: ${props => props.theme.modal.backgroundMain};
 	padding: 24px;
-	
 `;
 
 // export const NavBox = styled.div`
@@ -126,18 +129,19 @@ export const StyledField = styled(Field)`
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
 	opacity: 0.4;
-    transition: all 250ms ease;
-     color: ${props => props.theme.help.textMain};
+	transition: all 250ms ease;
+	color: ${props => props.theme.help.textMain};
 
-  &::placeholder {
-    color: ${props => props.theme.help.textMain};
-    font-size: 14px;
-    font-family: 'Poppins';
-    letter-spacing: -0.28px;
-  }
+	&::placeholder {
+		color: ${props => props.theme.help.textMain};
+		font-size: 14px;
+		font-family: 'Poppins';
+		letter-spacing: -0.28px;
+	}
 
-  &:focus {
-    opacity: 1;
+	&:focus {
+		opacity: 1;
+	}
 `;
 
 export const Button = styled.button`
@@ -157,10 +161,11 @@ export const Button = styled.button`
 		background: ${props => props.theme.sidebar.hoverLogout};
 	}
 `;
+
 export const AddIcon = styled(Icon)`
 	width: 14px;
 	height: 14px;
-	stroke:  ${props => props.theme.modal.plusColor};
+	stroke: ${props => props.theme.modal.plusColor};
 	cursor: pointer;
 `;
 

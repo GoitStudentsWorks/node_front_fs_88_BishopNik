@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
 	BoardContainer,
 	BoardNameContainer,
@@ -13,30 +13,34 @@ import {
 } from './BoardItem.styled';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchDelBoard, getBoardById } from 'redux/boards/operations';
+import { delBoard, getBoardById } from 'redux/boards/operations';
 import { StyleSheetManager } from 'styled-components';
-// import { useAuth } from 'hooks';
+import { useBoards } from 'hooks';
 import { MainContext } from 'components/Helpers';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { board } = useParams();
-	// const { allBoards } = useAuth();
+	const { allBoards } = useBoards();
 	const { setIsOpenAddBoard, setBoardEdit } = useContext(MainContext);
+
+	useEffect(() => {
+		navigate(`/todos/${allBoards[0]._id}`);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [allBoards]);
 
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));
 	};
 
-	const editBoard = boardId => {
+	const handlerEditBoard = boardId => {
 		setIsOpenAddBoard(true);
 		setBoardEdit(boardId);
 	};
 
-	const delBoard = boardId => {
-		dispatch(fetchDelBoard(boardId));
-		navigate(`/todos`);
+	const handlerDelBoard = boardId => {
+		dispatch(delBoard(boardId));
 	};
 
 	const status = board === boardId;
@@ -51,8 +55,16 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 					</BoardNameContainer>
 
 					<IconsContainer active={status}>
-						<EditIcon name='edit' type='button' onClick={() => editBoard(boardId)} />
-						<DelIcon name='delete' type='button' onClick={() => delBoard(boardId)} />
+						<EditIcon
+							name='edit'
+							type='button'
+							onClick={() => handlerEditBoard(boardId)}
+						/>
+						<DelIcon
+							name='delete'
+							type='button'
+							onClick={() => handlerDelBoard(boardId)}
+						/>
 					</IconsContainer>
 
 					<BoardLine active={status} />

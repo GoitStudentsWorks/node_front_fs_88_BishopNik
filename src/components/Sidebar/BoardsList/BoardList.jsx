@@ -1,12 +1,16 @@
 /** @format */
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { BoardItem } from '../BoardItem/BoardItem';
 import { ListContainer } from './BoardList.styled';
-import { useAuth } from 'hooks';
+import { useBoards } from 'hooks';
+import { sortByIDFirst } from 'components/Helpers';
 
 export const BoardsList = () => {
-	const { allBoards } = useAuth();
+	const { allBoards } = useBoards();
+	const { board } = useParams();
+	const [sortedBoards, setSortedBoards] = useState([]);
 
 	const listRef = useRef(null);
 
@@ -15,10 +19,14 @@ export const BoardsList = () => {
 		listRef.current.scrollTop += delta;
 	};
 
+	useEffect(() => {
+		if (allBoards.length) setSortedBoards(sortByIDFirst(allBoards, board));
+	}, [allBoards, board]);
+
 	return (
 		<>
 			<ListContainer onWheel={handleScroll} ref={listRef}>
-				{allBoards.map(({ _id: id, name }) => (
+				{sortedBoards.map(({ _id: id, name }) => (
 					<BoardItem key={id} boardId={id} nameBoard={name} />
 				))}
 			</ListContainer>

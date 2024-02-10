@@ -37,6 +37,7 @@ export const LogoutBtnText = styled.p`
   font-size: 14px;
   font-style: medium;
   margin-left: 14px;
+
   color: ${props => props.theme.sidebar.iconClose};
   @media screen and (min-width: 1440px) {
     font-size: 16px;
