@@ -25,19 +25,23 @@ export const Filter = ({ setIsOpen }) => {
     setFilter(target.value);
   };
 
-  return (
-    <ModalContainer>
-      <TitleBox>
-        <Title>Filters</Title>
-      </TitleBox>
-      <CloseButton type="button" onClick={() => setIsOpen(false)}>
-        <IconClose name="close" />
-      </CloseButton>
-      <div>
-        <LinkShowAll href="URL">Show all</LinkShowAll>
-      </div>
-      <TitleRadioButtons>Label color</TitleRadioButtons>
-      <RadioButtonGroup>
+	const handlerShowAll = () => {
+		setFilter('all');
+		setIsOpen(false);
+	};
+	return (
+		<ModalContainer>
+			<TitleBox>
+				<Title>Filters</Title>
+			</TitleBox>
+			<CloseButton type='button' onClick={() => setIsOpen(false)}>
+				<IconClose name='close' />
+			</CloseButton>
+			<div>
+				<LinkShowAll onClick={handlerShowAll}>Show all</LinkShowAll>
+			</div>
+			<TitleRadioButtons>Label color</TitleRadioButtons>
+			<RadioButtonGroup>
         <RadioButton>
           <Input
             type="radio"
@@ -87,6 +91,6 @@ export const Filter = ({ setIsOpen }) => {
           </Label>
         </RadioButton>
       </RadioButtonGroup>
-    </ModalContainer>
-  );
+		</ModalContainer>
+	);
 };

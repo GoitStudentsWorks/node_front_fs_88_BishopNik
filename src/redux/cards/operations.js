@@ -8,7 +8,7 @@ export const fetchCardsByColumnId = createAsyncThunk(
 	'card/fetchCards',
 	async (columnId, thunkAPI) => {
 		try {
-			const res = await axios.get('/card', columnId);
+			const res = await axios.get(`/card/${columnId}`);
 			return res.data;
 		} catch ({ response }) {
 			toastError(response?.data?.message);
