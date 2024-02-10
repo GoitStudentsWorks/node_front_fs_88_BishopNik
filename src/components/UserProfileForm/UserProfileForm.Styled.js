@@ -14,13 +14,13 @@ export const StyledForm = styled(Form)`
 
   padding: 24px;
 
-  @media (min-width: 375px) {
+  @media (max-width: 375px) {
     max-width: none;
     width: 335px;
   }
 
   @media (min-width: 376px) and (max-width: 767px) {
-    width: 400px;
+    width: 335px;
   }
 
   @media (min-width: 768px) {
