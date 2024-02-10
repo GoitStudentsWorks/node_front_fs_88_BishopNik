@@ -75,69 +75,70 @@ export const RadioButtonGroup = styled.div`
 	gap: 8px;
 `;
 
-export const RadioButton = styled.label`
-	position: relative;
-	padding-left: 25px;
-	font-family: Poppins;
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 18px;
-	color: ${props => props.theme.popup.textSecondary};
-	cursor: pointer;
+export const RadioButton = styled.div`
+  position: relative;
+`;
 
-	input[type='radio'] {
-		position: absolute;
-		-webkit-appearance: none;
-		appearance: none;
-		opacity: 0;
-	}
+export const Input = styled.input`
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+`;
 
-	&::before {
-		content: '';
-		display: block;
-		width: 14px;
-		height: 14px;
-		border: 1px solid;
-		${({ color }) => `border-color: ${color};`}
-		${({ color }) => `background-color: ${color};`}
+export const Label = styled.label`
+  padding-left: 25px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: ${props => props.theme.popup.textSecondary};
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid;
+    ${({ color }) => `border-color: ${color};`}
+    ${({ color }) => `background-color: ${color};`}
     border-radius: 50%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 1;
-		transition: background-color 0.2s ease;
-	}
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: background-color 0.2s ease;
+  }
 
-	&::after {
-		content: '';
-		display: block;
-		width: 8px;
-		height: 8px;
-		${({ color }) => `background-color: ${color};`}
+  &::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    ${({ color }) => `background-color: ${color};`}
 
-		border-radius: 50%;
-		position: absolute;
-		top: 3px;
-		left: 3px;
-		z-index: 2;
-		opacity: 0;
-		transition: opacity 0.2s ease;
-	}
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
 
-	input[type='radio']:checked + & {
-		color: ${props => props.theme.help.modalTextMain};
-	}
+  &:hover {
+    color: ${props => props.theme.help.modalTextMain};
+  }
 
-	input[type='radio']&:checked + &::before {
-		background-color: transparent;
-	}
+  ${Input}:checked + & {
+    color: ${props => props.theme.help.modalTextMain};
+  }
 
-	input[type='radio']&:checked + &::after {
-		opacity: 1;
-	}
+  ${Input}:checked + &::after {
+    opacity: 1;
+  }
 
-	&:hover,
-	&:focus {
-		color: ${props => props.theme.help.modalTextMain};
-	}
+  ${Input}:checked + &::before {
+    background-color: transparent;
+  }
 `;
