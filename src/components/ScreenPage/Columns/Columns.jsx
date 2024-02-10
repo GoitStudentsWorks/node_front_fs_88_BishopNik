@@ -7,7 +7,7 @@ import { Column } from 'components/Column/Column';
 import { Styled } from './Columns.styled';
 import { useColumns } from 'hooks';
 
-export const Columns = ({ board }) => {
+export const Columns = ({ board, children }) => {
 	const dispatch = useDispatch();
 	const { allColumns } = useColumns();
 
@@ -20,6 +20,7 @@ export const Columns = ({ board }) => {
 			{allColumns.map(item => (
 				<Column name={item.name} id={item._id} key={item._id} column={item} />
 			))}
+			{children}
 		</Styled>
 	);
 };
