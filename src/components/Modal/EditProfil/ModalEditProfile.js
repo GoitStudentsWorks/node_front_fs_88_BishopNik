@@ -1,29 +1,20 @@
-/** @format */
-// import styled from 'styled-components';
-
 import React from 'react';
 import { UserProfileForm } from 'components/UserProfileForm/UserProfileForm';
 
 import { FiltersIcon } from 'components/Filter/FiltersBtn.styled';
-// import { UserIcon } from 'components/UserProfileForm/UserIcon';
 
-// import { customStyles } from '../Modal.styled';
+import { customStyles } from '../Modal.styled';
 import ModalWindow from '../Modal';
-import {
-  //   HeaderContainer,
-  closeIconStyles,
-  //   modalTextStyles,
-} from './ModalEditProfileStyled';
+import { closeIconStyles } from './ModalEditProfileStyled';
 
 export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
   return (
     <ModalWindow
       isOpen={isModalState}
       onRequestClose={stateСhangeModal}
-      // style={customStyles}
+      style={customStyles}
       contentLabel="onRequestClose"
     >
-      {/* <HeaderContainer> */}
       <FiltersIcon
         name="close"
         onClick={stateСhangeModal}
@@ -31,7 +22,6 @@ export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
       />
 
       <UserProfileForm />
-      {/* </HeaderContainer> */}
     </ModalWindow>
   );
 };

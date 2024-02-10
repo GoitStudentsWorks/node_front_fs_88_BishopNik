@@ -7,7 +7,7 @@ import styled from 'styled-components';
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  margin-top: 14px;
+  /* margin-top: 14px; */
   min-width: 335px;
   border-radius: 8px;
   background: ${props => props.theme.modal.backgroundMain};
@@ -28,21 +28,32 @@ export const StyledForm = styled(Form)`
   }
 `;
 
+export const Title = styled.p`
+  color: ${props => props.theme.help.modalTextMain};
+  margin: 0;
+  /* padding-bottom: 24px; */
+  font-size: 18px;
+  font-weight: 500;
+  cursor: default;
+`;
+
 export const LabelBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
+  padding-top: 26px;
 `;
 
 export const StyledField = styled(Field)`
   color: ${props => props.theme.modal.textMain};
   border-radius: 8px;
-  border: 1px solid ${props => props.theme.modal.border};
+  border: 1px solid ${props => props.theme.modal.buttonBackground};
   padding: 14px 18px 14px 18px;
-  opacity: 0.4;
+  /* opacity: 0.4; */
   background: ${props => props.theme.modal.backgroundSecondary};
   width: 100%;
-  box-shadow: 0px 4px 16px 0px ${props => props.theme.modal.plusBackground};
+  /* box-shadow: 0px 4px 16px 0px ${props =>
+    props.theme.modal.plusBackground}; */
 `;
 
 export const IconHideShow = styled(Icon)`
