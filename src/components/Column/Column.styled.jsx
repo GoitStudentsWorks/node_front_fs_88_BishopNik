@@ -14,8 +14,8 @@ export const Title = styled.span`
 	border-radius: 8px;
 	width: 334px;
 	padding: 14px 24px;
-	background-color: #121212;
-	color: #ffffff;
+	background-color: ${props => props.theme.profile.background};;
+	color: ${props => props.theme.help.modalTextMain};
 	font-size: 14px;
 	font-weight: 500;
 	display: flex;
@@ -42,11 +42,19 @@ export const IconsContainer = styled.div`
 `;
 
 export const EditColumn = styled.svg`
-	stroke: rgba(255, 255, 255, 0.5);
+	stroke: ${({ theme }) => theme.sidebar.projectIcon};
 	cursor: pointer;
+
+  &:hover,
+  &:focus {
+    stroke: ${({ theme }) => theme.sidebar.textAccent};
 `;
 
 export const DelColumn = styled.svg`
-	stroke: rgba(255, 255, 255, 0.5);
+	stroke:${({ theme }) => theme.sidebar.projectIcon};
 	cursor: pointer;
+
+	 &:hover,
+     &:focus {
+    stroke: ${({ theme }) => theme.sidebar.textAccent};
 `;
