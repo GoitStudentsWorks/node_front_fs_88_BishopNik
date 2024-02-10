@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { ThemeContext } from 'components/Helpers';
 import { IconThemeMenu, PopupBlock, PopupItem, Text, Wrapper } from './ThemePicker.styled';
-import { theme } from '../../../constants/theme';
+import { theme } from 'constants/theme';
 
 const ThemePicker = () => {
 	const { setTheme } = useContext(ThemeContext);
