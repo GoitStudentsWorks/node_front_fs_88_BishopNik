@@ -83,7 +83,7 @@ export const Column = ({ name, id, column }) => {
         </Title>
       </List>
       <ListTasks>
-        {cards.slice(0, 4).map(item => (
+        {cards.map(item => (
           <Card
             key={item._id}
             item={item}
