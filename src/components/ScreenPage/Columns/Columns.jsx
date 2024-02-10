@@ -8,19 +8,21 @@ import { Column } from 'components/Column/Column';
 import { Styled } from './Columns.styled';
 
 export const Columns = ({ board }) => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
 	const allColumns = useSelector(columnsState);
+	
+	console.log(allColumns);
+	
+  useEffect(() => {
+    dispatch(fetchColumnsByIdBoards(board));
+  }, [dispatch, board]);
 
-	useEffect(() => {
-		dispatch(fetchColumnsByIdBoards(board));
-	}, [dispatch, board]);
-
-	return (
-		<Styled>
-			{allColumns.map(({ _id: id, name }) => (
-				<Column name={name} id={id} key={id} />
-			))}
-		</Styled>
-	);
+  return (
+    <Styled>
+      {allColumns.map((item) => (
+        <Column name={item.name} id={item._id} key={item._id} column={item}  />
+      ))}
+    </Styled>
+  );
 };

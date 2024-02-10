@@ -5,6 +5,7 @@ import Icon from '../../Icon/index';
 
 export const IconContainer = styled.button`
   width: 40px;
+  outline: none;
   height: 36px;
   display: flex;
   justify-content: center;
@@ -22,6 +23,7 @@ export const IconContainer = styled.button`
 `;
 
 export const BtnAdd = styled.div`
+  outline: none;
   margin-left: auto;
   margin-right: auto;
   margin-top: 8px;

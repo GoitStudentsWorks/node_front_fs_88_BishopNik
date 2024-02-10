@@ -10,6 +10,16 @@ export const BoardContainer = styled.div`
 	display: flex;
 	gap: 20px;
 	padding: 0px 24px;
+	flex-grow: 1;
+	padding-bottom: 36px;
+
+	@media screen and (min-width: 768px) {
+		padding-bottom: 64px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		padding-bottom: 28px;
+	}
 `;
 
 export const BtnAddColumn = styled.button`

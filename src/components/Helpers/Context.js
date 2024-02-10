@@ -8,6 +8,7 @@ export const Context = ({ children }) => {
 	const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 	const [isOpenAddBoard, setIsOpenAddBoard] = useState(false);
 	const [boardEdit, setBoardEdit] = useState(null);
+	const [filter, setFilter] = useState('without');
 
 	return (
 		<MainContext.Provider
@@ -18,6 +19,8 @@ export const Context = ({ children }) => {
 				setIsOpenAddBoard,
 				boardEdit,
 				setBoardEdit,
+				filter,
+				setFilter,
 			}}
 		>
 			{children}
