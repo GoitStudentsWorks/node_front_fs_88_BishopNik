@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 import { Form, ErrorMessage, Field } from 'formik';
-import Icon from '../../Icon/index';
+import Icon from 'components/Icon';
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -47,9 +47,6 @@ export const StyledFormField = styled(Field)`
 export const StyledErrorMessage = styled(ErrorMessage)`
   color: red;
 `;
-export const AddIcon = styled.svg`
-  stroke:  ${props => props.theme.modal.plusColor};
-`;
 
 export const IconWrapper = styled.div`
   display: flex;
@@ -79,4 +76,10 @@ export const BtnAdd = styled.button`
 	&:focus {
 		background: ${props => props.theme.sidebar.hoverLogout};
 	}
+`;
+export const AddIcon = styled(Icon)`
+  width: 14px;
+	height: 14px;
+  fill: transparent;
+  stroke:  ${props => props.theme.modal.plusColor};
 `;
