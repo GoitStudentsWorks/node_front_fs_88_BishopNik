@@ -2,9 +2,11 @@
 
 import styled from '@emotion/styled';
 
-export const Styled = styled.div`
+export const Styled = styled.ul`
 	display: flex;
 	gap: 20px;
+	margin: 0;
+	padding: 0;
 `;
 
 export const List = styled.div`

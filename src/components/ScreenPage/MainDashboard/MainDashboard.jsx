@@ -18,7 +18,7 @@ const MainDashboard = () => {
 			<Columns board={board} />
 			<BtnAddColumn type='button' onClick={handleOpenModal}>
 				<StyledIconAdd>
-					<SvagAddColumn name='icon-plus' />
+					<SvagAddColumn name='plus' />
 				</StyledIconAdd>
 				<span>Add another column</span>
 			</BtnAddColumn>

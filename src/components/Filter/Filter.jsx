@@ -1,24 +1,27 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { MainContext } from 'components/Helpers';
 import {
-  CloseButton,
-  IconClose,
-  LinkShowAll,
-  ModalContainer,
-  RadioButton,
-  RadioButtonGroup,
-  Title,
-  TitleBox,
-  TitleRadioButtons,
+	CloseButton,
+	IconClose,
+	LinkShowAll,
+	ModalContainer,
+	RadioButton,
+	RadioButtonGroup,
+	Title,
+	TitleBox,
+	TitleRadioButtons,
 } from './Filter.styled.jsx';
 
 export const Filter = ({ setIsOpen }) => {
-  const [selectedOption, setSelectedOption] = useState('Without priority');
+	const { filter, setFilter } = useContext(MainContext);
+	const [selectedOption, setSelectedOption] = useState(filter);
 
-  const handleOptionChange = e => {
-    setSelectedOption(e.target.value);
-  };
+	const handleOptionChange = ({ target }) => {
+		setSelectedOption(target.value);
+		setFilter(target.value);
+	};
 
   return (
     <ModalContainer>
