@@ -78,8 +78,7 @@ export const UserProfileForm = () => {
                 top: '24px',
                 right: '18px',
                 transform: 'translateY(-50%)',
-                cursor: 'pointer',
-                stroke: '#FFFFFF4D',
+                cursor: 'pointer'
               }}
             >
               {showPassword ? 'Hide' : 'Show'}
