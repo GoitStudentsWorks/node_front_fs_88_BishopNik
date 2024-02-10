@@ -90,7 +90,7 @@ export const LogoStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.modal.backgeoundAvatar};
+  background-color: ${props => props.theme.modal.buttonBackground};
 
   /* ===================================================== */
   &:hover,
@@ -105,4 +105,10 @@ export const BlockLogoStyles = styled.div`
   justify-content: center;
   position: relative;
   margin-top: 24px;
+`;
+
+export const ButtonIcon = styled(Icon)`
+  width: 16px;
+  height: 16px;
+  stroke: ${props => props.theme.modal.buttonText};
 `;
