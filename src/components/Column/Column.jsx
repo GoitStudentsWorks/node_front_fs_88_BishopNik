@@ -3,23 +3,24 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 import {
-	Wrapper,
-	Title,
-	IconsContainer,
-	EditColumn,
-	DelColumn,
-	List,
-	ListTasks,
+  Wrapper,
+  Title,
+  IconsContainer,
+  EditColumn,
+  DelColumn,
+  List,
+  ListTasks,
+  ListTasksContainer,
 } from './Column.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { cardsState } from 'redux/cards/selectors';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 
 import {
-	Button,
-	ButtonText,
-	IconWrapper,
-	AddIcon,
+  Button,
+  ButtonText,
+  IconWrapper,
+  AddIcon,
 } from 'components/Modal/CreateNewBoardModal/CreateNewBoardModal.styled';
 import icon from 'components/Icon/icon-spraite.svg';
 
@@ -28,6 +29,7 @@ import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { delCard } from 'redux/cards/operations';
+
 
 export const Column = ({ name, id, column }) => {
 	const [isOpen, setIsOpen] = useState(false);
