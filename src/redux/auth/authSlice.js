@@ -8,8 +8,7 @@ const initialState = {
 	token: null,
 	isLoggedIn: false,
 	isRefreshing: false,
-	isLoading: false,
-	theme: "dark",
+	isLoading: false, 
 };
 
 

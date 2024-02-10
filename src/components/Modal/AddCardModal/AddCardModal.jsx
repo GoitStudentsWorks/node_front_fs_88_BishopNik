@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -22,10 +22,21 @@ import { useDispatch } from 'react-redux';
 import { resetError } from 'redux/cards/cardsSlice';
 import { addCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
+import Tooltip from '../../Tooltip/Tooltip';
 
 export const AddCardModal = ({ isOpen, onRequestClose, columnId }) => {
 	const dispatch = useDispatch();
 	const { statusCreateCard } = useCards();
+
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);    
+
+  const closeTooltip = () => {
+    setIsTooltipOpen(false);
+  };
+
+  const handleOptionClick = (option) => {    
+    closeTooltip();
+  };
 
 	const handleFormSubmit = values => {
 		// API ne dae vidprvutu description i color
@@ -123,6 +134,7 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId }) => {
 							<AddButton type='submit'>
 								{isSubmitting ? 'Adding...' : 'Add'}
 							</AddButton>
+              <Tooltip isOpen={isTooltipOpen} onRequestClose={closeTooltip} handleOptionClick={handleOptionClick} />
 						</Form>
 					)}
 				</Formik>

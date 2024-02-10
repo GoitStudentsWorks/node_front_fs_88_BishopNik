@@ -4,9 +4,9 @@ import { CustomDatePicker, DatePickerContainer } from './MyDatePicker.styled';
 const MyDatePicker = ({ onChange }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const handleDateChange = (date) => {
+  const handleDateChange = date => {
     setSelectedDate(date);
-    onChange(date)
+    onChange(date);
   };
 
   return (
