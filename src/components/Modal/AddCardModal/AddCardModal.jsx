@@ -33,7 +33,6 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 	const isEdit = !!cardForEditing;
 
 	const handleFormSubmit = values => {
-		console.log('🚀 ~ handleFormSubmit ~ values:', values);
 		if (cardForEditing) {
 			dispatch(updateCard({ ...values, columnId, id: cardForEditing?._id }));
 		} else {
