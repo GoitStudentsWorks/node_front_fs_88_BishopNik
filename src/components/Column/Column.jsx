@@ -11,8 +11,7 @@ import {
 	List,
 	ListTasks,
 } from './Column.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { cardsState } from 'redux/cards/selectors';
+import {useDispatch } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 
 import {
@@ -27,10 +26,11 @@ import { AddCardModal } from 'components/Modal';
 import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
+import { useCards } from 'hooks';
 
 export const Column = ({ name, id }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const cards = useSelector(cardsState);
+	const {aLLCards} = useCards()
 	const dispatch = useDispatch();
 	const { filter } = useContext(MainContext);
 
@@ -41,8 +41,7 @@ export const Column = ({ name, id }) => {
 		dispatch(delColumn(columnId));
 	};
 
-	const cardForColumn = cards.filter(card => card.columnId === id && card.priority === filter);
-	console.log('🚀 ~ Column ~ cards:', cards);
+	const cardForColumn = aLLCards.filter(card => card.columnId === id && card.priority === filter);
 
 	return (
 		<Wrapper>

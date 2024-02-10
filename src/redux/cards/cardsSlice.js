@@ -44,17 +44,20 @@ const cardsSlice = createSlice({
 			})
 			.addCase(delCard.fulfilled, (state, { payload }) => {
 				state.error = null;
-				const index = state.items.findIndex(item => item.id === payload.id);
-				state.items.splice(index, 1);
+				state.items = state.items.filter(item => item._id !== payload);
 			})
 			.addCase(delCard.rejected, (state, { payload }) => {
 				state.error = payload;
 			})
 			.addCase(updateCard.fulfilled, (state, { payload }) => {
-				//
+				state.error = null;
+				state.items = state.items.map(item => {
+					if (item._id === payload._id) return payload;
+					return item;
+				});
 			})
 			.addCase(updateCard.rejected, (state, { payload }) => {
-				//
+				state.error = payload
 			});
 	},
 });

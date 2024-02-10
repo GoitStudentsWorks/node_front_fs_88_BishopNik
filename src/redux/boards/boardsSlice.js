@@ -21,10 +21,6 @@ export const boardsSlice = createSlice({
 			state.error = null;
 			state.createEditBoardModal = { isOpen: true, boardId: null };
 		},
-		// openCreateEditBoardModal: (state, action) => {
-		// 	state.createEditBoardModal.isOpen = action.payload.isOpen;
-		// 	state.createEditBoardModal.boardId = action.payload.boardId;
-		// },
 	},
 	extraReducers: builder => {
 		builder

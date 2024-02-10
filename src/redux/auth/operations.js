@@ -71,14 +71,6 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 	}
 });
 
-export const changeSetting = createAsyncThunk('users/change', async (credentials, thunkAPI) => {
-	try {
-		console.log('changeSetting user/change');
-		return;
-	} catch ({ response }) {
-		return thunkAPI.rejectWithValue(response?.data?.message);
-	}
-});
 
 
 export const changeTheme = createAsyncThunk(

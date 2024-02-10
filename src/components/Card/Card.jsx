@@ -19,9 +19,12 @@ import {
   EditIcon,
   DelIcon,
 } from './Card.styled';
+import { useDispatch} from 'react-redux';
+import { delCard } from 'redux/cards/operations';
 
 export const Card = ({ item }) => {
-  const { name, priority, deadline } = item;
+  const { name, priority, deadline, _id } = item;
+const dispatch = useDispatch()
 
   return (
     <>
@@ -49,7 +52,7 @@ export const Card = ({ item }) => {
             <IconContainer>
               <MoveIcon name="process-task" />
               <EditIcon name="edit" />
-              <DelIcon name="delete" />
+              <DelIcon name="delete"  onClick={() => dispatch(delCard(_id))} />
             </IconContainer>
           </Info>
         </CardContent>

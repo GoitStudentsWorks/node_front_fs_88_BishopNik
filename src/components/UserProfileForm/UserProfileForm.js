@@ -1,8 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { useDispatch} from 'react-redux';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -17,6 +16,7 @@ import {
 } from './UserProfileForm.Styled';
 
 import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
 
 const emailRegex = RegExp(
   /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
@@ -43,8 +43,8 @@ const formShema = Yup.object().shape({
 });
 
 export const UserProfileForm = () => {
-  const { name, email } = useSelector(selectUser);
-
+const { user } = useAuth()
+const { name, email } = user
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {

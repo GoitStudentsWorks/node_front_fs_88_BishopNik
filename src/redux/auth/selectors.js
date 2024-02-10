@@ -8,8 +8,6 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const statusUserError = state => state.auth.error;
 
-export const selectUserTheme = state => state.auth.theme;
-
 export const selectIsLoading = state => state.auth.isLoading;
 
 

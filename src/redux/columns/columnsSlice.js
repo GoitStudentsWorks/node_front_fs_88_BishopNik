@@ -41,10 +41,14 @@ const columnsSlice = createSlice({
 				state.error = payload;
 			})
 			.addCase(updateColumn.fulfilled, (state, { payload }) => {
-				//
+				state.error = null;
+				state.items = state.items.map(item => {
+					if (item._id === payload._id) return payload;
+					return item;
+				});
 			})
 			.addCase(updateColumn.rejected, (state, { payload }) => {
-				//
+				state.error = payload
 			});
 	},
 });
