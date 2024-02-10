@@ -11,8 +11,7 @@ import {
 	List,
 	ListTasks,
 } from './Column.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { cardsState } from 'redux/cards/selectors';
+import { useDispatch } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 
 import {
@@ -28,11 +27,12 @@ import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { delCard } from 'redux/cards/operations';
+import { useCards } from 'hooks';
 
 export const Column = ({ name, id, column }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
-	const cards = useSelector(cardsState);
+	const { allCards } = useCards();
 	const dispatch = useDispatch();
 	const { filter } = useContext(MainContext);
 
@@ -58,7 +58,11 @@ export const Column = ({ name, id, column }) => {
 		setIsOpen(false);
 	};
 
-	const cardForColumn = cards.filter(card => card.columnId === id && card.priority === filter);
+	const cardForColumn = allCards?.filter(
+		card => card.columnId === id && (card.priority === filter || filter === 'all')
+	);
+
+	console.log('🚀 ~ Column ~ allCards:', allCards);
 
 	return (
 		<Wrapper>
@@ -81,7 +85,7 @@ export const Column = ({ name, id, column }) => {
 				</Title>
 			</List>
 			<ListTasks>
-				{cards.map(item => (
+				{allCards?.map(item => (
 					<Card
 						key={item._id}
 						item={item}
@@ -94,7 +98,7 @@ export const Column = ({ name, id, column }) => {
 				<IconWrapper>
 					<AddIcon name='add-board' />
 				</IconWrapper>
-				<ButtonText>{!cardForColumn.length ? 'Add card' : 'Add another card'}</ButtonText>
+				<ButtonText>{!cardForColumn?.length ? 'Add card' : 'Add another card'}</ButtonText>
 			</Button>
 
 			<AddCardModal

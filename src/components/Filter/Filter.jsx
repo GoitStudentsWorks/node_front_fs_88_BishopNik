@@ -23,6 +23,10 @@ export const Filter = ({ setIsOpen }) => {
 		setFilter(target.value);
 	};
 
+	const handlerShowAll = () => {
+		setFilter('all');
+		setIsOpen(false);
+	};
 	return (
 		<ModalContainer>
 			<TitleBox>
@@ -32,7 +36,7 @@ export const Filter = ({ setIsOpen }) => {
 				<IconClose name='close' />
 			</CloseButton>
 			<div>
-				<LinkShowAll href='URL'>Show all</LinkShowAll>
+				<LinkShowAll onClick={handlerShowAll}>Show all</LinkShowAll>
 			</div>
 			<TitleRadioButtons>Label color</TitleRadioButtons>
 			<RadioButtonGroup>

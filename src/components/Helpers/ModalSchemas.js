@@ -2,9 +2,7 @@
 
 import * as Yup from 'yup';
 
-const emailRegex = RegExp(
-  /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
-);
+const emailRegex = RegExp(/^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/);
 
 const passwordRegex = RegExp(/^[A-Z|a-z0-9!#$%&._%+-/=?^]{0,100}$/);
 
@@ -44,25 +42,25 @@ export const RegisterSchema = Yup.object().shape({
 
 export const addCardValidationSchema = Yup.object().shape({
 	name: Yup.string().required('Title is required'),
-	description: Yup.string(),
-	priority: Yup.string().required('Color is required'),
+	text: Yup.string(),
+	priority: Yup.string(),
 	deadline: Yup.date(),
 });
 
 export const editProfilShema = Yup.object().shape({
-  login: Yup.string()
-    .min(2, 'Too short!')
-    .max(32, 'Too Long!')
-    .required('This field is required!'),
+	login: Yup.string()
+		.min(2, 'Too short!')
+		.max(32, 'Too Long!')
+		.required('This field is required!'),
 
-  email: Yup.string()
-    .matches(emailRegex, 'Invalid email')
-    .email('Invalid email')
-    .required('email is required'),
+	email: Yup.string()
+		.matches(emailRegex, 'Invalid email')
+		.email('Invalid email')
+		.required('email is required'),
 
-  password: Yup.string()
-    .matches(passwordRegex, 'Invalid password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .max(64, 'Password should be of max 64 characters length')
-    .required('This field is required!'),
+	password: Yup.string()
+		.matches(passwordRegex, 'Invalid password')
+		.min(8, 'Password should be of minimum 8 characters length')
+		.max(64, 'Password should be of max 64 characters length')
+		.required('This field is required!'),
 });

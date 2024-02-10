@@ -22,7 +22,7 @@ import {
 	DelIcon,
 } from './Card.styled';
 
-export const Card = ({ item }) => {
+export const Card = ({ item, deleteCard, editCard }) => {
 	const { name, priority, deadline } = item;
 	const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
@@ -59,8 +59,8 @@ export const Card = ({ item }) => {
 						<BellIcon name='bell' />
 						<IconContainer>
 							<MoveIcon name='process-task' onClick={() => setIsTooltipOpen(true)} />
-							<EditIcon name='edit' onClick={() => console.log('edit')} />
-							<DelIcon name='delete' onClick={() => console.log('del')} />
+							<EditIcon name='edit' onClick={editCard} />
+							<DelIcon name='delete' onClick={deleteCard} />
 						</IconContainer>
 						<Tooltip
 							isOpen={isTooltipOpen}
