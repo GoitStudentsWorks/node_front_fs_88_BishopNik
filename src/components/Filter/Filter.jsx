@@ -11,7 +11,6 @@ import {
   Title,
   TitleBox,
   TitleRadioButtons,
-  RadioButtonStyled,
 } from './Filter.styled.jsx';
 
 export const Filter = ({ setIsOpen }) => {
@@ -26,7 +25,6 @@ export const Filter = ({ setIsOpen }) => {
       <TitleBox>
         <Title>Filters</Title>
       </TitleBox>
-
       <CloseButton type="button" onClick={() => setIsOpen(false)}>
         <IconClose name="close" />
       </CloseButton>
@@ -35,44 +33,40 @@ export const Filter = ({ setIsOpen }) => {
       </div>
       <TitleRadioButtons>Label color</TitleRadioButtons>
       <RadioButtonGroup>
-        <RadioButton>
+        <RadioButton color="rgba(255, 255, 255, 0.3)">
           <input
             type="radio"
             value="Without priority"
             checked={selectedOption === 'Without priority'}
             onChange={handleOptionChange}
           />
-          <RadioButtonStyled color="rgba(255, 255, 255, 0.3)" />
           Without priority
         </RadioButton>
-        <RadioButton>
+        <RadioButton color="rgba(143, 161, 208, 1)">
           <input
             type="radio"
             value="Low"
             checked={selectedOption === 'Low'}
             onChange={handleOptionChange}
           />
-          <RadioButtonStyled color="rgba(143, 161, 208, 1)" />
           Low
         </RadioButton>
-        <RadioButton>
+        <RadioButton color="rgba(224, 156, 181, 1)">
           <input
             type="radio"
             value="Medium"
             checked={selectedOption === 'Medium'}
             onChange={handleOptionChange}
           />
-          <RadioButtonStyled color="rgba(224, 156, 181, 1)" />
           Medium
         </RadioButton>
-        <RadioButton>
+        <RadioButton color="rgba(190, 219, 176, 1)">
           <input
             type="radio"
             value="High"
             checked={selectedOption === 'High'}
             onChange={handleOptionChange}
           />
-          <RadioButtonStyled color="rgba(190, 219, 176, 1)" />
           High
         </RadioButton>
       </RadioButtonGroup>
