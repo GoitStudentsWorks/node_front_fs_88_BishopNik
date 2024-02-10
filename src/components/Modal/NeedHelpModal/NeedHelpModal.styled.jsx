@@ -21,7 +21,6 @@ export const StyledForm = styled(Form)`
     width: 335px;
   }
   width: 400px;
-  height: 355px;
   border-radius: 8px;
   border: none;
   outline: none;
