@@ -2,13 +2,14 @@ import { ModalEditProfile } from 'components/Modal/EditProfil/ModalEditProfile';
 import { useState } from 'react';
 import data from 'img/list_img.json';
 import { UserInfoWrapper, UserName, UserAvatar } from './UserInfo.styled';
-import { useSelector } from 'react-redux';
-import { selectUser} from 'redux/auth/selectors';
+import { useAuth } from 'hooks';
 
 export const UserInfo = () => {
-  const { name, avatarURL, theme: activeUserTheme } = useSelector(selectUser);
+  const {user} = useAuth()
+  const { name, avatarURL, theme: activeUserTheme } = user;
   const [isModalState, setIsModalState] = useState(false);
-  
+
+
 
   const stateСhangeModal = () => {
     if (isModalState === true) {

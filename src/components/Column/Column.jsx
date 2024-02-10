@@ -44,6 +44,7 @@ export const Column = ({ name, id, column }) => {
 		dispatch(delColumn(columnId));
 	};
 
+
 	const deleteCard = id => {
 		dispatch(delCard(id));
 	};

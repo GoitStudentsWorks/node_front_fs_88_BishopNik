@@ -45,6 +45,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 		await axios.post('/auth/logout');
 		toastSuccess(`Logout successful`)
 		clearAuthHeader();
+		window.location.reload()
 	} catch ({ response }) {
 		return toastError(response?.data?.message)
 	}
@@ -71,14 +72,6 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 	}
 });
 
-export const changeSetting = createAsyncThunk('users/change', async (credentials, thunkAPI) => {
-	try {
-		console.log('changeSetting user/change');
-		return;
-	} catch ({ response }) {
-		return thunkAPI.rejectWithValue(response?.data?.message);
-	}
-});
 
 
 export const changeTheme = createAsyncThunk(

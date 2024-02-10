@@ -21,6 +21,8 @@ import {
 	EditIcon,
 	DelIcon,
 } from './Card.styled';
+import { useDispatch} from 'react-redux';
+import { delCard } from 'redux/cards/operations';
 
 export const Card = ({ item, deleteCard, editCard }) => {
 	const { name, priority, deadline } = item;

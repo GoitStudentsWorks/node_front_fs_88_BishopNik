@@ -52,14 +52,14 @@ const cardsSlice = createSlice({
 			})
 			.addCase(updateCard.fulfilled, (state, { payload }) => {
 				state.error = null;
-				const index = state.items.findIndex(item => item._id === payload._id);
-				state.items.splice(index, 1, payload);
-				state.createCardModal = false;
+				state.items = state.items.map(item => {
+					if (item._id === payload._id) return payload;
+					return item;
+				});
 			})
 			.addCase(updateCard.rejected, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = payload;
-				state.createCardModal = true;
 			});
 	},
 });

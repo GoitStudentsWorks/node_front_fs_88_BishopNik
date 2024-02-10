@@ -4,11 +4,7 @@ import React, { useContext } from 'react';
 import { TextEmptyBoard, ButtonCreateBoard } from './MainComponent.styled';
 import { MainContext } from 'components/Helpers';
 
-// import { useDispatch } from 'react-redux';
-// import { boardsSlice } from 'redux/boards/boardsSlice';
-
 export function MainComponent({ children }) {
-	// const dispatch = useDispatch();
 	const { setIsOpenAddBoard } = useContext(MainContext);
 
 	return (
@@ -21,9 +17,6 @@ export function MainComponent({ children }) {
 					<ButtonCreateBoard
 						onClick={() => {
 							setIsOpenAddBoard(true);
-							// dispatch(
-							// 	boardsSlice.actions.openCreateEditBoardModal({ isOpen: true })
-							// );
 						}}
 					>
 						to create a board
