@@ -20,7 +20,7 @@ import {
   DelIcon,
 } from './Card.styled';
 
-export const Card = ({ item }) => {
+export const Card = ({ item, deleteCard,editCard }) => {
   const { name, priority, deadline } = item;
 
   return (
@@ -48,8 +48,8 @@ export const Card = ({ item }) => {
             <BellIcon name="bell" />
             <IconContainer>
               <MoveIcon name="process-task" />
-              <EditIcon name="edit" />
-              <DelIcon name="delete" />
+              <EditIcon name="edit" onClick={editCard} />
+              <DelIcon name="delete" onClick={deleteCard} />
             </IconContainer>
           </Info>
         </CardContent>

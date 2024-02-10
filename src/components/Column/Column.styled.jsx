@@ -2,10 +2,16 @@
 
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.li`
 	width: 335px;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	gap: 8px;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		'title'
+		'task'
+		'add';
+	grid-template-rows: 56px auto 56px;
 `;
 
 export const Title = styled.span`
@@ -25,17 +31,29 @@ export const Title = styled.span`
 `;
 
 export const List = styled.div`
+	grid-area: title;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	margin: 0;
 	padding: 0;
 	gap: 8px;
-	height: calc(100vh - 250px);
 	overflow-y: auto;
 `;
 
+export const ListTasks = styled.div`
+	grid-area: task;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	gap: 8px;
+	overflow-y: scroll;
+`;
+
 export const IconsContainer = styled.div`
+	grid-area: add;
 	display: flex;
 	gap: 8px;
 	margin-left: auto;
