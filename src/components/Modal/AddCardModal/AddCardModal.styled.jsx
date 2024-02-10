@@ -117,37 +117,62 @@ export const TextArea = styled.textarea`
 export const RadioButtonContainer = styled.div`
   display: flex;
   gap: 8px;
+  margin-bottom: 14px;
+  margin-top: 4px;
 `;
 
-export const RadioButton = styled.input`
-  margin-bottom: 14px;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid ${props => props.theme.profile.inputBorder};
-  cursor: pointer;
-  background-color: ${props => {
-    switch (props.value) {
-      case 'color1':
-        return '#8FA1D0';
-      case 'color2':
-        return '#E09CB5';
-      case 'color3':
-        return '#BEDBB0';
-      case 'color4':
-        return 'rgba(255, 255, 255, 0.3)';
-      default:
-        return 'rgba(255, 255, 255, 0.3)';
-    }
-  }};
+export const RadioButton = styled.div`
+  position: relative;
+`;
 
-  &:focus {
-    border: 3px solid #151515;
+export const Input = styled.input`
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+`;
+
+export const Label = styled.label`
+  padding-left: 15px;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid;
+    ${({ color }) => `border-color: ${color};`}
+    ${({ color }) => `background-color: ${color};`}
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: background-color 0.2s ease;
   }
 
-  &:checked {
-    border: 3px solid #fff;
+  &::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    ${({ color }) => `background-color: ${color};`}
+
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  ${Input}:checked + &::after {
+    opacity: 1;
+  }
+
+  ${Input}:checked + &::before {
+    background-color: transparent;
   }
 `;
 
