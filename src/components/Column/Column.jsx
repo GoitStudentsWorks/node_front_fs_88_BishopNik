@@ -28,66 +28,83 @@ import { AddCardModal } from 'components/Modal';
 import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
+import { delCard } from 'redux/cards/operations';
 
-export const Column = ({ name, id }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const cards = useSelector(cardsState);
-  const dispatch = useDispatch();
-  const { filter } = useContext(MainContext);
 
-  useEffect(() => {
-    dispatch(fetchCardsByColumnId(id));
-  }, [dispatch, id]);
-  const handleDeleteColumn = columnId => {
-    dispatch(delColumn(columnId));
-  };
+export const Column = ({ name, id, column }) => {
+	const [isOpen, setIsOpen] = useState(false);
+	const [cardForEditing, setCardForEditing] = useState(null);
+	const cards = useSelector(cardsState);
+	const dispatch = useDispatch();
+	const { filter } = useContext(MainContext);
 
-  const cardForColumn = cards.filter(
-    card => card.columnId === id && card.priority === filter
-  );
-  console.log('🚀 ~ Column ~ cards:', cards);
+	useEffect(() => {
+		dispatch(fetchCardsByColumnId(id));
+	}, [dispatch, id]);
 
-  return (
-    <Wrapper>
-      <List>
-        <Title>
-          {name}
-          <IconsContainer>
-            <EditColumn type="button" width="16" height="16">
-              <use xlinkHref={`${icon}#icon-edit`} />
-            </EditColumn>
-            <DelColumn
-              type="button"
-              width="16"
-              height="16"
-              onClick={() => handleDeleteColumn(id)}
-            >
-              <use xlinkHref={`${icon}#icon-delete`} />
-            </DelColumn>
-          </IconsContainer>
-        </Title>
-      </List>
-      <ListTasksContainer>
-        <ListTasks>
-          {cardForColumn.map(item => (
-            <Card key={item._id} item={item} />
-          ))}
-        </ListTasks>
-      </ListTasksContainer>
-      <Button type="button" onClick={() => setIsOpen(true)}>
-        <IconWrapper>
-          <AddIcon name="add-board" />
-        </IconWrapper>
-        <ButtonText>
-          {!cardForColumn.length ? 'Add card' : 'Add another card'}
-        </ButtonText>
-      </Button>
+	const handleDeleteColumn = columnId => {
+		dispatch(delColumn(columnId));
+	};
 
-      <AddCardModal
-        isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
-        columnId={id}
-      />
-    </Wrapper>
-  );
+	const deleteCard = id => {
+		dispatch(delCard(id));
+	};
+
+	const editCard = data => {
+		setCardForEditing(data);
+		setIsOpen(true);
+	};
+
+	const onRequestClose = () => {
+		setCardForEditing(null);
+		setIsOpen(false);
+	};
+
+	const cardForColumn = cards.filter(card => card.columnId === id && card.priority === filter);
+
+	return (
+		<Wrapper>
+			<List>
+				<Title>
+					{name}
+					<IconsContainer>
+						<EditColumn type='button' width='16' height='16'>
+							<use xlinkHref={`${icon}#icon-edit`} />
+						</EditColumn>
+						<DelColumn
+							type='button'
+							width='16'
+							height='16'
+							onClick={() => handleDeleteColumn(id)}
+						>
+							<use xlinkHref={`${icon}#icon-delete`} />
+						</DelColumn>
+					</IconsContainer>
+				</Title>
+			</List>
+			<ListTasks>
+				{cards.map(item => (
+					<Card
+						key={item._id}
+						item={item}
+						deleteCard={() => deleteCard(item?._id)}
+						editCard={() => editCard(item)}
+					/>
+				))}
+			</ListTasks>
+			<Button type='button' onClick={() => setIsOpen(true)}>
+				<IconWrapper>
+					<AddIcon name='add-board' />
+				</IconWrapper>
+				<ButtonText>{!cardForColumn.length ? 'Add card' : 'Add another card'}</ButtonText>
+			</Button>
+
+			<AddCardModal
+				isOpen={isOpen}
+				onRequestClose={onRequestClose}
+				columnId={column._id}
+				cardForEditing={cardForEditing}
+			/>
+		</Wrapper>
+	);
 };

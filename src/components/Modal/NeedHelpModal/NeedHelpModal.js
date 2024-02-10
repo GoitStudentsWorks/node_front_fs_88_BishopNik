@@ -1,6 +1,6 @@
 /** @format */
 
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalsSlice } from 'redux/modals/modalSlice';
 import { needHelpModalState } from 'redux/modals/selectors';
@@ -52,7 +52,12 @@ export const NeedHelpModal = () => {
 							<ErrMessageStyled name='email' component='span' />
 						</label>
 						<label>
-							<StyledTextArea name='comment' type='text' placeholder='Comment' />
+							<Field
+								name='comment'
+								type='text'
+								placeholder='Comment'
+								as={StyledTextArea}
+							/>
 							<ErrMessageStyled name='comment' component='span' />
 						</label>
 					</LabelBox>

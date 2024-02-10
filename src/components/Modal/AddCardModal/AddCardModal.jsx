@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -20,29 +20,21 @@ import MyDatePicker from '../../DatePicker/MyDatePicker';
 import { addCardValidationSchema } from 'components/Helpers';
 import { useDispatch } from 'react-redux';
 import { resetError } from 'redux/cards/cardsSlice';
-import { addCard } from 'redux/cards/operations';
+import { addCard, updateCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
-import Tooltip from '../../Tooltip/Tooltip';
 
-export const AddCardModal = ({ isOpen, onRequestClose, columnId }) => {
+export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing }) => {
 	const dispatch = useDispatch();
 	const { statusCreateCard } = useCards();
 
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false);    
-
-  const closeTooltip = () => {
-    setIsTooltipOpen(false);
-  };
-
-  const handleOptionClick = (option) => {    
-    closeTooltip();
-  };
+	const isEdit = !!cardForEditing;
 
 	const handleFormSubmit = values => {
-		// API ne dae vidprvutu description i color
-
-		const { title, description, color, ...rest } = values;
-		dispatch(addCard({ ...rest, name: title, columnId }));
+		if (cardForEditing) {
+			dispatch(updateCard({ ...values, columnId, id: cardForEditing?._id }));
+		} else {
+			dispatch(addCard({ ...values, columnId }));
+		}
 	};
 
 	useEffect(() => {
@@ -58,21 +50,21 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId }) => {
 				<CloseButton onClick={onRequestClose}>
 					<IconClose name='close' />
 				</CloseButton>
-				<FormTitle>Add Card</FormTitle>
+				<FormTitle>{isEdit ? 'Edit' : 'Add'} Card</FormTitle>
 				<Formik
 					initialValues={{
-						title: '',
-						description: '',
-						color: '',
+						name: '',
+						text: '',
+						priority: '',
 						deadline: '',
 					}}
 					validationSchema={addCardValidationSchema}
 					onSubmit={handleFormSubmit}
 				>
-					{({ isSubmitting, setFieldValue }) => (
+					{({ setFieldValue, values }) => (
 						<Form>
-							<StyledInput type='text' name='title' placeholder='Title' />
-							<ErrorMessage name='title' component='div' />
+							<StyledInput type='text' name='name' placeholder='Title' />
+							<ErrorMessage name='name' component='div' />
 
 							<Field
 								type='text'
@@ -87,54 +79,51 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId }) => {
 									<label>
 										<Field
 											type='radio'
-											name='color'
-											value='color1'
+											name='priority'
+											value='priwithoutority1'
 											as={RadioButton}
 										/>
 									</label>
 									<label>
 										<Field
 											type='radio'
-											name='color'
-											value='color2'
+											name='priority'
+											value='low'
 											as={RadioButton}
 										/>
 									</label>
 									<label>
 										<Field
 											type='radio'
-											name='color'
-											value='color3'
+											name='priority'
+											value='medium'
 											as={RadioButton}
 										/>
 									</label>
 									<label>
 										<Field
 											type='radio'
-											name='color'
-											value='color4'
+											name='priority'
+											value='high'
 											as={RadioButton}
 										/>
 									</label>
 								</RadioButtonContainer>
-								<ErrorMessage name='color' component='div' />
+								<ErrorMessage name='priority' component='div' />
 							</div>
 
 							<div>
 								<SubTitles>Deadline:</SubTitles>
-								{/* <Field name="deadline" as={MyDatePicker} /> */}
 
 								<MyDatePicker
+									value={values.deadline}
 									onChange={value => setFieldValue('deadline', value)}
 								/>
 
 								<ErrorMessage name='deadline' component='div' />
 							</div>
 
-							<AddButton type='submit'>
-								{isSubmitting ? 'Adding...' : 'Add'}
-							</AddButton>
-              <Tooltip isOpen={isTooltipOpen} onRequestClose={closeTooltip} handleOptionClick={handleOptionClick} />
+							<AddButton type='submit'>{isEdit ? 'Edit' : 'Add'}</AddButton>
 						</Form>
 					)}
 				</Formik>

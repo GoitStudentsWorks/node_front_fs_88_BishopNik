@@ -8,7 +8,6 @@ export const CardContainer = styled.div`
   flex-direction: row;
   background-color: ${props => props.theme.sidebar.background};
   border-radius: 7px;
-  overflow: hidden;
 `;
 
 export const PriorityLine = styled.div`
