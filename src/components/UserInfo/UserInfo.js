@@ -4,11 +4,11 @@ import data from 'img/list_img.json';
 import { UserInfoWrapper, UserName, UserAvatar } from './UserInfo.styled';
 import { useAuth } from 'hooks';
 
-
 export const UserInfo = () => {
   const {user} = useAuth()
-  const { name, avatarURL, theme: activeUserTheme } = user
+  const { name, avatarURL, theme: activeUserTheme } = user;
   const [isModalState, setIsModalState] = useState(false);
+
 
 
   const stateСhangeModal = () => {
@@ -33,7 +33,7 @@ export const UserInfo = () => {
       <UserInfoWrapper>
         <UserName>{name}</UserName>
         <UserAvatar
-          src={ avatarURL || setDefaultAvatar  /* setDefaultAvatar || avatarURL*/ }
+          src={avatarURL || setDefaultAvatar()}
           alt="user name"
           onClick={stateСhangeModal}
         />

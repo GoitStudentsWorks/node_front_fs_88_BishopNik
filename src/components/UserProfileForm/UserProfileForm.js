@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useDispatch} from 'react-redux';
 
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 
 import {
   ButtonStyle,
@@ -13,6 +12,7 @@ import {
   LabelBox,
   StyledField,
   StyledForm,
+  Title,
 } from './UserProfileForm.Styled';
 
 import { refreshUser } from 'redux/auth/operations';
@@ -65,15 +65,15 @@ const { name, email } = user
         email: email,
         password: '',
       }}
-      validationSchema={formShema}
+      validationSchema={editProfilShema}
       onSubmit={async (values, actions) => {
         console.log(values);
         handleSubmit(values, actions);
-
-        // alert(JSON.stringify(values, null, 2));
       }}
     >
       <StyledForm>
+        <Title>Edit profile</Title>
+        <UserIcon />
         <LabelBox>
           <label htmlFor="login">
             <StyledField name="login" placeholder="login" />
@@ -100,8 +100,7 @@ const { name, email } = user
                 top: '24px',
                 right: '18px',
                 transform: 'translateY(-50%)',
-                cursor: 'pointer',
-                stroke: '#FFFFFF4D',
+                cursor: 'pointer'
               }}
             >
               {showPassword ? 'Hide' : 'Show'}

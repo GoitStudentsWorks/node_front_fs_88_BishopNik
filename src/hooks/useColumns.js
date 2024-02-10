@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 
 import { columnsState, columnsLoading, columnsError } from 'redux/columns/selectors';
 
-export const useColomns = () => {
-	const aLLColomns = useSelector(columnsState);
-	const statusColomn = useSelector(columnsLoading);
+export const useColumns = () => {
+	const allColumns = useSelector(columnsState);
+	const statusColumn = useSelector(columnsLoading);
 	const statusError = useSelector(columnsError);
 
 	return {
-		aLLColomns,
-		statusColomn,
+		allColumns,
+		statusColumn,
 		statusError,
 	};
 };

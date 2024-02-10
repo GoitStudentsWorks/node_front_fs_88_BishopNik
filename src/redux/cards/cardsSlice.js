@@ -44,7 +44,8 @@ const cardsSlice = createSlice({
 			})
 			.addCase(delCard.fulfilled, (state, { payload }) => {
 				state.error = null;
-				state.items = state.items.filter(item => item._id !== payload);
+				const index = state.items.findIndex(item => item.id === payload);
+				state.items.splice(index, 1);
 			})
 			.addCase(delCard.rejected, (state, { payload }) => {
 				state.error = payload;
@@ -57,7 +58,8 @@ const cardsSlice = createSlice({
 				});
 			})
 			.addCase(updateCard.rejected, (state, { payload }) => {
-				state.error = payload
+				state.isLoading = false;
+				state.error = payload;
 			});
 	},
 });

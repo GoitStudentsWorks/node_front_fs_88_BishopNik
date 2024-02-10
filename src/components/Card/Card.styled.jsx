@@ -6,9 +6,8 @@ export const CardContainer = styled.div`
   height: 154px;
   display: flex;
   flex-direction: row;
-  background-color: ${props => props.theme.sidebar.background};
+  background-color: ${props => props.theme.profile.background};;
   border-radius: 7px;
-  overflow: hidden;
 `;
 
 export const PriorityLine = styled.div`
@@ -30,7 +29,7 @@ export const Title = styled.h4`
   font-size: 14px;
   font-weight: bold;
   letter-spacing: -0.02em;
-  color: ${props => props.theme.sidebar.textMain};
+  color: ${props => props.theme.help.modalTextMain};
   margin: 0;
 `;
 
@@ -40,7 +39,7 @@ export const DescriptionText = styled.p`
   font-weight: normal;
   letter-spacing: -0.02em;
   line-height: 1.45;
-  color: ${props => props.theme.sidebar.textSecondary};
+  color: ${props => props.theme.colum.textSecondary};
   margin-top: 8px;
   width: 290px;
   height: 38px;
@@ -56,7 +55,7 @@ export const DescriptionText = styled.p`
 export const Info = styled.div`
   display: flex;
   flex-direction: row;
-  border-top: solid 1px ${props => props.theme.sidebar.border};
+  border-top: solid 1px ${props => props.theme.colum.borderColor};
   height: 45px;
   align-items: flex-end;
 `;
@@ -75,7 +74,7 @@ export const InfoTitle = styled.p`
   font-weight: normal;
   letter-spacing: -0.02em;
   cursor: default;
-  color: ${props => props.theme.sidebar.textSecondary};
+  color: ${props => props.theme.colum.icon};
 `;
 
 export const PriorityLevel = styled.p`
@@ -84,7 +83,7 @@ export const PriorityLevel = styled.p`
   margin: 0;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: ${props => props.theme.sidebar.textMain};
+  color: ${props => props.theme.colum.textMain};
   padding-left: 16px;
   cursor: default;
 
@@ -116,19 +115,18 @@ export const Date = styled.p`
   font-weight: normal;
   letter-spacing: -0.02em;
   cursor: default;
-  color: ${props => props.theme.sidebar.textMain};
+  color:  ${props => props.theme.colum.textMain};
 `;
 
 export const BellIcon = styled(Icon)`
   width: 16px;
   height: 16px;
   margin-left: auto;
-  stroke: ${props => props.theme.sidebar.projectIcon};
+  stroke:  ${props => props.theme.colum.icon};
   cursor: pointer;
-
   &:hover,
   &:focus {
-    stroke: ${props => props.theme.sidebar.textAccent};
+    stroke: ${props => props.theme.colum.buttonBackground};
   }
 `;
 
@@ -136,40 +134,45 @@ export const IconContainer = styled.div`
   display: flex;
   gap: 8px;
   margin-left: 13px;
+  
+
+   &:hover,
+  &:focus {
+    stroke:  ${props => props.theme.colum.buttonBackground};
 `;
 
 export const MoveIcon = styled(Icon)`
   width: 16px;
   height: 16px;
-  stroke: ${props => props.theme.sidebar.projectIcon};
+  stroke: ${props => props.theme.colum.icon};
   cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: ${props => props.theme.sidebar.textAccent};
+    stroke: ${props => props.theme.colum.buttonBackground};
   }
 `;
 
 export const EditIcon = styled(Icon)`
   width: 16px;
   height: 16px;
-  stroke: ${props => props.theme.sidebar.projectIcon};
+  stroke: ${props => props.theme.colum.icon};
   cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: ${props => props.theme.sidebar.textAccent};
+    stroke:  ${props => props.theme.colum.buttonBackground};
   }
 `;
 
 export const DelIcon = styled(Icon)`
   width: 16px;
   height: 16px;
-  stroke: ${props => props.theme.sidebar.projectIcon};
+  stroke: ${props => props.theme.colum.icon};
   cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: ${props => props.theme.sidebar.textAccent};
+    stroke:  ${props => props.theme.colum.buttonBackground};
   }
 `;

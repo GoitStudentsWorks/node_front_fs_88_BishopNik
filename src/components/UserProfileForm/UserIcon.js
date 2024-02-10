@@ -9,6 +9,7 @@ export const UserIcon = () => {
   let src = data.user.dark;
   const { user } = useAuth()
   const {avatarURL} = user
+
   if (avatarURL) {
     src = avatarURL;
   }
@@ -16,7 +17,7 @@ export const UserIcon = () => {
     <BlockLogoStyles>
       <img src={src} alt="UserIcon" width={68} />
       <LogoStyles>
-        <FiltersIcon name="add-board"></FiltersIcon>
+        <ButtonIcon name="add-board"></ButtonIcon>
       </LogoStyles>
     </BlockLogoStyles>
   );

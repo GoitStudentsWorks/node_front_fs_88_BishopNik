@@ -7,13 +7,17 @@ const DatePickerContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 0;
+  /* border-radius: 8px; */
 
   .react-datepicker {
+    border-radius: 8px;
+    border-color: ${props => props.theme.modal.buttonBackground};
   }
 
   .react-datepicker__month-container {
     padding: 18px;
     background-color: ${props => props.theme.modal.backgroundSecondary};
+    border-radius: 8px;
   }
 
   .react-datepicker__month {

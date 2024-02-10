@@ -5,7 +5,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
-import icon from 'components/Icon/icon-spraite.svg';
 
 import {
 	ModalTitle,
@@ -55,9 +54,7 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
 						<StyledErrorMessage name='name' component='div' />
 						<BtnAdd type='submit' disabled={isSubmitting}>
 							<IconWrapper>
-								<AddIcon width='14' height='14'>
-									<use xlinkHref={`${icon}#icon-plus`} />
-								</AddIcon>
+								<AddIcon name='plus' />
 							</IconWrapper>
 							Add
 						</BtnAdd>

@@ -9,14 +9,21 @@ import { useColomns } from 'hooks';
 
 export const Columns = ({ board }) => {
 	const dispatch = useDispatch();
+
+import { useColumns } from 'hooks';
+
+export const Columns = ({ board }) => {
+	const dispatch = useDispatch();
+	const { allColumns } = useColumns();
+
 	useEffect(() => {
 		dispatch(fetchColumnsByIdBoards(board));
 	}, [dispatch, board]);
 	const { aLLColomns } = useColomns()
 	return (
 		<Styled>
-			{aLLColomns.map(({ _id: id, name }) => (
-				<Column name={name} id={id} key={id} />
+			{allColumns.map(item => (
+				<Column name={item.name} id={item._id} key={item._id} column={item} />
 			))}
 		</Styled>
 	);

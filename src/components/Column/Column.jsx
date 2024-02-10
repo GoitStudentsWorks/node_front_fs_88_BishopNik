@@ -11,7 +11,7 @@ import {
 	List,
 	ListTasks,
 } from './Column.styled';
-import {useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 
 import {
@@ -26,22 +26,44 @@ import { AddCardModal } from 'components/Modal';
 import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
+import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
 
-export const Column = ({ name, id }) => {
+export const Column = ({ name, id, column }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const {aLLCards} = useCards()
+	const [cardForEditing, setCardForEditing] = useState(null);
+	const { allCards } = useCards();
 	const dispatch = useDispatch();
 	const { filter } = useContext(MainContext);
 
 	useEffect(() => {
 		dispatch(fetchCardsByColumnId(id));
 	}, [dispatch, id]);
+
 	const handleDeleteColumn = columnId => {
 		dispatch(delColumn(columnId));
 	};
 
-	const cardForColumn = aLLCards.filter(card => card.columnId === id && card.priority === filter);
+
+	const deleteCard = id => {
+		dispatch(delCard(id));
+	};
+
+	const editCard = data => {
+		setCardForEditing(data);
+		setIsOpen(true);
+	};
+
+	const onRequestClose = () => {
+		setCardForEditing(null);
+		setIsOpen(false);
+	};
+
+	const cardForColumn = allCards?.filter(
+		card => card.columnId === id && (card.priority === filter || filter === 'all')
+	);
+
+	console.log('🚀 ~ Column ~ allCards:', allCards);
 
 	return (
 		<Wrapper>
@@ -64,18 +86,28 @@ export const Column = ({ name, id }) => {
 				</Title>
 			</List>
 			<ListTasks>
-				{cardForColumn.map(item => (
-					<Card key={item._id} item={item} />
+				{allCards?.map(item => (
+					<Card
+						key={item._id}
+						item={item}
+						deleteCard={() => deleteCard(item?._id)}
+						editCard={() => editCard(item)}
+					/>
 				))}
 			</ListTasks>
 			<Button type='button' onClick={() => setIsOpen(true)}>
 				<IconWrapper>
 					<AddIcon name='add-board' />
 				</IconWrapper>
-				<ButtonText>{!cardForColumn.length ? 'Add card' : 'Add another card'}</ButtonText>
+				<ButtonText>{!cardForColumn?.length ? 'Add card' : 'Add another card'}</ButtonText>
 			</Button>
 
-			<AddCardModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} columnId={id} />
+			<AddCardModal
+				isOpen={isOpen}
+				onRequestClose={onRequestClose}
+				columnId={column._id}
+				cardForEditing={cardForEditing}
+			/>
 		</Wrapper>
 	);
 };
