@@ -64,6 +64,7 @@ export const Column = ({ name, id, column }) => {
 	);
 
 	console.log('🚀 ~ Column ~ allCards:', allCards);
+	console.log(filter);
 
 	return (
 		<Wrapper>

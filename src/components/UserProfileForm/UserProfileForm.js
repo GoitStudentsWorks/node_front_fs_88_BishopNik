@@ -1,117 +1,94 @@
 /** @format */
 
 import React, { useState } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { UserIcon } from './UserIcon';
+import { editProfilShema } from 'components/Helpers';
 
 import { Formik } from 'formik';
 
 import {
-  ButtonStyle,
-  ErrorMessageStyle,
-  IconHideShow,
-  LabelBox,
-  StyledField,
-  StyledForm,
-  Title,
+	ButtonStyle,
+	ErrorMessageStyle,
+	IconHideShow,
+	LabelBox,
+	StyledField,
+	StyledForm,
+	Title,
 } from './UserProfileForm.Styled';
 
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 
-const emailRegex = RegExp(
-  /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
-);
-
-const passwordRegex = RegExp(/^[A-Z|a-z0-9!#$%&._%+-/=?^]{0,100}$/);
-
-const formShema = Yup.object().shape({
-  login: Yup.string()
-    .min(2, 'Too short!')
-    .max(32, 'Too Long!')
-    .required('This field is required!'),
-
-  email: Yup.string()
-    .matches(emailRegex, 'Invalid email')
-    .email('Invalid email')
-    .required('email is required'),
-
-  password: Yup.string()
-    .matches(passwordRegex, 'Invalid password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .max(64, 'Password should be of max 64 characters length'),
-  // .required('This field is required!')
-});
-
 export const UserProfileForm = () => {
-const { user } = useAuth()
-const { name, email } = user
-  const [showPassword, setShowPassword] = useState(false);
+	const { user } = useAuth();
+	const { name, email } = user;
+	const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const handleSubmit = (values, actions) => {
-    dispatch(refreshUser(values));
-    actions.resetForm({ password: '' });
-  };
+	const handleSubmit = (values, actions) => {
+		dispatch(refreshUser(values));
+		actions.resetForm({ password: '' });
+	};
 
-  return (
-    <Formik
-      initialValues={{
-        login: name,
-        email: email,
-        password: '',
-      }}
-      validationSchema={editProfilShema}
-      onSubmit={async (values, actions) => {
-        console.log(values);
-        handleSubmit(values, actions);
-      }}
-    >
-      <StyledForm>
-        <Title>Edit profile</Title>
-        <UserIcon />
-        <LabelBox>
-          <label htmlFor="login">
-            <StyledField name="login" placeholder="login" />
-            <ErrorMessageStyle name="login" component="span" />
-          </label>
+	return (
+		<Formik
+			initialValues={{
+				login: name,
+				email: email,
+				password: '',
+			}}
+			validationSchema={editProfilShema}
+			onSubmit={async (values, actions) => {
+				handleSubmit(values, actions);
+			}}
+		>
+			<StyledForm>
+				<Title>Edit profile</Title>
+				<UserIcon />
+				<LabelBox>
+					<label htmlFor='login'>
+						<StyledField name='login' placeholder='login' />
+						<ErrorMessageStyle name='login' component='span' />
+					</label>
 
-          <label htmlFor="email">
-            <StyledField name="email" placeholder="email" type="email" />
-            <ErrorMessageStyle name="email" component="span" />
-          </label>
+					<label htmlFor='email'>
+						<StyledField name='email' placeholder='email' type='email' />
+						<ErrorMessageStyle name='email' component='span' />
+					</label>
 
-          <label style={{ position: 'relative' }}>
-            <StyledField
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              placeholder="Enter password"
-            />
+					<label style={{ position: 'relative' }}>
+						<StyledField
+							type={showPassword ? 'text' : 'password'}
+							name='password'
+							placeholder='Enter password'
+						/>
 
-            <IconHideShow
-              name="hide-show"
-              onClick={togglePasswordVisibility}
-              style={{
-                position: 'absolute',
-                top: '24px',
-                right: '18px',
-                transform: 'translateY(-50%)',
-                cursor: 'pointer'
-              }}
-            >
-              {showPassword ? 'Hide' : 'Show'}
-            </IconHideShow>
+						<IconHideShow
+							name='hide-show'
+							onClick={togglePasswordVisibility}
+							style={{
+								position: 'absolute',
+								top: '24px',
+								right: '18px',
+								transform: 'translateY(-50%)',
+								cursor: 'pointer',
+							}}
+						>
+							{showPassword ? 'Hide' : 'Show'}
+						</IconHideShow>
 
-            <ErrorMessageStyle name="password" component="span" />
-          </label>
-        </LabelBox>
+						<ErrorMessageStyle name='password' component='span' />
+					</label>
+				</LabelBox>
 
-        <ButtonStyle type="submit">Send</ButtonStyle>
-      </StyledForm>
-    </Formik>
-  );
+				<ButtonStyle type='submit'>Send</ButtonStyle>
+			</StyledForm>
+		</Formik>
+	);
 };
