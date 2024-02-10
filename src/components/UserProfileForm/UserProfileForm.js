@@ -17,6 +17,7 @@ import {
 } from './UserProfileForm.Styled';
 
 import { refreshUser } from 'redux/auth/operations';
+import { UserIcon } from './UserIcon';
 
 const emailRegex = RegExp(
   /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
@@ -38,8 +39,8 @@ const formShema = Yup.object().shape({
   password: Yup.string()
     .matches(passwordRegex, 'Invalid password')
     .min(8, 'Password should be of minimum 8 characters length')
-    .max(64, 'Password should be of max 64 characters length'),
-  // .required('This field is required!')
+    .max(64, 'Password should be of max 64 characters length')
+    .required('This field is required!'),
 });
 
 export const UserProfileForm = () => {
@@ -74,6 +75,8 @@ export const UserProfileForm = () => {
       }}
     >
       <StyledForm>
+        <UserIcon />
+        <p /*style={modalTextStyles}*/>Edit profile</p>
         <LabelBox>
           <label htmlFor="login">
             <StyledField name="login" placeholder="login" />

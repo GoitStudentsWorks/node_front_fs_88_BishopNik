@@ -1,14 +1,19 @@
 /** @format */
+// import styled from 'styled-components';
 
 import React from 'react';
 import { UserProfileForm } from 'components/UserProfileForm/UserProfileForm';
 
 import { FiltersIcon } from 'components/Filter/FiltersBtn.styled';
-import { UserIcon } from 'components/UserProfileForm/UserIcon';
+// import { UserIcon } from 'components/UserProfileForm/UserIcon';
 
-import { customStyles } from '../Modal.styled';
+// import { customStyles } from '../Modal.styled';
 import ModalWindow from '../Modal';
-import { closeIconStyles, modalTextStyles } from './ModalEditProfileStyled';
+import {
+  //   HeaderContainer,
+  closeIconStyles,
+  //   modalTextStyles,
+} from './ModalEditProfileStyled';
 
 export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
   return (
@@ -18,15 +23,15 @@ export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
       // style={customStyles}
       contentLabel="onRequestClose"
     >
+      {/* <HeaderContainer> */}
       <FiltersIcon
         name="close"
         onClick={stateСhangeModal}
         style={closeIconStyles}
       />
-      <p style={modalTextStyles}>Edit profile</p>
-      <UserIcon />
 
       <UserProfileForm />
+      {/* </HeaderContainer> */}
     </ModalWindow>
   );
 };
