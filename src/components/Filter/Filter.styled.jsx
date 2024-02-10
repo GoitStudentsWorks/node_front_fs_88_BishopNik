@@ -107,6 +107,7 @@ export const RadioButtonStyled = styled.span`
   width: 14px; /* Диаметр кружка */
   height: 14px; /* Диаметр кружка */
   border-radius: 50%;
+
   ${({ color }) => `background-color: ${color};`}
 
   /* Цвет кружка при наведении */
@@ -115,6 +116,8 @@ export const RadioButtonStyled = styled.span`
 
   /* Цвет кружка при выборе */
   ${RadioButton} input[type="radio"]:checked + & {
-    border-color: #999; /* Цвет обводки */
+    border: 1px solid;
+    ${({ color }) => `border-color: ${color};`}
+    background-color: transparent;
   }
 `;
