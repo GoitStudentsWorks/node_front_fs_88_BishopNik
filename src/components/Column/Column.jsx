@@ -44,7 +44,6 @@ export const Column = ({ name, id, column }) => {
 		dispatch(delColumn(columnId));
 	};
 
-
 	const deleteCard = id => {
 		dispatch(delCard(id));
 	};
@@ -59,12 +58,10 @@ export const Column = ({ name, id, column }) => {
 		setIsOpen(false);
 	};
 
-	const cardForColumn = allCards?.filter(
-		card => card.columnId === id && (card.priority === filter || filter === 'all')
-	);
-
-	console.log('🚀 ~ Column ~ allCards:', allCards);
-	console.log(filter);
+	const cardForColumn =
+		filter === 'all'
+			? allCards?.filter(card => card.columnId === id)
+			: allCards?.filter(card => card.columnId === id && card.priority === filter);
 
 	return (
 		<Wrapper>
@@ -87,7 +84,7 @@ export const Column = ({ name, id, column }) => {
 				</Title>
 			</List>
 			<ListTasks>
-				{allCards?.map(item => (
+				{cardForColumn?.map(item => (
 					<Card
 						key={item._id}
 						item={item}
