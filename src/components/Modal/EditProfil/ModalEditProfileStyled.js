@@ -1,3 +1,12 @@
+import React from 'react';
+import styled from 'styled-components';
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+`;
+
 export const modalTextStyles = {
   color: '#FFFFFF',
   fontFamily: 'Poppins',

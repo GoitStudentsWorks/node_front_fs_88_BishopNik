@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 
 import {
   ButtonStyle,
@@ -14,33 +13,12 @@ import {
   LabelBox,
   StyledField,
   StyledForm,
+  Title,
 } from './UserProfileForm.Styled';
 
 import { refreshUser } from 'redux/auth/operations';
-
-const emailRegex = RegExp(
-  /^[A-Z|a-z0-9!#$%&._%+-/=?^]+@[A-Z|a-z0-9.-]+\.[A-Z|a-z]{2,4}$/
-);
-
-const passwordRegex = RegExp(/^[A-Z|a-z0-9!#$%&._%+-/=?^]{0,100}$/);
-
-const formShema = Yup.object().shape({
-  login: Yup.string()
-    .min(2, 'Too short!')
-    .max(32, 'Too Long!')
-    .required('This field is required!'),
-
-  email: Yup.string()
-    .matches(emailRegex, 'Invalid email')
-    .email('Invalid email')
-    .required('email is required'),
-
-  password: Yup.string()
-    .matches(passwordRegex, 'Invalid password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .max(64, 'Password should be of max 64 characters length'),
-  // .required('This field is required!')
-});
+import { UserIcon } from './UserIcon';
+import { editProfilShema } from 'components/Helpers/index.js';
 
 export const UserProfileForm = () => {
   const { name, email } = useSelector(selectUser);
@@ -65,15 +43,15 @@ export const UserProfileForm = () => {
         email: email,
         password: '',
       }}
-      validationSchema={formShema}
+      validationSchema={editProfilShema}
       onSubmit={async (values, actions) => {
         console.log(values);
         handleSubmit(values, actions);
-
-        // alert(JSON.stringify(values, null, 2));
       }}
     >
       <StyledForm>
+        <Title>Edit profile</Title>
+        <UserIcon />
         <LabelBox>
           <label htmlFor="login">
             <StyledField name="login" placeholder="login" />

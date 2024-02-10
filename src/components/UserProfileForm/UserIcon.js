@@ -1,17 +1,34 @@
 /** @format */
 
-import { FiltersIcon } from 'components/Filter/FiltersBtn.styled';
-
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { selectUser, selectUserTheme } from 'redux/auth/selectors';
 
 import data from '../../img/list_img.json';
 
-import { BlockLogoStyles, LogoStyles } from './UserProfileForm.Styled';
+import {
+  BlockLogoStyles,
+  ButtonIcon,
+  LogoStyles,
+} from './UserProfileForm.Styled';
 
 export const UserIcon = () => {
-  let src = data.user.dark;
   const { avatarURL } = useSelector(selectUser);
+  const activeUserTheme = useSelector(selectUserTheme);
+
+  console.log(useSelector(selectUserTheme));
+  console.log(activeUserTheme);
+
+  const setDefaultAvatar = () => {
+    if (activeUserTheme === 'dark') {
+      return data.user.dark;
+    } else if (activeUserTheme === 'light') {
+      return data.user.light;
+    } else if (activeUserTheme === 'violet') {
+      return data.user.violet;
+    }
+  };
+
+  let src = setDefaultAvatar();
   if (avatarURL) {
     src = avatarURL;
   }
@@ -19,7 +36,7 @@ export const UserIcon = () => {
     <BlockLogoStyles>
       <img src={src} alt="UserIcon" width={68} />
       <LogoStyles>
-        <FiltersIcon name="add-board"></FiltersIcon>
+        <ButtonIcon name="add-board"></ButtonIcon>
       </LogoStyles>
     </BlockLogoStyles>
   );
