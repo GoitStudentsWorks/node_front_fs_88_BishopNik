@@ -72,8 +72,17 @@ export const RadioButtonGroup = styled.div`
   gap: 8px;
 `;
 
-export const RadioButton = styled.label`
+export const RadioButton = styled.div`
   position: relative;
+`;
+
+export const Input = styled.input`
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+`;
+
+export const Label = styled.label`
   padding-left: 25px;
   font-family: Poppins;
   font-size: 12px;
@@ -81,13 +90,6 @@ export const RadioButton = styled.label`
   line-height: 18px;
   color: ${props => props.theme.popup.textSecondary};
   cursor: pointer;
-
-  input[type='radio'] {
-    position: absolute;
-    -webkit-appearance: none;
-    appearance: none;
-    opacity: 0;
-  }
 
   &::before {
     content: '';
@@ -121,20 +123,19 @@ export const RadioButton = styled.label`
     transition: opacity 0.2s ease;
   }
 
-  input[type='radio']:checked + & {
+  &:hover {
     color: ${props => props.theme.help.modalTextMain};
   }
 
-  input[type='radio']&:checked + &::before {
-    background-color: transparent;
+  ${Input}:checked + & {
+    color: ${props => props.theme.help.modalTextMain};
   }
 
-  input[type='radio']&:checked + &::after {
+  ${Input}:checked + &::after {
     opacity: 1;
   }
 
-  &:hover,
-  &:focus {
-    color: ${props => props.theme.help.modalTextMain};
+  ${Input}:checked + &::before {
+    background-color: transparent;
   }
 `;
