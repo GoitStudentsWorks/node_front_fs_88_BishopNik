@@ -4,7 +4,7 @@
 
 export const theme = [
   {
-    name: 'dark',
+    name: 'Dark',
     property: {
       header: {
         containerBackground: 'rgba(31, 31, 31, 1)',
@@ -112,7 +112,7 @@ export const theme = [
     },
   },
 	{
-    name: 'light',
+    name: 'Light',
     property: {
       header: {
         containerBackground: 'rgba(246, 246, 247, 1)',
@@ -220,7 +220,7 @@ export const theme = [
     },
   },
 	{
-		name: 'violet',
+		name: 'Violet',
 		property: {
       header: {
         containerBackground: 'rgba(236, 237, 253, 1)',

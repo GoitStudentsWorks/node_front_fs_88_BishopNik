@@ -38,16 +38,16 @@ export const BoardNameContainer = styled.div`
 export const BoardIcon = styled(Icon)`
   width: 18px;
   height: 18px;
-  stroke: ${({ active }) =>
-    active ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)'};
+  stroke: ${({ active, theme }) =>
+    active ? theme.modal.textMain : theme.sidebar.textSecondary};
 `;
 
 export const BoardText = styled.p`
   font-size: 14px;
   letter-spacing: -0.02em;
 
-  color: ${({ active }) =>
-    active ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)'};
+  color: ${({ active, theme }) =>
+    active ? theme.modal.textMain  : theme.sidebar.textSecondary};
   margin: 0px;
 `;
 
@@ -90,8 +90,8 @@ export const BoardLine = styled.p`
   margin: 0;
   margin-left: 14px;
 
-  background-color: ${({ active }) =>
-    active ? 'rgba(190, 219, 176, 1)' : 'transparent'};
+  background-color: ${({ active, theme }) =>
+    active ? theme.sidebar.iconLogout : 'transparent'};
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 

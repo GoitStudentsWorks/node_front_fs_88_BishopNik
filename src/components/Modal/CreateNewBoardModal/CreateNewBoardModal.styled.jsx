@@ -124,20 +124,21 @@ export const StyledField = styled(Field)`
 	padding: 14px 0px 14px 18px;
 	opacity: 0.4;
 	outline: none;
+
 	background: ${props => props.theme.modal.backgroundSecondary};
 	width: 100%;
 	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
 	opacity: 0.4;
-	transition: all 250ms ease;
-	color: ${props => props.theme.help.textMain};
+    transition: all 250ms ease;
+     color: ${props => props.theme.help.textMain};
 
-	&::placeholder {
-		color: ${props => props.theme.help.textMain};
-		font-size: 14px;
-		font-family: 'Poppins';
-		letter-spacing: -0.28px;
-	}
+  &::placeholder {
+    color: ${props => props.theme.help.textMain};
+    font-size: 14px;
+    font-family: 'Poppins';
+    letter-spacing: -0.28px;
+  }
 
 	&:focus {
 		opacity: 1;
@@ -145,16 +146,16 @@ export const StyledField = styled(Field)`
 `;
 
 export const Button = styled.button`
-	display: flex;
-	width: 100%;
-	padding: 14px;
-	justify-content: center;
-	align-items: center;
-	border-radius: 8px;
-	border: none;
-	background: ${props => props.theme.help.buttonBackground};
-	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-	cursor: pointer;
+  display: flex;
+  width: 100%;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background: ${props => props.theme.help.buttonBackground};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 
 	&:hover,
 	&:focus {
