@@ -15,7 +15,7 @@ export const UserIcon = () => {
   }
   return (
     <BlockLogoStyles>
-      <img src={src} alt="UserIcon" width={68} />
+      <img src={src} alt="UserIcon" style={{ width: '68px', height: '68px' }} />
       <LogoStyles>
         <ButtonIcon name="add-board"></ButtonIcon>
       </LogoStyles>
