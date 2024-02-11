@@ -45,22 +45,41 @@ export const Card = ({ item, deleteCard, editCard }) => {
   const getColor = priority => {
     switch (priority) {
       case 'without':
-        return ' rgba(255, 255, 255, 0.3)';
+        return {
+          color: 'rgba(255, 255, 255, 0.3)',
+          name: 'Without priority',
+        };
+        break;
       case 'low':
-        return ' rgba(143, 161, 208, 1)';
+        return {
+          color: 'rgba(143, 161, 208, 1)',
+          name: 'Low',
+        };
+        break;
       case 'medium':
-        return ' rgba(224, 156, 181, 1)';
+        return {
+          color: 'rgba(224, 156, 181, 1)',
+          name: 'Medium',
+        };
+        break;
       case 'high':
-        return ' rgba(190, 219, 176, 1)';
+        return {
+          color: 'rgba(190, 219, 176, 1)',
+          name: 'High',
+        };
+        break;
       default:
-        return ' rgba(255, 255, 255, 0.3)';
+        return {
+          color: 'rgba(255, 255, 255, 0.3)',
+          name: 'Without priority',
+        };
     }
   };
 
   return (
     <>
       <CardContainer>
-        <PriorityLine style={{ backgroundColor: getColor(priority) }} />
+        <PriorityLine style={{ backgroundColor: getColor(priority).color }} />
         <CardContent>
           <TextContent>
             <Title>{name}</Title>
@@ -69,8 +88,8 @@ export const Card = ({ item, deleteCard, editCard }) => {
           <Info>
             <Priority>
               <InfoTitle>Priority</InfoTitle>
-              <PriorityLevel color={getColor(priority)}>
-                {priority}
+              <PriorityLevel color={getColor(priority).color}>
+                {getColor(priority).name}
               </PriorityLevel>
             </Priority>
             <Dedline>
