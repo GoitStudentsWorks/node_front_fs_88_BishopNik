@@ -58,12 +58,13 @@ export const Column = ({ name, id, column }) => {
     setIsOpen(false);
   };
 
-  const cardForColumn =
-    filter === 'all'
-      ? allCards?.filter(card => card.columnId === id)
-      : allCards?.filter(
-          card => card.columnId === id && card.priority === filter
-        );
+  const cardForColumn = allCards?.filter(card => {
+    if (filter === 'all') {
+      return card.columnId === id;
+    } else {
+      return card.columnId === id && card.priority === filter;
+    }
+  });
 
   return (
     <Wrapper>
