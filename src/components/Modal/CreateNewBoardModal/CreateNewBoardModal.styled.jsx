@@ -90,7 +90,7 @@ export const StyledForm = styled(Form)`
 		width: 100%;
 	}
 	width: 400px;
-	border-radius: 8px;
+	border-radius: 8px solid rgba(17, 17, 17, 0.1);;
 	background: ${props => props.theme.modal.backgroundMain};
 	padding: 24px;
 `;

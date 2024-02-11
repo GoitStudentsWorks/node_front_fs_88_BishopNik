@@ -5,19 +5,16 @@ import styled from 'styled-components';
 export const TooltipContent = styled.div`
 	position: relative;
 	outline: none;
-	background: ${props => props.theme.modal.backgroundMain};
-	color: ${props => props.theme.help.modalTextMain};
+	background:${props => props.theme.popup.background};
+	color: ${props => props.theme.popup.textSecondary};
 	padding: 24px;
-	border-radius: 8px;
-	min-width: 320px;
-	@media (max-width: 767px) {
-		width: 335px;
-	}
-	@media (min-width: 768px) {
-		width: 350px;
-	}
+	border-radius: 8px solid rgba(17, 17, 17, 0.1);
+	width: 135px;
+	height: 86px;
 	margin: 0 auto;
-	/* background: ${({ theme }) => theme.modal.backgroundMain};
+	padding: 18px;
+
+	/* background: ${props => props.theme.popup.background};
 	text-align: center;
 	border-radius: 8px;
 	padding: 5px;
@@ -31,24 +28,24 @@ export const TooltipContent = styled.div`
 
 export const TooltipButton = styled.button`
 	background-color: transparent;
-	color: #bedbb0;
+	color: ${props => props.theme.popup.textSecondary};;
 	border: none;
 	cursor: pointer;
 
 	&:hover,
 	&:focus {
-		color: #fff;
+		color: ${props => props.theme.popup.textAccent};
 	}
 `;
 
 export const Icon = styled.svg`
 	width: 16px;
 	height: 16px;
-	stroke: ${props => props.theme.sidebar.projectIcon};
+	stroke:${props => props.theme.popup.textSecondary};
 	cursor: pointer;
 
 	&:hover,
 	&:focus {
-		stroke: ${props => props.theme.sidebar.textAccent};
+		stroke: ${props => props.theme.popup.textAccent};
 	}
 `;

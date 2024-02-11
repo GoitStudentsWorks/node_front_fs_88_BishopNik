@@ -8,7 +8,7 @@ export const ModalContainer = styled.div`
   background: ${props => props.theme.modal.backgroundMain};
   color: ${props => props.theme.help.modalTextMain};
   padding: 24px;
-  border-radius: 8px;
+  border-radius: 8px solid rgba(17, 17, 17, 0.1);;
   min-width: 320px;
   @media (max-width: 767px) {
     width: 335px;
@@ -182,7 +182,7 @@ export const AddButton = styled.button`
   padding: 10px 0 11px 0;
   border: none;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 8px solid rgba(17, 17, 17, 0.1);;
   cursor: pointer;
   display: flex;
   align-items: center;

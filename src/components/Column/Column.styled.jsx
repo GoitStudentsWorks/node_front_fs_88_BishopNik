@@ -17,7 +17,7 @@ export const Wrapper = styled.li`
 export const Title = styled.span`
 	color: ${props => props.theme.colum.textMain};
 	font-size: 18px;
-	border-radius: 8px;
+	border-radius: 8px solid rgba(17, 17, 17, 0.1);;
 	width: 334px;
 	padding: 14px 24px;
 	background-color: ${props => props.theme.profile.background};;
@@ -80,19 +80,19 @@ export const IconsContainer = styled.div`
 `;
 
 export const EditColumn = styled.svg`
-	stroke: ${({ theme }) => theme.sidebar.projectIcon};
+	stroke:  ${props => props.theme.colum.icon};
 	cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: ${({ theme }) => theme.sidebar.textAccent};
+    stroke: ${props => props.theme.colum.buttonBackground};
 `;
 
 export const DelColumn = styled.svg`
-	stroke:${({ theme }) => theme.sidebar.projectIcon};
+  stroke: ${props => props.theme.colum.icon};
 	cursor: pointer;
 
 	 &:hover,
      &:focus {
-    stroke: ${({ theme }) => theme.sidebar.textAccent};
+    stroke: ${props => props.theme.colum.buttonBackground};
 `;

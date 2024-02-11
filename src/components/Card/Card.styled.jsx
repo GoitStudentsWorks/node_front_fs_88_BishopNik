@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
   background-color: ${props => props.theme.profile.background};;
-  border-radius: 7px;
+  border-radius: 8px solid rgba(17, 17, 17, 0.1);
 `;
 
 export const PriorityLine = styled.div`
