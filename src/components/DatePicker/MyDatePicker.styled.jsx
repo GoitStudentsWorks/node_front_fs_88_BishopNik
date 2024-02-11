@@ -79,7 +79,7 @@ const DatePickerContainer = styled.div`
 `;
 
 const CustomDatePicker = styled(DatePicker)`
-  width: 200px;
+  width: 300px;
   border: none;
   color: ${props => props.theme.modal.textAccent};
   background-color: ${props => props.theme.profile.background};
