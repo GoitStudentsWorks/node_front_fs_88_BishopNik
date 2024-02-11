@@ -10,6 +10,7 @@ import {
   DelColumn,
   List,
   ListTasks,
+  ListTasksContainer,
 } from './Column.styled';
 import { useDispatch } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
@@ -86,21 +87,20 @@ export const Column = ({ name, id, column }) => {
           </IconsContainer>
         </Title>
       </List>
-      <ListTasks>
-        {cardForColumn?.map(item => (
-          <Card
-            key={item._id}
-            item={item}
-            deleteCard={() => deleteCard(item?._id)}
-            editCard={() => editCard(item)}
-          />
-        ))}
-      </ListTasks>
-      <Button
-        style={{ width: '334px' }}
-        type="button"
-        onClick={() => setIsOpen(true)}
-      >
+      <ListTasksContainer>
+        <ListTasks>
+          {cardForColumn?.map(item => (
+            <Card
+              key={item._id}
+              item={item}
+              deleteCard={() => deleteCard(item?._id)}
+              editCard={() => editCard(item)}
+            />
+          ))}
+        </ListTasks>
+      </ListTasksContainer>
+      <Button type="button" onClick={() => setIsOpen(true)}>
+
         <IconWrapper>
           <AddIcon name="add-board" />
         </IconWrapper>
@@ -108,7 +108,6 @@ export const Column = ({ name, id, column }) => {
           {!cardForColumn?.length ? 'Add card' : 'Add another card'}
         </ButtonText>
       </Button>
-
       <AddCardModal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
