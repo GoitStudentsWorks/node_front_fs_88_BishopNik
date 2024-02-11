@@ -100,8 +100,11 @@ export const Column = ({ name, id, column }) => {
           ))}
         </ListTasks>
       </ListTasksContainer>
-      <Button type="button" onClick={() => setIsOpen(true)}>
-
+      <Button
+        style={{ width: '334px' }}
+        type="button"
+        onClick={() => setIsOpen(true)}
+      >
         <IconWrapper>
           <AddIcon name="add-board" />
         </IconWrapper>
