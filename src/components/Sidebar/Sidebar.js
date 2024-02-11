@@ -8,6 +8,7 @@ import { Help } from './Help/Help';
 import { BtnLogout } from './Logout/Logout';
 
 export const SidebarComponent = () => {
+
 	return (
 		<>
 			<Logo />

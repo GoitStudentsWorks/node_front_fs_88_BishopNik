@@ -14,8 +14,8 @@ import { Columns } from '../Columns/Columns';
 import { useParams } from 'react-router-dom';
 import { useColumns, useBoards } from 'hooks';
 
-
 const MainDashboard = () => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { board } = useParams();
   const { allColumns } = useColumns();
@@ -45,7 +45,6 @@ const MainDashboard = () => {
         />
       </BoardContainer>
     </WrapperBoardContainer>
-
   );
 };
 

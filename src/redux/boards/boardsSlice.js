@@ -59,7 +59,7 @@ export const boardsSlice = createSlice({
 				state.isLoading = false;
 				state.error = null;
 				state.items = state.items.map(item => {
-					if (item._id === payload._id) return payload;
+					if (item._id === payload) return payload;
 					return item;
 				});
 				state.createEditBoardModal.isOpen = false;
