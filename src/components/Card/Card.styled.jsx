@@ -6,8 +6,9 @@ export const CardContainer = styled.div`
   height: 154px;
   display: flex;
   flex-direction: row;
-  background-color: ${props => props.theme.profile.background};;
-  border-radius: 8px solid rgba(17, 17, 17, 0.1);
+  background-color: ${props => props.theme.profile.background};
+  border-radius: 7px;
+  overflow: hidden;
 `;
 
 export const PriorityLine = styled.div`
