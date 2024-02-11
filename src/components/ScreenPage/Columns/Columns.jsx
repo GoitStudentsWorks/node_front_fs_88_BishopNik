@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchColumnsByIdBoards } from 'redux/columns/operations';
-import { Column } from 'components/Column/Column';
+import { Column } from 'components/Column';
 import { Styled } from './Columns.styled';
 import { useColumns } from 'hooks';
 

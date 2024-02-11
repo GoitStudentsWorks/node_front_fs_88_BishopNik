@@ -13,7 +13,8 @@ export const Container = styled.div`
 		'm';
 
 	@media screen and (min-width: 375px) {
-		width: 375px;
+		/* width: 375px; */
+		max-width: 100vw;
 	}
 
 	@media screen and (min-width: 768px) {
@@ -26,7 +27,7 @@ export const Container = styled.div`
 		grid-template-areas:
 			's h'
 			's m';
-		width: 1440px;
+		width: 100vw;
 	}
 `;
 
