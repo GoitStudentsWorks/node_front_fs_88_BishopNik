@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react';
+import moment from 'moment';
 import Tooltip from 'components/Tooltip';
 import {
 	CardContainer,
@@ -30,17 +31,25 @@ export const Card = ({ item, deleteCard, editCard }) => {
 		setIsTooltipOpen(false);
 	};
 
+	const deadLineString = deadline => {
+		if (!deadline || typeof deadline !== 'number') return '--/--/--';
+		const date = moment(deadline);
+		return date.format('DD/MM/YYYY');
+	};
+
+	const active = time => {
+		if (!deadline) return 0;
+		return moment(time).date();
+	};
+
 	return (
 		<>
-			<CardContainer
-			>
+			<CardContainer>
 				<PriorityLine />
 				<CardContent>
 					<TextContent>
 						<Title>{name}</Title>
-						<DescriptionText>
-							{text}
-						</DescriptionText>
+						<DescriptionText>{text}</DescriptionText>
 					</TextContent>
 					<Info>
 						<Priority>
@@ -49,9 +58,12 @@ export const Card = ({ item, deleteCard, editCard }) => {
 						</Priority>
 						<Dedline>
 							<InfoTitle>Deadline</InfoTitle>
-							<Date>{deadline}</Date>
+							<Date>{deadLineString(deadline)}</Date>
 						</Dedline>
-						<BellIcon name='bell' />
+						<BellIcon
+							name='bell'
+							active={active(deadline) === active(moment()) && deadline}
+						/>
 						<IconContainer>
 							<MoveIcon name='process-task' onClick={() => setIsTooltipOpen(true)} />
 							<EditIcon name='edit' onClick={editCard} />
