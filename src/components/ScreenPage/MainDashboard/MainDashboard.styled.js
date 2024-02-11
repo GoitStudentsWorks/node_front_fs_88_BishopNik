@@ -4,13 +4,17 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 
+export const WrapperBoardContainer = styled.div`
+  padding: 0px 24px;
+  display: flex;
+  flex-grow: 1;
+`;
+
 export const BoardContainer = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
   display: flex;
   gap: 20px;
-  padding: 0px 24px;
-  flex-grow: 1;
   padding-bottom: 36px;
 
   &::-webkit-scrollbar {
