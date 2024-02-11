@@ -5,7 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toastError, toastSuccess } from 'components/Helpers';
 
 export const sendHelpReq = createAsyncThunk(
-  'modals/needHelp',
+  'modal/needHelp',
   async (todo, thunkAPI) => {
     try {
       const { email } = todo;

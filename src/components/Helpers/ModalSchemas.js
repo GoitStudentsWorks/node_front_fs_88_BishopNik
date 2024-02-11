@@ -49,9 +49,9 @@ export const RegisterSchema = Yup.object().shape({
 });
 
 export const addCardValidationSchema = Yup.object().shape({
-  title: Yup.string().required('Title is required'),
-  description: Yup.string(),
-  color: Yup.string().required('Color is required'),
+  name: Yup.string().required('Title is required'),
+  text: Yup.string(),
+  priority: Yup.string(),
   deadline: Yup.date(),
 });
 

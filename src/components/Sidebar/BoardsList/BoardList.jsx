@@ -6,8 +6,14 @@ import { BoardItem } from '../BoardItem/BoardItem';
 import { ListContainer } from './BoardList.styled';
 import { useBoards } from 'hooks';
 import { sortByIDFirst } from 'components/Helpers';
+import { useDispatch } from 'react-redux';
+import { fetchAllBoards } from 'redux/boards/operations';
 
 export const BoardsList = () => {
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(fetchAllBoards())
+	}, [dispatch])
 	const { allBoards } = useBoards();
 	const { board } = useParams();
 	const [sortedBoards, setSortedBoards] = useState([]);
