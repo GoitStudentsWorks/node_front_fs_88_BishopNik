@@ -6,6 +6,8 @@ import {
   BtnAddColumn,
   SvagAddColumn,
   StyledIconAdd,
+  WrapperBoardContainer,
+
 } from './MainDashboard.styled';
 import { AddColumnModal } from 'components/Modal';
 import { Columns } from '../Columns/Columns';
@@ -18,29 +20,33 @@ const MainDashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { board } = useParams();
   const { allColumns } = useColumns();
+  const { allBoards } = useBoards();
 
-  const boards = useSelector(boardsState);
-  const selectedBoard = boards.find(item => item._id === board);
+  const selectedBoard = allBoards.find(item => item._id === board);
+  
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
-  console.log(board);
+ 
   return (
-    <BoardContainer backgroundId={selectedBoard?.background}>
-      <Columns board={board}>
-        <BtnAddColumn type="button" onClick={handleOpenModal}>
-          <StyledIconAdd>
-            <SvagAddColumn name="plus" />
-          </StyledIconAdd>
-          <span>Add {allColumns.length ? 'another' : null} column</span>
-        </BtnAddColumn>
-      </Columns>
-      <AddColumnModal
-        board={board}
-        isOpen={isModalOpen}
-        setIsOpen={setIsModalOpen}
-      />
-    </BoardContainer>
+    <WrapperBoardContainer>
+      <BoardContainer backgroundId={selectedBoard?.background}>
+        <Columns board={board}>
+          <BtnAddColumn type="button" onClick={handleOpenModal}>
+            <StyledIconAdd>
+              <SvagAddColumn name="plus" />
+            </StyledIconAdd>
+            <span>Add {allColumns.length ? 'another' : null} column</span>
+          </BtnAddColumn>
+        </Columns>
+        <AddColumnModal
+          board={board}
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
+        />
+      </BoardContainer>
+    </WrapperBoardContainer>
+
   );
 };
 

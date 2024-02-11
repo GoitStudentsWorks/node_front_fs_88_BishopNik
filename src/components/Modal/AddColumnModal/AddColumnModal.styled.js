@@ -21,7 +21,7 @@ export const StyledForm = styled(Form)`
   }
   width: 350px;
   outline: none;
-  border-radius: 8px;
+  border-radius: 8px solid rgba(17, 17, 17, 0.1);
   background: ${props => props.theme.modal.backgroundMain};
   padding: 24px;
 `;

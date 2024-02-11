@@ -5,13 +5,17 @@ import styled from 'styled-components';
 import Icon from 'components/Icon';
 import background from '../../../img/background.json';
 
+export const WrapperBoardContainer = styled.div`
+  padding: 0px 24px;
+  display: flex;
+  flex-grow: 1;
+`;
+
 export const BoardContainer = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
   display: flex;
   gap: 20px;
-  padding: 0px 24px;
-  flex-grow: 1;
   padding-bottom: 36px;
   background: ${props =>
     `url(${background.mobile[`image${props.backgroundId}`]})`};
@@ -72,7 +76,7 @@ export const StyledIconAdd = styled.span`
   height: 28px;
   margin-right: 8px;
   background-color: ${props => props.theme.addcolum.plusBackground};
-  border-radius: 8px;
+  border-radius: 8px  solid rgba(17, 17, 17, 0.1);;
 `;
 
 export const SvagAddColumn = styled(Icon)`
