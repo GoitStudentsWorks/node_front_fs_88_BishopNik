@@ -4,12 +4,14 @@ import styled from 'styled-components';
 import Icon from '../Icon';
 
 export const CardContainer = styled.div`
-	width: 334px;
-	height: 154px;
-	display: flex;
-	flex-direction: row;
-	background-color: ${props => props.theme.profile.background};
-	border-radius: 8px solid rgba(17, 17, 17, 0.1);
+  width: 334px;
+  height: 154px;
+  display: flex;
+  flex-direction: row;
+  background-color: ${props => props.theme.profile.background};
+  border-radius: 7px;
+  overflow: hidden;
+
 `;
 
 export const PriorityLine = styled.div`
