@@ -12,9 +12,8 @@ import {
 import { AddColumnModal } from 'components/Modal';
 import { Columns } from '../Columns/Columns';
 import { useParams } from 'react-router-dom';
-import { useColumns } from 'hooks';
-import { useSelector } from 'react-redux';
-import { boardsState } from 'redux/boards/selectors';
+import { useColumns, useBoards } from 'hooks';
+
 
 const MainDashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
