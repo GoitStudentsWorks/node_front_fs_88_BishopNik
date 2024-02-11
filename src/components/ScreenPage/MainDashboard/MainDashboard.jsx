@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import { boardsState } from 'redux/boards/selectors';
 
 const MainDashboard = () => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { board } = useParams();
   const { allColumns } = useColumns();
@@ -46,7 +47,6 @@ const MainDashboard = () => {
         />
       </BoardContainer>
     </WrapperBoardContainer>
-
   );
 };
 

@@ -29,20 +29,18 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 		navigate(`/todos/${allBoards[0]._id}`);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [allBoards]);
-
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));
 	};
-
 	const handlerEditBoard = boardId => {
 		setIsOpenAddBoard(true);
 		setBoardEdit(boardId);
 	};
-
 	const handlerDelBoard = boardId => {
 		dispatch(delBoard(boardId));
+		
 	};
-
+	
 	const status = board === boardId;
 
 	return (

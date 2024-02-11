@@ -23,7 +23,7 @@ import {
 } from './Card.styled';
 
 export const Card = ({ item, deleteCard, editCard }) => {
-	const { name, priority, deadline } = item;
+	const { name, priority, deadline, text } = item;
 	const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
 	const closeTooltip = () => {
@@ -38,9 +38,7 @@ export const Card = ({ item, deleteCard, editCard }) => {
 					<TextContent>
 						<Title>{name}</Title>
 						<DescriptionText>
-							Conduct in-depth research and analysis on the project's topic, gather
-							relevant data, and identify key insights to inform decision-making and
-							project planning.
+							{text}
 						</DescriptionText>
 					</TextContent>
 					<Info>
