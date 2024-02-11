@@ -44,7 +44,7 @@ export const addCardValidationSchema = Yup.object().shape({
 	name: Yup.string().required('Title is required'),
 	text: Yup.string(),
 	priority: Yup.string(),
-	deadline: Yup.date(),
+	deadline: Yup.number(),
 });
 
 export const editProfilShema = Yup.object().shape({

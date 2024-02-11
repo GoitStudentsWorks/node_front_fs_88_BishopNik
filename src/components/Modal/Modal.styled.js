@@ -6,6 +6,10 @@ import Modal from 'react-modal';
 export const ModalMain = styled(Modal)`
 	width: fit-content;
 	height: fit-content;
+	border-radius: 8px;
+	border: none;
+	outline: none;
+	overflow: hidden;
 `;
 
 export const customStyles = {
