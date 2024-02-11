@@ -94,7 +94,8 @@ export const Column = ({ name, id, column }) => {
               key={item._id}
               item={item}
               deleteCard={() => deleteCard(item?._id)}
-              editCard={() => editCard(item)}
+              editCard={() => editCard(item)
+              }
             />
           ))}
         </ListTasks>

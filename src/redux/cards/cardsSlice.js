@@ -27,9 +27,17 @@ const cardsSlice = createSlice({
 			})
 			.addCase(fetchCardsByColumnId.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
-				for (let i = 0; i < payload.length; i++)  {
-					state.items.push(payload[i])
-				};
+				for (let i = 0; i < payload.length; i++) {
+					for (let k = 0; k < state.items.length; k++) {
+						if (k !== i) {
+							if (payload[i]._id === state.items[k]._id) state.items[k] = ''
+						}
+					}
+				}
+				for (let i = 0; i < payload.length; i++) {
+					if (state.items[i] === '') continue
+					else state.items.push(payload[i])
+				}
 				
 			})
 			.addCase(fetchCardsByColumnId.rejected, (state, { payload }) => {
@@ -47,8 +55,10 @@ const cardsSlice = createSlice({
 			})
 			.addCase(delCard.fulfilled, (state, { payload }) => {
 				state.error = null;
-				const index = state.items.findIndex(item => item.id === payload);
-				state.items.splice(index, 1);
+				state.items = state.items.map(item => {
+					if (item._id === payload) return payload;
+					return item;
+				});
 			})
 			.addCase(delCard.rejected, (state, { payload }) => {
 				state.error = payload;
