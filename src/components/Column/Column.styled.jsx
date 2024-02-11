@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.li`
-  width: 351px;
+  width: 350px;
   display: grid;
   gap: 8px;
   grid-template-columns: 1fr;
@@ -28,7 +28,6 @@ export const Title = styled.span`
 	height: 58px;
 	align-items: center;
 	justify-content: space-between;
-
 `;
 
 export const List = styled.div`
@@ -45,6 +44,7 @@ export const List = styled.div`
 export const ListTasksContainer = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
+  margin-bottom: 14px;
 
   &::-webkit-scrollbar {
     width: 8px;
