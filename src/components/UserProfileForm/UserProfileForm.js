@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { UserIcon /*, UserIconAvatar*/ } from './UserIcon';
 import { editProfilShema } from 'components/Helpers';
 
-import { Field, Formik } from 'formik';
+import {  Formik } from 'formik';
 
 import {
   AvatarLabelStyle,
