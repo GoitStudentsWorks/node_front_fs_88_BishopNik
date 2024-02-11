@@ -49,10 +49,10 @@ export const RegisterSchema = Yup.object().shape({
 });
 
 export const addCardValidationSchema = Yup.object().shape({
-  name: Yup.string().required('Title is required'),
-  text: Yup.string(),
-  priority: Yup.string(),
-  deadline: Yup.date(),
+	name: Yup.string().required('Title is required'),
+	text: Yup.string(),
+	priority: Yup.string(),
+	deadline: Yup.number(),
 });
 
 export const editProfilShema = Yup.object().shape({
