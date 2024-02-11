@@ -21,7 +21,6 @@ import {
   IconWrapper,
   AddIcon,
 } from 'components/Modal/CreateNewBoardModal/CreateNewBoardModal.styled';
-import icon from 'components/Icon/icon-spraite.svg';
 
 import { AddCardModal } from 'components/Modal';
 import { Card } from 'components/Card/Card';
@@ -78,17 +77,15 @@ export const Column = ({ name, id, column }) => {
         <Title>
           {name}
           <IconsContainer>
-            <EditColumn type="button" width="16" height="16">
-              <use xlinkHref={`${icon}#icon-edit`} />
-            </EditColumn>
+            <EditColumn type="button" width="16" height="16" name="edit" />
+
             <DelColumn
               type="button"
               width="16"
               height="16"
               onClick={() => handleDeleteColumn(id)}
-            >
-              <use xlinkHref={`${icon}#icon-delete`} />
-            </DelColumn>
+              name="delete"
+            />
           </IconsContainer>
         </Title>
       </List>
@@ -110,6 +107,7 @@ export const Column = ({ name, id, column }) => {
         type="button"
         onClick={() => setIsOpen(true)}
       >
+
         <IconWrapper>
           <AddIcon name="add-board" />
         </IconWrapper>

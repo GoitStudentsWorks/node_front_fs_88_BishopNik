@@ -1,6 +1,7 @@
 /** @format */
 
 import styled from 'styled-components';
+import Icon from 'components/Icon/Icon.jsx';
 
 export const Wrapper = styled.li`
   width: 350px;
@@ -15,19 +16,19 @@ export const Wrapper = styled.li`
 `;
 
 export const Title = styled.span`
-	color: ${props => props.theme.colum.textMain};
-	font-size: 18px;
-	border-radius: 8px solid rgba(17, 17, 17, 0.1);;
-	width: 334px;
-	padding: 14px 24px;
-	background-color: ${props => props.theme.profile.background};;
-	color: ${props => props.theme.help.modalTextMain};
-	font-size: 14px;
-	font-weight: 500;
-	display: flex;
-	height: 58px;
-	align-items: center;
-	justify-content: space-between;
+  color: ${props => props.theme.colum.textMain};
+  font-size: 18px;
+  border-radius: 8px solid rgba(17, 17, 17, 0.1);
+  width: 334px;
+  padding: 14px 24px;
+  background-color: ${props => props.theme.profile.background};
+  color: ${props => props.theme.help.modalTextMain};
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  height: 58px;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const List = styled.div`
@@ -79,8 +80,8 @@ export const IconsContainer = styled.div`
   margin-left: auto;
 `;
 
-export const EditColumn = styled.svg`
-	stroke:  ${props => props.theme.colum.icon};
+export const EditColumn = styled(Icon)`
+stroke:  ${props => props.theme.colum.icon};
 	cursor: pointer;
 
   &:hover,
@@ -88,7 +89,7 @@ export const EditColumn = styled.svg`
     stroke: ${props => props.theme.colum.buttonBackground};
 `;
 
-export const DelColumn = styled.svg`
+export const DelColumn = styled(Icon)`
   stroke: ${props => props.theme.colum.icon};
 	cursor: pointer;
 
