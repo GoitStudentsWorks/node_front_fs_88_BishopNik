@@ -18,7 +18,7 @@ export const Wrapper = styled.li`
 export const Title = styled.span`
   color: ${props => props.theme.colum.textMain};
   font-size: 18px;
-  border-radius: 8px solid rgba(17, 17, 17, 0.1);
+  border-radius: 8px;
   width: 334px;
   padding: 14px 24px;
   background-color: ${props => props.theme.profile.background};
