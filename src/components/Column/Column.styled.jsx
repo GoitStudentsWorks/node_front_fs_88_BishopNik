@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.li`
-  width: 351px;
+  width: 350px;
   display: grid;
   gap: 8px;
   grid-template-columns: 1fr;
@@ -15,20 +15,19 @@ export const Wrapper = styled.li`
 `;
 
 export const Title = styled.span`
-	color: ${props => props.theme.colum.textMain};
-	font-size: 18px;
-	border-radius: 8px;
-	width: 334px;
-	padding: 14px 24px;
-	background-color: ${props => props.theme.profile.background};;
-	color: ${props => props.theme.help.modalTextMain};
-	font-size: 14px;
-	font-weight: 500;
-	display: flex;
-	height: 58px;
-	align-items: center;
-	justify-content: space-between;
-
+  color: ${props => props.theme.colum.textMain};
+  font-size: 18px;
+  border-radius: 8px;
+  width: 334px;
+  padding: 14px 24px;
+  background-color: ${props => props.theme.profile.background};
+  color: ${props => props.theme.help.modalTextMain};
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  height: 58px;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const List = styled.div`
@@ -45,6 +44,7 @@ export const List = styled.div`
 export const ListTasksContainer = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
+  margin-bottom: 14px;
 
   &::-webkit-scrollbar {
     width: 8px;
