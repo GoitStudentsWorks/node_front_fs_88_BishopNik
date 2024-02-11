@@ -62,7 +62,7 @@ export const StyledIconAdd = styled.span`
   height: 28px;
   margin-right: 8px;
   background-color: ${props => props.theme.addcolum.plusBackground};
-  border-radius: 8px;
+  border-radius: 8px  solid rgba(17, 17, 17, 0.1);;
 `;
 
 export const SvagAddColumn = styled(Icon)`
