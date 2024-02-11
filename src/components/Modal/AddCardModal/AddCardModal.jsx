@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect } from 'react';
-import { StyleSheetManager } from 'styled-components';
+// import { StyleSheetManager } from 'styled-components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -49,112 +49,112 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 
 	return (
 		<ModalWindow isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
-			<StyleSheetManager shouldForwardProp={prop => prop !== 'isOpen'}>
-				<ModalContainer>
-					<CloseButton onClick={onRequestClose}>
-						<IconClose name='close' />
-					</CloseButton>
-					<FormTitle>{isEdit ? 'Edit' : 'Add'} Card</FormTitle>
-					<Formik
-						initialValues={{
-							name: cardForEditing?.name || '',
-							text: cardForEditing?.text || '',
-							priority: cardForEditing?.priority || '',
-							deadline: cardForEditing?.deadline || '',
-						}}
-						validationSchema={addCardValidationSchema}
-						onSubmit={handleFormSubmit}
-					>
-						{({ setFieldValue, values }) => (
-							<Form>
-								<StyledInput type='text' name='name' placeholder='Title' />
-								<ErrorMessage name='name' component='div' />
+			{/* <StyleSheetManager shouldForwardProp={prop => prop !== 'isOpen'}> */}
+			<ModalContainer>
+				<CloseButton onClick={onRequestClose}>
+					<IconClose name='close' />
+				</CloseButton>
+				<FormTitle>{isEdit ? 'Edit' : 'Add'} Card</FormTitle>
+				<Formik
+					initialValues={{
+						name: cardForEditing?.name || '',
+						text: cardForEditing?.text || '',
+						priority: cardForEditing?.priority || '',
+						deadline: cardForEditing?.deadline || '',
+					}}
+					validationSchema={addCardValidationSchema}
+					onSubmit={handleFormSubmit}
+				>
+					{({ setFieldValue, values }) => (
+						<Form>
+							<StyledInput type='text' name='name' placeholder='Title' />
+							<ErrorMessage name='name' component='div' />
 
-								<Field
-									type='text'
-									name='text'
-									placeholder='Description'
-									as={TextArea}
+							<Field
+								type='text'
+								name='text'
+								placeholder='Description'
+								as={TextArea}
+							/>
+
+							<div>
+								<SubTitles>Label color:</SubTitles>
+								<RadioButtonContainer>
+									<Field name='priority'>
+										{({ field }) => (
+											<>
+												<RadioButton>
+													<Input
+														type='radio'
+														{...field}
+														value='without'
+														id='without'
+													/>
+													<Label
+														for='without'
+														color='rgba(255, 255, 255, 0.3)'
+													></Label>
+												</RadioButton>
+												<RadioButton>
+													<Input
+														type='radio'
+														{...field}
+														value='low'
+														id='low'
+													/>
+													<Label
+														for='low'
+														color='rgba(143, 161, 208, 1)'
+													></Label>
+												</RadioButton>
+												<RadioButton>
+													<Input
+														type='radio'
+														{...field}
+														value='medium'
+														id='medium'
+													/>
+													<Label
+														for='medium'
+														color='rgba(224, 156, 181, 1)'
+													></Label>
+												</RadioButton>
+												<RadioButton>
+													<Input
+														type='radio'
+														{...field}
+														value='high'
+														id='high'
+													/>
+													<Label
+														for='high'
+														color='rgba(190, 219, 176, 1)'
+													></Label>
+												</RadioButton>{' '}
+											</>
+										)}
+									</Field>
+								</RadioButtonContainer>
+								<ErrorMessage name='priority' component='div' />
+							</div>
+
+							<div>
+								<SubTitles>Deadline:</SubTitles>
+
+								<MyDatePicker
+									value={values.deadline}
+									onChange={value => setFieldValue('deadline', value)}
 								/>
 
-								<div>
-									<SubTitles>Label color:</SubTitles>
-									<RadioButtonContainer>
-										<Field name='priority'>
-											{({ field }) => (
-												<>
-													<RadioButton>
-														<Input
-															type='radio'
-															{...field}
-															value='without'
-															id='without'
-														/>
-														<Label
-															for='without'
-															color='rgba(255, 255, 255, 0.3)'
-														></Label>
-													</RadioButton>
-													<RadioButton>
-														<Input
-															type='radio'
-															{...field}
-															value='low'
-															id='low'
-														/>
-														<Label
-															for='low'
-															color='rgba(143, 161, 208, 1)'
-														></Label>
-													</RadioButton>
-													<RadioButton>
-														<Input
-															type='radio'
-															{...field}
-															value='medium'
-															id='medium'
-														/>
-														<Label
-															for='medium'
-															color='rgba(224, 156, 181, 1)'
-														></Label>
-													</RadioButton>
-													<RadioButton>
-														<Input
-															type='radio'
-															{...field}
-															value='high'
-															id='high'
-														/>
-														<Label
-															for='high'
-															color='rgba(190, 219, 176, 1)'
-														></Label>
-													</RadioButton>{' '}
-												</>
-											)}
-										</Field>
-									</RadioButtonContainer>
-									<ErrorMessage name='priority' component='div' />
-								</div>
+								<ErrorMessage name='deadline' component='div' />
+							</div>
 
-								<div>
-									<SubTitles>Deadline:</SubTitles>
-
-									<MyDatePicker
-										value={values.deadline}
-										onChange={value => setFieldValue('deadline', value)}
-									/>
-
-									<ErrorMessage name='deadline' component='div' />
-								</div>
-
-								<AddButton type='submit'>{isEdit ? 'Edit' : 'Add'}</AddButton>
-							</Form>
-						)}
-					</Formik>
-				</ModalContainer>
-			</StyleSheetManager>
+							<AddButton type='submit'>{isEdit ? 'Edit' : 'Add'}</AddButton>
+						</Form>
+					)}
+				</Formik>
+			</ModalContainer>
+			{/* </StyleSheetManager> */}
 		</ModalWindow>
 	);
 };
