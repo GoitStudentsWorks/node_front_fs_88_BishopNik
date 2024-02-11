@@ -6,19 +6,31 @@ import { BlockLogoStyles, LogoStyles } from './UserProfileForm.Styled';
 import { useAuth } from 'hooks';
 
 export const UserIcon = () => {
-	let src = data.user.dark;
-	const { user } = useAuth();
-	const { avatarURL } = user;
+  let src = data.user.dark;
+  const { user } = useAuth();
+  const { avatarURL } = user;
 
-	if (avatarURL) {
-		src = avatarURL;
-	}
-	return (
-		<BlockLogoStyles>
-			<img src={src} alt='UserIcon' width={68} />
-			<LogoStyles>
-				<ButtonIcon name='add-board'></ButtonIcon>
-			</LogoStyles>
-		</BlockLogoStyles>
-	);
+  if (avatarURL) {
+    src = avatarURL;
+  }
+  return (
+    <BlockLogoStyles>
+      <img src={src} alt="UserIcon" width={68} />
+      <LogoStyles>
+        <ButtonIcon name="add-board"></ButtonIcon>
+      </LogoStyles>
+    </BlockLogoStyles>
+  );
+};
+
+export const UserIconAvatar = () => {
+  let src = data.user.dark;
+  const { user } = useAuth();
+  const { avatarURL } = user;
+
+  if (avatarURL) {
+    src = avatarURL;
+  }
+  const imgLogo = `<img src=${src} alt="UserIcon" width={68}/>`;
+  return imgLogo;
 };
