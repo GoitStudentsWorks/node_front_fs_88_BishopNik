@@ -221,7 +221,7 @@ export const AddButton = styled.button`
 export const IconDown = styled(Icon)`
   width: 18px;
   height: 18px;
-  stroke: rgba(190, 219, 176, 1);
+  stroke: ${props => props.theme.help.buttonBackground};
   position: absolute;
   top: 0;
   left: 115px;
