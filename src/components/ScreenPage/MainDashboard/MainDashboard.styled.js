@@ -3,6 +3,7 @@
 // MainDashboard.styled.js
 import styled from 'styled-components';
 import Icon from 'components/Icon';
+import background from '../../../img/background.json';
 
 export const BoardContainer = styled.div`
   overflow-y: hidden;
@@ -12,6 +13,9 @@ export const BoardContainer = styled.div`
   padding: 0px 24px;
   flex-grow: 1;
   padding-bottom: 36px;
+  background: ${props =>
+    `url(${background.mobile[`image${props.backgroundId}`]})`};
+  background-size: cover;
 
   &::-webkit-scrollbar {
     height: 12px;
@@ -30,10 +34,16 @@ export const BoardContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     padding-bottom: 64px;
+    background: ${props =>
+      `url(${background.table[`image${props.backgroundId}`]})`};
+    background-size: cover;
   }
 
   @media screen and (min-width: 1440px) {
     padding-bottom: 28px;
+    background: ${props =>
+      `url(${background.desktop[`image${props.backgroundId}`]})`};
+    background-size: cover;
   }
 `;
 
