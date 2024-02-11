@@ -4,11 +4,22 @@ import Icon from 'components/Icon/Icon.jsx';
 import { Form, ErrorMessage, Field } from 'formik';
 import styled from 'styled-components';
 
+export const AvatarLabelStyle = styled.label`
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+`;
+
+export const StyledFieldImg = styled(Field)`
+  display: flex;
+  width: 24px;
+  height: 24px;
+`;
+
 export const StyledForm = styled(Form)`
   display: flex;
   outline: none;
   flex-direction: column;
-  /* margin-top: 14px; */
   min-width: 335px;
   border-radius: 8px;
   background: ${props => props.theme.modal.backgroundMain};
@@ -33,7 +44,6 @@ export const StyledForm = styled(Form)`
 export const Title = styled.p`
   color: ${props => props.theme.help.modalTextMain};
   margin: 0;
-  /* padding-bottom: 24px; */
   font-size: 18px;
   font-weight: 500;
   cursor: default;
@@ -43,7 +53,6 @@ export const LabelBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-top: 26px;
 `;
 
 export const StyledField = styled(Field)`
@@ -128,6 +137,7 @@ export const BlockLogoStyles = styled.div`
   justify-content: center;
   position: relative;
   margin-top: 24px;
+  margin-bottom: -12px;
 `;
 
 export const ButtonIcon = styled(Icon)`

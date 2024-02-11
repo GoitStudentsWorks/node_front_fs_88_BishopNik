@@ -30,6 +30,7 @@ import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
 
 export const Column = ({ name, id, column }) => {
+    const [uniqueData, setUniqueData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [cardForEditing, setCardForEditing] = useState(null);
   const { allCards } = useCards();
@@ -57,8 +58,12 @@ export const Column = ({ name, id, column }) => {
     setCardForEditing(null);
     setIsOpen(false);
   };
-
-  const cardForColumn = allCards?.filter(card => {
+  useEffect(() => {
+    const uniqueItems = Array.from(new Set(allCards.map(item => item._id)))
+      .map(id => allCards.find(item => item._id === id));
+    setUniqueData(uniqueItems);
+  }, [allCards]);
+  const cardForColumn = uniqueData?.filter(card => {
     if (filter === 'all') {
       return card.columnId === id;
     } else {
@@ -91,12 +96,18 @@ export const Column = ({ name, id, column }) => {
               key={item._id}
               item={item}
               deleteCard={() => deleteCard(item?._id)}
-              editCard={() => editCard(item)}
+              editCard={() => editCard(item)
+              }
             />
           ))}
         </ListTasks>
       </ListTasksContainer>
-      <Button type="button" onClick={() => setIsOpen(true)}>
+      <Button
+        style={{ width: '334px' }}
+        type="button"
+        onClick={() => setIsOpen(true)}
+      >
+
         <IconWrapper>
           <AddIcon name="add-board" />
         </IconWrapper>

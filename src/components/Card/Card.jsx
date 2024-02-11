@@ -32,7 +32,8 @@ export const Card = ({ item, deleteCard, editCard }) => {
 
 	return (
 		<>
-			<CardContainer>
+			<CardContainer
+			>
 				<PriorityLine />
 				<CardContent>
 					<TextContent>
