@@ -8,13 +8,14 @@ import { useColumns } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { updateCard } from 'redux/cards/operations';
 
-const Tooltip = ({ isOpen, onRequestClose }) => {
+const Tooltip = ({ isOpen, onRequestClose, card }) => {
 	const dispatch = useDispatch();
 	const { allColumns } = useColumns();
-	console.log('🚀 ~ Tooltip ~ allColumn:', allColumns);
+	const { _id: id } = card;
+	console.log('🚀 ~ Tooltip ~ allColumn:', card);
 
-	const handleOptionClick = id => {
-		dispatch(updateCard());
+	const handleClick = (newColumn, oldColumnId) => {
+		dispatch(updateCard({ id, columnId: newColumn }));
 		onRequestClose();
 	};
 
@@ -22,9 +23,9 @@ const Tooltip = ({ isOpen, onRequestClose }) => {
 		<ModalWindow isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
 			<TooltipContent>
 				{allColumns?.map(col => (
-					<TooltipButton key={col._id} onClick={() => handleOptionClick(col._id)}>
+					<TooltipButton key={col._id} onClick={() => handleClick(col._id)}>
 						{col.name}
-						<Icon name='process-task' /> {/* Використовуємо компонент Icon */}
+						<Icon name='process-task' />
 					</TooltipButton>
 				))}
 			</TooltipContent>

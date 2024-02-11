@@ -30,10 +30,6 @@ export const Card = ({ item, deleteCard, editCard }) => {
 		setIsTooltipOpen(false);
 	};
 
-	const handleOptionClick = option => {
-		closeTooltip();
-	};
-
 	return (
 		<>
 			<CardContainer>
@@ -62,11 +58,7 @@ export const Card = ({ item, deleteCard, editCard }) => {
 							<EditIcon name='edit' onClick={editCard} />
 							<DelIcon name='delete' onClick={deleteCard} />
 						</IconContainer>
-						<Tooltip
-							isOpen={isTooltipOpen}
-							onRequestClose={closeTooltip}
-							handleOptionClick={handleOptionClick}
-						/>
+						<Tooltip isOpen={isTooltipOpen} onRequestClose={closeTooltip} card={item} />
 					</Info>
 				</CardContent>
 			</CardContainer>
