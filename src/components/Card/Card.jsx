@@ -69,7 +69,9 @@ export const Card = ({ item, deleteCard, editCard }) => {
           <Info>
             <Priority>
               <InfoTitle>Priority</InfoTitle>
-              <PriorityLevel>{priority}</PriorityLevel>
+              <PriorityLevel color={getColor(priority)}>
+                {priority}
+              </PriorityLevel>
             </Priority>
             <Dedline>
               <InfoTitle>Deadline</InfoTitle>

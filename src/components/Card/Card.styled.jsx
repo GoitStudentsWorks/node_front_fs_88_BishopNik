@@ -98,7 +98,7 @@ export const PriorityLevel = styled.p`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(224, 156, 181, 1);
+    background-color: ${props => props.color};
   }
 `;
 
