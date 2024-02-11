@@ -47,19 +47,19 @@ export const LabelBox = styled.div`
 `;
 
 export const StyledField = styled(Field)`
- color: ${props => props.theme.profile.textMain};
-	border-radius: 8px;
-	border: 1px solid ${props => props.theme.profile.inputBorder};
-	padding: 14px 0px 14px 18px;
-	opacity: 0.4;
-	outline: none;
+  color: ${props => props.theme.profile.textMain};
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.profile.inputBorder};
+  padding: 14px 0px 14px 18px;
+  opacity: 0.4;
+  outline: none;
 
-	background: ${props => props.theme.modal.backgroundSecondary};
-	width: 100%;
-	box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  background: ${props => props.theme.modal.backgroundSecondary};
+  width: 100%;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
-	opacity: 0.4;
-    transition: all 250ms ease;
+  opacity: 0.4;
+  transition: all 250ms ease;
 
   &::placeholder {
     color: ${props => props.theme.help.textMain};
@@ -68,23 +68,21 @@ export const StyledField = styled(Field)`
     letter-spacing: -0.28px;
   }
 
-	&:focus {
-		opacity: 1;
-	}
+  &:focus {
+    opacity: 1;
+  }
 `;
 
 export const IconHideShow = styled(Icon)`
   width: 18px;
   height: 18px;
-  stroke: ${props => props.theme.modal.textSecondary}; 
-
-
+  stroke: ${props => props.theme.modal.textSecondary};
 `;
 
 export const ButtonStyle = styled.button`
   display: flex;
   width: 100%;
-  border:none;
+  border: none;
   margin-top: 24px;
   padding: 14px;
   justify-content: center;
@@ -137,3 +135,11 @@ export const ButtonIcon = styled(Icon)`
   height: 16px;
   stroke: ${props => props.theme.modal.buttonText};
 `;
+
+export const BattonPasswordDisplayStyle = {
+  position: 'absolute',
+  top: '24px',
+  right: '18px',
+  transform: 'translateY(-50%)',
+  cursor: 'pointer',
+};
