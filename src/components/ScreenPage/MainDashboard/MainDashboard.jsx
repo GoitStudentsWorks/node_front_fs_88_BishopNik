@@ -7,24 +7,30 @@ import {
   SvagAddColumn,
   StyledIconAdd,
   WrapperBoardContainer,
+
 } from './MainDashboard.styled';
 import { AddColumnModal } from 'components/Modal';
 import { Columns } from '../Columns/Columns';
 import { useParams } from 'react-router-dom';
 import { useColumns } from 'hooks';
+import { useSelector } from 'react-redux';
+import { boardsState } from 'redux/boards/selectors';
 
 const MainDashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { board } = useParams();
   const { allColumns } = useColumns();
+  const { allBoards } = useBoards();
 
+  const selectedBoard = allBoards.find(item => item._id === board);
+  
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
-
+ 
   return (
     <WrapperBoardContainer>
-      <BoardContainer>
+      <BoardContainer backgroundId={selectedBoard?.background}>
         <Columns board={board}>
           <BtnAddColumn type="button" onClick={handleOpenModal}>
             <StyledIconAdd>
@@ -40,6 +46,7 @@ const MainDashboard = () => {
         />
       </BoardContainer>
     </WrapperBoardContainer>
+
   );
 };
 
