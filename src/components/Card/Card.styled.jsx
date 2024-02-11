@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Icon from '../Icon';
 
 export const CardContainer = styled.div`
-  width: 335px;
+  width: 334px;
   height: 154px;
   display: flex;
   flex-direction: row;
   background-color: ${props => props.theme.profile.background};;
-  border-radius: 7px;
+  border-radius: 8px solid rgba(17, 17, 17, 0.1);
 `;
 
 export const PriorityLine = styled.div`
@@ -115,14 +115,14 @@ export const Date = styled.p`
   font-weight: normal;
   letter-spacing: -0.02em;
   cursor: default;
-  color:  ${props => props.theme.colum.textMain};
+  color: ${props => props.theme.colum.textMain};
 `;
 
 export const BellIcon = styled(Icon)`
   width: 16px;
   height: 16px;
   margin-left: auto;
-  stroke:  ${props => props.theme.colum.icon};
+  stroke: ${props => props.theme.colum.icon};
   cursor: pointer;
   &:hover,
   &:focus {
@@ -161,7 +161,7 @@ export const EditIcon = styled(Icon)`
 
   &:hover,
   &:focus {
-    stroke:  ${props => props.theme.colum.buttonBackground};
+    stroke: ${props => props.theme.colum.buttonBackground};
   }
 `;
 
@@ -173,6 +173,6 @@ export const DelIcon = styled(Icon)`
 
   &:hover,
   &:focus {
-    stroke:  ${props => props.theme.colum.buttonBackground};
+    stroke: ${props => props.theme.colum.buttonBackground};
   }
 `;
