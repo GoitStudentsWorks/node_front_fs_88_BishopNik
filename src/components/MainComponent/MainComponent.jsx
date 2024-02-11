@@ -1,12 +1,12 @@
 /** @format */
 
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import { TextEmptyBoard, ButtonCreateBoard } from './MainComponent.styled';
 import { MainContext } from 'components/Helpers';
 
+
 export function MainComponent({ children }) {
 	const { setIsOpenAddBoard } = useContext(MainContext);
-
 	return (
 		<>
 			{children ? (

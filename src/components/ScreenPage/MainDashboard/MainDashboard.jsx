@@ -11,7 +11,6 @@ const MainDashboard = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { board } = useParams();
 	const { allColumns } = useColumns();
-
 	const handleOpenModal = () => {
 		setIsModalOpen(true);
 	};

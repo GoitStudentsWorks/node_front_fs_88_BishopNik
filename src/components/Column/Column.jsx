@@ -33,6 +33,7 @@ export const Column = ({ name, id, column }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
 	const { allCards } = useCards();
+	console.log(allCards)
 	const dispatch = useDispatch();
 	const { filter } = useContext(MainContext);
 

@@ -27,7 +27,8 @@ const cardsSlice = createSlice({
 			})
 			.addCase(fetchCardsByColumnId.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
-				state.items = payload;
+				console.log(payload)
+				state.items.push({...payload[0]})
 			})
 			.addCase(fetchCardsByColumnId.rejected, (state, { payload }) => {
 				state.isLoading = false;
