@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 
 import {
 	Wrapper,
@@ -31,12 +31,13 @@ import { useCards } from 'hooks';
 
 export const Column = ({ columnData }) => {
 	const { name, _id } = columnData;
-	const [uniqueData, setUniqueData] = useState([]);
+	// const [uniqueData, setUniqueData] = useState([]);
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
 	const { allCards } = useCards();
 	const dispatch = useDispatch();
 	const { filter } = useContext(MainContext);
+	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
 		dispatch(fetchCardsByColumnId(_id));
@@ -47,7 +48,7 @@ export const Column = ({ columnData }) => {
 	};
 
 	const deleteCard = id => {
-		dispatch(delCard(id));
+		dispatch(delCard({ id, _id }));
 	};
 
 	const editCard = data => {
@@ -59,19 +60,31 @@ export const Column = ({ columnData }) => {
 		setCardForEditing(null);
 		setIsOpen(false);
 	};
-	useEffect(() => {
-		const uniqueItems = Array.from(new Set(allCards.map(item => item._id))).map(id =>
-			allCards.find(item => item._id === id)
-		);
-		setUniqueData(uniqueItems);
-	}, [allCards]);
-	const cardForColumn = uniqueData?.filter(card => {
-		if (filter === 'all') {
-			return card.columnId === _id;
-		} else {
-			return card.columnId === _id && card.priority === filter;
+
+	// useEffect(() => {
+	// 	const uniqueItems = Array.from(new Set(allCards.map(item => item._id))).map(id =>
+	// 		allCards.find(item => item._id === id)
+	// 	);
+	// 	setUniqueData(uniqueItems);
+	// }, [allCards]);
+
+	const memoizedCards = useMemo(() => {
+		if (_id && _id in allCards) {
+			const cardForColumn = allCards[_id]?.filter(card => {
+				if (filter === 'all') {
+					return card.columnId === _id;
+				} else {
+					return card.columnId === _id && card.priority === filter;
+				}
+			});
+			return cardForColumn;
 		}
-	});
+		return [];
+	}, [_id, allCards, filter]);
+
+	useEffect(() => {
+		setCards(memoizedCards);
+	}, [memoizedCards]);
 
 	return (
 		<Wrapper>
@@ -93,7 +106,7 @@ export const Column = ({ columnData }) => {
 			</List>
 			<ListTasksContainer>
 				<ListTasks>
-					{cardForColumn
+					{cards
 						?.map(item => (
 							<Card
 								key={item._id}
@@ -109,7 +122,7 @@ export const Column = ({ columnData }) => {
 				<IconWrapper>
 					<AddIcon name='add-board' />
 				</IconWrapper>
-				<ButtonText>{!cardForColumn?.length ? 'Add card' : 'Add another card'}</ButtonText>
+				<ButtonText>{!cards?.length ? 'Add card' : 'Add another card'}</ButtonText>
 			</Button>
 			<AddCardModal
 				isOpen={isOpen}

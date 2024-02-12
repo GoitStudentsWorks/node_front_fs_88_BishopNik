@@ -24,10 +24,11 @@ function MainTodosPage() {
 	}, [dispatch]);
 
 	useEffect(() => {
-		if (firstRun && allBoards.length > 0) navigate(`/todos/${allBoards[0]?._id}`);
-		if (allBoards.length > 0) setFirstRun(false);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [allBoards]);
+		if (firstRun && allBoards.length > 0) {
+			navigate(`/todos/${allBoards[0]?._id}`);
+			setFirstRun(false);
+		}
+	}, [firstRun, allBoards, navigate]);
 
 	return (
 		<>
