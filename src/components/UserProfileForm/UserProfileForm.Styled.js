@@ -20,21 +20,15 @@ export const StyledForm = styled(Form)`
   display: flex;
   outline: none;
   flex-direction: column;
-  min-width: 335px;
+
+  width: 335px;
+  max-width: 98vw;
+
   border-radius: 8px;
   background: ${props => props.theme.modal.backgroundMain};
   color: ${props => props.theme.help.modalTextMain};
 
   padding: 24px;
-
-  @media (max-width: 375px) {
-    max-width: none;
-    width: 335px;
-  }
-
-  @media (min-width: 376px) and (max-width: 767px) {
-    width: 335px;
-  }
 
   @media (min-width: 768px) {
     width: 400px;
