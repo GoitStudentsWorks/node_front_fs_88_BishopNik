@@ -25,6 +25,13 @@ export const CloseIcon = styled(Icon)`
   height: 18px;
   stroke: ${props => props.theme.modal.iconClose};
   cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
+  &:focus {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 
 export const TitleIcons = styled.span`

@@ -47,7 +47,7 @@ export const BoardText = styled.p`
   letter-spacing: -0.02em;
 
   color: ${({ active, theme }) =>
-    active ? theme.modal.textMain  : theme.sidebar.textSecondary};
+    active ? theme.modal.textMain : theme.sidebar.textSecondary};
   margin: 0px;
 `;
 
@@ -65,6 +65,7 @@ export const EditIcon = styled(Icon)`
   height: 16px;
   stroke: ${({ theme }) => theme.sidebar.projectIcon};
   cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
@@ -77,6 +78,7 @@ export const DelIcon = styled(Icon)`
   height: 16px;
   stroke: ${({ theme }) => theme.sidebar.projectIcon};
   cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
