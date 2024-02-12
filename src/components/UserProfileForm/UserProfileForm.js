@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { UserIcon /*, UserIconAvatar*/ } from './UserIcon';
+import { UserIcon } from './UserIcon';
 import { editProfilShema } from 'components/Helpers';
 
-import {  Formik } from 'formik';
+import { Formik } from 'formik';
 
 import {
   AvatarLabelStyle,
@@ -42,15 +42,17 @@ export const UserProfileForm = () => {
   return (
     <Formik
       initialValues={{
-        avatar: null,
+        avatarURL: null,
         login: name,
         email: email,
         password: '',
       }}
       validationSchema={editProfilShema}
       onSubmit={async (values, actions) => {
-        const newAvatar = document.getElementById('fileItem').files[0];
-        values.avatar = newAvatar;
+        values.avatarURL = document.getElementById('fileItem').files[0];
+        if (!values.avatarURL) {
+          values.avatarURL = '';
+        }
         handleSubmit(values, actions);
       }}
     >
@@ -58,15 +60,15 @@ export const UserProfileForm = () => {
         <Title>Edit profile</Title>
         <UserIcon />
         <LabelBox>
-          <AvatarLabelStyle htmlFor="avatar">
+          <AvatarLabelStyle htmlFor="avatarURL">
             <StyledFieldImg
-              name="avatar"
+              name="avatarURL"
               id="fileItem"
               placeholder=""
               type="file"
               accept="image/png, image/jpeg"
             />
-            <ErrorMessageStyle name="avatar" component="span" />
+            <ErrorMessageStyle name="avatarURL" component="span" />
           </AvatarLabelStyle>
 
           <label htmlFor="login">
