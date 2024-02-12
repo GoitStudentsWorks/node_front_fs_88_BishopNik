@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+
 import { Formik } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -17,38 +17,48 @@ import {
   AddIcon,
 } from './AddColumnModal.styled';
 import { useDispatch } from 'react-redux';
-import { addColumn } from 'redux/columns/operations';
+import { addColumn, updateColumn } from 'redux/columns/operations';
 import { columnSchema } from 'components/Helpers/index.js';
 
-export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
+export const AddColumnModal = ({
+  isOpen,
+  setIsOpen,
+  board,
+  columnId,
+  columnForEditing,
+}) => {
   const dispatch = useDispatch();
+  const isEdit = !!columnForEditing;
 
-  const handleCloseModal = () => {
-    setIsOpen(false);
+  const handleFormSubmit = values => {
+    if (columnForEditing) {
+      dispatch(updateColumn({ ...values, id: columnId }));
+    } else {
+      dispatch(addColumn({ ...values, columnId }));
+    }
   };
+
+  const onClose = () => setIsOpen(false)
 
   return (
     <ModalWindow
       isOpen={isOpen}
-      onRequestClose={handleCloseModal}
+      onRequestClose={onClose}
       style={customStyles}
     >
       <Formik
         initialValues={{
-          name: '',
+          name: columnForEditing?.name || '',
           boarderId: `${board}`,
         }}
         validationSchema={columnSchema}
-        onSubmit={(newColumn, actions) => {
-          dispatch(addColumn(newColumn));
-          handleCloseModal();
-        }}
+        onSubmit={handleFormSubmit}
       >
         {({ isSubmitting }) => (
           <StyledForm autoComplete="off">
             <HeaderContainer>
-              <ModalTitle>Add column</ModalTitle>
-              <CloseIcon name="close" onClick={handleCloseModal} />
+              <ModalTitle>{isEdit ? 'Edit' : 'Add'}</ModalTitle>
+              <CloseIcon name="close" onClick={onClose} />
             </HeaderContainer>
 
             <StyledFormField type="text" name="name" placeholder="Title" />
@@ -57,7 +67,7 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
               <IconWrapper>
                 <AddIcon name="plus" />
               </IconWrapper>
-              Add
+              {isEdit ? 'Edit' : 'Add'}
             </BtnAdd>
           </StyledForm>
         )}
