@@ -139,10 +139,9 @@ export const StyledField = styled(Field)`
   background: ${props => props.theme.modal.backgroundSecondary};
   width: 100%;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-
-  opacity: 0.4;
+  
   transition: all 250ms ease;
-  color: ${props => props.theme.help.textMain};
+  color: ${props => props.theme.profile.textMain};
 
   &::placeholder {
     color: color: ${props => props.theme.modal.textSecondary};
