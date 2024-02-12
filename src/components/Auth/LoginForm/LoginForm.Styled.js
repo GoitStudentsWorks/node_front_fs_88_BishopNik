@@ -158,8 +158,8 @@ export const IconContainer = styled.div`
 `;
 
 export const GoogleIcon = styled(Icon)`
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
