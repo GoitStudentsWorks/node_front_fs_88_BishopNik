@@ -20,45 +20,41 @@ import {
   Title,
 } from './UserProfileForm.Styled';
 
-import { refreshUser } from 'redux/auth/operations';
+
 import { useAuth } from 'hooks';
+import { changeUserInfo } from 'redux/auth/operations';
 
 export const UserProfileForm = () => {
   const { user } = useAuth();
-  const { name, email } = user;
+  const { name, email, theme} = user;
   const [showPassword, setShowPassword] = useState(false);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
   const dispatch = useDispatch();
-
-  const handleSubmit = (values, actions) => {
-    dispatch(refreshUser(values));
-    actions.resetForm({ password: '' });
-  };
 
   return (
     <Formik
       initialValues={{
-        avatarURL: null,
-        login: name,
+        avatarURL: '',
+        name: name,
         email: email,
         password: '',
+        theme: theme,
       }}
       validationSchema={editProfilShema}
-      onSubmit={async (values, actions) => {
-        values.avatarURL = document.getElementById('fileItem').files[0];
+      onSubmit={(values, actions) => {
+         values.avatarURL = document.getElementById('fileItem').files[0];
         if (!values.avatarURL) {
           values.avatarURL = '';
         }
-        handleSubmit(values, actions);
+        dispatch(changeUserInfo(values))
+        actions.resetForm()
       }}
     >
       <StyledForm>
         <Title>Edit profile</Title>
-        <UserIcon />
+        <UserIcon/>
         <LabelBox>
           <AvatarLabelStyle htmlFor="avatarURL">
             <StyledFieldImg
@@ -71,15 +67,15 @@ export const UserProfileForm = () => {
             <ErrorMessageStyle name="avatarURL" component="span" />
           </AvatarLabelStyle>
 
-          <label htmlFor="login">
-            <StyledField name="login" autocomplete="off" placeholder="login" />
-            <ErrorMessageStyle name="login" component="span" />
+          <label htmlFor="name">
+            <StyledField name="name" autoComplete="off" placeholder="name" />
+            <ErrorMessageStyle name="name" component="span" />
           </label>
 
           <label htmlFor="email">
             <StyledField
               name="email"
-              autocomplete="off"
+              autoComplete="off"
               placeholder="email"
               type="email"
             />
@@ -89,7 +85,7 @@ export const UserProfileForm = () => {
           <label style={{ position: 'relative' }}>
             <StyledField
               type={showPassword ? 'text' : 'password'}
-              autocomplete="off"
+              autoComplete="off"
               name="password"
               placeholder="Enter password"
             />
