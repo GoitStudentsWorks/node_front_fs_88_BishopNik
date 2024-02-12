@@ -1,6 +1,8 @@
 /** @format */
 
 import styled from 'styled-components';
+import background from '../../img/background.json';
+
 
 export const Container = styled.div`
 	margin-left: auto;
@@ -66,7 +68,8 @@ export const Main = styled.main`
 	flex-direction: column;
 	position: relative;
 	grid-area: m;
-	background-color: ${props => props.theme.header.containerBackground};
+	background: ${props => props.backgroundId ? `url(${background.mobile[`image${props.backgroundId}`]})` : props.theme.header.containerBackground};
+	background-size: cover;
 	min-width: 320px;
 	height: calc(100vh - 60px);
 	padding-top: 14px;
@@ -82,11 +85,15 @@ export const Main = styled.main`
 		padding-top: 26px;
 		padding-bottom: 32px;
 		gap: 26px;
+		background: ${props => `url(${background.table[`image${props.backgroundId}`]})`};
+		background-size: cover;
 	}
 
 	@media screen and (min-width: 1440px) {
 		padding-top: 10px;
 		padding-bottom: 8px;
 		gap: 10px;
+		background: ${props => `url(${background.desktop[`image${props.backgroundId}`]})`};
+		background-size: cover;
 	}
 `;
