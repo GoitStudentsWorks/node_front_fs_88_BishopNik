@@ -25,6 +25,13 @@ export const CloseIcon = styled(Icon)`
   height: 18px;
   stroke: ${props => props.theme.modal.iconClose};
   cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
+  &:focus {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 
 export const TitleIcons = styled.span`
@@ -78,18 +85,23 @@ export const TypesOfIcon = styled(Icon)`
 `;
 
 export const TypesOfBackground = styled.img`
-  width: 28px;
-  height: 28px;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
   border-radius: 5px;
 `;
 
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  @media (max-width: 375px) {
-    width: 100%;
+  width: 335px;
+  max-width: 100vw;
+
+  @media (min-width: 768px) {
+    width: 350px;
   }
-  width: 400px;
+
   border-radius: 8px solid rgba(17, 17, 17, 0.1);
   background: ${props => props.theme.modal.backgroundMain};
   padding: 24px;
@@ -111,6 +123,9 @@ export const LabelBox = styled.div`
 export const LabelRadio = styled.label`
   margin: 0;
   cursor: pointer;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
 `;
 
 export const ErrMessageStyled = styled(ErrorMessage)`

@@ -3,23 +3,24 @@
 import React, { useContext, useState, useEffect, useMemo } from 'react';
 
 import {
-	Wrapper,
-	Title,
-	IconsContainer,
-	EditColumn,
-	DelColumn,
-	List,
-	ListTasks,
-	ListTasksContainer,
+  Wrapper,
+  Title,
+  IconsContainer,
+  EditColumn,
+  DelColumn,
+  List,
+  ListTasks,
+  ListTasksContainer,
+  battonStyle,
 } from './Column.styled';
 import { useDispatch } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 
 import {
-	Button,
-	ButtonText,
-	IconWrapper,
-	AddIcon,
+  Button,
+  ButtonText,
+  IconWrapper,
+  AddIcon,
 } from 'components/Modal/CreateNewBoardModal/CreateNewBoardModal.styled';
 
 import { AddCardModal } from 'components/Modal';
@@ -30,6 +31,7 @@ import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
 
 export const Column = ({ columnData }) => {
+
 	const { name, _id } = columnData;
 	// const [uniqueData, setUniqueData] = useState([]);
 	const [isOpen, setIsOpen] = useState(false);
@@ -39,22 +41,23 @@ export const Column = ({ columnData }) => {
 	const { filter } = useContext(MainContext);
 	const [cards, setCards] = useState([]);
 
-	useEffect(() => {
-		dispatch(fetchCardsByColumnId(_id));
-	}, [dispatch, _id]);
+  useEffect(() => {
+    dispatch(fetchCardsByColumnId(_id));
+  }, [dispatch, _id]);
 
-	const handleDeleteColumn = columnId => {
-		dispatch(delColumn(columnId));
-	};
+  const handleDeleteColumn = columnId => {
+    dispatch(delColumn(columnId));
+  };
 
 	const deleteCard = id => {
 		dispatch(delCard({ id, _id }));
 	};
 
-	const editCard = data => {
-		setCardForEditing(data);
-		setIsOpen(true);
-	};
+
+  const editCard = data => {
+    setCardForEditing(data);
+    setIsOpen(true);
+  };
 
 	const onRequestClose = () => {
 		setCardForEditing(null);
@@ -86,13 +89,13 @@ export const Column = ({ columnData }) => {
 		setCards(memoizedCards);
 	}, [memoizedCards]);
 
-	return (
-		<Wrapper>
-			<List>
-				<Title>
-					{name}
-					<IconsContainer>
-						<EditColumn type='button' width='16' height='16' name='edit' />
+  return (
+    <Wrapper>
+      <List>
+        <Title>
+          {name}
+          <IconsContainer>
+            <EditColumn type="button" width="16" height="16" name="edit" />
 
 						<DelColumn
 							type='button'
@@ -132,4 +135,5 @@ export const Column = ({ columnData }) => {
 			/>
 		</Wrapper>
 	);
+
 };
