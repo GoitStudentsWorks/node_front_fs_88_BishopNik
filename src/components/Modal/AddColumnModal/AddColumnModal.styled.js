@@ -88,7 +88,7 @@ export const AddIcon = styled(Icon)`
   stroke: ${props => props.theme.modal.plusColor};
 `;
 
-export const ErrorMsg = styled(ErrorMessage)`
+export const StyledErrorMessage = styled(ErrorMessage)`
   position: absolute;
   top: 0;
   left: 40%;

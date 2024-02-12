@@ -14,7 +14,7 @@ import {
 	CloseIcon,
 	IconWrapper,
 	AddIcon,
-	ErrorMsg,
+	StyledErrorMessage,
 } from './AddColumnModal.styled';
 import { useDispatch } from 'react-redux';
 import { addColumn, updateColumn } from 'redux/columns/operations';
