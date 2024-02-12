@@ -72,17 +72,43 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 	}
 });
 
-
-
 export const changeTheme = createAsyncThunk(
   'auth/theme',
-  async ({ theme }, thunkAPI) => {
+  async (theme, thunkAPI) => {
     try {
-    //   const { data } = await axios.patch('api/users/theme', { theme });
-console.log(`Change theme`)
+      const res= await axios.patch('users/theme', theme);
+	console.log(res)
     //   return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+export const changeUserInfo = createAsyncThunk(
+	'user/update',
+	async({avatarURL, email, name, password, theme}, thunkAPI) => {
+		try {
+			const formData = new FormData()
+			formData.append('avatarURL', avatarURL)
+			formData.append(`email`, email)
+			formData.append('password', password)
+			formData.append('name', name)
+			// formData.append('theme', theme) 
+			if (avatarURL) {
+				const res = await axios.patch(`users/update-user`, formData)
+				toastSuccess(`Succes update`)
+				return res.data
+			} else {
+				const res = await axios.patch(`users/update-user`, { email, password, name, theme })
+				toastSuccess(`Succes update`)
+				return res.data
+			}
+			
+		
+	} catch ({ response }) {
+		toastError(response?.data?.message);
+		return thunkAPI.rejectWithValue(response?.data?.message);
+	}
+})
+

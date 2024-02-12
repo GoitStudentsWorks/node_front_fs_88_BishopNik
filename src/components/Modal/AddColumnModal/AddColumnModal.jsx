@@ -6,15 +6,15 @@ import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
 
 import {
-  ModalTitle,
-  StyledForm,
-  StyledFormField,
-  StyledErrorMessage,
-  BtnAdd,
-  HeaderContainer,
-  CloseIcon,
-  IconWrapper,
-  AddIcon,
+	ModalTitle,
+	StyledForm,
+	StyledFormField,
+	BtnAdd,
+	HeaderContainer,
+	CloseIcon,
+	IconWrapper,
+	AddIcon,
+	ErrorMsg,
 } from './AddColumnModal.styled';
 import { useDispatch } from 'react-redux';
 import { addColumn, updateColumn } from 'redux/columns/operations';

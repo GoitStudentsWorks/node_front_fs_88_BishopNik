@@ -25,6 +25,13 @@ export const CloseIcon = styled(Icon)`
   height: 18px;
   stroke: ${props => props.theme.modal.iconClose};
   cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
+  &:focus {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 
 export const TitleIcons = styled.span`
@@ -78,18 +85,23 @@ export const TypesOfIcon = styled(Icon)`
 `;
 
 export const TypesOfBackground = styled.img`
-  width: 28px;
-  height: 28px;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
   border-radius: 5px;
 `;
 
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  @media (max-width: 375px) {
-    width: 100%;
+  width: 335px;
+  max-width: 100vw;
+
+  @media (min-width: 768px) {
+    width: 350px;
   }
-  width: 400px;
+
   border-radius: 8px solid rgba(17, 17, 17, 0.1);
   background: ${props => props.theme.modal.backgroundMain};
   padding: 24px;
@@ -111,10 +123,9 @@ export const LabelBox = styled.div`
 export const LabelRadio = styled.label`
   margin: 0;
   cursor: pointer;
-`;
-
-export const ErrMessageStyled = styled(ErrorMessage)`
-  color: red;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
 `;
 
 export const StyledField = styled(Field)`
@@ -128,13 +139,12 @@ export const StyledField = styled(Field)`
   background: ${props => props.theme.modal.backgroundSecondary};
   width: 100%;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-
-  opacity: 0.4;
+  
   transition: all 250ms ease;
-  color: ${props => props.theme.help.textMain};
+  color: ${props => props.theme.profile.textMain};
 
   &::placeholder {
-    color: ${props => props.theme.help.textMain};
+    color: color: ${props => props.theme.modal.textSecondary};
     font-size: 14px;
     font-family: 'Poppins';
     letter-spacing: -0.28px;
@@ -191,4 +201,24 @@ export const ButtonText = styled.span`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  position: absolute;
+  top: 0;
+  left: 40%;
+  opacity: 0.8;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
 `;
