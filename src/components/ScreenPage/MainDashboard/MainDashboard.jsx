@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react';
+import { StyleSheetManager } from 'styled-components';
 import {
 	BoardContainer,
 	BtnAddColumn,
@@ -25,19 +26,21 @@ const MainDashboard = () => {
 	};
 
 	return (
-		// <WrapperBoardContainer>
-		<BoardContainer backgroundId={selectedBoard?.background}>
-			<Columns board={board}>
-				<BtnAddColumn type='button' onClick={handleOpenModal}>
-					<StyledIconAdd>
-						<SvagAddColumn name='plus' />
-					</StyledIconAdd>
-					<span>Add {allColumns.length ? 'another' : null} column</span>
-				</BtnAddColumn>
-			</Columns>
-			<AddColumnModal board={board} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-		</BoardContainer>
-		// </WrapperBoardContainer>
+		<StyleSheetManager shouldForwardProp={prop => prop !== 'backgroundId'}>
+			{/* <WrapperBoardContainer> */}
+			<BoardContainer backgroundId={selectedBoard?.background}>
+				<Columns board={board}>
+					<BtnAddColumn type='button' onClick={handleOpenModal}>
+						<StyledIconAdd>
+							<SvagAddColumn name='plus' />
+						</StyledIconAdd>
+						<span>Add {allColumns.length ? 'another' : null} column</span>
+					</BtnAddColumn>
+				</Columns>
+				<AddColumnModal board={board} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+			</BoardContainer>
+			{/* </WrapperBoardContainer> */}
+		</StyleSheetManager>
 	);
 };
 

@@ -12,7 +12,6 @@ import {
 } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
-import filterSlice from './filter/filterSlice';
 import { authReducer } from './auth/authSlice';
 import { boardsReducer } from './boards/boardsSlice';
 import { modalsReducer } from './modals/modalSlice';
@@ -30,7 +29,6 @@ const tokenPersistedReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
 	reducer: {
 		auth: tokenPersistedReducer,
-		filter: filterSlice,
 		modals: modalsReducer,
 		boards: boardsReducer,
 		columns: columnsReducer,

@@ -16,7 +16,7 @@ export const fetchColumnsByIdBoards = createAsyncThunk(
 		}
 	}
 );
-export const addColum = createAsyncThunk('column/addColum', async (newColum, thunkAPI) => {
+export const addColumn = createAsyncThunk('column/addColum', async (newColum, thunkAPI) => {
 	try {
 		const res = await axios.post('/column', newColum);
 		toastSuccess(`Column has been created`);

@@ -18,7 +18,7 @@ import {
 	AddIcon,
 } from './AddColumnModal.styled';
 import { useDispatch } from 'react-redux';
-import { addColum } from 'redux/columns/operations';
+import { addColumn } from 'redux/columns/operations';
 
 const columnSchema = Yup.object().shape({
 	name: Yup.string().required('name is required'),
@@ -30,6 +30,7 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
 	const handleCloseModal = () => {
 		setIsOpen(false);
 	};
+
 	return (
 		<ModalWindow isOpen={isOpen} onRequestClose={handleCloseModal} style={customStyles}>
 			<Formik
@@ -39,7 +40,7 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
 				}}
 				validationSchema={columnSchema}
 				onSubmit={(newColumn, actions) => {
-					dispatch(addColum(newColumn));
+					dispatch(addColumn(newColumn));
 					handleCloseModal();
 				}}
 			>
