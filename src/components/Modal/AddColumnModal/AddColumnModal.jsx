@@ -20,10 +20,6 @@ import { useDispatch } from 'react-redux';
 import { addColumn } from 'redux/columns/operations';
 import { columnSchema } from 'components/Helpers/index.js';
 
-// const columnSchema = Yup.object().shape({
-// 	name: Yup.string().required('name is required'),
-// });
-
 export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
   const dispatch = useDispatch();
 
