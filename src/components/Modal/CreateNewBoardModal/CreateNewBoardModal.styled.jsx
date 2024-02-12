@@ -86,10 +86,13 @@ export const TypesOfBackground = styled.img`
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  @media (max-width: 375px) {
-    width: 100%;
+  width: 335px;
+  max-width: 100vw;
+
+  @media (min-width: 768px) {
+    width: 350px;
   }
-  width: 400px;
+
   border-radius: 8px solid rgba(17, 17, 17, 0.1);
   background: ${props => props.theme.modal.backgroundMain};
   padding: 24px;
