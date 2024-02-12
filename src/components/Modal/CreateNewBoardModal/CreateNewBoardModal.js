@@ -95,47 +95,95 @@ export const CreateNewBoardModal = () => {
               <CloseIcon name="close" onClick={closeModal} />
             </HeaderContainer>
 
-            <LabelBox>
-              <label>
-                <StyledField name="name" type="text" placeholder="Title" />
-                <ErrMessageStyled name="name" component="span" />
-              </label>
-            </LabelBox>
-            <TitleIcons>Icons</TitleIcons>
-            <StyleSheetManager shouldForwardProp={prop => prop !== 'isActive'}>
-              <IconsContainer>
-                {Array.from({ length: 8 }, (_, iconIndex) => (
-                  <LabelRadio key={`icons-${iconIndex}`}>
-                    <Field
-                      className="invisible"
-                      type="radio"
-                      name="icon"
-                      value={iconIndex}
-                    />
-                    <TypesOfIcon
-                      name={`type-${iconIndex}`}
-                      isActive={Number(iconIndex) === Number(values.icon)}
-                    />
-                  </LabelRadio>
-                ))}
-              </IconsContainer>
-            </StyleSheetManager>
-            <TitleBackground>Background</TitleBackground>
-            <BackgroundContainer>
-              {Array.from({ length: 15 }, (_, imageIndex) => (
-                <LabelRadio key={`background-${imageIndex}`}>
-                  <Field
-                    className="invisible"
-                    type="radio"
-                    name="background"
-                    value={imageIndex}
-                  />
-                  <TypesOfBackground
-                    src={background.mobile[`image${imageIndex}`]}
-                  ></TypesOfBackground>
-                </LabelRadio>
-              ))}
-            </BackgroundContainer>
+// <<<<<<< CreateNewBoardModal
+//             <LabelBox>
+//               <label>
+//                 <StyledField name="name" type="text" placeholder="Title" />
+//                 <ErrMessageStyled name="name" component="span" />
+//               </label>
+//             </LabelBox>
+//             <TitleIcons>Icons</TitleIcons>
+//             <StyleSheetManager shouldForwardProp={prop => prop !== 'isActive'}>
+//               <IconsContainer>
+//                 {Array.from({ length: 8 }, (_, iconIndex) => (
+//                   <LabelRadio key={`icons-${iconIndex}`}>
+//                     <Field
+//                       className="invisible"
+//                       type="radio"
+//                       name="icon"
+//                       value={iconIndex}
+//                     />
+//                     <TypesOfIcon
+//                       name={`type-${iconIndex}`}
+//                       isActive={Number(iconIndex) === Number(values.icon)}
+//                     />
+//                   </LabelRadio>
+//                 ))}
+//               </IconsContainer>
+//             </StyleSheetManager>
+//             <TitleBackground>Background</TitleBackground>
+//             <BackgroundContainer>
+//               {Array.from({ length: 15 }, (_, imageIndex) => (
+//                 <LabelRadio key={`background-${imageIndex}`}>
+//                   <Field
+//                     className="invisible"
+//                     type="radio"
+//                     name="background"
+//                     value={imageIndex}
+//                   />
+//                   <TypesOfBackground
+//                     src={background.mobile[`image${imageIndex}`]}
+//                   ></TypesOfBackground>
+//                 </LabelRadio>
+//               ))}
+//             </BackgroundContainer>
+// =======
+						<LabelBox>
+							<label>
+								<StyledField
+									name='name'
+									type='text'
+									placeholder='Title'
+									autoFocus
+								/>
+								<ErrMessageStyled name='name' component='span' />
+							</label>
+						</LabelBox>
+						<TitleIcons>Icons</TitleIcons>
+						<StyleSheetManager shouldForwardProp={prop => prop !== 'isActive'}>
+							<IconsContainer>
+								{Array.from({ length: 8 }, (_, iconIndex) => (
+									<LabelRadio key={`icons-${iconIndex}`}>
+										<Field
+											className='invisible'
+											type='radio'
+											name='icon'
+											value={iconIndex}
+										/>
+										<TypesOfIcon
+											name={`type-${iconIndex}`}
+											isActive={Number(iconIndex) === Number(values.icon)}
+										/>
+									</LabelRadio>
+								))}
+							</IconsContainer>
+						</StyleSheetManager>
+						<TitleBackground>Background</TitleBackground>
+						<BackgroundContainer>
+							{Array.from({ length: 15 }, (_, imageIndex) => (
+								<LabelRadio key={`background-${imageIndex}`}>
+									<Field
+										className='invisible'
+										type='radio'
+										name='background'
+										value={imageIndex}
+									/>
+									<TypesOfBackground
+										src={background.mobile[`image${imageIndex}`]}
+									></TypesOfBackground>
+								</LabelRadio>
+							))}
+						</BackgroundContainer>
 
             <Button type="submit">
               <IconWrapper>

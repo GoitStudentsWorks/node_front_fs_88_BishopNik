@@ -23,9 +23,7 @@ export const StyledForm = styled(Form)`
   border-radius: 8px;
   background: ${props => props.theme.modal.backgroundMain};
   color: ${props => props.theme.help.modalTextMain};
-
   padding: 24px;
-
   width: 335px;
   max-width: 100vw;
 

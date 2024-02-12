@@ -27,11 +27,17 @@ export const StyledForm = styled(Form)`
 `;
 
 export const CloseIcon = styled(Icon)`
-	width: 18px;
-	height: 18px;
-	stroke: ${props => props.theme.modal.iconClose};
-	cursor: pointer;
-
+  width: 18px;
+  height: 18px;
+  stroke: ${props => props.theme.modal.iconClose};
+  cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
+  &:focus {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 
 export const StyledFormField = styled(Field)`
@@ -40,7 +46,7 @@ export const StyledFormField = styled(Field)`
   background: inherit;
   outline: none;
   border-radius: 8px;
-  border: 1px solid  ${props => props.theme.profile.inputBorder};
+  border: 1px solid ${props => props.theme.profile.inputBorder};
   color: ;
   margin-bottom: 24px;
 `;
@@ -56,30 +62,30 @@ export const IconWrapper = styled.div`
   border-radius: 5px;
   width: 28px;
   height: 28px;
-	background-color: ${props => props.theme.sidebar.addButtonColor};
+  background-color: ${props => props.theme.sidebar.addButtonColor};
   margin-right: 8px;
 `;
 export const BtnAdd = styled.button`
-	display: flex;
-	width: 100%;
-	padding: 14px;
+  display: flex;
+  width: 100%;
+  padding: 14px;
   outline: none;
-	border:none;
-	justify-content: center;
-	align-items: center;
-	border-radius: 8px;
-	background: ${props => props.theme.help.buttonBackground};;
-	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-	cursor: pointer;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: ${props => props.theme.help.buttonBackground};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 
-	&:hover,
-	&:focus {
-		background: ${props => props.theme.sidebar.hoverLogout};
-	}
+  &:hover,
+  &:focus {
+    background: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 export const AddIcon = styled(Icon)`
   width: 14px;
-	height: 14px;
+  height: 14px;
   fill: transparent;
-  stroke:  ${props => props.theme.modal.plusColor};
+  stroke: ${props => props.theme.modal.plusColor};
 `;

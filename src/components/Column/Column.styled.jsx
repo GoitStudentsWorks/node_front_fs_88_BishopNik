@@ -5,6 +5,7 @@ import Icon from 'components/Icon/Icon.jsx';
 
 export const Wrapper = styled.li`
   width: 350px;
+  max-width: 100vw;
   display: grid;
   gap: 8px;
   grid-template-columns: 1fr;
@@ -19,7 +20,8 @@ export const Title = styled.span`
   color: ${props => props.theme.colum.textMain};
   font-size: 18px;
   border-radius: 8px;
-  width: 334px;
+  /* width: 334px;
+  max-width: 100%; */
   padding: 14px 24px;
   background-color: ${props => props.theme.profile.background};
   color: ${props => props.theme.help.modalTextMain};
@@ -29,11 +31,13 @@ export const Title = styled.span`
   height: 58px;
   align-items: center;
   justify-content: space-between;
+  cursor: default;
 `;
 
 export const List = styled.div`
   grid-area: title;
-  width: 100%;
+  width: 334px;
+  max-width: 98vw;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -43,6 +47,7 @@ export const List = styled.div`
 `;
 
 export const ListTasksContainer = styled.div`
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   margin-bottom: 14px;
@@ -65,7 +70,8 @@ export const ListTasksContainer = styled.div`
 
 export const ListTasks = styled.div`
   grid-area: task;
-  width: 100%;
+  /* width: 100%; */
+  /* max-width: 98vw; */
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -81,19 +87,28 @@ export const IconsContainer = styled.div`
 `;
 
 export const EditColumn = styled(Icon)`
-stroke:  ${props => props.theme.colum.icon};
-	cursor: pointer;
+  stroke: ${props => props.theme.colum.icon};
+  cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
     stroke: ${props => props.theme.colum.buttonBackground};
+  }
 `;
 
 export const DelColumn = styled(Icon)`
   stroke: ${props => props.theme.colum.icon};
-	cursor: pointer;
+  cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-	 &:hover,
-     &:focus {
+  &:hover,
+  &:focus {
     stroke: ${props => props.theme.colum.buttonBackground};
+  }
 `;
+
+export const battonStyle = {
+  width: '334px',
+  maxWidth: '98vw',
+};

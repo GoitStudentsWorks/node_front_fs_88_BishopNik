@@ -1,6 +1,6 @@
 /** @format */
 
-import { ModalEditProfile } from 'components/Modal/EditProfil/ModalEditProfile';
+import { ModalEditProfile } from 'components/Modal/EditProfileModal/EditProfileModal';
 import { useState } from 'react';
 import data from 'img/list_img.json';
 import { UserInfoWrapper, UserName, UserAvatar } from './UserInfo.styled';
