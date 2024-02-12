@@ -130,11 +130,11 @@ export const ButtonGoogle = styled.button`
   overflow: hidden;
   gap: 70px;
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.sidebar.addButtonHover};
+    background: ${props => props.theme.sidebar.addButtonHover};
   }
 `;
 
