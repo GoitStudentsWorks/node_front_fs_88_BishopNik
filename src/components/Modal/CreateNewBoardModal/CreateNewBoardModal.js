@@ -2,6 +2,7 @@
 
 import React, { useContext, useEffect, useCallback } from 'react';
 import { Formik, Field } from 'formik';
+import { StyleSheetManager } from 'styled-components';
 import {
 	StyledForm,
 	HeaderContainer,
@@ -96,24 +97,24 @@ export const CreateNewBoardModal = () => {
 							</label>
 						</LabelBox>
 						<TitleIcons>Icons</TitleIcons>
-
-						<IconsContainer>
-							{Array.from({ length: 8 }, (_, iconIndex) => (
-								<LabelRadio key={`icons-${iconIndex}`}>
-									<Field
-										className='invisible'
-										type='radio'
-										name='icon'
-										value={iconIndex}
-									/>
-									<TypesOfIcon
-										name={`type-${iconIndex}`}
-										isActive={Number(iconIndex) === Number(values.icon)}
-									/>
-								</LabelRadio>
-							))}
-						</IconsContainer>
-
+						<StyleSheetManager shouldForwardProp={prop => prop !== 'isActive'}>
+							<IconsContainer>
+								{Array.from({ length: 8 }, (_, iconIndex) => (
+									<LabelRadio key={`icons-${iconIndex}`}>
+										<Field
+											className='invisible'
+											type='radio'
+											name='icon'
+											value={iconIndex}
+										/>
+										<TypesOfIcon
+											name={`type-${iconIndex}`}
+											isActive={Number(iconIndex) === Number(values.icon)}
+										/>
+									</LabelRadio>
+								))}
+							</IconsContainer>
+						</StyleSheetManager>
 						<TitleBackground>Background</TitleBackground>
 						<BackgroundContainer>
 							{Array.from({ length: 15 }, (_, imageIndex) => (

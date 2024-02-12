@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MainComponent } from 'components/MainComponent';
@@ -17,13 +17,15 @@ function MainTodosPage() {
 	const navigate = useNavigate();
 	const nameBoard = SayNameBoard(board);
 	const { allBoards } = useBoards();
+	const [firstRun, setFirstRun] = useState(true);
 
 	useEffect(() => {
 		dispatch(fetchAllBoards());
 	}, [dispatch]);
 
 	useEffect(() => {
-		navigate(`/todos/${allBoards[0]?._id}`);
+		if (firstRun && allBoards.length > 0) navigate(`/todos/${allBoards[0]?._id}`);
+		if (allBoards.length > 0) setFirstRun(false);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [allBoards]);
 
