@@ -188,9 +188,11 @@ export const Label = styled.label`
 export const AddButton = styled.button`
   background-color: ${props => props.theme.help.buttonBackground};
   color: ${props => props.theme.addcolum.buttonBackground};
-  padding: 10px 0 11px 0;
+  padding: 10px 0 10px 0;
   border: none;
+  border-radius: 8px;
   width: 100%;
+  min-height: 49px;
   border-radius: 8px solid rgba(17, 17, 17, 0.1);
   cursor: pointer;
   display: flex;
@@ -210,7 +212,7 @@ export const AddButton = styled.button`
     height: 28px;
     background-color: ${props => props.theme.sidebar.addButtonColor};
     border-radius: 8px;
-    color: ${props => props.theme.modal.plusColor};
+    color: ${props => props.theme.help.buttonBackground};
     font-size: 20px;
     text-align: center;
     line-height: 28px;
