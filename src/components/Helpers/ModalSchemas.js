@@ -49,10 +49,10 @@ export const RegisterSchema = Yup.object().shape({
 });
 
 export const addCardValidationSchema = Yup.object().shape({
-	name: Yup.string().required('Title is required'),
-	text: Yup.string(),
-	priority: Yup.string(),
-	deadline: Yup.number(),
+  name: Yup.string().required('Title is required'),
+  text: Yup.string(),
+  priority: Yup.string(),
+  deadline: Yup.number(),
 });
 
 export const editProfilShema = Yup.object().shape({
@@ -70,5 +70,8 @@ export const editProfilShema = Yup.object().shape({
     .matches(passwordRegex, 'Invalid password')
     .min(8, 'Password should be of minimum 8 characters length')
     .max(64, 'Password should be of max 64 characters length'),
-  // .required('This field is required!'),
+});
+
+export const columnSchema = Yup.object().shape({
+  name: Yup.string().required('name is required'),
 });
