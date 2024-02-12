@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
   height: 154px;
   display: flex;
   flex-direction: row;
-  background-color: => props.theme.profile.background};
+  background-color: ${props => props.theme.profile.background};
   border-radius: 7px;
   overflow: hidden;
 `;
