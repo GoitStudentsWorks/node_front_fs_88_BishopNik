@@ -85,8 +85,10 @@ export const TypesOfIcon = styled(Icon)`
 `;
 
 export const TypesOfBackground = styled.img`
-  width: 28px;
-  height: 28px;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
   border-radius: 5px;
 `;
 
@@ -118,6 +120,9 @@ export const LabelBox = styled.div`
 export const LabelRadio = styled.label`
   margin: 0;
   cursor: pointer;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
 `;
 
 export const ErrMessageStyled = styled(ErrorMessage)`
