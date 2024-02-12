@@ -21,7 +21,7 @@ import {
 	LabelRadio,
 	IconWrapper,
 	AddIcon,
-	ErrMessageStyled,
+	ErrorMsg,
 } from './CreateNewBoardModal.styled';
 import { customStyles } from '../Modal.styled';
 import background from '../../../img/background.json';
@@ -141,7 +141,7 @@ export const CreateNewBoardModal = () => {
 									placeholder='Title'
 									autoFocus
 								/>
-								<ErrMessageStyled name='name' component='span' />
+								<ErrorMsg name='name' component='span' />
 							</label>
 						</LabelBox>
 						<TitleIcons>Icons</TitleIcons>

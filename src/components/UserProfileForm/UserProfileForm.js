@@ -11,7 +11,7 @@ import {
   AvatarLabelStyle,
   BattonPasswordDisplayStyle,
   ButtonStyle,
-  ErrorMessageStyle,
+  ErrorMsg,
   IconHideShow,
   LabelBox,
   StyledField,
@@ -64,12 +64,13 @@ export const UserProfileForm = () => {
               type="file"
               accept="image/png, image/jpeg"
             />
-            <ErrorMessageStyle name="avatarURL" component="span" />
+            <ErrorMsg name="avatarURL" component="span" />
           </AvatarLabelStyle>
 
-          <label htmlFor="name">
-            <StyledField name="name" autoComplete="off" placeholder="name" />
-            <ErrorMessageStyle name="name" component="span" />
+          <label htmlFor="login">
+            <StyledField name="login" autocomplete="off" placeholder="login" />
+            <ErrorMsg name="login" component="span" />
+
           </label>
 
           <label htmlFor="email">
@@ -79,7 +80,7 @@ export const UserProfileForm = () => {
               placeholder="email"
               type="email"
             />
-            <ErrorMessageStyle name="email" component="span" />
+            <ErrorMsg name="email" component="span" />
           </label>
 
           <label style={{ position: 'relative' }}>
@@ -98,7 +99,7 @@ export const UserProfileForm = () => {
               {showPassword ? 'Hide' : 'Show'}
             </IconHideShow>
 
-            <ErrorMessageStyle name="password" component="span" />
+            <ErrorMsg name="password" component="span" />
           </label>
         </LabelBox>
 

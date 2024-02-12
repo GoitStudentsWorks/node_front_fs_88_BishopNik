@@ -50,9 +50,7 @@ export const StyledFormField = styled(Field)`
   color: ;
   margin-bottom: 24px;
 `;
-export const StyledErrorMessage = styled(ErrorMessage)`
-  color: red;
-`;
+
 
 export const IconWrapper = styled.div`
   display: flex;
@@ -88,4 +86,24 @@ export const AddIcon = styled(Icon)`
   height: 14px;
   fill: transparent;
   stroke: ${props => props.theme.modal.plusColor};
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  position: absolute;
+  top: 0;
+  left: 40%;
+  opacity: 0.8;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
 `;
