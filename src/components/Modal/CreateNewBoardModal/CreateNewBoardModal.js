@@ -145,7 +145,9 @@ export const CreateNewBoardModal = () => {
 							</label>
 						</LabelBox>
 						<TitleIcons>Icons</TitleIcons>
-						<StyleSheetManager shouldForwardProp={prop => prop !== 'isActive'}>
+						<StyleSheetManager
+							shouldForwardProp={prop => prop !== 'isActive' && prop !== 'back'}
+						>
 							<IconsContainer>
 								{Array.from({ length: 8 }, (_, iconIndex) => (
 									<LabelRadio key={`icons-${iconIndex}`}>
@@ -162,23 +164,23 @@ export const CreateNewBoardModal = () => {
 									</LabelRadio>
 								))}
 							</IconsContainer>
+							<TitleBackground>Background</TitleBackground>
+							<BackgroundContainer>
+								{Array.from({ length: 15 }, (_, imageIndex) => (
+									<LabelRadio key={`background-${imageIndex}`}>
+										<Field
+											className='invisible'
+											type='radio'
+											name='background'
+											value={imageIndex}
+										/>
+										<TypesOfBackground
+											src={background.mobile[`image${imageIndex}`]}
+										></TypesOfBackground>
+									</LabelRadio>
+								))}
+							</BackgroundContainer>
 						</StyleSheetManager>
-						<TitleBackground>Background</TitleBackground>
-						<BackgroundContainer>
-							{Array.from({ length: 15 }, (_, imageIndex) => (
-								<LabelRadio key={`background-${imageIndex}`}>
-									<Field
-										className='invisible'
-										type='radio'
-										name='background'
-										value={imageIndex}
-									/>
-									<TypesOfBackground
-										src={background.mobile[`image${imageIndex}`]}
-									></TypesOfBackground>
-								</LabelRadio>
-							))}
-						</BackgroundContainer>
 
 						<Button type='submit'>
 							<IconWrapper>
