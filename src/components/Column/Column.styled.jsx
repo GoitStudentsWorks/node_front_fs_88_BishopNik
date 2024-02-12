@@ -5,6 +5,7 @@ import Icon from 'components/Icon/Icon.jsx';
 
 export const Wrapper = styled.li`
   width: 350px;
+  max-width: 100vw;
   display: grid;
   gap: 8px;
   grid-template-columns: 1fr;
@@ -19,7 +20,8 @@ export const Title = styled.span`
   color: ${props => props.theme.colum.textMain};
   font-size: 18px;
   border-radius: 8px;
-  width: 334px;
+  /* width: 334px;
+  max-width: 100%; */
   padding: 14px 24px;
   background-color: ${props => props.theme.profile.background};
   color: ${props => props.theme.help.modalTextMain};
@@ -33,7 +35,8 @@ export const Title = styled.span`
 
 export const List = styled.div`
   grid-area: title;
-  width: 100%;
+  width: 334px;
+  max-width: 98vw;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -43,6 +46,7 @@ export const List = styled.div`
 `;
 
 export const ListTasksContainer = styled.div`
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   margin-bottom: 14px;
@@ -65,7 +69,8 @@ export const ListTasksContainer = styled.div`
 
 export const ListTasks = styled.div`
   grid-area: task;
-  width: 100%;
+  /* width: 100%; */
+  /* max-width: 98vw; */
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -97,3 +102,8 @@ export const DelColumn = styled(Icon)`
      &:focus {
     stroke: ${props => props.theme.colum.buttonBackground};
 `;
+
+export const battonStyle = {
+  width: '334px',
+  maxWidth: '98vw',
+};
