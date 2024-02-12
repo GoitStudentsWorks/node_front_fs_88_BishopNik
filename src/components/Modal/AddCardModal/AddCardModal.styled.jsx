@@ -212,7 +212,7 @@ export const AddButton = styled.button`
     height: 28px;
     background-color: ${props => props.theme.sidebar.addButtonColor};
     border-radius: 8px;
-    color: ${props => props.theme.help.buttonBackground};
+    color: ${props => props.theme.modal.plusColor};
     font-size: 20px;
     text-align: center;
     line-height: 28px;
