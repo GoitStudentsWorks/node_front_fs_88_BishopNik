@@ -48,7 +48,12 @@ export const NeedHelpModal = () => {
 					</HeaderContainer>
 					<LabelBox>
 						<label>
-							<StyledField name='email' type='email' placeholder='Email address' />
+							<StyledField
+								name='email'
+								type='email'
+								placeholder='Email address'
+								autoFocus
+							/>
 							<ErrMessageStyled name='email' component='span' />
 						</label>
 						<label>

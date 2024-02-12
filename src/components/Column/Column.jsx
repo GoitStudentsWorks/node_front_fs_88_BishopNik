@@ -29,7 +29,8 @@ import { MainContext } from 'components/Helpers';
 import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
 
-export const Column = ({ name, id, column }) => {
+export const Column = ({ columnData }) => {
+	const { name, _id } = columnData;
 	const [uniqueData, setUniqueData] = useState([]);
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
@@ -38,8 +39,8 @@ export const Column = ({ name, id, column }) => {
 	const { filter } = useContext(MainContext);
 
 	useEffect(() => {
-		dispatch(fetchCardsByColumnId(id));
-	}, [dispatch, id]);
+		dispatch(fetchCardsByColumnId(_id));
+	}, [dispatch, _id]);
 
 	const handleDeleteColumn = columnId => {
 		dispatch(delColumn(columnId));
@@ -66,9 +67,9 @@ export const Column = ({ name, id, column }) => {
 	}, [allCards]);
 	const cardForColumn = uniqueData?.filter(card => {
 		if (filter === 'all') {
-			return card.columnId === id;
+			return card.columnId === _id;
 		} else {
-			return card.columnId === id && card.priority === filter;
+			return card.columnId === _id && card.priority === filter;
 		}
 	});
 
@@ -84,7 +85,7 @@ export const Column = ({ name, id, column }) => {
 							type='button'
 							width='16'
 							height='16'
-							onClick={() => handleDeleteColumn(id)}
+							onClick={() => handleDeleteColumn(_id)}
 							name='delete'
 						/>
 					</IconsContainer>
@@ -113,7 +114,7 @@ export const Column = ({ name, id, column }) => {
 			<AddCardModal
 				isOpen={isOpen}
 				onRequestClose={onRequestClose}
-				columnId={column._id}
+				columnId={_id}
 				cardForEditing={cardForEditing}
 			/>
 		</Wrapper>

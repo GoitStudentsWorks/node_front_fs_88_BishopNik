@@ -92,7 +92,12 @@ export const CreateNewBoardModal = () => {
 
 						<LabelBox>
 							<label>
-								<StyledField name='name' type='text' placeholder='Title' />
+								<StyledField
+									name='name'
+									type='text'
+									placeholder='Title'
+									autoFocus
+								/>
 								<ErrMessageStyled name='name' component='span' />
 							</label>
 						</LabelBox>

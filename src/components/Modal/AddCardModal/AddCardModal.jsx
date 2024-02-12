@@ -63,8 +63,8 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 					initialValues={{
 						name: cardForEditing?.name || '',
 						text: cardForEditing?.text || '',
-						priority: cardForEditing?.priority || '',
-						deadline: cardForEditing?.deadline || '',
+						priority: cardForEditing?.priority || 'without',
+						deadline: cardForEditing?.deadline || 0,
 					}}
 					validationSchema={addCardValidationSchema}
 					onSubmit={handleFormSubmit}
@@ -72,7 +72,12 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 					{({ setFieldValue, values }) => (
 						<Form>
 							<FieldContainer>
-								<StyledInput type='text' name='name' placeholder='Title' />
+								<StyledInput
+									type='text'
+									name='name'
+									placeholder='Title'
+									autoFocus
+								/>
 								<ErrorMsg name='name' component='div' />
 							</FieldContainer>
 							<Field
@@ -95,7 +100,7 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 														id='without'
 													/>
 													<Label
-														for='without'
+														htmlFor='without'
 														color='rgba(255, 255, 255, 0.3)'
 													></Label>
 												</RadioButton>
@@ -107,7 +112,7 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 														id='low'
 													/>
 													<Label
-														for='low'
+														htmlFor='low'
 														color='rgba(143, 161, 208, 1)'
 													></Label>
 												</RadioButton>
@@ -119,7 +124,7 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 														id='medium'
 													/>
 													<Label
-														for='medium'
+														htmlFor='medium'
 														color='rgba(224, 156, 181, 1)'
 													></Label>
 												</RadioButton>
@@ -131,7 +136,7 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 														id='high'
 													/>
 													<Label
-														for='high'
+														htmlFor='high'
 														color='rgba(190, 219, 176, 1)'
 													></Label>
 												</RadioButton>{' '}

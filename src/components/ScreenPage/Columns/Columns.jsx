@@ -18,7 +18,7 @@ export const Columns = ({ board, children }) => {
 	return (
 		<Styled>
 			{allColumns.map(item => (
-				<Column name={item.name} id={item._id} key={item._id} column={item} />
+				<Column columnData={item} key={item._id} />
 			))}
 			{children}
 		</Styled>
