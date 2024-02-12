@@ -9,12 +9,12 @@ import {
 	ModalTitle,
 	StyledForm,
 	StyledFormField,
-	StyledErrorMessage,
 	BtnAdd,
 	HeaderContainer,
 	CloseIcon,
 	IconWrapper,
 	AddIcon,
+	ErrorMsg,
 } from './AddColumnModal.styled';
 import { useDispatch } from 'react-redux';
 import { addColumn } from 'redux/columns/operations';
@@ -48,7 +48,7 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
 						</HeaderContainer>
 
 						<StyledFormField type='text' name='name' placeholder='Title' autoFocus />
-						<StyledErrorMessage name='name' component='div' />
+						<ErrorMsg name='name' component='div' />
 						<BtnAdd type='submit' disabled={isSubmitting}>
 							<IconWrapper>
 								<AddIcon name='plus' />

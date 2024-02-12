@@ -103,9 +103,6 @@ export const ButtonStyle = styled.button`
   }
 `;
 
-export const ErrorMessageStyle = styled(ErrorMessage)`
-  color: red;
-`;
 
 export const LogoStyles = styled.div`
   position: absolute;
@@ -144,3 +141,23 @@ export const BattonPasswordDisplayStyle = {
   transform: 'translateY(-50%)',
   cursor: 'pointer',
 };
+
+export const ErrorMsg = styled(ErrorMessage)`
+  position: absolute;
+  top: 0;
+  left: 40%;
+  opacity: 0.8;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
+`;

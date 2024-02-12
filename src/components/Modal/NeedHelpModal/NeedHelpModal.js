@@ -16,7 +16,7 @@ import {
 	Button,
 	ButtonText,
 	Title,
-	ErrMessageStyled,
+	ErrorMsg,
 } from './NeedHelpModal.styled';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -54,7 +54,7 @@ export const NeedHelpModal = () => {
 								placeholder='Email address'
 								autoFocus
 							/>
-							<ErrMessageStyled name='email' component='span' />
+							<ErrorMsg name='email' component='span' />
 						</label>
 						<label>
 							<Field
@@ -63,7 +63,7 @@ export const NeedHelpModal = () => {
 								placeholder='Comment'
 								as={StyledTextArea}
 							/>
-							<ErrMessageStyled name='comment' component='span' />
+							<ErrorMsg name='comment' component='span' />
 						</label>
 					</LabelBox>
 

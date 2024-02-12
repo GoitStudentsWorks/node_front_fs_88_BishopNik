@@ -59,13 +59,10 @@ export const LabelBox = styled.div`
   margin-bottom: 24px;
 `;
 
-export const ErrMessageStyled = styled(ErrorMessage)`
-  color: red;
-`;
 
 export const StyledField = styled(Field)`
   color: ${props => props.theme.profile.textMain};
-  border-radius: 8px solid rgba(17, 17, 17, 0.1);
+  border-radius: 8px;
   outline: none;
   border: 1px solid ${props => props.theme.profile.inputBorder};
   padding: 14px 0px 14px 18px;
@@ -154,4 +151,24 @@ export const ButtonText = styled.span`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  position: absolute;
+  top: 0;
+  left: 40%;
+  opacity: 0.8;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
 `;
