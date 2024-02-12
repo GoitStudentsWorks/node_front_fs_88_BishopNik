@@ -1,7 +1,7 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { addColum, delColumn, fetchColumnsByIdBoards, updateColumn } from './operations';
+import { addColumn, delColumn, fetchColumnsByIdBoards, updateColumn } from './operations';
 
 const initialState = {
 	items: [],
@@ -26,11 +26,15 @@ const columnsSlice = createSlice({
 				state.isLoading = false;
 				state.error = payload;
 			})
-			.addCase(addColum.fulfilled, (state, { payload }) => {
+			.addCase(addColumn.pending, state => {
+				state.isLoading = true;
+				state.error = null;
+			})
+			.addCase(addColumn.fulfilled, (state, { payload }) => {
 				state.error = null;
 				state.items.push(payload);
 			})
-			.addCase(addColum.rejected, (state, { payload }) => {
+			.addCase(addColumn.rejected, (state, { payload }) => {
 				state.error = payload;
 			})
 			.addCase(delColumn.fulfilled, (state, { payload }) => {
@@ -48,7 +52,7 @@ const columnsSlice = createSlice({
 				});
 			})
 			.addCase(updateColumn.rejected, (state, { payload }) => {
-				state.error = payload
+				state.error = payload;
 			});
 	},
 });
