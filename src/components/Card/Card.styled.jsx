@@ -5,6 +5,7 @@ import Icon from '../Icon';
 
 export const CardContainer = styled.div`
   width: 334px;
+  max-width: 98vw;
   height: 154px;
   display: flex;
   flex-direction: row;
