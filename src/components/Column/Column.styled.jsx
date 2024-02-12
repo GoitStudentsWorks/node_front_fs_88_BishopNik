@@ -31,6 +31,7 @@ export const Title = styled.span`
   height: 58px;
   align-items: center;
   justify-content: space-between;
+  cursor: default;
 `;
 
 export const List = styled.div`
@@ -86,21 +87,25 @@ export const IconsContainer = styled.div`
 `;
 
 export const EditColumn = styled(Icon)`
-stroke:  ${props => props.theme.colum.icon};
-	cursor: pointer;
+  stroke: ${props => props.theme.colum.icon};
+  cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
     stroke: ${props => props.theme.colum.buttonBackground};
+  }
 `;
 
 export const DelColumn = styled(Icon)`
   stroke: ${props => props.theme.colum.icon};
-	cursor: pointer;
+  cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-	 &:hover,
-     &:focus {
+  &:hover,
+  &:focus {
     stroke: ${props => props.theme.colum.buttonBackground};
+  }
 `;
 
 export const battonStyle = {
