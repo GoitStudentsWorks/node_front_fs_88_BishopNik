@@ -87,10 +87,15 @@ const cardsSlice = createSlice({
 				state.error = null;
 				state.createCardModal = false;
 				const { columnId, _id } = payload;
-				state.items[columnId] = state.items[columnId].map(item => {
+				const updatedItems = state.items[columnId].map(item => {
 					if (item._id === _id) return payload;
 					return item;
 				});
+
+				state.items = {
+					...state.items,
+					[columnId]: updatedItems,
+				};
 
 				// state.items = state.items.map(item => {
 				// 	if (item._id === payload._id) return payload;

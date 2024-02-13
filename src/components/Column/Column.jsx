@@ -29,7 +29,7 @@ import { MainContext } from 'components/Helpers';
 import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
 // import { setEditModalOpen } from 'redux/columns/columnsSlice';
-import { editModalOpen } from 'redux/columns/selectors';
+// import { editModalOpen } from 'redux/columns/selectors';
 // import { AddColumnModal } from 'components/Modal';
 
 export const Column = ({ columnData }) => {

@@ -39,7 +39,7 @@ export const delColumn = createAsyncThunk('column/delColumn', async (columnId, t
 export const updateColumn = createAsyncThunk('column/updateColumn', async (updColumn, thunkAPI) => {
 	try {
 		const { id, ...rest } = updColumn;
-		const res = await axios.put(`/column/${id}`, rest);
+		const res = await axios.patch(`/column/${id}`, rest);
 		toastSuccess(`Column has been updated`);
 		return res.data;
 	} catch ({ response }) {
