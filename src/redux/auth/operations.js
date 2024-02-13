@@ -74,14 +74,14 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 
 export const changeTheme = createAsyncThunk(
   'auth/theme',
-  async (theme, thunkAPI) => {
+  async (thema, thunkAPI) => {
     try {
-      const res= await axios.patch('users/theme', theme);
-	console.log(res)
-    //   return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+      const res= await axios.patch('users/thema', {thema});
+      return res.data;
+	} catch ({ response }) {
+		toastError(response?.data?.message);
+		return thunkAPI.rejectWithValue(response?.data?.message);
+	}
   }
 );
 
@@ -94,7 +94,7 @@ export const changeUserInfo = createAsyncThunk(
 			formData.append(`email`, email)
 			formData.append('password', password)
 			formData.append('name', name)
-			// formData.append('theme', theme) 
+			formData.append('theme', theme) 
 			if (avatarURL) {
 				const res = await axios.patch(`users/update-user`, formData)
 				toastSuccess(`Succes update`)
