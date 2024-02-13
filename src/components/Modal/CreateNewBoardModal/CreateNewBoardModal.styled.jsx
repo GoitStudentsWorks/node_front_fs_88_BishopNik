@@ -90,6 +90,13 @@ export const TypesOfBackground = styled.img`
 
   object-fit: cover;
   border-radius: 5px;
+
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease;
+  &:hover,
+  &:focus {
+    border-color: ${props => props.theme.header.userName};
+  }
 `;
 
 export const StyledForm = styled(Form)`
@@ -144,7 +151,7 @@ export const StyledField = styled(Field)`
   color: ${props => props.theme.profile.textMain};
 
   &::placeholder {
-    color: color: ${props => props.theme.modal.textSecondary};
+    color: ${props => props.theme.modal.textSecondary};
     font-size: 14px;
     font-family: 'Poppins';
     letter-spacing: -0.28px;
