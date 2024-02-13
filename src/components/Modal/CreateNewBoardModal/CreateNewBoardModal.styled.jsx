@@ -91,11 +91,8 @@ export const TypesOfBackground = styled.img`
   object-fit: cover;
   border-radius: 5px;
 
-  border: 2px solid transparent;
-
-  border: ${props =>
-    props.isActive ? props.theme.header.userName : 'none'};
-  transition: border-color 0.3s ease; /* Добавляем анимацию для плавного изменения цвета бордера */
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease;
   &:hover,
   &:focus {
     border-color: ${props => props.theme.header.userName};
