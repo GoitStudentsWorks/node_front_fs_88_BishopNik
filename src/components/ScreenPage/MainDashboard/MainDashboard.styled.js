@@ -4,17 +4,16 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 
-// export const WrapperBoardContainer = styled.div`
-// 	padding: 0px 24px;
-// 	display: flex;
-// 	flex-grow: 1;
-// `;
-
-export const BoardContainer = styled.div`
+export const WrapperBoardContainer = styled.div`
   padding: 0px 24px;
   display: flex;
   flex-grow: 1;
   overflow-y: hidden;
+`;
+
+export const BoardContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
   overflow-x: auto;
   display: flex;
   gap: 20px;
@@ -53,6 +52,7 @@ export const BtnAddColumn = styled.button`
   font-weight: 500;
   border-radius: 8px;
   width: 334px;
+  outline:none;
   color: ${props => props.theme.help.modalTextMain};
   background-color: ${props => props.theme.profile.background};
 

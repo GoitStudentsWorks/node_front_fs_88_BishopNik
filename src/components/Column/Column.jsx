@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useContext, useState, useEffect, useMemo } from 'react';
-
 import {
 	Wrapper,
 	Title,
@@ -11,10 +10,10 @@ import {
 	List,
 	ListTasks,
 	ListTasksContainer,
-	battonStyle,
 } from './Column.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
+import { updateStateAfterDeleteColumn } from 'redux/cards/cardsSlice';
 
 import {
 	Button,
@@ -29,18 +28,18 @@ import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
-import { columnsSlice } from 'redux/columns/columnsSlice';
-import { editModalOpen } from 'redux/columns/selectors';
-import { AddColumnModal } from 'components/Modal';
+// import { setEditModalOpen } from 'redux/columns/columnsSlice';
+// import { editModalOpen } from 'redux/columns/selectors';
+// import { AddColumnModal } from 'components/Modal';
 
 export const Column = ({ columnData }) => {
 	const { name, _id } = columnData;
-	const isEditOpen = useSelector(editModalOpen);
+	// const isEditOpen = useSelector(editModalOpen);
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
 	const { allCards } = useCards();
 	const dispatch = useDispatch();
-	const { filter } = useContext(MainContext);
+	const { filter, setIsOpenAddColumn, setColumnEdit } = useContext(MainContext);
 	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
@@ -48,16 +47,23 @@ export const Column = ({ columnData }) => {
 	}, [dispatch, _id]);
 
 	const handleDeleteColumn = columnId => {
-		dispatch(delColumn(columnId));
+		dispatch(delColumn(columnId)).then(() => {
+			dispatch(updateStateAfterDeleteColumn({ id: columnId }));
+		});
+	};
+
+	const handleEditColumn = () => {
+		setIsOpenAddColumn(true);
+		setColumnEdit(columnData);
 	};
 
 	const deleteCard = id => {
 		dispatch(delCard({ id, _id }));
 	};
 
-	const toggleModal = flag => {
-		dispatch(columnsSlice.actions.setEditModalOpen(flag));
-	};
+	// const toggleModal = flag => {
+	// 	dispatch(setEditModalOpen(flag));
+	// };
 
 	const editCard = data => {
 		setCardForEditing(data);
@@ -98,7 +104,8 @@ export const Column = ({ columnData }) => {
 							width='16'
 							height='16'
 							name='edit'
-							onClick={() => toggleModal(true)}
+							onClick={handleEditColumn}
+							// onClick={() => toggleModal(true)}
 						/>
 
 						<DelColumn
@@ -137,12 +144,12 @@ export const Column = ({ columnData }) => {
 				columnId={_id}
 				cardForEditing={cardForEditing}
 			/>
-			<AddColumnModal
+			{/* <AddColumnModal
 				isOpen={isEditOpen}
 				setIsOpen={toggleModal}
 				columnId={_id}
 				columnForEditing={columnData}
-			/>
+			/> */}
 		</Wrapper>
 	);
 };

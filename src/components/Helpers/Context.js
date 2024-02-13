@@ -8,6 +8,8 @@ export const Context = ({ children }) => {
 	const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 	const [isOpenAddBoard, setIsOpenAddBoard] = useState(false);
 	const [boardEdit, setBoardEdit] = useState(null);
+	const [isOpenAddColumn, setIsOpenAddColumn] = useState(false);
+	const [columnEdit, setColumnEdit] = useState(null);
 	const [filter, setFilter] = useState('all');
 
 	return (
@@ -21,6 +23,10 @@ export const Context = ({ children }) => {
 				setBoardEdit,
 				filter,
 				setFilter,
+				isOpenAddColumn,
+				setIsOpenAddColumn,
+				columnEdit,
+				setColumnEdit,
 			}}
 		>
 			{children}
