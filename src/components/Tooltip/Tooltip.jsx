@@ -10,10 +10,10 @@ import { updateCard } from 'redux/cards/operations';
 const Tooltip = ({ isOpen, onRequestClose, card }) => {
 	const dispatch = useDispatch();
 	const { allColumns } = useColumns();
-	const { _id: id, columnId, name } = card;
+	const { _id: id, columnId: oldColumnId, name } = card;
 
 	const handleClick = columnId => {
-		dispatch(updateCard({ id, columnId, name }));
+		dispatch(updateCard({ id, columnId, name, oldColumnId }));
 		onRequestClose();
 	};
 
@@ -22,7 +22,7 @@ const Tooltip = ({ isOpen, onRequestClose, card }) => {
 			<TooltipContent>
 				{allColumns?.map(col => (
 					<React.Fragment key={col._id}>
-						{columnId !== col._id && (
+						{oldColumnId !== col._id && (
 							<TooltipButton onClick={() => handleClick(col._id)}>
 								{col.name}
 								<IconProcess name='process-task' />

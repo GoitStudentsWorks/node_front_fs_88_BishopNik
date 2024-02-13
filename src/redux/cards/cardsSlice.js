@@ -86,16 +86,14 @@ const cardsSlice = createSlice({
 			.addCase(updateCard.fulfilled, (state, { payload }) => {
 				state.error = null;
 				state.createCardModal = false;
-				const { columnId, _id } = payload;
-				const updatedItems = state.items[columnId].map(item => {
-					if (item._id === _id) return payload;
-					return item;
-				});
-
-				state.items = {
-					...state.items,
-					[columnId]: updatedItems,
-				};
+				const { data, oldColumnId } = payload;
+				const { columnId: newColumnId, _id } = data;
+				if (oldColumnId !== newColumnId) {
+					state.items[oldColumnId] = state.items[oldColumnId].filter(
+						item => item._id !== _id
+					);
+				}
+				state.items[newColumnId].push(data);
 
 				// state.items = state.items.map(item => {
 				// 	if (item._id === payload._id) return payload;

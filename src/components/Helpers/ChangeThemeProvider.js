@@ -8,15 +8,20 @@ import { theme as themeDefault } from '../../constants/theme';
 const ThemeContext = createContext();
 
 const СhangeThemeProvider = ({ children }) => {
-	// const { user } = useAuth()
-	// const { thema } = user
-	const [theme, setTheme] = useState(themeDefault[0].property);
+  const initialTheme = JSON.parse(localStorage.getItem('theme'));
 
-	return (
-		<ThemeContext.Provider value={{ theme, setTheme }}>
-			<ThemeProvider theme={theme}>{children}</ThemeProvider>
-		</ThemeContext.Provider>
-	);
+  const [theme, setTheme] = useState(initialTheme || themeDefault[0].property);
+
+  const handleSetTheme = theme => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+    setTheme(theme);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme: handleSetTheme }}>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </ThemeContext.Provider>
+  );
 };
 
 export { СhangeThemeProvider, ThemeContext };

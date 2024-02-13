@@ -90,6 +90,15 @@ export const TypesOfBackground = styled.img`
 
   object-fit: cover;
   border-radius: 5px;
+
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease;
+  border-color: ${props =>
+    props.isBackgroundActive ? props.theme.header.userName : 'transparent'};
+  &:hover,
+  &:focus {
+    border-color: ${props => props.theme.header.userName};
+  }
 `;
 
 export const StyledForm = styled(Form)`
@@ -139,12 +148,12 @@ export const StyledField = styled(Field)`
   background: ${props => props.theme.modal.backgroundSecondary};
   width: 100%;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  
+
   transition: all 250ms ease;
   color: ${props => props.theme.profile.textMain};
 
   &::placeholder {
-    color: color: ${props => props.theme.modal.textSecondary};
+    color: ${props => props.theme.modal.textSecondary};
     font-size: 14px;
     font-family: 'Poppins';
     letter-spacing: -0.28px;
