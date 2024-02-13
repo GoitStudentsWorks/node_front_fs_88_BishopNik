@@ -4,17 +4,16 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 
-// export const WrapperBoardContainer = styled.div`
-// 	padding: 0px 24px;
-// 	display: flex;
-// 	flex-grow: 1;
-// `;
-
-export const BoardContainer = styled.div`
+export const WrapperBoardContainer = styled.div`
   padding: 0px 24px;
   display: flex;
   flex-grow: 1;
   overflow-y: hidden;
+`;
+
+export const BoardContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
   overflow-x: auto;
   display: flex;
   gap: 20px;
