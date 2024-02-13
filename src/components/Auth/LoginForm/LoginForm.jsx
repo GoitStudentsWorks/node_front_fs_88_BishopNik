@@ -8,7 +8,7 @@ import {
   Button,
   ButtonText,
   Container,
-  ErrMessageStyled,
+  ErrorMsg,
   IconHideShow,
   LabelBox,
   Link,
@@ -52,7 +52,7 @@ const LoginForm = () => {
           <LabelBox>
             <label>
               <StyledField name="email" type="email" placeholder="Email" />
-              <ErrMessageStyled name="email" component="span" />
+              <ErrorMsg name="email" component="span" />
             </label>
             <label>
               <StyledFieldContainer>
@@ -69,7 +69,7 @@ const LoginForm = () => {
                 </IconHideShow>
               </StyledFieldContainer>
 
-              <ErrMessageStyled name="password" component="span" />
+              <ErrorMsg name="password" component="span" />
             </label>
           </LabelBox>
 

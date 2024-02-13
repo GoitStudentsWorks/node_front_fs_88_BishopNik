@@ -52,6 +52,7 @@ export const BtnAddColumn = styled.button`
   font-weight: 500;
   border-radius: 8px;
   width: 334px;
+  outline:none;
   color: ${props => props.theme.help.modalTextMain};
   background-color: ${props => props.theme.profile.background};
 

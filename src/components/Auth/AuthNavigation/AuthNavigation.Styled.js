@@ -9,6 +9,7 @@ export const IconLogoBox = styled.div`
 	justify-content: center;
 	align-items: center;
 	background: #161616;
+	outline:none;
 	width: 40px;
 	height: 40px;
 	border-radius: 8px;
