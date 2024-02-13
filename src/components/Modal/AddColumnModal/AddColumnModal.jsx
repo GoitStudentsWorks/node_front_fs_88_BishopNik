@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+
 import { Formik } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -14,50 +14,64 @@ import {
 	CloseIcon,
 	IconWrapper,
 	AddIcon,
-	ErrorMsg,
+	StyledErrorMessage,
 } from './AddColumnModal.styled';
 import { useDispatch } from 'react-redux';
-import { addColumn } from 'redux/columns/operations';
+import { addColumn, updateColumn } from 'redux/columns/operations';
 import { columnSchema } from 'components/Helpers/index.js';
 
-export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
-	const dispatch = useDispatch();
+export const AddColumnModal = ({
+  isOpen,
+  setIsOpen,
+  board,
+  columnId,
+  columnForEditing,
+}) => {
+  const dispatch = useDispatch();
+  const isEdit = !!columnForEditing;
 
-	const handleCloseModal = () => {
-		setIsOpen(false);
-	};
+  const handleFormSubmit = values => {
+    if (columnForEditing) {
+      dispatch(updateColumn({ ...values, id: columnId }));
+    } else {
+      dispatch(addColumn({ ...values, columnId }));
+    }
+  };
 
-	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={handleCloseModal} style={customStyles}>
-			<Formik
-				initialValues={{
-					name: '',
-					boarderId: `${board}`,
-				}}
-				validationSchema={columnSchema}
-				onSubmit={(newColumn, actions) => {
-					dispatch(addColumn(newColumn));
-					handleCloseModal();
-				}}
-			>
-				{({ isSubmitting }) => (
-					<StyledForm autoComplete='off'>
-						<HeaderContainer>
-							<ModalTitle>Add column</ModalTitle>
-							<CloseIcon name='close' onClick={handleCloseModal} />
-						</HeaderContainer>
+  const onClose = () => setIsOpen(false)
 
-						<StyledFormField type='text' name='name' placeholder='Title' autoFocus />
-						<ErrorMsg name='name' component='div' />
-						<BtnAdd type='submit' disabled={isSubmitting}>
-							<IconWrapper>
-								<AddIcon name='plus' />
-							</IconWrapper>
-							Add
-						</BtnAdd>
-					</StyledForm>
-				)}
-			</Formik>
-		</ModalWindow>
-	);
+  return (
+    <ModalWindow
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      style={customStyles}
+    >
+      <Formik
+        initialValues={{
+          name: columnForEditing?.name || '',
+          boarderId: `${board}`,
+        }}
+        validationSchema={columnSchema}
+        onSubmit={handleFormSubmit}
+      >
+        {({ isSubmitting }) => (
+          <StyledForm autoComplete="off">
+            <HeaderContainer>
+              <ModalTitle>{isEdit ? 'Edit' : 'Add'}</ModalTitle>
+              <CloseIcon name="close" onClick={onClose} />
+            </HeaderContainer>
+
+            <StyledFormField type="text" name="name" placeholder="Title" />
+            <StyledErrorMessage name="name" component="div" />
+            <BtnAdd type="submit" disabled={isSubmitting}>
+              <IconWrapper>
+                <AddIcon name="plus" />
+              </IconWrapper>
+              {isEdit ? 'Edit' : 'Add'}
+            </BtnAdd>
+          </StyledForm>
+        )}
+      </Formik>
+    </ModalWindow>
+  );
 };
