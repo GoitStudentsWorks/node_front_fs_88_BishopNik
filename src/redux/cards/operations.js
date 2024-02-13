@@ -45,7 +45,7 @@ export const delCard = createAsyncThunk(
 export const updateCard = createAsyncThunk('card/updateCard', async (updCard, thunkAPI) => {
 	try {
 		const { id, ...rest } = updCard;
-		const res = await axios.put(`/card/${id}`, rest);
+		const res = await axios.patch(`/card/${id}`, rest);
 		toastSuccess('Update Card');
 		return res.data;
 	} catch ({ response }) {
