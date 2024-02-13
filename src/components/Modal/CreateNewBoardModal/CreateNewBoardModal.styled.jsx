@@ -90,6 +90,16 @@ export const TypesOfBackground = styled.img`
 
   object-fit: cover;
   border-radius: 5px;
+
+  border: 2px solid transparent;
+
+  border: ${props =>
+    props.isActive ? props.theme.header.userName : 'none'};
+  transition: border-color 0.3s ease; /* Добавляем анимацию для плавного изменения цвета бордера */
+  &:hover,
+  &:focus {
+    border-color: ${props => props.theme.header.userName};
+  }
 `;
 
 export const StyledForm = styled(Form)`
@@ -144,7 +154,7 @@ export const StyledField = styled(Field)`
   color: ${props => props.theme.profile.textMain};
 
   &::placeholder {
-    color: color: ${props => props.theme.modal.textSecondary};
+    color: ${props => props.theme.modal.textSecondary};
     font-size: 14px;
     font-family: 'Poppins';
     letter-spacing: -0.28px;
