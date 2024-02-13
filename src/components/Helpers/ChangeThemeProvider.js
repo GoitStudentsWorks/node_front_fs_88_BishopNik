@@ -3,10 +3,13 @@
 import React, { createContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme as themeDefault } from '../../constants/theme';
+// import { useAuth } from 'hooks';
 
 const ThemeContext = createContext();
 
 const СhangeThemeProvider = ({ children }) => {
+	// const { user } = useAuth()
+	// const { thema } = user
 	const [theme, setTheme] = useState(themeDefault[0].property);
 
 	return (
