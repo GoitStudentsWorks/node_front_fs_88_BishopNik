@@ -2,55 +2,47 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { UserIcon } from './UserIcon';
 import { editProfilShema, toastError } from 'components/Helpers';
 
 import { Formik } from 'formik';
 
 import {
-  AvatarLabelStyle,
   BattonPasswordDisplayStyle,
   BlockLogoStyles,
   ButtonIcon,
   ButtonStyle,
-  ErrorMessageStyle,
   IconHideShow,
   ImgStyled,
   LabelBox,
   LabelStyle,
   LogoStyles,
   StyledField,
-  StyledFieldImg,
   StyledForm,
   Title,
   ErrorMsg,
 } from './UserProfileForm.Styled';
 
 import { useAuth } from 'hooks';
-import { useNavigate } from 'react-router';
 import { changeUserInfo } from 'redux/auth/operations';
+import data from 'img/list_img.json';
 
 export const UserProfileForm = () => {
   const [avatar, setAvatar] = useState(null);
-  const [avatarURL, setAvatarURL] = useState(null);
+  const [userAvatarURL, setUserAvatarURL] = useState(null);
   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
   const { user } = useAuth();
-
-  // const { user } = useAuth();
-  const { name, email, theme } = user;
+  const { name, email, thema: activeUserTheme, avatarURL } = user;
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  // const dispatch = useDispatch();
 
-  //   console.log(user);
+  console.log(user);
 
   useEffect(() => {
     if (avatar) {
       const avatarObjectURL = URL.createObjectURL(avatar);
-      setAvatarURL(avatarObjectURL);
+      setUserAvatarURL(avatarObjectURL);
 
       return () => URL.revokeObjectURL(avatarObjectURL);
     }
@@ -63,78 +55,46 @@ export const UserProfileForm = () => {
     }
     const file = target.files[0];
     console.log(file);
-    // setAvatarURL(file);
-    //   user.avatarURL = file;
 
     if (file && file instanceof File && file.type.startsWith('image/')) {
       setAvatar(file);
     } else {
       toastError('Bad type file');
       target.value = '';
-      setAvatarURL(user.avatarURL);
+      setUserAvatarURL(user.avatarURL);
       setAvatar(null);
       target.click();
     }
   };
   const handleSubmit = (values, actions) => {
-    console.log(avatar, avatarURL, user.avatarURL);
-    values.avatarURL = avatar || avatarURL || user.avatarURL;
+    values.avatarURL = avatar || userAvatarURL || user.avatarURL;
     if (!values.avatarURL) {
       values.avatarURL = '';
     }
+    if (!name || name === '' || name === values.name) {
+      delete values.name;
+    }
+    if (!email || email === '' || email === values.email) {
+      delete values.email;
+    }
+    if (!avatarURL || avatarURL === '' || avatarURL === values.avatarURL) {
+      delete values.avatarURL;
+    }
+
     console.log(values);
     dispatch(changeUserInfo(values));
     actions.resetForm({ password: '' });
   };
 
-  // =============================================
-
-  // const { user } = useAuth();
-  //   const { name, email } = user;
-  //   const [showPassword, setShowPassword] = useState(false);
-
-  // export const UserProfileForm = () => {
-  // const { user } = useAuth();
-  // const { name, email, theme } = user;
-  // const [showPassword, setShowPassword] = useState(false);
-  // const togglePasswordVisibility = () => {
-  // 	setShowPassword(!showPassword);
-  // };
-  // const dispatch = useDispatch();
-
-  // return (
-  // 	<Formik
-  // 		initialValues={{
-  // 			avatarURL: '',
-  // 			name: name,
-  // 			email: email,
-  // 			password: '',
-  // 			theme: theme,
-  // 		}}
-  // 		validationSchema={editProfilShema}
-  // 		onSubmit={(values, actions) => {
-  // 			values.avatarURL = document.getElementById('fileItem').files[0];
-  // 			if (!values.avatarURL) {
-  // 				values.avatarURL = '';
-  // 			}
-  // 			dispatch(changeUserInfo(values));
-  // 			actions.resetForm();
-  // 		}}
-  // 	>
-  // 		<StyledForm>
-  // 			<Title>Edit profile</Title>
-  // 			<UserIcon />
-  // 			<LabelBox>
-  // 				<AvatarLabelStyle htmlFor='avatarURL'>
-  // 					<StyledFieldImg
-  // 						name='avatarURL'
-  // 						id='fileItem'
-  // 						placeholder=''
-  // 						type='file'
-  // 						accept='image/png, image/jpeg'
-  // 					/>
-  // 					<ErrorMsg name='avatarURL' component='span' />
-  // 				</AvatarLabelStyle>
+  const setDefaultAvatar = () => {
+    if (activeUserTheme === 'Dark') {
+      return data.user.dark;
+    } else if (activeUserTheme === 'Light') {
+      return data.user.light;
+    } else if (activeUserTheme === 'Violet') {
+      return data.user.violet;
+    }
+  };
 
   return (
     <Formik
@@ -155,7 +115,10 @@ export const UserProfileForm = () => {
         <LabelBox>
           <LabelStyle>
             <BlockLogoStyles>
-              <ImgStyled src={avatarURL || user.avatarURL} alt="user avatar" />
+              <ImgStyled
+                src={userAvatarURL || user.avatarURL || setDefaultAvatar()}
+                alt="user avatar"
+              />
               <LogoStyles>
                 <ButtonIcon name="add-board"></ButtonIcon>
               </LogoStyles>

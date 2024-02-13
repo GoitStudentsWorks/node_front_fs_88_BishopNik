@@ -8,9 +8,8 @@ import { useAuth } from 'hooks';
 
 export const UserInfo = () => {
   const { user } = useAuth();
-  const { name, avatarURL, theme: activeUserTheme } = user;
+  const { name, avatarURL, thema: activeUserTheme } = user;
   const [isModalState, setIsModalState] = useState(false);
-  console.log(user);
   const stateСhangeModal = () => {
     if (isModalState === true) {
       setIsModalState(false);
@@ -27,23 +26,6 @@ export const UserInfo = () => {
       return data.user.violet;
     }
   };
-
-  // const stateСhangeModal = () => {
-  //   if (isModalState === true) {
-  //     setIsModalState(false);
-  //   } else {
-  //     setIsModalState(true);
-  //   }
-  // };
-  // const setDefaultAvatar = () => {
-  //   if (activeUserTheme === 'Dark') {
-  //     return data.user.dark;
-  //   } else if (activeUserTheme === 'light') {
-  //     return data.user.light;
-  //   } else if (activeUserTheme === 'violet') {
-  //     return data.user.violet;
-  //   }
-  // };
 
   return (
     <div>
