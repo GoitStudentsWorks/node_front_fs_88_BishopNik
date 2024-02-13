@@ -26,6 +26,7 @@ export const Container = styled.div`
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  outline:none;
   @media (max-width: 375px) {
     width: 100%;
     padding: 24px;
@@ -77,6 +78,7 @@ export const StyledFieldContainer = styled.div`
 
 export const StyledField = styled(Field)`
   color: #fff;
+  outline:none;
   border-radius: 8px;
   border: 1px solid #bedbb0;
   padding: 14px 35px 14px 18px;
@@ -119,6 +121,7 @@ export const Button = styled.button`
 export const ButtonGoogle = styled.button`
   display: flex;
   width: 100%;
+  outline:none;
   padding: 0px;
   justify-content: start;
   align-items: center;
@@ -149,6 +152,7 @@ export const ButtonText = styled.span`
 export const IconContainer = styled.div`
   background-color: white;
   width: 49px;
+  outline:none;
   height: 49px;
   display: flex;
   position: relative;
