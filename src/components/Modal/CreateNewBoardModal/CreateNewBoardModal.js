@@ -146,7 +146,7 @@ export const CreateNewBoardModal = () => {
 						</LabelBox>
 						<TitleIcons>Icons</TitleIcons>
 						<StyleSheetManager
-							shouldForwardProp={prop => prop !== 'isActive' && prop !== 'back'}
+							shouldForwardProp={prop => prop !== 'isActive' && prop !== 'isBackgroundActive'}
 						>
 							<IconsContainer>
 								{Array.from({ length: 8 }, (_, iconIndex) => (
@@ -175,7 +175,10 @@ export const CreateNewBoardModal = () => {
 											value={imageIndex}
 										/>
 										<TypesOfBackground
-											src={background.mobile[`image${imageIndex}`]}
+											src={background.mobile[`image${imageIndex}`]
+												
+											}
+											isBackgroundActive={Number(imageIndex) === Number(values.background)}
 										></TypesOfBackground>
 									</LabelRadio>
 								))}
