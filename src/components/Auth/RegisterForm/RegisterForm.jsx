@@ -11,7 +11,7 @@ import {
 	Button,
 	ButtonText,
 	Container,
-	ErrMessageStyled,
+	ErrorMsg,
 	LabelBox,
 	Link,
 	NavBox,
@@ -59,7 +59,7 @@ const RegisterForm = () => {
 									type='text'
 									placeholder='Enter your name'
 								/>
-								<ErrMessageStyled name='name' component='span' />
+								<ErrorMsg name='name' component='span' />
 							</label>
 							<label>
 								<StyledField
@@ -67,7 +67,7 @@ const RegisterForm = () => {
 									type='email'
 									placeholder='Enter your email'
 								/>
-								<ErrMessageStyled name='email' component='span' />
+								<ErrorMsg name='email' component='span' />
 							</label>
 							<label>
 								<StyledFieldContainer>
@@ -84,7 +84,7 @@ const RegisterForm = () => {
 									</IconHideShow>
 								</StyledFieldContainer>
 
-								<ErrMessageStyled name='password' component='span' />
+								<ErrorMsg name='password' component='span' />
 							</label>
 						</LabelBox>
 

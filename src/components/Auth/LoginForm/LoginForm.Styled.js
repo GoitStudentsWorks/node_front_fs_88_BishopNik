@@ -70,9 +70,6 @@ export const LabelBox = styled.div`
   }
 `;
 
-export const ErrMessageStyled = styled(ErrorMessage)`
-  color: red;
-`;
 
 export const StyledFieldContainer = styled.div`
   position: relative;
@@ -164,4 +161,24 @@ export const GoogleIcon = styled(Icon)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  position: absolute;
+  top: 0;
+  left: 40%;
+  opacity: 0.8;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
 `;
