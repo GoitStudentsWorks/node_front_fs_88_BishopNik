@@ -1,6 +1,6 @@
 /** @format */
 
-import { ModalEditProfile } from 'components/Modal/EditProfil/ModalEditProfile';
+import { ModalEditProfile } from 'components/Modal/EditProfileModal/EditProfileModal';
 import { useState } from 'react';
 import data from 'img/list_img.json';
 import { UserInfoWrapper, UserName, UserAvatar } from './UserInfo.styled';
@@ -28,13 +28,29 @@ export const UserInfo = () => {
     }
   };
 
+  // const stateСhangeModal = () => {
+  //   if (isModalState === true) {
+  //     setIsModalState(false);
+  //   } else {
+  //     setIsModalState(true);
+  //   }
+  // };
+  // const setDefaultAvatar = () => {
+  //   if (activeUserTheme === 'Dark') {
+  //     return data.user.dark;
+  //   } else if (activeUserTheme === 'light') {
+  //     return data.user.light;
+  //   } else if (activeUserTheme === 'violet') {
+  //     return data.user.violet;
+  //   }
+  // };
+
   return (
     <div>
       <UserInfoWrapper>
         <UserName>{name}</UserName>
         <UserAvatar
           src={avatarURL || setDefaultAvatar()}
-          alt="user name"
           onClick={stateСhangeModal}
         />
       </UserInfoWrapper>

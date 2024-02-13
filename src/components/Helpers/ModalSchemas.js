@@ -10,6 +10,7 @@ const passwordRegex = RegExp(/^[A-Z|a-z0-9!#$%&._%+-/=?^]{0,100}$/);
 
 export const needHelpSchema = Yup.object().shape({
   email: Yup.string()
+    .matches(emailRegex, 'Invalid email')
     .email('Invalid email address')
     .required('This is a required field'),
   comment: Yup.string().required('This is a required field'),
@@ -23,40 +24,38 @@ export const createBoardSchema = Yup.object().shape({
 
 export const LoginSchema = Yup.object().shape({
   email: Yup.string()
+    .matches(emailRegex, 'Invalid email')
     .email('Invalid email address')
     .required('This is a required field'),
-  password: Yup.string().required('This is a required field'),
+  password: Yup.string()
+    .required('This is a required field')
+    .matches(passwordRegex, 'Invalid password'),
 });
 
 export const RegisterSchema = Yup.object().shape({
   name: Yup.string()
     .trim()
     .min(2, 'Too Short!')
-    .matches(
-      /^[a-zA-Zа-яА-Я]+([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*$/,
-      "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    )
+    .matches(passwordRegex, 'Invalid password')
     .required('This is a required field'),
   email: Yup.string()
+    .matches(emailRegex, 'Invalid email')
     .email('Invalid email address')
     .required('This is a required field'),
   password: Yup.string()
-    .matches(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/,
-      'Please create a stronger password. It must contain one uppercase and one lowercase letter'
-    )
+    .matches(passwordRegex, 'Invalid password')
     .required('This is a required field'),
 });
 
 export const addCardValidationSchema = Yup.object().shape({
-	name: Yup.string().required('Title is required'),
-	text: Yup.string(),
-	priority: Yup.string(),
-	deadline: Yup.number(),
+  name: Yup.string().required('Title is required'),
+  text: Yup.string(),
+  priority: Yup.string(),
+  deadline: Yup.number(),
 });
 
 export const editProfilShema = Yup.object().shape({
-  login: Yup.string()
+  name: Yup.string()
     .min(2, 'Too short!')
     .max(32, 'Too Long!')
     .required('This field is required!'),
@@ -66,9 +65,12 @@ export const editProfilShema = Yup.object().shape({
     .email('Invalid email')
     .required('email is required'),
 
-  password: Yup.string()
+  password: Yup.string().required(`Please enter the password `)
     .matches(passwordRegex, 'Invalid password')
-    .min(8, 'Password should be of minimum 8 characters length')
+    .min(2, 'Too Short!')
     .max(64, 'Password should be of max 64 characters length'),
-  // .required('This field is required!'),
+});
+
+export const columnSchema = Yup.object().shape({
+  name: Yup.string().required('name is required'),
 });

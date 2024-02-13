@@ -23,11 +23,12 @@ import {
   StyledFieldImg,
   StyledForm,
   Title,
+  ErrorMsg,
 } from './UserProfileForm.Styled';
 
-import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { useNavigate } from 'react-router';
+import { changeUserInfo } from 'redux/auth/operations';
 
 export const UserProfileForm = () => {
   const [avatar, setAvatar] = useState(null);
@@ -35,6 +36,14 @@ export const UserProfileForm = () => {
   const dispatch = useDispatch();
   //   const navigate = useNavigate();
   const { user } = useAuth();
+
+  // const { user } = useAuth();
+  const { name, email, theme } = user;
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  // const dispatch = useDispatch();
 
   //   console.log(user);
 
@@ -67,17 +76,6 @@ export const UserProfileForm = () => {
       target.click();
     }
   };
-
-  // =============================================
-
-  // const { user } = useAuth();
-  const { name, email } = user;
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
   const handleSubmit = (values, actions) => {
     console.log(avatar, avatarURL, user.avatarURL);
     values.avatarURL = avatar || avatarURL || user.avatarURL;
@@ -85,21 +83,70 @@ export const UserProfileForm = () => {
       values.avatarURL = '';
     }
     console.log(values);
-    dispatch(refreshUser(values));
+    dispatch(changeUserInfo(values));
     actions.resetForm({ password: '' });
   };
+
+  // =============================================
+
+  // const { user } = useAuth();
+  //   const { name, email } = user;
+  //   const [showPassword, setShowPassword] = useState(false);
+
+  // export const UserProfileForm = () => {
+  // const { user } = useAuth();
+  // const { name, email, theme } = user;
+  // const [showPassword, setShowPassword] = useState(false);
+  // const togglePasswordVisibility = () => {
+  // 	setShowPassword(!showPassword);
+  // };
+  // const dispatch = useDispatch();
+
+  // return (
+  // 	<Formik
+  // 		initialValues={{
+  // 			avatarURL: '',
+  // 			name: name,
+  // 			email: email,
+  // 			password: '',
+  // 			theme: theme,
+  // 		}}
+  // 		validationSchema={editProfilShema}
+  // 		onSubmit={(values, actions) => {
+  // 			values.avatarURL = document.getElementById('fileItem').files[0];
+  // 			if (!values.avatarURL) {
+  // 				values.avatarURL = '';
+  // 			}
+  // 			dispatch(changeUserInfo(values));
+  // 			actions.resetForm();
+  // 		}}
+  // 	>
+  // 		<StyledForm>
+  // 			<Title>Edit profile</Title>
+  // 			<UserIcon />
+  // 			<LabelBox>
+  // 				<AvatarLabelStyle htmlFor='avatarURL'>
+  // 					<StyledFieldImg
+  // 						name='avatarURL'
+  // 						id='fileItem'
+  // 						placeholder=''
+  // 						type='file'
+  // 						accept='image/png, image/jpeg'
+  // 					/>
+  // 					<ErrorMsg name='avatarURL' component='span' />
+  // 				</AvatarLabelStyle>
 
   return (
     <Formik
       initialValues={{
         avatarURL: null,
-        login: name,
+        name: name,
         email: email,
         password: '',
       }}
       validationSchema={editProfilShema}
       onSubmit={async (values, actions) => {
-        handleSubmit();
+        handleSubmit(values, actions);
       }}
     >
       <StyledForm>
@@ -121,26 +168,25 @@ export const UserProfileForm = () => {
               onChange={handleFileChange}
             />
           </LabelStyle>
-
-          <label htmlFor="login">
-            <StyledField name="login" autocomplete="off" placeholder="login" />
-            <ErrorMessageStyle name="login" component="span" />
+          <label htmlFor="name">
+            <StyledField name="name" autocomplete="off" placeholder="login" />
+            <ErrorMsg name="name" component="span" />
           </label>
 
           <label htmlFor="email">
             <StyledField
               name="email"
-              autocomplete="off"
+              autoComplete="off"
               placeholder="email"
               type="email"
             />
-            <ErrorMessageStyle name="email" component="span" />
+            <ErrorMsg name="email" component="span" />
           </label>
 
           <label style={{ position: 'relative' }}>
             <StyledField
               type={showPassword ? 'text' : 'password'}
-              autocomplete="off"
+              autoComplete="off"
               name="password"
               placeholder="Enter password"
             />
@@ -153,7 +199,7 @@ export const UserProfileForm = () => {
               {showPassword ? 'Hide' : 'Show'}
             </IconHideShow>
 
-            <ErrorMessageStyle name="password" component="span" />
+            <ErrorMsg name="password" component="span" />
           </label>
         </LabelBox>
 

@@ -30,15 +30,3 @@ export const UserIcon = newSrc => {
     </BlockLogoStyles>
   );
 };
-
-export const UserIconAvatar = () => {
-  let src = data.user.dark;
-  const { user } = useAuth();
-  const { avatarURL } = user;
-
-  if (avatarURL) {
-    src = avatarURL;
-  }
-  const imgLogo = `<img src=${src} alt="UserIcon" width={68}/>`;
-  return imgLogo;
-};

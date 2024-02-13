@@ -1,6 +1,8 @@
+/** @format */
+
 import styled from 'styled-components';
 import Icon from 'components/Icon/Icon.jsx';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 
 export const ModalContainer = styled.div`
   position: relative;
@@ -37,6 +39,13 @@ export const IconClose = styled(Icon)`
   height: 16px;
   cursor: pointer;
   stroke: ${props => props.theme.modal.iconClose};
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
+  &:focus {
+    stroke: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 
 export const FormTitle = styled.h2`
@@ -179,9 +188,11 @@ export const Label = styled.label`
 export const AddButton = styled.button`
   background-color: ${props => props.theme.help.buttonBackground};
   color: ${props => props.theme.addcolum.buttonBackground};
-  padding: 10px 0 11px 0;
+  padding: 10px 0 10px 0;
   border: none;
+  border-radius: 8px;
   width: 100%;
+  min-height: 49px;
   border-radius: 8px solid rgba(17, 17, 17, 0.1);
   cursor: pointer;
   display: flex;
@@ -233,4 +244,24 @@ export const DataContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  position: absolute;
+  top: 0;
+  left: 40%;
+  opacity: 0.8;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
 `;

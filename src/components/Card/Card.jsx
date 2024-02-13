@@ -44,7 +44,7 @@ export const Card = ({ item, deleteCard, editCard }) => {
     return moment(time).date();
   };
 
-  const ptiority = GetColor(priority);
+  const priorityLevel = GetColor(priority);
 
   return (
     <>
@@ -52,7 +52,7 @@ export const Card = ({ item, deleteCard, editCard }) => {
         shouldForwardProp={prop => prop !== 'active' && prop !== 'color'}
       >
         <CardContainer>
-          <PriorityLine style={{ backgroundColor: ptiority.color }} />
+          <PriorityLine style={{ backgroundColor: priorityLevel.color }} />
           <CardContent>
             <TextContent>
               <Title>{name}</Title>
@@ -61,8 +61,8 @@ export const Card = ({ item, deleteCard, editCard }) => {
             <Info>
               <Priority>
                 <InfoTitle>Priority</InfoTitle>
-                <PriorityLevel color={ptiority.color}>
-                  {ptiority.name}
+                <PriorityLevel color={priorityLevel.color}>
+                  {priorityLevel.name}
                 </PriorityLevel>
               </Priority>
               <Dedline>
@@ -71,7 +71,7 @@ export const Card = ({ item, deleteCard, editCard }) => {
               </Dedline>
               <BellIcon
                 name="bell"
-                active={active(deadline) === active(moment()) && deadline}
+                active={active(deadline) <= active(moment()) && deadline}
               />
               <IconContainer>
                 <MoveIcon

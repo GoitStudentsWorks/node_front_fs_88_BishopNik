@@ -21,7 +21,7 @@ import {
 	LabelRadio,
 	IconWrapper,
 	AddIcon,
-	ErrMessageStyled,
+	ErrorMsg,
 } from './CreateNewBoardModal.styled';
 import { customStyles } from '../Modal.styled';
 import background from '../../../img/background.json';
@@ -86,18 +86,68 @@ export const CreateNewBoardModal = () => {
 				{({ values }) => (
 					<StyledForm autoComplete='off'>
 						<HeaderContainer>
-							<Title>{boardEdit ? 'Edit board' : 'Create board'}</Title>
+							<Title>{boardEdit ? 'Edit board' : 'New board'}</Title>
 							<CloseIcon name='close' onClick={closeModal} />
 						</HeaderContainer>
-
+						{/* 
+// <<<<<<< CreateNewBoardModal
+//             <LabelBox>
+//               <label>
+//                 <StyledField name="name" type="text" placeholder="Title" />
+//                 <ErrMessageStyled name="name" component="span" />
+//               </label>
+//             </LabelBox>
+//             <TitleIcons>Icons</TitleIcons>
+//             <StyleSheetManager shouldForwardProp={prop => prop !== 'isActive'}>
+//               <IconsContainer>
+//                 {Array.from({ length: 8 }, (_, iconIndex) => (
+//                   <LabelRadio key={`icons-${iconIndex}`}>
+//                     <Field
+//                       className="invisible"
+//                       type="radio"
+//                       name="icon"
+//                       value={iconIndex}
+//                     />
+//                     <TypesOfIcon
+//                       name={`type-${iconIndex}`}
+//                       isActive={Number(iconIndex) === Number(values.icon)}
+//                     />
+//                   </LabelRadio>
+//                 ))}
+//               </IconsContainer>
+//             </StyleSheetManager>
+//             <TitleBackground>Background</TitleBackground>
+//             <BackgroundContainer>
+//               {Array.from({ length: 15 }, (_, imageIndex) => (
+//                 <LabelRadio key={`background-${imageIndex}`}>
+//                   <Field
+//                     className="invisible"
+//                     type="radio"
+//                     name="background"
+//                     value={imageIndex}
+//                   />
+//                   <TypesOfBackground
+//                     src={background.mobile[`image${imageIndex}`]}
+//                   ></TypesOfBackground>
+//                 </LabelRadio>
+//               ))}
+//             </BackgroundContainer>
+// ======= */}
 						<LabelBox>
 							<label>
-								<StyledField name='name' type='text' placeholder='Title' />
-								<ErrMessageStyled name='name' component='span' />
+								<StyledField
+									name='name'
+									type='text'
+									placeholder='Title'
+									autoFocus
+								/>
+								<ErrorMsg name='name' component='span' />
 							</label>
 						</LabelBox>
 						<TitleIcons>Icons</TitleIcons>
-						<StyleSheetManager shouldForwardProp={prop => prop !== 'isActive'}>
+						<StyleSheetManager
+							shouldForwardProp={prop => prop !== 'isActive' && prop !== 'back'}
+						>
 							<IconsContainer>
 								{Array.from({ length: 8 }, (_, iconIndex) => (
 									<LabelRadio key={`icons-${iconIndex}`}>
@@ -114,23 +164,23 @@ export const CreateNewBoardModal = () => {
 									</LabelRadio>
 								))}
 							</IconsContainer>
+							<TitleBackground>Background</TitleBackground>
+							<BackgroundContainer>
+								{Array.from({ length: 15 }, (_, imageIndex) => (
+									<LabelRadio key={`background-${imageIndex}`}>
+										<Field
+											className='invisible'
+											type='radio'
+											name='background'
+											value={imageIndex}
+										/>
+										<TypesOfBackground
+											src={background.mobile[`image${imageIndex}`]}
+										></TypesOfBackground>
+									</LabelRadio>
+								))}
+							</BackgroundContainer>
 						</StyleSheetManager>
-						<TitleBackground>Background</TitleBackground>
-						<BackgroundContainer>
-							{Array.from({ length: 15 }, (_, imageIndex) => (
-								<LabelRadio key={`background-${imageIndex}`}>
-									<Field
-										className='invisible'
-										type='radio'
-										name='background'
-										value={imageIndex}
-									/>
-									<TypesOfBackground
-										src={background.mobile[`image${imageIndex}`]}
-									></TypesOfBackground>
-								</LabelRadio>
-							))}
-						</BackgroundContainer>
 
 						<Button type='submit'>
 							<IconWrapper>

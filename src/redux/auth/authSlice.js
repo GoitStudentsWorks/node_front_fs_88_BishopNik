@@ -1,10 +1,10 @@
 /** @format */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser	} from './operations';
+import { register, logIn, logOut, refreshUser, changeUserInfo, changeTheme	} from './operations';
 
 const initialState = {
-	user: {name: null, email: null, avatarURL: null, theme: "dark" },
+	user: {name: null, email: null, avatarURL: null, thema: null},
 	token: null,
 	isLoggedIn: false,
 	isRefreshing: false,
@@ -55,6 +55,13 @@ const authSlice = createSlice({
 				state.isRefreshing = false;
 				state.isLoggedIn = false;
 			})
+			.addCase(changeUserInfo.fulfilled, (state, { payload }) => {
+			state.user = payload.user;
+				state.token = payload.token;
+			})
+			.addCase(changeTheme.fulfilled, (state, { payload }) => {
+			state.user.thema = payload.user.thema
+		})
 	},
 });
 

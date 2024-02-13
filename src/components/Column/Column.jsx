@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 
 import {
 	Wrapper,
@@ -11,8 +11,9 @@ import {
 	List,
 	ListTasks,
 	ListTasksContainer,
+	battonStyle,
 } from './Column.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 
 import {
@@ -28,25 +29,34 @@ import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
+import { columnsSlice } from 'redux/columns/columnsSlice';
+import { editModalOpen } from 'redux/columns/selectors';
+import { AddColumnModal } from 'components/Modal';
 
-export const Column = ({ name, id, column }) => {
-	const [uniqueData, setUniqueData] = useState([]);
+export const Column = ({ columnData }) => {
+	const { name, _id } = columnData;
+	const isEditOpen = useSelector(editModalOpen);
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
 	const { allCards } = useCards();
 	const dispatch = useDispatch();
 	const { filter } = useContext(MainContext);
+	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
-		dispatch(fetchCardsByColumnId(id));
-	}, [dispatch, id]);
+		dispatch(fetchCardsByColumnId(_id));
+	}, [dispatch, _id]);
 
 	const handleDeleteColumn = columnId => {
 		dispatch(delColumn(columnId));
 	};
 
 	const deleteCard = id => {
-		dispatch(delCard(id));
+		dispatch(delCard({ id, _id }));
+	};
+
+	const toggleModal = flag => {
+		dispatch(columnsSlice.actions.setEditModalOpen(flag));
 	};
 
 	const editCard = data => {
@@ -58,19 +68,24 @@ export const Column = ({ name, id, column }) => {
 		setCardForEditing(null);
 		setIsOpen(false);
 	};
-	useEffect(() => {
-		const uniqueItems = Array.from(new Set(allCards.map(item => item._id))).map(id =>
-			allCards.find(item => item._id === id)
-		);
-		setUniqueData(uniqueItems);
-	}, [allCards]);
-	const cardForColumn = uniqueData?.filter(card => {
-		if (filter === 'all') {
-			return card.columnId === id;
-		} else {
-			return card.columnId === id && card.priority === filter;
+
+	const memoizedCards = useMemo(() => {
+		if (_id && _id in allCards) {
+			const cardForColumn = allCards[_id]?.filter(card => {
+				if (filter === 'all') {
+					return card.columnId === _id;
+				} else {
+					return card.columnId === _id && card.priority === filter;
+				}
+			});
+			return cardForColumn;
 		}
-	});
+		return [];
+	}, [_id, allCards, filter]);
+
+	useEffect(() => {
+		setCards(memoizedCards);
+	}, [memoizedCards]);
 
 	return (
 		<Wrapper>
@@ -78,13 +93,19 @@ export const Column = ({ name, id, column }) => {
 				<Title>
 					{name}
 					<IconsContainer>
-						<EditColumn type='button' width='16' height='16' name='edit' />
+						<EditColumn
+							type='button'
+							width='16'
+							height='16'
+							name='edit'
+							onClick={() => toggleModal(true)}
+						/>
 
 						<DelColumn
 							type='button'
 							width='16'
 							height='16'
-							onClick={() => handleDeleteColumn(id)}
+							onClick={() => handleDeleteColumn(_id)}
 							name='delete'
 						/>
 					</IconsContainer>
@@ -92,7 +113,7 @@ export const Column = ({ name, id, column }) => {
 			</List>
 			<ListTasksContainer>
 				<ListTasks>
-					{cardForColumn
+					{cards
 						?.map(item => (
 							<Card
 								key={item._id}
@@ -108,13 +129,19 @@ export const Column = ({ name, id, column }) => {
 				<IconWrapper>
 					<AddIcon name='add-board' />
 				</IconWrapper>
-				<ButtonText>{!cardForColumn?.length ? 'Add card' : 'Add another card'}</ButtonText>
+				<ButtonText>{!cards?.length ? 'Add card' : 'Add another card'}</ButtonText>
 			</Button>
 			<AddCardModal
 				isOpen={isOpen}
 				onRequestClose={onRequestClose}
-				columnId={column._id}
+				columnId={_id}
 				cardForEditing={cardForEditing}
+			/>
+			<AddColumnModal
+				isOpen={isEditOpen}
+				setIsOpen={toggleModal}
+				columnId={_id}
+				columnForEditing={columnData}
 			/>
 		</Wrapper>
 	);
