@@ -42,14 +42,16 @@ export const delCard = createAsyncThunk(
 	}
 );
 
-export const updateCard = createAsyncThunk('card/updateCard', async (updCard, thunkAPI) => {
-	try {
-		const { id, ...rest } = updCard;
-		const res = await axios.patch(`/card/${id}`, rest);
-		toastSuccess('Update Card');
-		return res.data;
-	} catch ({ response }) {
-		toastError(response?.data?.message);
-		return thunkAPI.rejectWithValue(response?.data?.message);
+export const updateCard = createAsyncThunk(
+	'card/updateCard',
+	async ({ id, columnId, name, oldColumnId }, thunkAPI) => {
+		try {
+			const { data } = await axios.patch(`/card/${id}`, { columnId, name });
+			toastSuccess('Update Card');
+			return { data, oldColumnId };
+		} catch ({ response }) {
+			toastError(response?.data?.message);
+			return thunkAPI.rejectWithValue(response?.data?.message);
+		}
 	}
-});
+);
