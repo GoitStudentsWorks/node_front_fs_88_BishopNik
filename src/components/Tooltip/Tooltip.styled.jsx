@@ -8,7 +8,7 @@ export const TooltipContent = styled.div`
 	outline: none;
 	background: ${props => props.theme.popup.background};
 	min-width: 135px;
-	height: 86px;
+	height: auto;
 	margin: 0 auto;
 	padding: 15px;
 	z-index: 1000;

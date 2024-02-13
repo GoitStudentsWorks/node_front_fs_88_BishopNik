@@ -33,6 +33,7 @@ const ThemePicker = () => {
 	const handleTheme = (property, name)=> {
 		setTheme(property);
 		dispatch(changeTheme(name))
+		setIsShownPopup(false);
 	};
 
 	const handlePopup = () => setIsShownPopup(!isShownPopup);
@@ -41,7 +42,6 @@ const ThemePicker = () => {
 		<Wrapper ref={themeRef} onClick={handlePopup}>
 			<Text>Theme</Text>
 			<IconThemeMenu name='chevron-down' />
-			{/* isOpen={isShownPopup}  */}
 			{isShownPopup && (
 				<PopupBlock>
 					{theme.map(({ name, property }) => (
