@@ -4,7 +4,6 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 
-
 // export const WrapperBoardContainer = styled.div`
 // 	padding: 0px 24px;
 // 	display: flex;
@@ -70,7 +69,13 @@ export const StyledIconAdd = styled.span`
   height: 28px;
   margin-right: 8px;
   background-color: ${props => props.theme.addcolum.plusBackground};
-  border-radius: 8px solid rgba(17, 17, 17, 0.1);
+  border-radius: 6px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.sidebar.addButtonHover};
+  }
 `;
 
 export const SvagAddColumn = styled(Icon)`
