@@ -15,8 +15,20 @@ const cardsSlice = createSlice({
 	initialState,
 	reducers: {
 		resetError: state => {
-			state.error = null;
-			state.createCardModal = null;
+			return {
+				...state,
+				error: null,
+				createCardModal: null,
+			};
+		},
+		updateStateAfterDeleteColumn: (state, { payload }) => {
+			const { id } = payload;
+			const { [id]: deletedColumn, ...restColumns } = state.items;
+
+			return {
+				...state,
+				items: restColumns,
+			};
 		},
 	},
 	extraReducers: builder => {
@@ -94,4 +106,4 @@ const cardsSlice = createSlice({
 
 export const cardsReducer = cardsSlice.reducer;
 
-export const { resetError } = cardsSlice.actions;
+export const { resetError, updateStateAfterDeleteColumn } = cardsSlice.actions;

@@ -44,12 +44,12 @@ export const CreateNewBoardModal = () => {
 
 	// const boardForEditing = boardId && boards.find(item => item.id === boardId);
 
-	const closeModal = () => {
-		resetStatus();
-		// dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
-	};
+	// const closeModal = () => {
+	// 	resetStatus();
+	// 	// dispatch(boardsSlice.actions.openCreateEditBoardModal({ isOpen: false }));
+	// };
 
-	const resetStatus = useCallback(() => {
+	const closeModal = useCallback(() => {
 		setIsOpenAddBoard(false);
 		setBoardEdit(null);
 	}, [setIsOpenAddBoard, setBoardEdit]);
@@ -57,10 +57,10 @@ export const CreateNewBoardModal = () => {
 	useEffect(() => {
 		if (!isOpen) {
 			if (boardId) navigate(`/todos/${boardId}`);
-			resetStatus();
+			closeModal();
 			dispatch(resetError());
 		}
-	}, [boardId, dispatch, isOpen, navigate, resetStatus, setIsOpenAddBoard]);
+	}, [boardId, dispatch, isOpen, navigate, closeModal, setIsOpenAddBoard]);
 
 	const initialValues = boardEdit
 		? allBoards?.find(b => b._id === boardEdit)
@@ -74,7 +74,7 @@ export const CreateNewBoardModal = () => {
 		<ModalWindow isOpen={isOpenAddBoard} onRequestClose={closeModal} style={customStyles}>
 			<Formik
 				initialValues={initialValues}
-				onSubmit={(board, actions) => {
+				onSubmit={board => {
 					if (boardEdit) {
 						dispatch(editBoard(board));
 					} else {

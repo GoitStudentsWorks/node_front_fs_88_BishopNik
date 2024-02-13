@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext /*useEffect*/ } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
 	BoardContainer,
 	BoardNameContainer,
@@ -11,34 +11,42 @@ import {
 	DelIcon,
 	BoardLine,
 } from './BoardItem.styled';
-import { Link, /* useNavigate, */ useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { delBoard, getBoardById } from 'redux/boards/operations';
+import { updateStateAfterDeleteBoard } from 'redux/columns/columnsSlice';
+import { updateStateAfterDeleteColumn } from 'redux/cards/cardsSlice';
 import { StyleSheetManager } from 'styled-components';
-// import { useBoards } from 'hooks';
+import { useBoards } from 'hooks';
 import { MainContext } from 'components/Helpers';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
 	const dispatch = useDispatch();
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 	const { board } = useParams();
-	// const { allBoards } = useBoards();
+	const { allBoards } = useBoards();
 	const { setIsOpenAddBoard, setBoardEdit } = useContext(MainContext);
 
 	// useEffect(() => {
-	// 	navigate(`/todos/${allBoards[0]._id}`);
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [allBoards]);
+	// 	if (!board) navigate(`/todos/${allBoards[0]._id}`);
+	// }, [allBoards, board, navigate]);
 
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));
 	};
+
 	const handlerEditBoard = boardId => {
 		setIsOpenAddBoard(true);
 		setBoardEdit(boardId);
 	};
+
 	const handlerDelBoard = boardId => {
-		dispatch(delBoard(boardId));
+		// dispatch(delBoard(boardId));
+		dispatch(delBoard(boardId)).then(() => {
+			dispatch(updateStateAfterDeleteBoard({ id: boardId }));
+			dispatch(updateStateAfterDeleteColumn({ id: boardId }));
+		});
+		navigate(`/todos/${allBoards[0]._id}`);
 	};
 
 	const status = board === boardId;
