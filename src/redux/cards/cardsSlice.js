@@ -23,6 +23,11 @@ const cardsSlice = createSlice({
 			const { [id]: deletedColumn, ...restColumns } = state.items;
 			state.items = restColumns;
 		},
+		// updateStateAfterDeleteBoardColumn: (state, { payload }) => {
+		// 	const { id } = payload;
+		// 	const cardsToDelete = selectCardsForBoard();
+		// 	state.items = state.items.filter(item => !cardsToDelete.includes(item));
+		// },
 	},
 	extraReducers: builder => {
 		builder
@@ -77,7 +82,6 @@ const cardsSlice = createSlice({
 				state.error = null;
 				state.isLoading = false;
 				const { cardId, columnId } = payload;
-				console.log('🚀 ~ .addCase ~ columnId:', payload);
 
 				state.items[columnId] = (state.items[columnId] || []).filter(
 					item => item._id !== cardId

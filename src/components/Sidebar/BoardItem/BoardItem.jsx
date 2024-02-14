@@ -17,7 +17,7 @@ import { delBoard, getBoardById } from 'redux/boards/operations';
 import { updateStateAfterDeleteBoard } from 'redux/columns/columnsSlice';
 import { updateStateAfterDeleteColumn } from 'redux/cards/cardsSlice';
 import { StyleSheetManager } from 'styled-components';
-import { useBoards } from 'hooks';
+import { useBoards, useColumns } from 'hooks';
 import { MainContext } from 'components/Helpers';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
@@ -25,6 +25,7 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 	const navigate = useNavigate();
 	const { board } = useParams();
 	const { allBoards, statusLoading } = useBoards();
+	const { allColumns } = useColumns();
 	const { setIsOpenAddBoard, setBoardEdit } = useContext(MainContext);
 
 	// useEffect(() => {
@@ -44,9 +45,13 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 	const handlerDelBoard = boardId => {
 		if (statusLoading) return;
 		// dispatch(delBoard(boardId));
+		const deletedColumns = allColumns.filter(column => column.boardId === boardId);
+		deletedColumns.forEach(column => {
+			dispatch(updateStateAfterDeleteColumn({ id: column._id }));
+		});
+
 		dispatch(delBoard(boardId)).then(() => {
 			dispatch(updateStateAfterDeleteBoard({ id: boardId }));
-			dispatch(updateStateAfterDeleteColumn({ id: boardId }));
 		});
 		navigate(`/todos/${allBoards[0]._id}`);
 	};
