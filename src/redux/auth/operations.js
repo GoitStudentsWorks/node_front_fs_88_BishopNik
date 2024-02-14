@@ -94,7 +94,7 @@ export const changeUserInfo = createAsyncThunk(
 			formData.append('theme', theme);
 			if (avatarURL) {
 				const res = await axios.patch(`users/update-user`, formData);
-				toastSuccess(`Succes update`);
+				toastSuccess(`Success update`);
 				return res.data;
 			} else {
 				const res = await axios.patch(`users/update-user`, {
@@ -103,7 +103,7 @@ export const changeUserInfo = createAsyncThunk(
 					name,
 					theme,
 				});
-				toastSuccess(`Succes update`);
+				toastSuccess(`Success update`);
 				return res.data;
 			}
 		} catch ({ response }) {
