@@ -154,7 +154,7 @@ export const ButtonText = styled.span`
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
-  position: absolute;
+  position: relative;
   top: 0;
   left: 40%;
   opacity: 0.8;
