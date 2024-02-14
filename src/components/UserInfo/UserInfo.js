@@ -29,7 +29,7 @@ export const UserInfo = () => {
 
   return (
     <div>
-      <UserInfoWrapper>
+      <UserInfoWrapper onClick={stateСhangeModal}>
         <UserName>{name}</UserName>
         <UserAvatar src={avatarURL || setDefaultAvatar()} />
       </UserInfoWrapper>
