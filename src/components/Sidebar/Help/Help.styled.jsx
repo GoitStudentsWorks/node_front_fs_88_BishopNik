@@ -6,18 +6,14 @@ export const HelpContainer = styled.div`
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
+  padding: 14px;
   margin-top: auto;
   margin-bottom: 24px;
   border: none;
   background-color: ${props => props.theme.help.background};
   border-radius: 10px;
-
-  @media screen and (min-width: 375px) {
-    width: 197px;
-    height: 238px;
-  }
+  width: 197px;
+  height: 238px;
 
   @media screen and (min-width: 768px) {
     width: 212px;
@@ -29,16 +25,23 @@ export const HelpContainer = styled.div`
 export const HelpImgDiv = styled.div`
   width: 54px;
   height: 78px;
+  margin-bottom: 14px;
 `;
 
 export const HelpText = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   letter-spacing: -0.02em;
-  line-height: 1.4;
+  line-height: 1.3;
   cursor: default;
   color: ${props => props.theme.help.textMain};
   margin: 0;
+  margin-bottom: 18px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.4;
+  }
 `;
 
 export const HelpSpanText = styled.span`
