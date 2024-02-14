@@ -24,7 +24,7 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { board } = useParams();
-	const { allBoards } = useBoards();
+	const { allBoards, statusLoading } = useBoards();
 	const { setIsOpenAddBoard, setBoardEdit } = useContext(MainContext);
 
 	// useEffect(() => {
@@ -36,11 +36,13 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 	};
 
 	const handlerEditBoard = boardId => {
+		if (statusLoading) return;
 		setIsOpenAddBoard(true);
 		setBoardEdit(boardId);
 	};
 
 	const handlerDelBoard = boardId => {
+		if (statusLoading) return;
 		// dispatch(delBoard(boardId));
 		dispatch(delBoard(boardId)).then(() => {
 			dispatch(updateStateAfterDeleteBoard({ id: boardId }));

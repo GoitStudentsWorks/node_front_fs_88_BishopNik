@@ -32,7 +32,7 @@ const columnsSlice = createSlice({
 		// },
 		updateStateAfterDeleteBoard: (state, { payload }) => {
 			const { id } = payload;
-			state.items = state.items.filter(item => item.boarderId !== id);
+			state.items = state.items.filter(item => item.boardId !== id);
 		},
 	},
 	extraReducers: builder => {
