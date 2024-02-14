@@ -43,7 +43,6 @@ export const Column = ({ columnData }) => {
 	const dispatch = useDispatch();
 	const { filter, setIsOpenAddColumn, setColumnEdit } = useContext(MainContext);
 	const [cards, setCards] = useState([]);
-
 	useEffect(() => {
 		dispatch(fetchCardsByColumnId(_id));
 	}, [dispatch, _id]);
@@ -127,7 +126,7 @@ export const Column = ({ columnData }) => {
 							<Card
 								key={item._id}
 								item={item}
-								deleteCard={() => deleteCard(item?._id)}
+								deleteCard={() => deleteCard({ id: item?._id, _id })}
 								editCard={() => editCard(item)}
 							/>
 						))
