@@ -10,10 +10,28 @@ export const AvatarLabelStyle = styled.label`
   opacity: 0;
 `;
 
-export const StyledFieldImg = styled(Field)`
-  display: flex;
+export const ImgStyled = styled.img`
+  /* display: flex; */
+  width: 68px;
+  height: 68px;
+  border-radius: 8px;
+`;
+
+export const LogoStyles = styled.div`
+  position: absolute;
+  bottom: -12px;
   width: 24px;
   height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.theme.modal.buttonBackground};
+  border-radius: 8px;
+
+  &:hover,
+  :focus {
+    background-color: ${props => props.theme.sidebar.hoverLogout};
+  }
 `;
 
 export const StyledForm = styled(Form)`
@@ -104,28 +122,27 @@ export const ButtonStyle = styled.button`
 `;
 
 
-export const LogoStyles = styled.div`
-  position: absolute;
-  bottom: -12px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => props.theme.modal.buttonBackground};
-
-  &:hover,
-  :focus {
-    background-color: ${props => props.theme.sidebar.hoverLogout};
-  }
+export const LabelStyle = styled.label`
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 68px;
+  height: 68px;
+  background: silver;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  cursor: pointer;
 `;
 
 export const BlockLogoStyles = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: 24px;
-  margin-bottom: -12px;
+  /* margin-top: 24px;
+  margin-bottom: -12px; */
 `;
 
 export const ButtonIcon = styled(Icon)`

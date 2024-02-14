@@ -55,17 +55,16 @@ export const addCardValidationSchema = Yup.object().shape({
 });
 
 export const editProfilShema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too short!')
-    .max(32, 'Too Long!')
-    .required('This field is required!'),
+  name: Yup.string().min(2, 'Too short!').max(32, 'Too Long!'),
+  // .required('This field is required!'),
 
   email: Yup.string()
     .matches(emailRegex, 'Invalid email')
-    .email('Invalid email')
-    .required('email is required'),
+    .email('Invalid email'),
+  // .required('email is required'),
 
-  password: Yup.string().required(`Please enter the password `)
+  password: Yup.string()
+    // .required(`Please enter the password `)
     .matches(passwordRegex, 'Invalid password')
     .min(2, 'Too Short!')
     .max(64, 'Password should be of max 64 characters length'),
