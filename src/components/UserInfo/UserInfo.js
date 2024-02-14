@@ -31,10 +31,7 @@ export const UserInfo = () => {
     <div>
       <UserInfoWrapper>
         <UserName>{name}</UserName>
-        <UserAvatar
-          src={avatarURL || setDefaultAvatar()}
-          onClick={stateСhangeModal}
-        />
+        <UserAvatar src={avatarURL || setDefaultAvatar()} />
       </UserInfoWrapper>
       <ModalEditProfile
         stateСhangeModal={stateСhangeModal}

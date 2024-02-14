@@ -26,7 +26,7 @@ import { useAuth } from 'hooks';
 import { changeUserInfo } from 'redux/auth/operations';
 import data from 'img/list_img.json';
 
-export const UserProfileForm = () => {
+export const UserProfileForm = ({ stateСhangeModal }) => {
   const [avatar, setAvatar] = useState(null);
   const [userAvatarURL, setUserAvatarURL] = useState(null);
   const dispatch = useDispatch();
@@ -38,6 +38,7 @@ export const UserProfileForm = () => {
   };
 
   console.log(user);
+  console.log(activeUserTheme);
 
   useEffect(() => {
     if (avatar) {
@@ -68,24 +69,28 @@ export const UserProfileForm = () => {
   };
   const handleSubmit = (values, actions) => {
     values.avatarURL = avatar || userAvatarURL || user.avatarURL;
-    if (!values.avatarURL) {
-      values.avatarURL = '';
-    }
-    if (!name || name === '' || name === values.name) {
-      delete values.name;
-    }
-    if (!email || email === '' || email === values.email) {
-      delete values.email;
-    }
-    if (!avatarURL || avatarURL === '' || avatarURL === values.avatarURL) {
-      delete values.avatarURL;
-    }
-    if (!values.password || values.password === '') {
-      delete values.password;
-    }
+    // if (!values.avatarURL) {
+    //   values.avatarURL = '';
+    // }
+    // if (!name || name === '' || name === values.name) {
+    //   delete values.name;
+    // }
+    // if (!email || email === '' || email === values.email) {
+    //   delete values.email;
+    // }
+    // if (!avatarURL || avatarURL === '' || avatarURL === values.avatarURL) {
+    //   delete values.avatarURL;
+    // }
+    // if (!values.password || values.password === '') {
+    //   delete values.password;
+    // }
+    // values.thema = activeUserTheme;
+    // values.theme = activeUserTheme;
 
     console.log(values);
     dispatch(changeUserInfo(values));
+    stateСhangeModal();
+
     actions.resetForm({ password: '' });
   };
 
@@ -145,6 +150,7 @@ export const UserProfileForm = () => {
               autoComplete="off"
               placeholder="email"
               type="email"
+              disabled
             />
             <ErrorMsg name="email" component="span" />
           </label>
@@ -168,7 +174,6 @@ export const UserProfileForm = () => {
             <ErrorMsg name="password" component="span" />
           </label>
         </LabelBox>
-
         <ButtonStyle type="submit">Send</ButtonStyle>
       </StyledForm>
     </Formik>

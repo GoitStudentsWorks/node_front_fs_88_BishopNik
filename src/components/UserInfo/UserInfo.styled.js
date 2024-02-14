@@ -5,6 +5,7 @@ export const UserInfoWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 `;
 
 export const UserName = styled.span`
@@ -13,13 +14,11 @@ export const UserName = styled.span`
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
-  cursor: default;
 `;
 
 export const UserAvatar = styled.img`
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  cursor: pointer;
   object-fit: cover;
 `;

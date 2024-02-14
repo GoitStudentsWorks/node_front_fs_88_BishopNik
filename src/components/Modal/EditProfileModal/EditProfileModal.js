@@ -10,16 +10,23 @@ import ModalWindow from '../Modal';
 import { closeIconStyles } from './EditProfileModal.styled';
 
 export const ModalEditProfile = ({ isModalState, stateСhangeModal }) => {
-	return (
-		<ModalWindow
-			isOpen={isModalState}
-			onRequestClose={stateСhangeModal}
-			style={customStyles}
-			contentLabel='onRequestClose'
-		>
-			<FiltersIcon name='close' onClick={stateСhangeModal} style={closeIconStyles} />
+  return (
+    <ModalWindow
+      isOpen={isModalState}
+      onRequestClose={stateСhangeModal}
+      style={customStyles}
+      contentLabel="onRequestClose"
+    >
+      <FiltersIcon
+        name="close"
+        onClick={stateСhangeModal}
+        style={closeIconStyles}
+      />
 
-			<UserProfileForm />
-		</ModalWindow>
-	);
+      <UserProfileForm
+        stateСhangeModal={stateСhangeModal}
+        isModalState={isModalState}
+      />
+    </ModalWindow>
+  );
 };
