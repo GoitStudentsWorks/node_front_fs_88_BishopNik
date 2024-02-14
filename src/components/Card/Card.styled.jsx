@@ -5,7 +5,7 @@ import Icon from '../Icon';
 
 export const CardContainer = styled.div`
   width: 334px;
-  max-width: 98vw;
+  max-width: 95vw;
   height: 154px;
   display: flex;
   flex-direction: row;
@@ -19,7 +19,7 @@ export const PriorityLine = styled.div`
 `;
 
 export const CardContent = styled.div`
-  width: 331px;
+  width: 330px;
   padding: 14px 20px 14px 20px;
   display: flex;
   flex-direction: column;
