@@ -55,22 +55,35 @@ const columnsSlice = createSlice({
 			})
 			.addCase(addColumn.fulfilled, (state, { payload }) => {
 				state.error = null;
+				state.isLoading = false;
 				state.items.push(payload);
 				state.createEditColumnModal.isOpen = false;
 				state.createEditColumnModal.boardId = payload._id;
 			})
 			.addCase(addColumn.rejected, (state, { payload }) => {
 				state.error = payload;
+				state.isLoading = false;
+			})
+			.addCase(delColumn.pending, (state, { payload }) => {
+				state.error = null;
+				state.isLoading = true;
 			})
 			.addCase(delColumn.fulfilled, (state, { payload }) => {
 				state.error = null;
+				state.isLoading = false;
 				state.items = state.items.filter(item => item._id !== payload);
 			})
 			.addCase(delColumn.rejected, (state, { payload }) => {
 				state.error = payload;
+				state.isLoading = false;
+			})
+			.addCase(updateColumn.pending, (state, { payload }) => {
+				state.error = null;
+				state.isLoading = true;
 			})
 			.addCase(updateColumn.fulfilled, (state, { payload }) => {
 				state.error = null;
+				state.isLoading = false;
 				state.items = state.items.map(item => {
 					if (item._id === payload._id) return payload;
 					return item;
@@ -81,6 +94,7 @@ const columnsSlice = createSlice({
 			})
 			.addCase(updateColumn.rejected, (state, { payload }) => {
 				state.error = payload;
+				state.isLoading = false;
 			});
 	},
 });
