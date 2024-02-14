@@ -15,20 +15,13 @@ const cardsSlice = createSlice({
 	initialState,
 	reducers: {
 		resetError: state => {
-			return {
-				...state,
-				error: null,
-				createCardModal: null,
-			};
+			state.error = null;
+			state.createCardModal = null;
 		},
 		updateStateAfterDeleteColumn: (state, { payload }) => {
 			const { id } = payload;
 			const { [id]: deletedColumn, ...restColumns } = state.items;
-
-			return {
-				...state,
-				items: restColumns,
-			};
+			state.items = restColumns;
 		},
 	},
 	extraReducers: builder => {
@@ -72,6 +65,7 @@ const cardsSlice = createSlice({
 			})
 			.addCase(delCard.fulfilled, (state, { payload }) => {
 				state.error = null;
+				state.isLoading = false;
 				const { cardId, columnId } = payload;
 				state.items[columnId] = state.items[columnId].filter(item => item._id !== cardId);
 
@@ -82,18 +76,29 @@ const cardsSlice = createSlice({
 			})
 			.addCase(delCard.rejected, (state, { payload }) => {
 				state.error = payload;
+				state.isLoading = false;
+			})
+			.addCase(updateCard.pending, (state, { payload }) => {
+				state.error = null;
+				state.isLoading = true;
 			})
 			.addCase(updateCard.fulfilled, (state, { payload }) => {
 				state.error = null;
 				state.createCardModal = false;
+				state.isLoading = false;
 				const { data, oldColumnId } = payload;
 				const { columnId: newColumnId, _id } = data;
 				if (oldColumnId !== newColumnId) {
-					state.items[oldColumnId] = state.items[oldColumnId].filter(
+					state.items[oldColumnId] = state.items[oldColumnId]?.filter(
 						item => item._id !== _id
 					);
+					state.items[newColumnId].push(data);
+				} else {
+					state.items[newColumnId] = state.items[newColumnId].map(item => {
+						if (item._id === _id) return data;
+						return item;
+					});
 				}
-				state.items[newColumnId].push(data);
 
 				// state.items = state.items.map(item => {
 				// 	if (item._id === payload._id) return payload;

@@ -26,7 +26,6 @@ import {
 import MyDatePicker from 'components/DatePicker';
 import { addCardValidationSchema } from 'components/Helpers';
 import { useDispatch } from 'react-redux';
-import { resetError } from 'redux/cards/cardsSlice';
 import { addCard, updateCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
 
@@ -38,7 +37,14 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 
 	const handleFormSubmit = values => {
 		if (cardForEditing) {
-			dispatch(updateCard({ ...values, columnId, id: cardForEditing?._id }));
+			dispatch(
+				updateCard({
+					...values,
+					columnId,
+					id: cardForEditing?._id,
+					oldColumnId: cardForEditing?.columnId,
+				})
+			);
 		} else {
 			dispatch(addCard({ ...values, columnId }));
 		}
@@ -46,7 +52,6 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 
 	useEffect(() => {
 		if (statusCreateCard === false && isOpen) {
-			dispatch(resetError());
 			onRequestClose();
 		}
 	}, [dispatch, isOpen, onRequestClose, statusCreateCard]);

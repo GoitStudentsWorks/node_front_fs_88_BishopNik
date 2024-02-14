@@ -11,8 +11,8 @@ const initialState = {
 		isOpen: true,
 		columnId: null,
 	},
-	createColumnModalOpen: false,
-	editColumnModalOpen: false,
+	// createColumnModalOpen: false,
+	// editColumnModalOpen: false,
 };
 
 const columnsSlice = createSlice({
@@ -87,5 +87,4 @@ const columnsSlice = createSlice({
 
 export const columnsReducer = columnsSlice.reducer;
 
-export const { resetError, updateStateAfterDeleteBoard, setCreateModalOpen, setEditModalOpen } =
-	columnsSlice.actions;
+export const { resetError, updateStateAfterDeleteBoard } = columnsSlice.actions;

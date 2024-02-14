@@ -26,8 +26,8 @@ import { AddCardModal } from 'components/Modal';
 import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
-import { delCard } from 'redux/cards/operations';
-import { useCards } from 'hooks';
+// import { delCard } from 'redux/cards/operations';
+import { useCards, useCardEditing } from 'hooks';
 // import { setEditModalOpen } from 'redux/columns/columnsSlice';
 // import { editModalOpen } from 'redux/columns/selectors';
 // import { AddColumnModal } from 'components/Modal';
@@ -35,8 +35,10 @@ import { useCards } from 'hooks';
 export const Column = ({ columnData }) => {
 	const { name, _id } = columnData;
 	// const isEditOpen = useSelector(editModalOpen);
-	const [isOpen, setIsOpen] = useState(false);
-	const [cardForEditing, setCardForEditing] = useState(null);
+	const { isOpen, setIsOpen, cardForEditing, editCard, onRequestClose, deleteCard } =
+		useCardEditing();
+	// const [isOpen, setIsOpen] = useState(false);
+	// const [cardForEditing, setCardForEditing] = useState(null);
 	const { allCards } = useCards();
 	const dispatch = useDispatch();
 	const { filter, setIsOpenAddColumn, setColumnEdit } = useContext(MainContext);
@@ -57,23 +59,23 @@ export const Column = ({ columnData }) => {
 		setColumnEdit(columnData);
 	};
 
-	const deleteCard = id => {
-		dispatch(delCard({ id, _id }));
-	};
+	// const deleteCard = id => {
+	// 	dispatch(delCard({ id, _id }));
+	// };
 
 	// const toggleModal = flag => {
 	// 	dispatch(setEditModalOpen(flag));
 	// };
 
-	const editCard = data => {
-		setCardForEditing(data);
-		setIsOpen(true);
-	};
+	// const editCard = data => {
+	// 	setCardForEditing(data);
+	// 	setIsOpen(true);
+	// };
 
-	const onRequestClose = () => {
-		setCardForEditing(null);
-		setIsOpen(false);
-	};
+	// const onRequestClose = () => {
+	// 	setCardForEditing(null);
+	// 	setIsOpen(false);
+	// };
 
 	const memoizedCards = useMemo(() => {
 		if (_id && _id in allCards) {
