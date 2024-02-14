@@ -33,26 +33,21 @@ import { useCards, useCardEditing } from 'hooks';
 // import { AddColumnModal } from 'components/Modal';
 
 export const Column = ({ columnData }) => {
-  const { name, _id } = columnData;
-  // const isEditOpen = useSelector(editModalOpen);
-  const {
-    isOpen,
-    setIsOpen,
-    cardForEditing,
-    editCard,
-    onRequestClose,
-    deleteCard,
-  } = useCardEditing();
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [cardForEditing, setCardForEditing] = useState(null);
-  const { allCards } = useCards();
-  const dispatch = useDispatch();
-  const { filter, setIsOpenAddColumn, setColumnEdit } = useContext(MainContext);
-  const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    dispatch(fetchCardsByColumnId(_id));
-  }, [dispatch, _id]);
+	const { name, _id } = columnData;
+	// const isEditOpen = useSelector(editModalOpen);
+	const { isOpen, setIsOpen, cardForEditing, editCard, onRequestClose, deleteCard } =
+		useCardEditing();
+	// const [isOpen, setIsOpen] = useState(false);
+	// const [cardForEditing, setCardForEditing] = useState(null);
+	const { allCards } = useCards();
+	const dispatch = useDispatch();
+	const { filter, setIsOpenAddColumn, setColumnEdit } = useContext(MainContext);
+	const [cards, setCards] = useState([]);
+  
+	useEffect(() => {
+		dispatch(fetchCardsByColumnId(_id));
+	}, [dispatch, _id]);
 
   const handleDeleteColumn = columnId => {
     dispatch(delColumn(columnId)).then(() => {
@@ -115,7 +110,6 @@ export const Column = ({ columnData }) => {
               onClick={handleEditColumn}
               // onClick={() => toggleModal(true)}
             />
-
             <DelColumn
               type="button"
               width="16"
@@ -133,7 +127,7 @@ export const Column = ({ columnData }) => {
               <Card
                 key={item._id}
                 item={item}
-                deleteCard={() => deleteCard(item?._id)}
+                deleteCard={() => deleteCard({ id: item?._id, _id })}
                 editCard={() => editCard(item)}
               />
             ))
@@ -159,6 +153,44 @@ export const Column = ({ columnData }) => {
         cardForEditing={cardForEditing}
       />
       {/* <AddColumnModal
+
+						<DelColumn
+							type='button'
+							width='16'
+							height='16'
+							onClick={() => handleDeleteColumn(_id)}
+							name='delete'
+						/>
+					</IconsContainer>
+				</Title>
+			</List>
+			<ListTasksContainer>
+				<ListTasks>
+					{cards
+						?.map(item => (
+							<Card
+								key={item._id}
+								item={item}
+								deleteCard={() => deleteCard({ id: item?._id, _id })}
+								editCard={() => editCard(item)}
+							/>
+						))
+						.reverse()}
+				</ListTasks>
+			</ListTasksContainer>
+			<Button style={{ width: '334px' }} type='button' onClick={() => setIsOpen(true)}>
+				<IconWrapper>
+					<AddIcon name='add-board' />
+				</IconWrapper>
+				<ButtonText>{!cards?.length ? 'Add card' : 'Add another card'}</ButtonText>
+			</Button>
+			<AddCardModal
+				isOpen={isOpen}
+				onRequestClose={onRequestClose}
+				columnId={_id}
+				cardForEditing={cardForEditing}
+			/>
+			{/* <AddColumnModal
 				isOpen={isEditOpen}
 				setIsOpen={toggleModal}
 				columnId={_id}

@@ -17,6 +17,7 @@ export const useCardEditing = () => {
 	}, [dispatch, statusCard]);
 
 	const editCard = useCallback(data => {
+		if (statusCard) return;
 		setIsOpen(true);
 		setCardForEditing(data);
 	}, []);
@@ -27,7 +28,8 @@ export const useCardEditing = () => {
 	}, []);
 
 	const deleteCard = useCallback(
-		(id, _id) => {
+		({ id, _id }) => {
+			if (statusCard) return;
 			dispatch(delCard({ id, _id }));
 		},
 		[dispatch]

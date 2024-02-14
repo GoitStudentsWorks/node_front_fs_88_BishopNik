@@ -103,6 +103,8 @@ export const IconHideShow = styled(Icon)`
 export const Button = styled.button`
   display: flex;
   width: 100%;
+   outline:none;
+  border:none;
   padding: 14px;
   justify-content: center;
   align-items: center;
@@ -123,6 +125,7 @@ export const ButtonGoogle = styled.button`
   width: 100%;
   outline:none;
   padding: 0px;
+  border: none;
   justify-content: start;
   align-items: center;
   border-radius: 8px;
@@ -154,6 +157,7 @@ export const IconContainer = styled.div`
   width: 49px;
   outline:none;
   height: 49px;
+  border:none;
   display: flex;
   position: relative;
 `;
@@ -168,7 +172,7 @@ export const GoogleIcon = styled(Icon)`
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
-  position: absolute;
+  position: relative;
   top: 0;
   left: 40%;
   opacity: 0.8;
