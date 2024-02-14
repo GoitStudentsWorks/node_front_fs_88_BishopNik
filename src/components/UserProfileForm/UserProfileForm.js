@@ -80,6 +80,9 @@ export const UserProfileForm = () => {
     if (!avatarURL || avatarURL === '' || avatarURL === values.avatarURL) {
       delete values.avatarURL;
     }
+    if (!values.password || values.password === '') {
+      delete values.password;
+    }
 
     console.log(values);
     dispatch(changeUserInfo(values));

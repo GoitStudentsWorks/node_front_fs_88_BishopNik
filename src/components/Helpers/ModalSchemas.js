@@ -64,7 +64,7 @@ export const editProfilShema = Yup.object().shape({
   // .required('email is required'),
 
   password: Yup.string()
-    .required(`Please enter the password `)
+    // .required(`Please enter the password `)
     .matches(passwordRegex, 'Invalid password')
     .min(2, 'Too Short!')
     .max(64, 'Password should be of max 64 characters length'),
