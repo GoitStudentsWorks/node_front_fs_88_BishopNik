@@ -24,10 +24,12 @@ import {
 	EditIcon,
 	DelIcon,
 } from './Card.styled';
+import { useColumns } from 'hooks';
 
 export const Card = ({ item, deleteCard, editCard }) => {
 	const { name, priority, deadline, text } = item;
 	const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+	const { allColumns } = useColumns();
 
 	const closeTooltip = () => {
 		setIsTooltipOpen(false);
@@ -74,7 +76,9 @@ export const Card = ({ item, deleteCard, editCard }) => {
 							<IconContainer>
 								<MoveIcon
 									name='process-task'
-									onClick={() => setIsTooltipOpen(true)}
+									onClick={() => {
+										if (allColumns.length > 1) setIsTooltipOpen(true);
+									}}
 								/>
 								<EditIcon name='edit' onClick={editCard} />
 								<DelIcon name='delete' onClick={deleteCard} />
