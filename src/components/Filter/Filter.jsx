@@ -50,7 +50,7 @@ export const Filter = ({ setIsOpen }) => {
 						onChange={handleOptionChange}
 						id='without'
 					/>
-					<Label for='without' color='rgba(255, 255, 255, 0.3)'>
+					<Label htmlFor='without' color='rgba(255, 255, 255, 0.3)'>
 						Without priority
 					</Label>
 				</RadioButton>
@@ -62,7 +62,7 @@ export const Filter = ({ setIsOpen }) => {
 						onChange={handleOptionChange}
 						id='low'
 					/>
-					<Label for='low' color='rgba(143, 161, 208, 1)'>
+					<Label htmlFor='low' color='rgba(143, 161, 208, 1)'>
 						Low
 					</Label>
 				</RadioButton>
@@ -74,7 +74,7 @@ export const Filter = ({ setIsOpen }) => {
 						onChange={handleOptionChange}
 						id='medium'
 					/>
-					<Label for='medium' color='rgba(224, 156, 181, 1)'>
+					<Label htmlFor='medium' color='rgba(224, 156, 181, 1)'>
 						Medium
 					</Label>
 				</RadioButton>
@@ -86,7 +86,7 @@ export const Filter = ({ setIsOpen }) => {
 						onChange={handleOptionChange}
 						id='high'
 					/>
-					<Label for='high' color='rgba(190, 219, 176, 1)'>
+					<Label htmlFor='high' color='rgba(190, 219, 176, 1)'>
 						High
 					</Label>
 				</RadioButton>
