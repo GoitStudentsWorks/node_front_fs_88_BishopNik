@@ -84,14 +84,13 @@ export const changeTheme = createAsyncThunk('auth/theme', async (thema, thunkAPI
 
 export const changeUserInfo = createAsyncThunk(
 	'user/update',
-	async ({ avatarURL, email, name, password, theme }, thunkAPI) => {
+	async ({ avatarURL, email, name, password }, thunkAPI) => {
 		try {
 			const formData = new FormData();
 			formData.append('avatarURL', avatarURL);
 			formData.append(`email`, email);
 			formData.append('password', password);
 			formData.append('name', name);
-			formData.append('theme', theme);
 			if (avatarURL) {
 				const res = await axios.patch(`users/update-user`, formData);
 				toastSuccess(`Success update`);
@@ -101,7 +100,6 @@ export const changeUserInfo = createAsyncThunk(
 					email,
 					password,
 					name,
-					theme,
 				});
 				toastSuccess(`Success update`);
 				return res.data;
