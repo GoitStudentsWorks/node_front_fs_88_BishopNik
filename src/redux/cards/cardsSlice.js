@@ -69,11 +69,19 @@ const cardsSlice = createSlice({
 				state.error = payload;
 				state.isLoading = false;
 			})
+			.addCase(delCard.pending, (state, { payload }) => {
+				state.error = null;
+				state.isLoading = true;
+			})
 			.addCase(delCard.fulfilled, (state, { payload }) => {
 				state.error = null;
 				state.isLoading = false;
 				const { cardId, columnId } = payload;
-				state.items[columnId] = state.items[columnId].filter(item => item._id !== cardId);
+				console.log('🚀 ~ .addCase ~ columnId:', payload);
+
+				state.items[columnId] = (state.items[columnId] || []).filter(
+					item => item._id !== cardId
+				);
 
 				// state.items = state.items.map(item => {
 				// 	if (item._id === payload) return payload;

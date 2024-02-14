@@ -69,7 +69,7 @@ export const AddColumnModal = ({ board }) => {
 							<CloseIcon name='close' onClick={onClose} />
 						</HeaderContainer>
 
-						<StyledFormField type='text' name='name' placeholder='Title' />
+						<StyledFormField type='text' name='name' placeholder='Title' autoFocus />
 						<StyledErrorMessage name='name' component='div' />
 						<BtnAdd type='submit' disabled={isSubmitting}>
 							<IconWrapper>

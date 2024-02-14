@@ -115,12 +115,12 @@ export const ButtonStyle = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
+  cursor: pointer;
   &:hover,
   :focus {
     background-color: ${props => props.theme.sidebar.hoverLogout};
   }
 `;
-
 
 export const LabelStyle = styled.label`
   display: inline-block;
