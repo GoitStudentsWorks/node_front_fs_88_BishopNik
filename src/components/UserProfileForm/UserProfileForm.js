@@ -135,7 +135,7 @@ export const UserProfileForm = ({ stateСhangeModal }) => {
 						/>
 					</LabelStyle>
 					<label htmlFor='name'>
-						<StyledField name='name' autocomplete='off' placeholder='login' />
+						<StyledField name='name' autoComplete='off' placeholder='login' />
 						<ErrorMsg name='name' component='span' />
 					</label>
 
