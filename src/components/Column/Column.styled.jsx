@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Icon from 'components/Icon/Icon.jsx';
 
 export const Wrapper = styled.li`
-  width: 350px;
+  width: 347px;
   max-width: 100vw;
   display: grid;
   gap: 8px;
@@ -14,6 +14,10 @@ export const Wrapper = styled.li`
     'task'
     'add';
   grid-template-rows: 56px auto 56px;
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+  }
 `;
 
 export const Title = styled.span`

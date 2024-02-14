@@ -5,10 +5,15 @@ import styled from 'styled-components';
 import Icon from 'components/Icon';
 
 export const WrapperBoardContainer = styled.div`
-  padding: 0px 24px;
+  padding-left: 20px;
+  padding-right: 8px;
   display: flex;
   flex-grow: 1;
   overflow-y: hidden;
+
+  @media screen and (min-width: 768px) {
+    padding: 0px 24px;
+  }
 `;
 
 export const BoardContainer = styled.div`
@@ -52,7 +57,7 @@ export const BtnAddColumn = styled.button`
   font-weight: 500;
   border-radius: 8px;
   width: 334px;
-  outline:none;
+  outline: none;
   color: ${props => props.theme.help.modalTextMain};
   background-color: ${props => props.theme.profile.background};
 
