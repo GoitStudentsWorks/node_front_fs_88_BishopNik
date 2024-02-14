@@ -47,10 +47,9 @@ export const StyledFormField = styled(Field)`
   outline: none;
   border-radius: 8px;
   border: 1px solid ${props => props.theme.profile.inputBorder};
-  color: ;
+  /* color: ; */
   margin-bottom: 24px;
 `;
-
 
 export const IconWrapper = styled.div`
   display: flex;
@@ -90,7 +89,7 @@ export const AddIcon = styled(Icon)`
 
 export const StyledErrorMessage = styled(ErrorMessage)`
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 40%;
   opacity: 0.8;
   border: 1px solid gray;
