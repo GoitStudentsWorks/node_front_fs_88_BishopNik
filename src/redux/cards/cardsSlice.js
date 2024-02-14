@@ -52,8 +52,13 @@ const cardsSlice = createSlice({
 				state.error = payload;
 				state.createCardModal = true;
 			})
+			.addCase(addCard.pending, state => {
+				state.isLoading = true;
+				state.error = null;
+			})
 			.addCase(addCard.fulfilled, (state, { payload }) => {
 				state.error = null;
+				state.isLoading = false;
 				state.createCardModal = false;
 				const { columnId } = payload;
 				state.items[columnId].push(payload);
@@ -62,6 +67,7 @@ const cardsSlice = createSlice({
 			})
 			.addCase(addCard.rejected, (state, { payload }) => {
 				state.error = payload;
+				state.isLoading = false;
 			})
 			.addCase(delCard.fulfilled, (state, { payload }) => {
 				state.error = null;
