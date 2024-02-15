@@ -6,6 +6,7 @@ export const MainContext = createContext();
 
 export const Context = ({ children }) => {
 	const [isOpenSidebar, setIsOpenSidebar] = useState(false);
+	const [isOpenHelp, setIsOpenHelp] = useState(false);
 	const [isOpenAddBoard, setIsOpenAddBoard] = useState(false);
 	const [boardEdit, setBoardEdit] = useState(null);
 	const [isOpenAddColumn, setIsOpenAddColumn] = useState(false);
@@ -18,6 +19,8 @@ export const Context = ({ children }) => {
 			value={{
 				isOpenSidebar,
 				setIsOpenSidebar,
+				isOpenHelp,
+				setIsOpenHelp,
 				isOpenAddBoard,
 				setIsOpenAddBoard,
 				boardEdit,

@@ -1,9 +1,10 @@
 /** @format */
 
+import { useContext } from 'react';
 import { Formik, Field } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { modalsSlice } from 'redux/modals/modalSlice';
-import { needHelpModalState } from 'redux/modals/selectors';
+import { useDispatch } from 'react-redux';
+// import { modalsSlice } from 'redux/modals/modalSlice';
+// import { needHelpModalState } from 'redux/modals/selectors';
 import { sendHelpReq } from 'redux/modals/operations';
 import { needHelpSchema } from '../../Helpers/ModalSchemas';
 import {
@@ -20,15 +21,17 @@ import {
 } from './NeedHelpModal.styled';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
+import { MainContext } from 'components/Helpers';
 
 export const NeedHelpModal = () => {
 	const dispatch = useDispatch();
-	const { isOpen } = useSelector(needHelpModalState);
+	// const { isOpen } = useSelector(needHelpModalState);
+	const { isOpenHelp, setIsOpenHelp } = useContext(MainContext);
 
 	return (
 		<ModalWindow
-			isOpen={isOpen}
-			onRequestClose={() => dispatch(modalsSlice.actions.openNeedHeplModal(false))}
+			isOpen={isOpenHelp}
+			onRequestClose={() => setIsOpenHelp(false)}
 			style={customStyles}
 		>
 			<Formik
@@ -41,10 +44,7 @@ export const NeedHelpModal = () => {
 				<StyledForm autoComplete='off'>
 					<HeaderContainer>
 						<Title>Need help</Title>
-						<CloseIcon
-							name='close'
-							onClick={() => dispatch(modalsSlice.actions.openNeedHeplModal(false))}
-						/>
+						<CloseIcon name='close' onClick={() => setIsOpenHelp(false)} />
 					</HeaderContainer>
 					<LabelBox>
 						<label>
