@@ -11,6 +11,7 @@ export const Context = ({ children }) => {
 	const [isOpenAddColumn, setIsOpenAddColumn] = useState(false);
 	const [columnEdit, setColumnEdit] = useState(null);
 	const [filter, setFilter] = useState('all');
+	const [deleted, setDeleted] = useState(false);
 
 	return (
 		<MainContext.Provider
@@ -27,6 +28,8 @@ export const Context = ({ children }) => {
 				setIsOpenAddColumn,
 				columnEdit,
 				setColumnEdit,
+				deleted,
+				setDeleted,
 			}}
 		>
 			{children}

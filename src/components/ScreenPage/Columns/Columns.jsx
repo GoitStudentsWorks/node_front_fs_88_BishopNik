@@ -5,15 +5,16 @@ import { useDispatch } from 'react-redux';
 import { fetchColumnsByIdBoards } from 'redux/columns/operations';
 import { Column } from 'components/Column';
 import { Styled } from './Columns.styled';
-import { useColumns } from 'hooks';
+import { useBoards, useColumns } from 'hooks';
 
 export const Columns = ({ board, children }) => {
 	const dispatch = useDispatch();
 	const { allColumns } = useColumns();
+	const { statusLoading } = useBoards();
 
 	useEffect(() => {
-		dispatch(fetchColumnsByIdBoards(board));
-	}, [dispatch, board]);
+		if (!statusLoading) dispatch(fetchColumnsByIdBoards(board));
+	}, [dispatch, board, statusLoading]);
 
 	const memoizedColumns = useMemo(() => allColumns, [allColumns]);
 

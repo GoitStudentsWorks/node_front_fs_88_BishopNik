@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
 	BoardContainer,
 	BoardNameContainer,
@@ -11,7 +11,7 @@ import {
 	DelIcon,
 	BoardLine,
 } from './BoardItem.styled';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { delBoard, getBoardById } from 'redux/boards/operations';
 import { updateStateAfterDeleteBoard } from 'redux/columns/columnsSlice';
@@ -22,15 +22,11 @@ import { MainContext } from 'components/Helpers';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const { board } = useParams();
-	const { allBoards, statusLoading } = useBoards();
+	const { statusLoading } = useBoards();
 	const { allColumns } = useColumns();
-	const { setIsOpenAddBoard, setBoardEdit } = useContext(MainContext);
-
-	// useEffect(() => {
-	// 	if (!board) navigate(`/todos/${allBoards[0]._id}`);
-	// }, [allBoards, board, navigate]);
+	const { setIsOpenAddBoard, setBoardEdit, setDeleted } = useContext(MainContext);
 
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));
@@ -52,8 +48,8 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 
 		dispatch(delBoard(boardId)).then(() => {
 			dispatch(updateStateAfterDeleteBoard({ id: boardId }));
+			setDeleted(true);
 		});
-		navigate(`/todos/${allBoards[0]._id}`);
 	};
 
 	const status = board === boardId;

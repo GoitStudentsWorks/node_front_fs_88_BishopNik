@@ -40,13 +40,13 @@ const SharedLayout = () => {
     };
   }, [isOpenSidebar]);
 
-  useEffect(() => {
-    if (window.innerWidth > 1439) return;
-    const handlerOnCloseWindow = e => {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-        setIsOpenSidebar(false);
-      }
-    };
+	useEffect(() => {
+		if (window.innerWidth > 1439) return;
+		const handlerOnCloseWindow = ({ target }) => {
+			if (sidebarRef.current && !sidebarRef.current.contains(target)) {
+				setIsOpenSidebar(false);
+			}
+		};
 
     window.addEventListener('click', handlerOnCloseWindow);
 

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MainComponent } from 'components/MainComponent';
@@ -10,6 +10,7 @@ import { HeaderDashboard } from 'components/ScreenPage/HeaderDashboard/HeaderDas
 import { SayNameBoard } from 'components/Helpers';
 import { fetchAllBoards } from 'redux/boards/operations';
 import { useBoards } from 'hooks';
+import { MainContext } from 'components/Helpers';
 
 function MainTodosPage() {
 	const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function MainTodosPage() {
 	const nameBoard = SayNameBoard(board);
 	const { allBoards } = useBoards();
 	const [firstRun, setFirstRun] = useState(true);
+	const { deleted, setDeleted } = useContext(MainContext);
 
 	useEffect(() => {
 		dispatch(fetchAllBoards());
@@ -29,6 +31,23 @@ function MainTodosPage() {
 			setFirstRun(false);
 		}
 	}, [firstRun, allBoards, navigate]);
+
+	useEffect(() => {
+		if (allBoards.length === 0) {
+			navigate('/todos');
+		}
+	}, [allBoards, navigate]);
+
+	useEffect(() => {
+		if (!deleted) return;
+		console.log(allBoards);
+		if (!allBoards[0]._id) {
+			navigate(`/todos`);
+		} else {
+			navigate(`/todos/${allBoards[0]._id}`);
+		}
+		setDeleted(false);
+	}, [allBoards, board, deleted, navigate, setDeleted]);
 
 	return (
 		<>
