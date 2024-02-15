@@ -17,15 +17,20 @@ export const Title = styled.p`
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  @media (max-width: 375px) {
-    width: 335px;
-  }
-  width: 400px;
   border-radius: 8px;
   border: none;
   outline: none;
   background: ${props => props.theme.profile.background};
   padding: 24px;
+  width: 95vw;
+
+  @media (min-width: 375px) {
+    width: 335px;
+  }
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 `;
 export const HeaderContainer = styled.div`
   display: flex;
@@ -46,19 +51,12 @@ export const CloseIcon = styled(Icon)`
   }
 `;
 
-// export const NavBox = styled.div`
-// 	display: flex;
-// 	gap: 14px;
-// 	margin-bottom: 40px;
-// `;
-
 export const LabelBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-bottom: 24px;
 `;
-
 
 export const StyledField = styled(Field)`
   color: ${props => props.theme.profile.textMain};
@@ -154,9 +152,8 @@ export const ButtonText = styled.span`
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
-  position: relative;
-  top: 0;
-  left: 40%;
+  position: absolute;
+  left: 60%;
   opacity: 0.8;
   border: 1px solid gray;
   border-radius: 10px;

@@ -21,12 +21,6 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100vw;
-  /* @media (min-width: 375px) and (max-width: 767px) {
-		width: 375px;
-	}
-	@media (max-width: 1439px) {
-		max-width: 768px;
-	} */
 `;
 
 export const StyledForm = styled(Form)`
@@ -76,7 +70,6 @@ export const LabelBox = styled.div`
   }
 `;
 
-
 export const StyledFieldContainer = styled.div`
   position: relative;
 `;
@@ -108,8 +101,8 @@ export const Button = styled.button`
   display: flex;
   width: 100%;
   padding: 14px;
-  outline:none;
-  border:none;
+  outline: none;
+  border: none;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
@@ -136,8 +129,7 @@ export const ButtonText = styled.span`
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
-  position: relative;
-  top: 0;
+  position: absolute;
   left: 40%;
   opacity: 0.8;
   border: 1px solid gray;

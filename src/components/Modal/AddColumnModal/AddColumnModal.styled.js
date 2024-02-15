@@ -47,7 +47,6 @@ export const StyledFormField = styled(Field)`
   outline: none;
   border-radius: 8px;
   border: 1px solid ${props => props.theme.profile.inputBorder};
-  /* color: ; */
   margin-bottom: 24px;
 `;
 
