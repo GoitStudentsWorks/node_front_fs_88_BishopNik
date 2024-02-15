@@ -44,9 +44,9 @@ export const delCard = createAsyncThunk(
 
 export const updateCard = createAsyncThunk(
 	'card/updateCard',
-	async ({ id, columnId, name, oldColumnId }, thunkAPI) => {
+	async ({ id, columnId, oldColumnId, ...rest }, thunkAPI) => {
 		try {
-			const { data } = await axios.patch(`/card/${id}`, { columnId, name });
+			const { data } = await axios.patch(`/card/${id}`, { columnId, ...rest });
 			toastSuccess('Update Card');
 			return { data, oldColumnId };
 		} catch ({ response }) {
