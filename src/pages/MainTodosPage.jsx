@@ -17,7 +17,7 @@ function MainTodosPage() {
 	const { board } = useParams();
 	const navigate = useNavigate();
 	const nameBoard = SayNameBoard(board);
-	const { allBoards } = useBoards();
+	const { allBoards, activeBoard } = useBoards();
 	const [firstRun, setFirstRun] = useState(true);
 	const { deleted, setDeleted } = useContext(MainContext);
 
@@ -27,10 +27,14 @@ function MainTodosPage() {
 
 	useEffect(() => {
 		if (firstRun && allBoards.length > 0) {
-			navigate(`/todos/${allBoards[0]?._id}`);
+			if (!activeBoard) {
+				navigate(`/todos/${allBoards[0]?._id}`);
+			} else {
+				navigate(`/todos/${activeBoard}`);
+			}
 			setFirstRun(false);
 		}
-	}, [firstRun, allBoards, navigate]);
+	}, [firstRun, allBoards, navigate, activeBoard]);
 
 	useEffect(() => {
 		if (allBoards.length === 0) {

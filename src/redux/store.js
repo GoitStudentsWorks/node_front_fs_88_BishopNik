@@ -18,19 +18,27 @@ import { modalsReducer } from './modals/modalSlice';
 import { columnsReducer } from './columns/columnsSlice';
 import { cardsReducer } from './cards/cardsSlice';
 
-const persistConfig = {
+const persistConfigAuth = {
 	key: 'auth',
 	storage,
 	whitelist: ['token'],
 };
 
-const tokenPersistedReducer = persistReducer(persistConfig, authReducer);
+const persistConfigBoard = {
+	key: 'board',
+	storage,
+	whitelist: ['activeBoard'],
+};
+
+const tokenPersistedReducer = persistReducer(persistConfigAuth, authReducer);
+
+const boardPersistedReducer = persistReducer(persistConfigBoard, boardsReducer);
 
 export const store = configureStore({
 	reducer: {
 		auth: tokenPersistedReducer,
 		modals: modalsReducer,
-		boards: boardsReducer,
+		boards: boardPersistedReducer,
 		columns: columnsReducer,
 		cards: cardsReducer,
 	},

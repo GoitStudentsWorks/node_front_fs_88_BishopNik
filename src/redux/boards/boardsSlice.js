@@ -5,6 +5,7 @@ import { fetchAllBoards, addBoard, editBoard, delBoard } from './operations';
 
 const initialState = {
 	items: [],
+	activeBoard: '',
 	isLoading: false,
 	createEditBoardModal: {
 		isOpen: true,
@@ -20,6 +21,9 @@ export const boardsSlice = createSlice({
 		resetError: state => {
 			state.error = null;
 			state.createEditBoardModal = { isOpen: true, boardId: null };
+		},
+		setActiveBoard: (state, { payload }) => {
+			state.activeBoard = payload;
 		},
 	},
 	extraReducers: builder => {
@@ -87,4 +91,4 @@ export const boardsSlice = createSlice({
 
 export const boardsReducer = boardsSlice.reducer;
 
-export const { resetError } = boardsSlice.actions;
+export const { resetError, setActiveBoard } = boardsSlice.actions;

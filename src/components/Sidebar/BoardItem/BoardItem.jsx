@@ -15,6 +15,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { delBoard, getBoardById } from 'redux/boards/operations';
 import { updateStateAfterDeleteBoard } from 'redux/columns/columnsSlice';
+import { setActiveBoard } from 'redux/boards/boardsSlice';
 import { updateStateAfterDeleteColumn } from 'redux/cards/cardsSlice';
 import { StyleSheetManager } from 'styled-components';
 import { useBoards, useColumns } from 'hooks';
@@ -30,6 +31,7 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));
+		dispatch(setActiveBoard(boardId));
 	};
 
 	const handlerEditBoard = boardId => {
