@@ -44,8 +44,7 @@ function MainTodosPage() {
 
 	useEffect(() => {
 		if (!deleted) return;
-		console.log(allBoards);
-		if (!allBoards[0]._id) {
+		if (!allBoards[0]?._id) {
 			navigate(`/todos`);
 		} else {
 			navigate(`/todos/${allBoards[0]._id}`);
