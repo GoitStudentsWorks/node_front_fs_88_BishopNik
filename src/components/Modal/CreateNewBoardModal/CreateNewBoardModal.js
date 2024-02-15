@@ -39,8 +39,13 @@ import { useBoards } from 'hooks';
 export const CreateNewBoardModal = () => {
   const dispatch = useDispatch();
   // const boards = useSelector(boardsState);
-  const { isOpenAddBoard, setIsOpenAddBoard, boardEdit, setBoardEdit } =
-    useContext(MainContext);
+  const {
+    isOpenAddBoard,
+    setIsOpenAddBoard,
+    boardEdit,
+    setBoardEdit,
+    statusLoading,
+  } = useContext(MainContext);
   const navigate = useNavigate();
   const { isOpen, boardId, allBoards } = useBoards();
 
@@ -81,6 +86,7 @@ export const CreateNewBoardModal = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={board => {
+          if (statusLoading) return;
           if (boardEdit) {
             dispatch(editBoard(board));
           } else {
