@@ -37,8 +37,8 @@ const SharedLayout = () => {
 
 	useEffect(() => {
 		if (window.innerWidth > 1439) return;
-		const handlerOnCloseWindow = e => {
-			if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+		const handlerOnCloseWindow = ({ target }) => {
+			if (sidebarRef.current && !sidebarRef.current.contains(target)) {
 				setIsOpenSidebar(false);
 			}
 		};

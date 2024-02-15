@@ -40,7 +40,7 @@ export const CreateNewBoardModal = () => {
 	// const boards = useSelector(boardsState);
 	const { isOpenAddBoard, setIsOpenAddBoard, boardEdit, setBoardEdit } = useContext(MainContext);
 	const navigate = useNavigate();
-	const { isOpen, boardId, allBoards } = useBoards();
+	const { isOpen, boardId, allBoards, statusLoading } = useBoards();
 
 	// const boardForEditing = boardId && boards.find(item => item.id === boardId);
 
@@ -55,7 +55,7 @@ export const CreateNewBoardModal = () => {
 	}, [setIsOpenAddBoard, setBoardEdit]);
 
 	useEffect(() => {
-		if (!isOpen) {
+		if (isOpen === false) {
 			if (boardId) navigate(`/todos/${boardId}`);
 			closeModal();
 			dispatch(resetError());
@@ -75,6 +75,7 @@ export const CreateNewBoardModal = () => {
 			<Formik
 				initialValues={initialValues}
 				onSubmit={board => {
+					if (statusLoading) return;
 					if (boardEdit) {
 						dispatch(editBoard(board));
 					} else {
@@ -146,7 +147,9 @@ export const CreateNewBoardModal = () => {
 						</LabelBox>
 						<TitleIcons>Icons</TitleIcons>
 						<StyleSheetManager
-							shouldForwardProp={prop => prop !== 'isActive' && prop !== 'isBackgroundActive'}
+							shouldForwardProp={prop =>
+								prop !== 'isActive' && prop !== 'isBackgroundActive'
+							}
 						>
 							<IconsContainer>
 								{Array.from({ length: 8 }, (_, iconIndex) => (
@@ -175,10 +178,10 @@ export const CreateNewBoardModal = () => {
 											value={imageIndex}
 										/>
 										<TypesOfBackground
-											src={background.mobile[`image${imageIndex}`]
-												
+											src={background.mobile[`image${imageIndex}`]}
+											isBackgroundActive={
+												Number(imageIndex) === Number(values.background)
 											}
-											isBackgroundActive={Number(imageIndex) === Number(values.background)}
 										></TypesOfBackground>
 									</LabelRadio>
 								))}

@@ -9,8 +9,8 @@ export const BoardsList = () => {
 	const { allBoards } = useBoards();
 	const listRef = useRef(null);
 
-	const handleScroll = event => {
-		const delta = event.deltaY;
+	const handleScroll = ({ deltaY }) => {
+		const delta = deltaY;
 		listRef.current.scrollTop += delta;
 	};
 
