@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addCard, delCard, fetchCardsByColumnId, updateCard } from './operations';
 
 const initialState = {
-	items: {}, // было[]
+	items: {},
 	createCardModal: null,
 	isLoading: false,
 	error: null,
@@ -23,11 +23,7 @@ const cardsSlice = createSlice({
 			const { [id]: deletedColumn, ...restColumns } = state.items;
 			state.items = restColumns;
 		},
-		// updateStateAfterDeleteBoardColumn: (state, { payload }) => {
-		// 	const { id } = payload;
-		// 	const cardsToDelete = selectCardsForBoard();
-		// 	state.items = state.items.filter(item => !cardsToDelete.includes(item));
-		// },
+		
 	},
 	extraReducers: builder => {
 		builder
@@ -40,17 +36,7 @@ const cardsSlice = createSlice({
 				const { columnId, data } = payload;
 				state.items[columnId] = data;
 
-				// for (let i = 0; i < payload.length; i++) {
-				// 	for (let k = 0; k < state.items.length; k++) {
-				// 		if (k !== i) {
-				// 			if (payload[i]._id === state.items[k]._id) state.items[k] = '';
-				// 		}
-				// 	}
-				// }
-				// for (let i = 0; i < payload.length; i++) {
-				// 	if (state.items[i] === '') continue;
-				// 	else state.items.push(payload[i]);
-				// }
+				
 			})
 			.addCase(fetchCardsByColumnId.rejected, (state, { payload }) => {
 				state.isLoading = false;
@@ -68,7 +54,7 @@ const cardsSlice = createSlice({
 				const { columnId } = payload;
 				state.items[columnId].push(payload);
 
-				// state.items = [...state.items, payload];
+				
 			})
 			.addCase(addCard.rejected, (state, { payload }) => {
 				state.error = payload;
@@ -87,10 +73,6 @@ const cardsSlice = createSlice({
 					item => item._id !== cardId
 				);
 
-				// state.items = state.items.map(item => {
-				// 	if (item._id === payload) return payload;
-				// 	return item;
-				// });
 			})
 			.addCase(delCard.rejected, (state, { payload }) => {
 				state.error = payload;
@@ -118,10 +100,7 @@ const cardsSlice = createSlice({
 					});
 				}
 
-				// state.items = state.items.map(item => {
-				// 	if (item._id === payload._id) return payload;
-				// 	return item;
-				// });
+				
 			})
 			.addCase(updateCard.rejected, (state, { payload }) => {
 				state.isLoading = false;
