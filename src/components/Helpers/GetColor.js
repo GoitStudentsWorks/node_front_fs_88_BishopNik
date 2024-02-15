@@ -4,7 +4,7 @@ export function GetColor(priority) {
   switch (priority) {
     case 'without':
       return {
-        color: 'rgb(125 115 115)',
+        color: 'rgb(125, 115, 115)',
         name: 'Without priority',
       };
     case 'low':
