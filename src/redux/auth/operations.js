@@ -4,8 +4,8 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toastError, toastSuccess } from 'components/Helpers';
 
-// axios.defaults.baseURL = `https://todos-api-i1vi.onrender.com/api`;
-axios.defaults.baseURL = `http://localhost:4000/api`;
+axios.defaults.baseURL = `https://todos-api-i1vi.onrender.com/api`;
+// axios.defaults.baseURL = `http://localhost:4000/api`;
 
 // Utility to add JWT
 const setAuthHeader = token => {
