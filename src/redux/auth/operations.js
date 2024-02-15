@@ -102,6 +102,7 @@ export const changeUserInfo = createAsyncThunk(
 					password,
 					name,
 				});
+				setAuthHeader(res.data.token);
 				toastSuccess(`Success update`);
 				return res.data;
 			}
