@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useEffect } from 'react';
-// import { StyleSheetManager } from 'styled-components';
 import { Formik, Form, Field } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -67,7 +66,6 @@ export const AddCardModal = ({
       onRequestClose={onRequestClose}
       style={customStyles}
     >
-      {/* <StyleSheetManager shouldForwardProp={prop => prop !== 'isOpen'}> */}
       <ModalContainer>
         <CloseButton onClick={onRequestClose}>
           <IconClose name="close" />
@@ -173,7 +171,6 @@ export const AddCardModal = ({
           )}
         </Formik>
       </ModalContainer>
-      {/* </StyleSheetManager> */}
     </ModalWindow>
   );
 };

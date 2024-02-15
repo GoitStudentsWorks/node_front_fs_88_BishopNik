@@ -11,7 +11,6 @@ export const AvatarLabelStyle = styled.label`
 `;
 
 export const ImgStyled = styled.img`
-  /* display: flex; */
   width: 68px;
   height: 68px;
   border-radius: 8px;
@@ -141,8 +140,6 @@ export const BlockLogoStyles = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  /* margin-top: 24px;
-  margin-bottom: -12px; */
 `;
 
 export const ButtonIcon = styled(Icon)`
