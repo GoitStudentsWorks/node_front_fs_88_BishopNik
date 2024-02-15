@@ -26,7 +26,7 @@ export const Container = styled.div`
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  outline:none;
+  outline: none;
   @media (max-width: 375px) {
     width: 100%;
     padding: 24px;
@@ -71,14 +71,13 @@ export const LabelBox = styled.div`
   }
 `;
 
-
 export const StyledFieldContainer = styled.div`
   position: relative;
 `;
 
 export const StyledField = styled(Field)`
   color: #fff;
-  outline:none;
+  outline: none;
   border-radius: 8px;
   border: 1px solid #bedbb0;
   padding: 14px 35px 14px 18px;
@@ -103,8 +102,8 @@ export const IconHideShow = styled(Icon)`
 export const Button = styled.button`
   display: flex;
   width: 100%;
-   outline:none;
-  border:none;
+  outline: none;
+  border: none;
   padding: 14px;
   justify-content: center;
   align-items: center;
@@ -123,7 +122,7 @@ export const Button = styled.button`
 export const ButtonGoogle = styled.button`
   display: flex;
   width: 100%;
-  outline:none;
+  outline: none;
   padding: 0px;
   border: none;
   justify-content: start;
@@ -155,9 +154,9 @@ export const ButtonText = styled.span`
 export const IconContainer = styled.div`
   background-color: white;
   width: 49px;
-  outline:none;
+  outline: none;
   height: 49px;
-  border:none;
+  border: none;
   display: flex;
   position: relative;
 `;
@@ -172,9 +171,8 @@ export const GoogleIcon = styled(Icon)`
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
-  position: relative;
-  top: 0;
-  left: 40%;
+  position: absolute;
+  left: 50%;
   opacity: 0.8;
   border: 1px solid gray;
   border-radius: 10px;
