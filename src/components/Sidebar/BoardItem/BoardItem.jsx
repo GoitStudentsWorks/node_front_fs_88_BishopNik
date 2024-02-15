@@ -23,7 +23,6 @@ import { MainContext } from 'components/Helpers';
 
 export const BoardItem = ({ nameBoard, boardId }) => {
 	const dispatch = useDispatch();
-	// const navigate = useNavigate();
 	const { board } = useParams();
 	const { statusLoading } = useBoards();
 	const { allColumns } = useColumns();
@@ -42,7 +41,6 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 
 	const handlerDelBoard = boardId => {
 		if (statusLoading) return;
-		// dispatch(delBoard(boardId));
 		const deletedColumns = allColumns.filter(column => column.boardId === boardId);
 		deletedColumns.forEach(column => {
 			dispatch(updateStateAfterDeleteColumn({ id: column._id }));

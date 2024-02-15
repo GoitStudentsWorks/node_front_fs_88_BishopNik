@@ -14,28 +14,13 @@ import { Columns } from '../Columns';
 import { useParams } from 'react-router-dom';
 import { MainContext } from 'components/Helpers';
 import { useColumns, useBoards } from 'hooks';
-// import { setCreateModalOpen } from 'redux/columns/columnsSlice';
-// import { createModalOpen } from 'redux/columns/selectors';
-// import { useDispatch, useSelector } from 'react-redux';
 
 const MainDashboard = () => {
-	// const isModalOpen = useSelector(createModalOpen);
 	const { setIsOpenAddColumn } = useContext(MainContext);
-	// const dispatch = useDispatch();
 	const { board } = useParams();
 	const { allColumns } = useColumns();
 	const { allBoards } = useBoards();
 	const selectedBoard = allBoards.find(item => item._id === board);
-
-	// const toggleModal = flag => {
-	// 	dispatch(setCreateModalOpen(flag));
-	// };
-
-	// const handleEditColumn = () => {
-	// 	setIsOpenAddColumn(true);
-	// };
-
-	// console.log(isModalOpen);
 
 	return (
 		<StyleSheetManager shouldForwardProp={prop => prop !== 'backgroundId'}>

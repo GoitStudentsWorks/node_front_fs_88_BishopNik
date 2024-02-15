@@ -11,6 +11,7 @@ import { SayNameBoard } from 'components/Helpers';
 import { fetchAllBoards } from 'redux/boards/operations';
 import { useBoards } from 'hooks';
 import { MainContext } from 'components/Helpers';
+import { setActiveBoard } from 'redux/boards/boardsSlice';
 
 function MainTodosPage() {
 	const dispatch = useDispatch();
@@ -39,8 +40,9 @@ function MainTodosPage() {
 	useEffect(() => {
 		if (allBoards.length === 0) {
 			navigate('/todos');
+			dispatch(setActiveBoard(''));
 		}
-	}, [allBoards, navigate]);
+	}, [allBoards, dispatch, navigate]);
 
 	useEffect(() => {
 		if (!deleted) return;

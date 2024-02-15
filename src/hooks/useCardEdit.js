@@ -16,11 +16,14 @@ export const useCardEditing = () => {
 		if (statusCard === false) dispatch(resetError());
 	}, [dispatch, statusCard]);
 
-	const editCard = useCallback(data => {
-		if (statusCard) return;
-		setIsOpen(true);
-		setCardForEditing(data);
-	}, []);
+	const editCard = useCallback(
+		data => {
+			if (statusCard) return;
+			setIsOpen(true);
+			setCardForEditing(data);
+		},
+		[statusCard]
+	);
 
 	const onRequestClose = useCallback(() => {
 		setIsOpen(false);
@@ -32,7 +35,7 @@ export const useCardEditing = () => {
 			if (statusCard) return;
 			dispatch(delCard({ id, _id }));
 		},
-		[dispatch]
+		[dispatch, statusCard]
 	);
 
 	return {
