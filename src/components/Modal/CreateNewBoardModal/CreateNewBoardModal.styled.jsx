@@ -90,10 +90,10 @@ export const DefaultBg = styled(TypesOfIcon)`
   width: 28px;
   height: 28px;
   cursor: pointer;
-  background: ${ () => `url(${BG})`};
+  background: ${() => `url(${BG})`};
   border: ${props => (props.isBackgroundActive ? `1px solid` : 'none')};
   border-color: ${props =>
-  props.isBackgroundActive ? props.theme.header.userName : 'transparent'};
+    props.isBackgroundActive ? props.theme.header.userName : 'transparent'};
   border-radius: 8px;
   &:hover,
   &:focus {
@@ -130,12 +130,6 @@ export const StyledForm = styled(Form)`
   background: ${props => props.theme.modal.backgroundMain};
   padding: 24px;
 `;
-
-// export const NavBox = styled.div`
-// 	display: flex;
-// 	gap: 14px;
-// 	margin-bottom: 40px;
-// `;
 
 export const LabelBox = styled.div`
   display: flex;

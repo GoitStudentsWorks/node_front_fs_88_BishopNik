@@ -3,7 +3,6 @@
 import React, { createContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme as themeDefault } from '../../constants/theme';
-// import { useAuth } from 'hooks';
 
 const ThemeContext = createContext();
 

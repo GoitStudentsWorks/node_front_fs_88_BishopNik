@@ -7,7 +7,6 @@ const DatePickerContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 0;
-  /* border-radius: 8px; */
 
   .react-datepicker {
     border-radius: 8px;
@@ -62,10 +61,6 @@ const DatePickerContainer = styled.div`
     border-radius: 50%;
     background-color: ${props => props.theme.modal.buttonBackground};
     color: ${props => props.theme.modal.today};
-  }
-
-  .react-datepicker__day--disabled {
-    /* color: #ccc; */
   }
 
   .react-datepicker__day--outside-month {

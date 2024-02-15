@@ -14,7 +14,6 @@ export const Container = styled.div`
     'm';
 
   @media screen and (min-width: 375px) {
-    /* width: 375px; */
     max-width: 100vw;
   }
 
@@ -46,7 +45,6 @@ export const SideBar = styled.aside`
   }
 
   @media screen and (max-width: 1439px) {
-    /* display: none; */
     position: absolute;
     z-index: 9999;
   }
@@ -104,8 +102,7 @@ export const Main = styled.main`
       props.backgroundId
         ? `url(${background.desktop[`image${props.backgroundId}`]})`
         : props.theme.header.containerBackground};
-    /* background: ${props =>
-      `url(${background.desktop[`image${props.backgroundId}`]})`}; */
+
     background-size: cover;
   }
 `;
