@@ -9,7 +9,7 @@ import {
 	LogoBox,
 	LogoTitle,
 	Text,
-} from './AuthNavigation.styled';
+} from './AuthNavigation';
 import Avatar from 'components/Avatar';
 
 export const AuthNavigation = () => {

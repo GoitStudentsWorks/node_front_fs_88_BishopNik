@@ -21,7 +21,7 @@ import {
 	IconHideShow,
 	StyledFieldContainer,
 	FieldContainer,
-} from './RegisterForm.styled';
+} from './RegisterForm';
 
 const RegisterForm = () => {
 	const dispatch = useDispatch();
