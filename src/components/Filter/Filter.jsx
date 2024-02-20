@@ -14,7 +14,7 @@ import {
 	TitleRadioButtons,
 	Input,
 	Label,
-} from './Filter.styled.jsx';
+} from './Filter.styled';
 
 export const Filter = ({ setIsOpen }) => {
 	const { filter, setFilter } = useContext(MainContext);

@@ -9,8 +9,8 @@ import {
 	LogoBox,
 	LogoTitle,
 	Text,
-} from './AuthNavigation.Styled';
-import Avatar from 'components/Avatar/Avatar';
+} from './AuthNavigation.styled';
+import Avatar from 'components/Avatar';
 
 export const AuthNavigation = () => {
 	const navigate = useNavigate();

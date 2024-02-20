@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ModalWindow, { customStyles } from '../Modal';
-import { TooltipButton, TooltipContent, IconProcess } from './Tooltip.styled.jsx';
+import { TooltipButton, TooltipContent, IconProcess } from './Tooltip.styled';
 import { useColumns } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { updateCard } from 'redux/cards/operations';

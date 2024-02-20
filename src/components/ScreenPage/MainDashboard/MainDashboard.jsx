@@ -10,12 +10,12 @@ import {
 	WrapperBoardContainer,
 } from './MainDashboard.styled';
 import { AddColumnModal } from 'components/Modal';
-import { Columns } from '../Columns';
+import { Columns } from 'components/ScreenPage';
 import { useParams } from 'react-router-dom';
 import { MainContext } from 'components/Helpers';
 import { useColumns, useBoards } from 'hooks';
 
-const MainDashboard = () => {
+export const MainDashboard = () => {
 	const { setIsOpenAddColumn } = useContext(MainContext);
 	const { board } = useParams();
 	const { allColumns } = useColumns();
@@ -40,5 +40,3 @@ const MainDashboard = () => {
 		</StyleSheetManager>
 	);
 };
-
-export default MainDashboard;

@@ -1,8 +1,8 @@
 /** @format */
 
 import React, { useState } from 'react';
-import { ButtonFilter, FiltersIcon, TextButton } from './FiltersBtn.styled.jsx';
-import { FilterModal } from '../Modal';
+import { ButtonFilter, FiltersIcon, TextButton } from './FiltersBtn.styled';
+import { FilterModal } from 'components/Modal';
 
 export const FilterBtn = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);

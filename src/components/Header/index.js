@@ -1,3 +1,3 @@
 /** @format */
 
-export { default } from './Header';
+export { default as HeaderComponent } from './Header';

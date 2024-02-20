@@ -9,7 +9,7 @@ import { MainContext } from 'components/Helpers';
 import { CreateNewBoardModal } from 'components/Modal';
 import { StyleSheetManager } from 'styled-components';
 import { NeedHelpModal } from 'components/Modal';
-import HeaderComponent from 'components/Header';
+import { HeaderComponent } from 'components/Header';
 import { useAuth, useBoards } from 'hooks';
 
 const SharedLayout = () => {
