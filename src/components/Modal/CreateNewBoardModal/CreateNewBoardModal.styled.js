@@ -2,7 +2,6 @@
 
 import { Form, ErrorMessage, Field } from 'formik';
 import Icon from 'components/Icon';
-import BG from '../../../img/block.png';
 
 import styled from 'styled-components';
 
@@ -85,11 +84,21 @@ export const TypesOfIcon = styled(Icon)`
 	}
 `;
 
-export const DefaultBg = styled(TypesOfIcon)`
+export const DefaultBg = styled(Icon)`
+	width: 16px;
+	height: 16px;
+	fill: ${props => props.theme.modal.line};
+	background-color: ${props => props.theme.modal.backgroundAvatar};
+`;
+
+export const DefaultBgBox = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 28px;
 	height: 28px;
 	cursor: pointer;
-	background: ${() => `url(${BG})`};
+	background-color: ${props => props.theme.modal.backgroundAvatar};
 	border: ${props => (props.isBackgroundActive ? `1px solid` : 'none')};
 	border-color: ${props =>
 		props.isBackgroundActive ? props.theme.header.userName : 'transparent'};

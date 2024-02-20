@@ -1,6 +1,8 @@
 /** @format */
 
 import React, { useContext, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { StyleSheetManager } from 'styled-components';
 import {
@@ -23,16 +25,14 @@ import {
 	AddIcon,
 	ErrorMsg,
 	DefaultBg,
+	DefaultBgBox,
 } from './CreateNewBoardModal.styled';
 import { customStyles } from '../Modal.styled';
-import background from '../../../img/background.json';
+import background from 'img/background.json';
 import ModalWindow from '../Modal';
-import { useDispatch } from 'react-redux';
 import { resetError } from 'redux/boards/boardsSlice';
-
 import { addBoard, editBoard } from 'redux/boards/operations';
 import { MainContext } from 'components/Helpers';
-import { useNavigate } from 'react-router-dom';
 import { useBoards } from 'hooks';
 
 export const CreateNewBoardModal = () => {
@@ -125,12 +125,12 @@ export const CreateNewBoardModal = () => {
 										name='background'
 										value={100}
 									/>
-									<DefaultBg
-										name='icon-add-background'
+									<DefaultBgBox
 										isBackgroundActive={100 === Number(values.background)}
-									/>
+									>
+										<DefaultBg name='default-background' />
+									</DefaultBgBox>
 								</LabelRadio>
-
 								{Array.from({ length: 15 }, (_, imageIndex) => (
 									<LabelRadio key={`background-${imageIndex}`}>
 										<Field
