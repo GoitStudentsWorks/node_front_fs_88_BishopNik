@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { NavLink } from 'react-router-dom';
-import Icon from 'components/Icon/Icon.jsx';
+import Icon from 'components/Icon';
 
 export const Container = styled.div`
 	background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #bedbb0 92.19%);

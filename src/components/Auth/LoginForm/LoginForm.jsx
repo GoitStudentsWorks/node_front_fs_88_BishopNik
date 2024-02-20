@@ -20,7 +20,7 @@ import {
 	GoogleIcon,
 	IconContainer,
 	FieldContainer,
-} from './LoginForm';
+} from './LoginForm.styled';
 import { useState } from 'react';
 import { useAuth } from 'hooks';
 import Loader from 'components/Loader';

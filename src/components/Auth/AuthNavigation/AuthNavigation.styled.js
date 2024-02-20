@@ -2,14 +2,14 @@
 
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import Icon from 'components/Icon/Icon.jsx';
+import Icon from 'components/Icon';
 
 export const IconLogoBox = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: #161616;
-	outline:none;
+	outline: none;
 	width: 40px;
 	height: 40px;
 	border-radius: 8px;

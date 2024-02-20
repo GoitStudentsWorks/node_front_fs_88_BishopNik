@@ -1,6 +1,6 @@
 /** @format */
 
-import data from '../../img/list_img.json';
+import data from 'img/list_img.json';
 import { StyledAvatar } from './Avatar.styled';
 
 const Avatar = () => {
