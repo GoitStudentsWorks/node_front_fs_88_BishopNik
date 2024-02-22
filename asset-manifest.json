@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.bf43910a.css",
-    "main.js": "/static/js/main.2e216da6.js",
-    "static/js/104.1b31a16c.chunk.js": "/static/js/104.1b31a16c.chunk.js",
-    "static/js/416.7e0ce683.chunk.js": "/static/js/416.7e0ce683.chunk.js",
-    "static/js/460.5dedc9b3.chunk.js": "/static/js/460.5dedc9b3.chunk.js",
-    "static/js/972.9646e025.chunk.js": "/static/js/972.9646e025.chunk.js",
-    "static/js/876.481ea725.chunk.js": "/static/js/876.481ea725.chunk.js",
-    "static/media/icon-spraite.svg": "/static/media/icon-spraite.13ec74459df4c68c537e72508f7afdee.svg",
-    "index.html": "/index.html",
-    "main.bf43910a.css.map": "/static/css/main.bf43910a.css.map",
-    "main.2e216da6.js.map": "/static/js/main.2e216da6.js.map",
-    "104.1b31a16c.chunk.js.map": "/static/js/104.1b31a16c.chunk.js.map",
-    "416.7e0ce683.chunk.js.map": "/static/js/416.7e0ce683.chunk.js.map",
-    "460.5dedc9b3.chunk.js.map": "/static/js/460.5dedc9b3.chunk.js.map",
-    "972.9646e025.chunk.js.map": "/static/js/972.9646e025.chunk.js.map",
-    "876.481ea725.chunk.js.map": "/static/js/876.481ea725.chunk.js.map"
+    "main.css": "/node_front_fs_88_BishopNik/static/css/main.bf43910a.css",
+    "main.js": "/node_front_fs_88_BishopNik/static/js/main.45b41434.js",
+    "static/js/104.1b31a16c.chunk.js": "/node_front_fs_88_BishopNik/static/js/104.1b31a16c.chunk.js",
+    "static/js/416.7e0ce683.chunk.js": "/node_front_fs_88_BishopNik/static/js/416.7e0ce683.chunk.js",
+    "static/js/460.5dedc9b3.chunk.js": "/node_front_fs_88_BishopNik/static/js/460.5dedc9b3.chunk.js",
+    "static/js/972.9646e025.chunk.js": "/node_front_fs_88_BishopNik/static/js/972.9646e025.chunk.js",
+    "static/js/876.481ea725.chunk.js": "/node_front_fs_88_BishopNik/static/js/876.481ea725.chunk.js",
+    "static/media/icon-spraite.svg": "/node_front_fs_88_BishopNik/static/media/icon-spraite.13ec74459df4c68c537e72508f7afdee.svg",
+    "index.html": "/node_front_fs_88_BishopNik/index.html",
+    "main.bf43910a.css.map": "/node_front_fs_88_BishopNik/static/css/main.bf43910a.css.map",
+    "main.45b41434.js.map": "/node_front_fs_88_BishopNik/static/js/main.45b41434.js.map",
+    "104.1b31a16c.chunk.js.map": "/node_front_fs_88_BishopNik/static/js/104.1b31a16c.chunk.js.map",
+    "416.7e0ce683.chunk.js.map": "/node_front_fs_88_BishopNik/static/js/416.7e0ce683.chunk.js.map",
+    "460.5dedc9b3.chunk.js.map": "/node_front_fs_88_BishopNik/static/js/460.5dedc9b3.chunk.js.map",
+    "972.9646e025.chunk.js.map": "/node_front_fs_88_BishopNik/static/js/972.9646e025.chunk.js.map",
+    "876.481ea725.chunk.js.map": "/node_front_fs_88_BishopNik/static/js/876.481ea725.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bf43910a.css",
-    "static/js/main.2e216da6.js"
+    "static/js/main.45b41434.js"
   ]
 }
